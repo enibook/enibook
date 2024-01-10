@@ -3,7 +3,7 @@
 :nofooter:
 :stylesheet: elements/asciidoctor.css
 
-EniBook propose une collection d'éléments HTML personnalisés à vocation pédagogique.
+EniBook propose une collection de composants à vocation pédagogique sous la forme d'éléments HTML personnalisés.
 
 ++++
 <p class="ma font-size-8 w-1/2" style="color:var(--sl-color-warning-500);">
@@ -31,6 +31,12 @@ EniBook propose une collection d'éléments HTML personnalisés à vocation péd
     <sl-button slot="footer" size="large" href="">Voir <code>asciidoc</code></sl-button>
     <sl-button slot="footer" size="large" href="">Voir <code>markdown</code></sl-button>
     <sl-button slot="footer" size="large" href="">Voir <code>restructuredText</code></sl-button>
+  </sl-card>
+
+  <sl-card class="w-2/5" style="min-width:250px">
+    <h3>Pour les « clicophiles »</h3>
+    <p>mais où est donc le « clicodrome » ?...</p>
+    <sl-button slot="footer" size="large" href="./api/index.html">Voir l'éditeur</sl-button>
   </sl-card>
 
   <sl-card class="w-2/5" style="min-width:250px">

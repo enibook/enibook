@@ -1,0 +1,32 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "EniBook documentations",
+  "main": "index.html",
+  "scripts": {
+    "doc:adoc": "asciidoctor elements/elements.adoc && unocss -c uno.config-elements.ts elements/elements.html && asciidoctor-chunker elements/elements.html --titlePage 'Eléments EniBook' -o elements",
+    "doc:gen": "asciidoctor ./index.adoc && unocss -c uno.config-gen.ts ./index.html",
+    "build": "pnpm run doc:adoc && pnpm run doc:gen",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "enibook",
+    "documentation"
+  ],
+  "author": "jt921",
+  "license": "MIT",
+  "dependencies": {
+    "elements": "workspace:*"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.9.0",
+    "@iconify-json/mdi": "^1.1.64",
+    "@unocss/cli": "^0.58.3",
+    "@unocss/preset-attributify": "^0.58.3",
+    "@unocss/preset-icons": "^0.58.3",
+    "@unocss/preset-tagify": "^0.58.3",
+    "@unocss/preset-typography": "^0.58.3",
+    "@unocss/preset-uno": "^0.58.3",
+    "unocss": "^0.58.3"
+  }
+}

@@ -1,0 +1,359 @@
+:fn-sens-de-lecture: pass:c,q[footnote:[Selon le sens de lecture -- de gauche à droite (``ltr`` : _left to right_) ou de droite à gauche (``rtl`` : _right to left_) -- le code source sera à gauche pour une lecture de gauche à droite, à droite pour une lecture de droite à gauche. Le sens de lecture -- de gauche à droite (``ltr`` : _left to right_) ou de droite à gauche (``rtl`` : _right to left_) -- dépend de la langue retenue pour les éléments. Par exemple, le français, l'anglais ou l'espagnol se lisent de gauche à droite tandis que l’arabe, le farsi, l’ourdou ou l’hébreu se lisent de droite à gauche.]]
+:fn-clic-souris: pass:c,q[footnote:[Le clic se fait à l'aide du bouton principal de la souris : le gauche en mode droitier, le droit en mode gaucher, ou le bouton unique.]]
+
+== Aperçu HTML
+
+[%header,cols="2a,1a,1a"]
+|===
+| Fonction
+| Elément ``html``
+| Classe ``typescript``
+
+| Cet élément présente côte à côte un code source `html` à interpréter et le rendu de son interprétation.
+| ``<html-preview-it>``
+
+type : « link:https://developer.mozilla.org/fr/docs/Glossary/Block-level_content[bloc] » (_block-level element_)
+| link:api/classes/HtmlPreviewIt.html[``HtmlPreviewIt``]
+|===
+
+
+[%collapsible]
+.Structure
+====
+L'élément est structuré en deux parties :
+
+- à gauche{fn-sens-de-lecture}, le code source à interpréter;
+- à droite, l'aperçu de l'interprétation du code source.
+
+Les deux parties sont séparées par une barre verticale munie d'un grip +++<it-mdi-drag-vertical style="width:24px" title="grip vertical"></it-mdi-drag-vertical>+++.
+
+++++
+<html-preview-it>
+  <script type="enibook">
+    <ul>
+      <li>à gauche : code source;</li>
+      <li>à droite : aperçu.</li>
+    </ul>
+  </script>
+</html-preview-it>
+++++
+====
+
+[%collapsible]
+.Interactivité
+====
+Cet élément est interactif : il est cliquable 
++++<it-mdi-mouse style="width:24px" title="non cliquable"></it-mdi-mouse>+++ 
+mais non éditable 
++++<it-mdi-keyboard-off-outline style="width:24px" title="non éditable"></it-mdi-keyboard-off-outline>+++.
+
+L'interaction consiste à adapter les largeurs respectives des parties gauche et droite.
+
+- Quand on passe la souris sur l'élément, ses bords ainsi que la barre verticale qui sépare les deux parties, sont mis en évidence par une coloration différente.
+- La barre verticale est déplaçable horizontalement. Quand on passe la souris sur la barre (y compris sur son grip central), le curseur de la souris change de forme pour signifier un déplacement horizontal possible : +++<it-mdi-resize-horizontal></it-mdi-resize-horizontal>+++.
++
+Pour déplacer la barre séparatrice, on opère par glissement de la souris : il suffit de cliquer{fn-clic-souris} sur cette barre footnote:[Le grip vertical +++<it-mdi-drag-vertical></it-mdi-drag-vertical>+++ est présent pour faciliter le déplacement de la barre verticale séparatrice.], maintenir le bouton de la souris enfoncé et ne le relâcher que lorsque le pointeur a atteint la position désirée pour la barre verticale.
++
+Le déplacement est limité pour laisser au moins un quart de la largeur totale à la partie la moins large.
+====
+
+=== Script ``enibook``
+Le code source à visualiser peut être défini en précisant le contenu de la balise ``html-preview-it`` à l'aide d'un script de type ``enibook``.
+
+[source,html]
+----
+<html-preview-it>
+  <script type="enibook">
+    <!-- le code HTML à interpréter et à visualiser -->
+  </script>
+</html-preview-it>
+----
+
+.Script ``enibook``
+[#ex1]
+====
+++++
+<html-preview-it>
+  <script type="enibook">
+    <html-preview-it>
+      <script type="enibook">
+        <clock-it time></clock-it>
+      &lt;/script&gt;
+    </html-preview-it>
+  </script>
+</html-preview-it>
+++++
+====
+
+[%collapsible]
+.Remarque : un script dans le script ``enibook``
+====
+L'<<ex1>> montre un aperçu HTML qui contient lui-même un aperçu HTML.
+
+Il est donc possible d'insérer un script dans le script ``enibook`` à condition de neutraliser la balise fermante du deuxième script : écrire ``pass:v[&lt;/script&gt;]`` au lieu de ``</script>``. Les séquences d'échappement ``pass:v[&lt;]`` et ``pass:v[&gt;]`` représentent respectivement les caractères ``<`` (_less than_, plus petit que) et ``>`` (_greater than_, plus grand que)footnote:[Une séquence d'échappement permet de représenter n'importe quel caractère link:https://fr.wikipedia.org/wiki/Unicode[Unicode] en HTML en utilisant uniquement des caractères link:https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange[ASCII]. (voir link:https://www.w3.org/International/questions/qa-escapes.fr.html#:~:text=Une%20séquence%20d%27échappement%20permet,référence%20d%27entité%20de%20caractère%20.[W3C])].
+
+[source,html]
+----
+<html-preview-it>
+  <script type="enibook">
+    <!-- le code HTML à interpréter et à visualiser -->
+    <!-- qui contient lui-même un script -->
+    <script> 
+      ... 
+    &lt;/script&gt;
+  </script>
+</html-preview-it>
+----
+
+.Un script dans le script ``enibook``
+======
+sans script ``javascript``:: {empty}
++
+++++
+<html-preview-it id="demo-script-1" position=40>
+  <script type="enibook">
+    <html-preview-it id="demo-script-2" position="75">
+      <script type="enibook">
+        <clock-it time></clock-it>
+      &lt;/script&gt;
+    </html-preview-it>
+  </script>
+</html-preview-it>
+++++
++
+Pour obtenir l'exemple précédent, on interprète le code suivant :
++
+[source,html]
+----
+<html-preview-it id="demo-script-1" position=40>       <!--1-->
+  <script type="enibook">                              <!--2-->
+    <html-preview-it id="demo-script-2" position="75"> <!--3-->
+      <script type="enibook">                          <!--4-->
+        <clock-it time></clock-it>                     <!--5-->
+      &lt;/script&gt;                                  <!--6-->
+    </html-preview-it>                                 <!--7-->
+  </script>                                            <!--8-->
+</html-preview-it>                                     <!--9-->
+----
+<1> on ouvre un premier aperçu HTML avec pour identifiant ``demo-script-1``;
+<2> on ouvre le script ``enibook`` de ce premier aperçu;
+<3> on ouvre un deuxième aperçu HTML d'identifiant ``demo-script-2`` à l'intérieur du premier aperçu ``demo-script-1``; ce deuxième aperçu HTML sera visualisé dans le premier aperçu;
+<4> on ouvre le script ``enibook`` du deuxième aperçu;
+<5> le code HTML à visualiser dans le deuxième aperçu ``demo-script-2``;
+<6> on ferme le script ``enibook`` du deuxième aperçu avec la séquence d'échappement ``pass:v[&lt;/script&gt;]``;
+<7> on ferme le deuxième aperçu ``demo-script-2``;
+<8> on ferme le script du premier aperçu normalement (ie. sans séquence d'échappement);
+<9> on ferme le premier aperçu ``demo-script-1``.
+
+avec un script ``javascript``:: {empty}
++
+On ajoute ici un script ``javascript`` dans le deuxième aperçu de l'exemple précédent.
++
+[source,html]
+----
+<html-preview-it id="demo-script-1" position=40>
+  <script type="enibook">
+    <html-preview-it id="demo-script-2" position="75">
+      <script type="enibook">
+        <clock-it time></clock-it>
+        <script type="text/javascript">                                  <!--1-->
+          const demo1 = document.querySelector("#demo-script-1")         <!--2-->
+          const demo2 = demo1.shadowRoot.querySelector("#demo-script-2") <!--3-->
+          demo2.shadowRoot.prepend("Texte ajouté par script.")           <!--4-->
+        &lt;/script&gt;                                                  <!--5-->
+      &lt;/script&gt;
+    </html-preview-it>
+  </script>
+</html-preview-it>
+----
+<1> on ouvre le script ``javascript`` dans le script ``enibook`` du deuxième aperçu ``demo-script-2``;
+<2> la constante ``demo1`` représente le premier aperçu ``demo-script-1``;
+<3> la constante ``demo2`` représente le deuxième aperçu ``demo-script-2``;
+<4> on insère le texte ``Texte ajouté par script.`` au début du deuxième aperçu;
+<5> on ferme le script ``javascript`` avec la séquence d'échappement ``pass:v[&lt;/script&gt;]``.
++
+++++
+<html-preview-it id="demo-script-3" position=40>
+  <script type="enibook">
+    <html-preview-it id="demo-script-4" position="75">
+      <script type="enibook">
+        <clock-it time></clock-it>
+        <script type="text/javascript">                               
+          const demo1 = document.querySelector("#demo-script-3")
+          const demo2 = demo1.shadowRoot.querySelector("#demo-script-4")
+          demo2.shadowRoot.prepend("Texte ajouté par script.")
+        &lt;/script&gt;
+      &lt;/script&gt;
+    </html-preview-it>
+  </script>
+</html-preview-it>
+++++
+======
+====
+
+=== Attributs et propriétés
+Cette balise possède 3 attributs spécifiques optionnels : ``position``, ``src`` et ``theme``.
+
+==== Code source
+L'attribut ``src`` permet de définir le code source à visualiser à partir d'un fichier extérieur.
+
+.Code issu d'un fichier
+====
+.Fichier ``html-preview-file.txt``
+[source,html]
+----
+include::html-preview-file.txt[]
+----
+
+++++
+<html-preview-it>
+  <script type="enibook">
+    <html-preview-it src="html-preview/html-preview-file.txt">
+    </html-preview-it>
+  </script>
+</html-preview-it>
+++++
+====
+
+Il est possible de combiner l'utilisation d'un script ``enibook`` et l'attribut ``src``. Dans ce cas, le contenu du fichier est inséré avant le contenu du script comme dans l'exemple ci-dessous.
+
+.Codes issus d'un script et d'un fichier
+====
+++++
+<html-preview-it>
+  <script type="enibook">
+    <html-preview-it src="html-preview/html-preview-file.txt">
+      <script type="enibook">
+        <p>Paragraphe ajouté par le script <code>enibook</code></p>
+      &lt;/script&gt;
+    </html-preview-it>
+  </script>
+</html-preview-it>
+++++
+====
+
+En dernier ressort, le code source à visualiser peut être défini par un script ``javascript`` à l'aide de la propriété ``code`` de la classe ``HtmlPreviewIt``.
+
+.Code défini par programme
+====
+++++
+<html-preview-it id="demo-prop">
+  <script type="enibook">
+    <!-- visualisateur sans code -->
+    <html-preview-it class="demo"></html-preview-it>
+    <!-- ajout du code par script javascript -->
+    <script type="text/javascript">
+      const demo = document.body.querySelector("#demo-prop")
+      const preview = demo.shadowRoot.querySelector("html-preview-it")
+      preview.code = `
+<p>Code source ajouté par la propriété code : <clock-it></clock-it>.</p>
+`
+    &lt;/script&gt;
+    <!-- ajout d'un style -->
+    <style>
+      .demo { padding: 0.5em; background-color: lightcyan; }
+    </style>
+  </script>
+</html-review-it>
+++++
+====
+
+==== Position du séparateur vertical
+La position initiale du séparateur entre le code source et son aperçu est définie par l'attribut ``position``, exprimé en % de la largeur de l'élément (comprise entre 25 et 75, 50 par défaut).
+
+++++
+<html-preview-it>
+  <script type="enibook">
+    <html-preview-it position=75>
+      <script type="enibook">
+        <clock-it></clock-it>
+      &lt;/script&gt;
+    </html-preview-it>
+  </script>
+</html-preview-it>
+++++
+
+==== Thème du code source
+Le thème de colorisation du code source (clair : `light` ou sombre : `dark`) est précisé par l'attribut `theme` (`dark` par défaut).
+
+Mode clair:: {empty}
++
+++++
+<html-preview-it>
+  <script type="enibook">
+    <html-preview-it theme="light">
+      <script type="enibook">
+        <clock-it></clock-it>
+      &lt;/script&gt;
+    </html-preview-it>
+  </script>
+</html-preview-it>
+++++
+
+Mode sombre:: {empty}
++
+++++
+<html-preview-it>
+  <script type="enibook">
+    <html-preview-it theme="dark">
+      <script type="enibook">
+        <clock-it></clock-it>
+      &lt;/script&gt;
+    </html-preview-it>
+  </script>
+</html-preview-it>
+++++
+
+=== API
+L'link:https://developer.mozilla.org/fr/docs/Glossary/API[API] (_Application Programming Interface_) de l'élément ``<html-preview-it>`` est
+consultable link:../api/classes/HtmlPreviewIt.html[ici].
+
+.L'API en bref
+[%collapsible]
+====
+[cols="1a"]
+|===
+|
+++++
+<api-viewer
+src="dist/custom-elements.json"
+only="html-preview-it"
+>
+</api-viewer>
+++++
+|===
+====
+
+.Usage en ``typescript``
+[%collapsible]
+====
+[cols="100a"]
+|===
+|
+[source,typescript]
+----
+import { ToggleIt } from '@enibook/elements/dist/elements/html-preview/html-preview' // <1>
+const htmlPreview = new HtmlPreviewIt() // <2>
+htmlPreview.code = `
+<p>Le code à visualiser</p>
+`                                       // <3>
+document.body.appendChild(htmlPreview)  // <4>
+/*
+<body>
+...
+<html-preview-it>
+  <script type="enibook">
+    <p>Le code à visualiser</p>
+  </script>
+</html-preview-it>
+</body>
+*/
+----
+<1> importer la classe link:../api/classes/HtmlPreviewIt.html[``HtmlPreviewIt``];
+<2> créer une instance de cette classe;
+<3> définir le code à visualiser;
+<4> ajouter l'instance dans le link:https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model[DOM].
+|===
+====
+
+

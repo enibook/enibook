@@ -1,0 +1,5 @@
+@import '../../styles/element.css';
+
+:host {
+  display: inline-block;
+}

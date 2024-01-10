@@ -1,0 +1,34 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "disableGit": false,
+  "disableSources": false,
+  "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
+  "out": "../docs/api",
+  "excludeNotDocumented": false,
+  "excludeExternals": true,
+  "includeVersion": true,
+  "darkHighlightTheme": "dark-plus",
+  "excludeTags": ["@csspart", "@dependency"],
+  "navigationLinks": {
+    "EniBook": "https://enibook.org"
+  },
+  "readme": "README.md",
+  "plugin": [
+    "typedoc-plugin-coverage",
+    "typedoc-plugin-mdn-links",
+    "typedoc-plugin-merge-modules",
+    "typedoc-plugin-missing-exports",
+    "typedoc-plugin-keywords",
+    "typedoc-theme-hierarchy"
+  ],
+  "theme": "hierarchy",
+  "tsconfig": "./tsconfig.json",
+  "visibilityFilters": {
+    "protected": false,
+    "private": false,
+    "inherited": true,
+    "external": true
+  },
+  "keywords": ["enibook", "custom elements", "api"]
+}

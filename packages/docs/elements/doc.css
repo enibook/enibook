@@ -1,0 +1,102 @@
+a {
+  color: var(--sl-color-blue-600);
+}
+body {
+  color: var(--sl-color-neutral-900);
+  background-color: var(--sl-color-neutral-50);
+  font-family: var(--sl-font-sans);
+}
+code {
+  color: var(--color-code);
+  background-color: var(--sl-color-neutral-200);
+}
+details > summary {
+  color: var(--color-primary);
+}
+details[open] > .content {
+  border: 1px solid var(--color-primary);
+  border-top: none;
+  border-radius: var(--sl-border-radius-large);
+  padding: 0.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+}
+
+:not(pre):not([class^=L]) > code {
+  color: var(--color-code);
+  background-color: inherit; /*var(--sl-color-neutral-200);*/
+}
+
+table thead,table tfoot {
+  background:/*#f7f8f7*/ var(--sl-color-neutral-300);
+}
+table tbody {
+  background-color: var(--sl-color-neutral-100);
+}
+table tr th,table tr td {
+  color:/*rgba(0,0,0,.8)*/ var(--sl-color-neutral-900);
+  background-color: inherit;
+}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td {
+  color:/*rgba(0,0,0,.8);*/ var(--sl-color-neutral-900);
+}
+
+
+table tr.even,table tr.alt{background:#f8f8f7}
+
+.literalblock pre,
+.listingblock > .content > pre:not(.highlight),
+.listingblock > .content > pre[class=highlight],
+.listingblock > .content > pre[class^="highlight "] {
+  background-color: /*var(--sl-color-neutral-100);*/ green;
+}
+.literalblock.output pre {
+  color: var(--sl-color-neutral-100);
+  background: var(--sl-color-neutral-800);
+}
+
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{
+  color:/*#7a2518;*/ var(--color-primary);
+}
+
+#header::before,
+#header::after,
+#content::before,
+#content::after,
+#footnotes::before,
+#footnotes::after,
+#footer::before,
+#footer::after {
+  content:" ";
+  display:table
+}
+
+#header > h1:first-child {
+  color:/*rgba(0,0,0,.85);*/ var(--sl-color-neutral-900);
+}
+#header > h1:only-child, 
+body.toc2 #header > h1:nth-last-child(2) {
+  border-bottom:1px solid var(--sl-color-neutral-300);
+}
+
+#preamble > .sectionbody > [class=paragraph]:first-of-type p {
+  color:/*rgba(0,0,0,.85);*/ var(--sl-color-neutral-800);
+}
+
+#toc.toc2 {
+  background-color: var(--sl-color-neutral-100);
+  border-right:1px solid var(--sl-color-neutral-300);
+}
+#toc a {
+  color: var(--color-primary-dark);
+}
+#toc li.current {
+  background-color: /*rgb(226, 231, 235);*/ var(--color-primary-light);
+}
+
+body.toc2.toc-right #toc.toc2 {
+  border-right-width: 0; 
+  border-left: 1px solid var(--sl-color-neutral-300);
+}

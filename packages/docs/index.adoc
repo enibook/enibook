@@ -1,0 +1,44 @@
+= EniBook
+:docinfo:
+:nofooter:
+:stylesheet: elements/asciidoctor.css
+
+EniBook propose une collection d'éléments HTML personnalisés à vocation pédagogique.
+
+++++
+<p class="ma font-size-8 w-1/2" style="color:var(--sl-color-warning-500);">
+  <sl-icon name="exclamation-triangle"></sl-icon> 
+  Site en construction
+  <sl-icon name="exclamation-triangle"></sl-icon>
+</p>
+
+<div class="flex flex-wrap gap-6xl items-stretch">
+  <sl-card class="w-2/5" style="min-width:250px">
+    <h3>Pour les curieux</h3>
+    <p>quand des exemples valent mieux qu'un long discours...</p>
+    <sl-button slot="footer" size="large" href="">Voir les exemples</sl-button>
+  </sl-card>
+
+  <sl-card class="w-2/5" style="min-width:250px">
+    <h3>Pour les impatients</h3>
+    <p>rien de tel qu'apprendre en faisant par soi-même...</p>
+    <sl-button slot="footer" size="large" href="./elements/index.html">Voir la documentation</sl-button>
+  </sl-card>
+
+  <sl-card class="w-2/5" style="min-width:250px">
+    <h3>Pour les pragmatiques</h3>
+    <p>HTML ? bof <span style="color:var(--sl-color-warning-500)"><sl-icon name="emoji-frown"></sl-icon></span> ; il y a plus sympa comme langage de balisage...</p>
+    <sl-button slot="footer" size="large" href="">Voir <code>asciidoc</code></sl-button>
+    <sl-button slot="footer" size="large" href="">Voir <code>markdown</code></sl-button>
+    <sl-button slot="footer" size="large" href="">Voir <code>restructuredText</code></sl-button>
+  </sl-card>
+
+  <sl-card class="w-2/5" style="min-width:250px">
+    <h3>Pour les geeks</h3>
+    <p>si <code>typescript</code> m'était conté...</p>
+    <sl-button slot="footer" size="large" href="./api/index.html">Voir l'API</sl-button>
+  </sl-card>
+</div>
+++++
+
+Hello

@@ -1,0 +1,42 @@
+/* shoelace */
+@import "../../node_modules/@shoelace-style/shoelace/dist/themes/light.css";
+@import "../../node_modules/@shoelace-style/shoelace/dist/themes/dark.css";
+/* enibook */
+:root {
+  --sl-color-primary-50: var(--sl-color-purple-50);
+  --sl-color-primary-100: var(--sl-color-purple-100);
+  --sl-color-primary-200: var(--sl-color-purple-200);
+  --sl-color-primary-300: var(--sl-color-purple-300);
+  --sl-color-primary-400: var(--sl-color-purple-400);
+  --sl-color-primary-500: var(--sl-color-purple-500);
+  --sl-color-primary-600: var(--sl-color-purple-600);
+  --sl-color-primary-700: var(--sl-color-purple-700);
+  --sl-color-primary-800: var(--sl-color-purple-800);
+  --sl-color-primary-900: var(--sl-color-purple-900);
+  --sl-color-primary-950: var(--sl-color-purple-950);
+  --sl-panel-background-color: var(--sl-color-neutral-100);
+  --color-black: var(--sl-color-neutral-1000);
+  --color-white: var(--sl-color-neutral-0);
+  --color-primary: var(--sl-color-primary-500);
+  --color-primary-dark: var(--sl-color-primary-800);
+  --color-primary-light: var(--sl-color-primary-200);
+  --color-success: var(--sl-color-success-500);
+  --color-warning: var(--sl-color-warning-500);
+  --color-danger: var(--sl-color-danger-500);
+  --color-neutral: var(--sl-color-neutral-500);
+  --color-code: var(--sl-color-amber-600);
+}
+:root {
+  font-synthesis: none;
+  font-family: var(--sl-font-sans);
+  font-size: var(--sl-font-size-medium);
+  font-weight: var(--sl-font-weight-normal);
+  line-height: var(--sl-line-height-normal);
+  color-scheme: light dark;
+  color: var(--color-black);
+  background-color: var(--sl-color-neutral-100);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}

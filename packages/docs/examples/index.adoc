@@ -13,3 +13,35 @@
 </div>
 ++++
 
+++++
+<sl-dropdown>
+  <sl-button slot="trigger" size="small" caret><it-mdi-tools></it-mdi-tools></sl-button>
+  <sl-menu>
+    <sl-menu-item>
+      Couleurs
+      <sl-menu slot="submenu">
+        <sl-menu-item type="checkbox" value="color">
+          <it-mdi-palette-outline slot="prefix"></it-mdi-palette-outline>
+          Palette
+        </sl-menu-item>
+        <sl-menu-item type="checkbox" value="theme">
+          <it-mdi-theme-light-dark slot="prefix"></it-mdi-theme-light-dark>
+          Thème
+        </sl-menu-item>
+      </sl-menu>
+    </sl-menu-item>
+    <sl-menu-item>
+      Temps
+      <sl-menu slot="submenu">
+        <sl-menu-item type="checkbox" value="alarm">Alarme</sl-menu-item>
+        <sl-menu-item type="checkbox" value="chrono">Chronomètre</sl-menu-item>
+        <sl-menu-item type="checkbox" value="time">
+          <it-mdi-calendar-clock-outline slot="prefix"></it-mdi-calendar-clock-outline>
+          Horloge
+        </sl-menu-item>
+        <sl-menu-item type="checkbox" value="timer">Minuteur</sl-menu-item>
+      </sl-menu>
+    </sl-menu-item>
+  </sl-menu>
+</sl-dropdown>
+++++

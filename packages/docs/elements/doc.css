@@ -75,6 +75,7 @@ table tr.even,table tr.alt{background:#f8f8f7}
 
 #header > h1:first-child {
   color:/*rgba(0,0,0,.85);*/ var(--sl-color-neutral-900);
+  margin-top: 2.5rem;
 }
 #header > h1:only-child, 
 body.toc2 #header > h1:nth-last-child(2) {

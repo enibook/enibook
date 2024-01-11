@@ -11,65 +11,34 @@
 <link rel="stylesheet" type="text/css" href="doc.css">
 <link rel="stylesheet" type="text/css" href="hljs-themes.css">
 <link rel="stylesheet" type="text/css" href="elements-uno.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
 <script type="module" src="_dist/elements.js"></script>
 <link rel="stylesheet" href="style1.css" type="text/css">
 <link rel="stylesheet" href="asciidoctor-chunker.css" type="text/css"></head>
 <body class="article toc2 toc-left">
 <toolbar-it fixed="">
-  <toggle-it slot="start" selector="#toc"></toggle-it>
-  <clock-it slot="end"></clock-it>
-  <color-it slot="end"></color-it>
-  <theme-it slot="end"></theme-it>
+  <div slot="end" class="flex">
+    <sl-button-group slot="start">
+      <sl-tooltip content="Documentations EniBook"><sl-button size="small" href="../index.html"><it-mdi-home></it-mdi-home></sl-button></sl-tooltip>
+      <sl-tooltip content="EniBook : exemples"><sl-button size="small" href="../examples/index.html"><it-mdi-monitor-eye></it-mdi-monitor-eye></sl-button></sl-tooltip>
+      <sl-tooltip content="EniBook : éléments HTML"><sl-button size="small" href="../elements/index.html"><it-mdi-language-html5></it-mdi-language-html5></sl-button></sl-tooltip>
+      <sl-tooltip content="EniBook : API typescript"><sl-button size="small" href="../api/index.html"><it-mdi-language-typescript></it-mdi-language-typescript></sl-button></sl-tooltip>
+      <sl-tooltip content="EniBook : codes sources"><sl-button size="small" href="https://github.com/enibook/enibook"><it-mdi-github></it-mdi-github></sl-button></sl-tooltip>
+    </sl-button-group>
+    <sl-tooltip content="Horloge"><clock-it size="small"></clock-it></sl-tooltip>
+    <sl-tooltip content="Couleur principale"><color-it size="small"></color-it></sl-tooltip>
+    <sl-tooltip content="Thème"><theme-it size="small"></theme-it></sl-tooltip>
+  </div>
 </toolbar-it>
 <div id="header">
 <h1>EniBook : éléments HTML</h1>
 <div id="toc" class="toc2">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li class="current"><a href="index.html">Eléments EniBook</a></li><li><a href="chap1.html">1. Aperçu HTML</a>
-<ul class="sectlevel2">
-<li><a href="chap1.html#_script_enibook">1.1. Script <code>enibook</code></a></li>
-<li><a href="chap1.html#_attributs_et_propriétés">1.2. Attributs et propriétés</a>
-<ul class="sectlevel3">
-<li><a href="chap1.html#_code_source">1.2.1. Code source</a></li>
-<li><a href="chap1.html#_position_du_séparateur_vertical">1.2.2. Position du séparateur vertical</a></li>
-<li><a href="chap1.html#_thème_du_code_source">1.2.3. Thème du code source</a></li>
-</ul>
-</li>
-<li><a href="chap1.html#_api">1.3. API</a></li>
-</ul>
-</li>
-<li><a href="chap2.html">2. Bascule</a>
-<ul class="sectlevel2">
-<li><a href="chap2.html#_attributs_et_propriétés_2">2.1. Attributs et propriétés</a>
-<ul class="sectlevel3">
-<li><a href="chap2.html#_sélecteur_css">2.1.1. Sélecteur <code>css</code></a></li>
-<li><a href="chap2.html#_visibilité">2.1.2. Visibilité</a></li>
-<li><a href="chap2.html#_textes_du_bouton">2.1.3. Textes du bouton</a></li>
-<li><a href="chap2.html#_infobulles">2.1.4. Infobulles</a></li>
-</ul>
-</li>
-<li><a href="chap2.html#_api_2">2.2. API</a></li>
-</ul>
-</li>
-<li><a href="chap3.html">3. Horloge</a>
-<ul class="sectlevel2">
-<li><a href="chap3.html#_attributs_et_propriétés_3">3.1. Attributs et propriétés</a>
-<ul class="sectlevel3">
-<li><a href="chap3.html#_taille_de_lhorloge">3.1.1. Taille de l’horloge</a></li>
-<li><a href="chap3.html#_réglage_de_laffichage">3.1.2. Réglage de l’affichage</a></li>
-</ul>
-</li>
-<li><a href="chap3.html#_api_3">3.2. API</a></li>
-</ul>
-</li>
-<li><a href="chap4.html">4. Lorem Ipsum</a>
-<ul class="sectlevel2">
-<li><a href="chap4.html#_gabarits">4.1. Gabarits</a></li>
-<li><a href="chap4.html#_attributs_et_propriétés_4">4.2. Attributs et propriétés</a></li>
-<li><a href="chap4.html#_api_4">4.3. API</a></li>
-</ul>
-</li>
+<li class="current"><a href="index.html">Eléments EniBook</a></li><li><a href="chap1.html">1. Aperçu HTML</a></li>
+<li><a href="chap2.html">2. Bascule</a></li>
+<li><a href="chap3.html">3. Horloge</a></li>
+<li><a href="chap4.html">4. Lorem Ipsum</a></li>
 <li><a href="chap5.html">5. Barre d’outils</a></li>
 </ul>
 </div>
@@ -84,7 +53,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Les éléments EniBook sont des <a href="https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_custom_elements">éléments HTML personnalisés</a> (<em>custom element</em>) représentés par des balises du type <code>&lt;element-name-it&gt;&lt;/element-name-it&gt;</code> dont le nom se termine toujours par le suffixe <code>-it</code>.</p>
+<p>Les composants EniBook sont des <a href="https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_custom_elements">éléments HTML personnalisés</a> (<em>custom element</em>) représentés par des balises du type <code>&lt;element-name-it&gt;&lt;/element-name-it&gt;</code> dont le nom se termine toujours par le suffixe <code>-it</code>.</p>
 </div>
 <div class="paragraph">
 <p>Les développements sont réalisés en

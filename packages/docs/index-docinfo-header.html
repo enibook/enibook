@@ -1,8 +1,11 @@
-<toolbar-it fixed>
-  <sl-button slot="end" size="small" href="">Exemples</sl-button>
-  <sl-button slot="end" size="small" href="./elements/index.html">Eléments</sl-button>
-  <sl-button slot="end" size="small" href="./api/index.html">API</sl-button>
-  <clock-it slot="end"></clock-it>
-  <color-it slot="end"></color-it>
-  <theme-it slot="end"></theme-it>
+<toolbar-it class="toolbar-doc-enibook" fixed>
+  <sl-button-group slot="start">
+    <sl-tooltip content="Documentations EniBook"><sl-button size="medium" href="./index.html"><it-mdi-home></it-mdi-home></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : exemples"><sl-button size="medium" href="./examples/index.html"><it-mdi-monitor-eye></it-mdi-monitor-eye></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : éléments HTML"><sl-button size="medium" href="./elements/index.html"><it-mdi-language-html5></it-mdi-language-html5></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : API typescript"><sl-button size="medium" href="./api/index.html"><it-mdi-language-typescript></it-mdi-language-typescript></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : codes sources"><sl-button size="medium" href="https://github.com/enibook/enibook"><it-mdi-github></it-mdi-github></sl-button></sl-tooltip>
+  </sl-button-group>
+  <tools-it size="medium" slot="end"></tools-it>
+  </div>
 </toolbar-it>

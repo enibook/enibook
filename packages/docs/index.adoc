@@ -7,7 +7,7 @@ EniBook propose une collection de composants à vocation pédagogique sous la fo
 
 ++++
 <div class="font-size-8 flex justify-center mb-4">
-  <div class="inline-block" style="color:var(--sl-color-warning-500)">
+  <div class="inline-block" style="color:var(--color-primary)">
     <sl-icon name="exclamation-triangle"></sl-icon> 
     <span>Site en construction</span>
     <sl-icon name="exclamation-triangle"></sl-icon>

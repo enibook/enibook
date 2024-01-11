@@ -4,6 +4,18 @@
 <link rel="stylesheet" type="text/css" href="index-uno.css">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
 <script type="module" src="elements/_dist/elements.js"></script>
+<script type=""module">
+  window.addEventListener("load", (event) => {
+    const toolbar = document.querySelector("toolbar-it.toolbar-doc-enibook")
+    console.log("toolbar",toolbar)
+    if (toolbar) {
+      const slots = toolbar.shadowRoot.querySelectorAll(".toolbar-doc-enibook-btn")
+      for(const slot of slots) {
+        console.log(slot)
+      }
+    }
+  })
+</script>
 <style>
   .card {
     width: 40%;

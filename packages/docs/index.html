@@ -438,6 +438,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <link rel="stylesheet" type="text/css" href="index-uno.css">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
 <script type="module" src="elements/_dist/elements.js"></script>
+<script type=""module">
+  window.addEventListener("load", (event) => {
+    const toolbar = document.querySelector("toolbar-it.toolbar-doc-enibook")
+    console.log("toolbar",toolbar)
+    if (toolbar) {
+      const slots = toolbar.shadowRoot.querySelectorAll(".toolbar-doc-enibook-btn")
+      for(const slot of slots) {
+        console.log(slot)
+      }
+    }
+  })
+</script>
 <style>
   .card {
     width: 40%;
@@ -454,13 +466,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
 </head>
 <body class="article">
-<toolbar-it fixed>
-  <sl-button slot="end" size="small" href="">Exemples</sl-button>
-  <sl-button slot="end" size="small" href="./elements/index.html">Eléments</sl-button>
-  <sl-button slot="end" size="small" href="./api/index.html">API</sl-button>
-  <clock-it slot="end"></clock-it>
-  <color-it slot="end"></color-it>
-  <theme-it slot="end"></theme-it>
+<toolbar-it class="toolbar-doc-enibook" fixed>
+  <sl-button-group slot="start">
+    <sl-tooltip content="Documentations EniBook"><sl-button class="toolbar-doc-enibook-btn" size="medium" href="./index.html"><it-mdi-home></it-mdi-home></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : exemples"><sl-button size="medium" href="./examples/index.html"><it-mdi-monitor-eye></it-mdi-monitor-eye></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : éléments HTML"><sl-button size="medium" href="./elements/index.html"><it-mdi-language-html5></it-mdi-language-html5></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : API typescript"><sl-button size="medium" href="./api/index.html"><it-mdi-language-typescript></it-mdi-language-typescript></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : codes sources"><sl-button size="medium" href="https://github.com/enibook/enibook"><it-mdi-github></it-mdi-github></sl-button></sl-tooltip>
+  </sl-button-group>
+  <tools-it size="medium" slot="end"></tools-it>
+  </div>
 </toolbar-it>
 <div id="header">
 <h1>EniBook</h1>
@@ -470,7 +485,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>EniBook propose une collection de composants à vocation pédagogique sous la forme d&#8217;éléments HTML personnalisés.</p>
 </div>
 <div class="font-size-8 flex justify-center mb-4">
-  <div class="inline-block" style="color:var(--sl-color-warning-500)">
+  <div class="inline-block" style="color:var(--color-primary)">
     <sl-icon name="exclamation-triangle"></sl-icon>
     <span>Site en construction</span>
     <sl-icon name="exclamation-triangle"></sl-icon>

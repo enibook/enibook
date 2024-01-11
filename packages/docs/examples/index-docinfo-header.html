@@ -1,13 +1,81 @@
 <toolbar-it fixed>
-  <sl-button-group slot="start">
-    <sl-tooltip content="Documentations EniBook"><sl-button size="small" href="../index.html"><it-mdi-home></it-mdi-home></sl-button></sl-tooltip>
-    <sl-tooltip content="EniBook : éléments HTML"><sl-button size="small" href="../elements/index.html"><it-mdi-language-html5></it-mdi-language-html5></sl-button></sl-tooltip>
-    <sl-tooltip content="EniBook : API typescript"><sl-button size="small" href="../api/index.html"><it-mdi-language-typescript></it-mdi-language-typescript></sl-button></sl-tooltip>
-    <sl-tooltip content="EniBook : codes sources"><sl-button size="small" href="https://github.com/enibook/enibook"><it-mdi-github></it-mdi-github></sl-button></sl-tooltip>
-  </sl-button-group>
-  <div slot="end" class="flex">
-    <sl-tooltip content="Horloge"><clock-it></clock-it></sl-tooltip>
-    <sl-tooltip content="Couleur principale"><color-it></color-it></sl-tooltip>
-    <sl-tooltip content="Thème"><theme-it></theme-it></sl-tooltip>
+  <div slot="end" class="flex  toolbar">
+    <sl-button-group slot="start">
+      <sl-tooltip content="Documentations EniBook"><sl-button size="medium" href="../index.html"><it-mdi-home></it-mdi-home></sl-button></sl-tooltip>
+      <sl-tooltip content="EniBook : exemples"><sl-button size="medium" href="../examples/index.html"><it-mdi-monitor-eye></it-mdi-monitor-eye></sl-button></sl-tooltip>
+      <sl-tooltip content="EniBook : éléments HTML"><sl-button size="medium" href="../elements/index.html"><it-mdi-language-html5></it-mdi-language-html5></sl-button></sl-tooltip>
+      <sl-tooltip content="EniBook : API typescript"><sl-button size="medium" href="../api/index.html"><it-mdi-language-typescript></it-mdi-language-typescript></sl-button></sl-tooltip>
+      <sl-tooltip content="EniBook : codes sources"><sl-button size="medium" href="https://github.com/enibook/enibook"><it-mdi-github></it-mdi-github></sl-button></sl-tooltip>
+      <sl-dropdown>
+        <sl-button slot="trigger" size="medium" caret><it-mdi-tools></it-mdi-tools></sl-button>
+        <sl-menu>
+          <sl-menu-item>
+            Couleurs
+            <sl-menu slot="submenu">
+              <sl-menu-item type="checkbox" value="color">
+                <it-mdi-palette-outline slot="prefix"></it-mdi-palette-outline>
+                Palette
+              </sl-menu-item>
+              <sl-menu-item type="checkbox" value="theme">
+                <it-mdi-theme-light-dark slot="prefix"></it-mdi-theme-light-dark>
+                Thème
+              </sl-menu-item>
+            </sl-menu>
+          </sl-menu-item>
+          <sl-menu-item>
+            Temps
+            <sl-menu slot="submenu">
+              <sl-menu-item type="checkbox" value="alarm">Alarme</sl-menu-item>
+              <sl-menu-item type="checkbox" value="chrono">Chronomètre</sl-menu-item>
+              <sl-menu-item type="checkbox" value="time">
+                <it-mdi-calendar-clock-outline slot="prefix"></it-mdi-calendar-clock-outline>
+                Horloge
+              </sl-menu-item>
+              <sl-menu-item type="checkbox" value="timer">Minuteur</sl-menu-item>
+            </sl-menu>
+          </sl-menu-item>
+        </sl-menu>
+      </sl-dropdown>
+      
+    </sl-button-group>
+    <!---
+    <sl-tooltip content="Horloge"><clock-it size="medium"></clock-it></sl-tooltip>
+    <sl-tooltip content="Couleur principale"><color-it size="medium"></color-it></sl-tooltip>
+    <sl-tooltip content="Thème"><theme-it size="medium"></theme-it></sl-tooltip>
+    -->
   </div>
+  <theme-it size="medium" slot="start"></theme-it>
+  <color-it size="medium" slot="start"></color-it>
+
+  <sl-dropdown slot="start">
+    <sl-button slot="trigger" size="medium" caret><it-mdi-tools></it-mdi-tools></sl-button>
+    <sl-menu>
+      <sl-menu-item>
+        Couleurs
+        <sl-menu slot="submenu">
+          <sl-menu-item type="checkbox" value="color">
+            <it-mdi-palette-outline slot="prefix"></it-mdi-palette-outline>
+            Palette
+          </sl-menu-item>
+          <sl-menu-item type="checkbox" value="theme">
+            <it-mdi-theme-light-dark slot="prefix"></it-mdi-theme-light-dark>
+            Thème
+          </sl-menu-item>
+        </sl-menu>
+      </sl-menu-item>
+      <sl-menu-item>
+        Temps
+        <sl-menu slot="submenu">
+          <sl-menu-item type="checkbox" value="alarm">Alarme</sl-menu-item>
+          <sl-menu-item type="checkbox" value="chrono">Chronomètre</sl-menu-item>
+          <sl-menu-item type="checkbox" value="time">
+            <it-mdi-calendar-clock-outline slot="prefix"></it-mdi-calendar-clock-outline>
+            Horloge
+          </sl-menu-item>
+          <sl-menu-item type="checkbox" value="timer">Minuteur</sl-menu-item>
+        </sl-menu>
+      </sl-menu-item>
+    </sl-menu>
+  </sl-dropdown>
+
 </toolbar-it>

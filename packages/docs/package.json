@@ -5,8 +5,10 @@
   "main": "index.html",
   "scripts": {
     "doc:adoc": "asciidoctor elements/elements.adoc && unocss -c uno.config-elements.ts elements/elements.html && asciidoctor-chunker elements/elements.html --titlePage 'Eléments EniBook' -o elements",
+    "doc:ex": "asciidoctor examples/index.adoc",
     "doc:gen": "asciidoctor ./index.adoc && unocss -c uno.config-gen.ts ./index.html",
-    "build": "pnpm run doc:adoc && pnpm run doc:gen",
+    "doc:why": "asciidoctor why/index.adoc",
+    "build": "pnpm run doc:adoc && pnpm run doc:ex && pnpm run doc:gen && pnpm run doc:why",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -20,7 +22,9 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.9.0",
+    "@iconify-json/file-icons": "^1.1.8",
     "@iconify-json/mdi": "^1.1.64",
+    "@iconify-json/simple-icons": "^1.1.87",
     "@unocss/cli": "^0.58.3",
     "@unocss/preset-attributify": "^0.58.3",
     "@unocss/preset-icons": "^0.58.3",

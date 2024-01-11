@@ -6,45 +6,57 @@
 EniBook propose une collection de composants à vocation pédagogique sous la forme d'éléments HTML personnalisés.
 
 ++++
-<p class="ma font-size-8 w-1/2" style="color:var(--sl-color-warning-500);">
-  <sl-icon name="exclamation-triangle"></sl-icon> 
-  Site en construction
-  <sl-icon name="exclamation-triangle"></sl-icon>
-</p>
+<div class="font-size-8 flex justify-center mb-4">
+  <div class="inline-block" style="color:var(--sl-color-warning-500)">
+    <sl-icon name="exclamation-triangle"></sl-icon> 
+    <span>Site en construction</span>
+    <sl-icon name="exclamation-triangle"></sl-icon>
+  </div>
+</div>
 
-<div class="flex flex-wrap gap-6xl items-stretch">
-  <sl-card class="w-2/5" style="min-width:250px">
-    <h3>Pour les curieux</h3>
-    <p>quand des exemples valent mieux qu'un long discours...</p>
-    <sl-button slot="footer" size="large" href="">Voir les exemples</sl-button>
-  </sl-card>
+<div class="flex justify-center items-center">
+  <div class="flex flex-wrap gap-y-8 justify-around items-stretch">
+    <sl-card class="card">
+      <h3>Pour les curieux</h3>
+      <p>quand des exemples valent mieux qu'un long discours...</p>
+      <sl-button slot="footer" size="large" href="./examples/index.html"><it-mdi-monitor-eye slot="prefix"></it-mdi-monitor-eye> Exemples</sl-button>
+    </sl-card>
 
-  <sl-card class="w-2/5" style="min-width:250px">
-    <h3>Pour les impatients</h3>
-    <p>rien de tel qu'apprendre en faisant par soi-même...</p>
-    <sl-button slot="footer" size="large" href="./elements/index.html">Voir la documentation</sl-button>
-  </sl-card>
+    <sl-card class="card">
+      <h3>Pour les impatients</h3>
+      <p>rien de tel que d'apprendre en faisant par soi-même...</p>
+      <sl-button slot="footer" size="large" href="./elements/index.html"><it-mdi-language-html5 slot="prefix"></it-mdi-language-html5>Documentation</sl-button>
+    </sl-card>
 
-  <sl-card class="w-2/5" style="min-width:250px">
-    <h3>Pour les pragmatiques</h3>
-    <p>HTML ? bof <span style="color:var(--sl-color-warning-500)"><sl-icon name="emoji-frown"></sl-icon></span> ; il y a plus sympa comme langage de balisage...</p>
-    <sl-button slot="footer" size="large" href="">Voir <code>asciidoc</code></sl-button>
-    <sl-button slot="footer" size="large" href="">Voir <code>markdown</code></sl-button>
-    <sl-button slot="footer" size="large" href="">Voir <code>restructuredText</code></sl-button>
-  </sl-card>
+    <sl-card class="card">
+      <h3>Pour les pragmatiques</h3>
+      <p>HTML ? bof <span style="color:var(--sl-color-warning-500)"><sl-icon name="emoji-frown"></sl-icon></span> ; il y a plus sympa comme langage de balisage...</p>
+      <sl-select placeholder="Choisir" size="medium" slot="footer">
+        <it-mdi-xml slot="prefix"></it-mdi-xml>
+        <sl-option value="asciidoc"><it-simple-icons-asciidoctor slot="prefix"></it-simple-icons-asciidoctor>asciidoc</sl-option>
+        <sl-option value="markdown"><it-mdi-language-markdown slot="prefix"></it-mdi-language-markdown>  markdown</sl-option>
+        <sl-option value="restructuredText"><it-file-icons-restructuredtext slot="prefix"></it-file-icons-restructuredtext>restructuredText</sl-option>
+      </sl-select>
+    </sl-card>
 
-  <sl-card class="w-2/5" style="min-width:250px">
-    <h3>Pour les « clicophiles »</h3>
-    <p>mais où est donc le « clicodrome » ?...</p>
-    <sl-button slot="footer" size="large" href="./api/index.html">Voir l'éditeur</sl-button>
-  </sl-card>
+    <sl-card class="card">
+      <h3>Pour les « clicophiles »</h3>
+      <p>mais où est donc le « clicodrome » ?...</p>
+      <sl-button slot="footer" size="large" href=""><sl-icon slot="prefix" name="file-earmark-richtext"></sl-icon> Editeur</sl-button>
+    </sl-card>
 
-  <sl-card class="w-2/5" style="min-width:250px">
-    <h3>Pour les geeks</h3>
-    <p>si <code>typescript</code> m'était conté...</p>
-    <sl-button slot="footer" size="large" href="./api/index.html">Voir l'API</sl-button>
-  </sl-card>
+    <sl-card class="card">
+      <h3>Pour les geeks</h3>
+      <p>si <code>typescript</code> m'était conté...</p>
+      <sl-button slot="footer" size="large" href="./api/index.html"><it-mdi-language-typescript slot="prefix"></it-mdi-language-typescript>API</sl-button>
+    </sl-card>
+
+    <sl-card class="card">
+      <h3>Pour les sceptiques</h3>
+      <p></p>
+      <sl-button slot="footer" size="large" href="./why/index.html"><span slot="prefix">🤨</span> Argumentaire</sl-button>
+    </sl-card>
+
+  </div>
 </div>
 ++++
-
-Hello

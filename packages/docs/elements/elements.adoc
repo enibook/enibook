@@ -1,4 +1,4 @@
-= Eléments EniBook
+= EniBook : éléments HTML
 :docinfo:
 :example-caption: Exemple
 :icons: font

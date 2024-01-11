@@ -1,0 +1,15 @@
+= EniBook : exemples
+:docinfo:
+:nofooter:
+:stylesheet: ../elements/asciidoctor.css
+
+++++
+<div class="font-size-8 flex justify-center mb-4">
+  <div class="inline-block" style="color:var(--sl-color-warning-500)">
+    <sl-icon name="exclamation-triangle"></sl-icon> 
+    <span>Site en construction</span>
+    <sl-icon name="exclamation-triangle"></sl-icon>
+  </div>
+</div>
+++++
+

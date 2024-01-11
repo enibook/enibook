@@ -9,13 +9,23 @@ importers:
   .: {}
 
   packages/docs:
+    dependencies:
+      elements:
+        specifier: workspace:*
+        version: link:../elements
     devDependencies:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.9.0
         version: 0.9.0
+      '@iconify-json/file-icons':
+        specifier: ^1.1.8
+        version: 1.1.8
       '@iconify-json/mdi':
         specifier: ^1.1.64
         version: 1.1.64
+      '@iconify-json/simple-icons':
+        specifier: ^1.1.87
+        version: 1.1.87
       '@unocss/cli':
         specifier: ^0.58.3
         version: 0.58.3
@@ -772,8 +782,20 @@ packages:
     resolution: {integrity: sha512-u8A+DameixqpeyHzvnJWTGj+wfiskQOYHzSiJscCWVfMkIT3rxnbHMtGh3lMthaRY21nbUOK71WcsCnCrXhBJQ==}
     dev: true
 
+  /@iconify-json/file-icons@1.1.8:
+    resolution: {integrity: sha512-gzkxwnzEN0FVJZQIM/X7aqlN98z/XQ8ymb/BC1ebr3lJHvmQ5n8gMhWeytnJHHwRERg/zokTXSQDt62ANwcs/w==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /@iconify-json/mdi@1.1.64:
     resolution: {integrity: sha512-zGeo5TjhNFAY6FmSDBLAzDO811t77r6v/mDi7CAL9w5eXqKez6bIjk8R9AL/RHIeq44ALP4Ozr4lMqFTkHr7ug==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/simple-icons@1.1.87:
+    resolution: {integrity: sha512-DNAWoLDgboIGVoqZBPWM25MPKdIjGnNgZYEBqrWcoPkaYF0q1jZEzTyC2y8yCOTTSrcSjhASk9CrMK+INfpnwQ==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true

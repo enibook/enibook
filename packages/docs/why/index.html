@@ -5,7 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.20">
-<title>EniBook</title>
+<title>EniBook : pourquoi ?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 /* Uncomment the following line when using as a custom stylesheet */
@@ -38,7 +39,7 @@ legend{border:0;padding:0}
 button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
 button,input{line-height:normal}
 button,select{text-transform:none}
-button,html input[type=button],input[type=reset],input[type=submit]{appearance:button;cursor:pointer}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
 button[disabled],html input[disabled]{cursor:default}
 input[type=checkbox],input[type=radio]{padding:0}
 button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
@@ -132,7 +133,7 @@ b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
 b.button::before{content:"[";padding:0 3px 0 2px}
 b.button::after{content:"]";padding:0 2px 0 3px}
 p a>code:hover{color:rgba(0,0,0,.9)}
-#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:65em;zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
 #header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
 #header::after,#content::after,#footnotes::after,#footer::after{clear:both}
 #content{margin-top:1.25em}
@@ -430,97 +431,45 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer{background:none}
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
-
-</style>
-<link rel="stylesheet" type="text/css" href="elements/_dist/style.css">
-<link rel="stylesheet" type="text/css" href="elements/doc.css">
-<link rel="stylesheet" type="text/css" href="elements/hljs-themes.css">
-<link rel="stylesheet" type="text/css" href="index-uno.css">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
-<script type="module" src="elements/_dist/elements.js"></script>
-<style>
-  .card {
-    width: 40%;
-    min-width: 250px;
-  }
-  .card [slot='footer'] {
-    display: flex;
-    justify-content: flex-end;
-    width: 200px;
-  }
-  sl-select {
-    --sl-panel-background-color: var(--sl-color-neutral-50);
-  }
 </style>
 </head>
 <body class="article">
-<toolbar-it fixed>
-  <sl-button slot="end" size="small" href="">Exemples</sl-button>
-  <sl-button slot="end" size="small" href="./elements/index.html">Eléments</sl-button>
-  <sl-button slot="end" size="small" href="./api/index.html">API</sl-button>
-  <clock-it slot="end"></clock-it>
-  <color-it slot="end"></color-it>
-  <theme-it slot="end"></theme-it>
-</toolbar-it>
 <div id="header">
-<h1>EniBook</h1>
+<h1>EniBook : pourquoi ?</h1>
 </div>
 <div id="content">
-<div class="paragraph">
-<p>EniBook propose une collection de composants à vocation pédagogique sous la forme d&#8217;éléments HTML personnalisés.</p>
+<div class="sect1">
+<h2 id="_un_peu_de_technique">Un peu de technique</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Les composants sont construits avec <a href="https://lit.dev">Lit</a>.</p>
+</li>
+<li>
+<p>Les métadonnées des composants sont générées par le <a href="https://custom-elements-manifest.open-wc.org">Custom Elements Manifest Analyzer</a>.</p>
+</li>
+<li>
+<p>La documentation est écrite en <a href="https://asciidoc.org"><code>asciidoc</code></a> et transcodée en <code>html</code> avec <a href="https://docs.asciidoctor.org">Asciidoctor</a>.</p>
+</li>
+<li>
+<p>Les services CDN (<em>Content Delivery Network</em> : réseau de diffusion de contenu) sont fournis par <a href="https://www.jsdelivr.com">jsDelivr</a>.</p>
+</li>
+<li>
+<p>Les interfaces utilisateurs sont développées avec <a href="https://shoelace.style">Shoelace</a>.</p>
+</li>
+<li>
+<p>Les icônes sont issues de <a href="https://iconify.design">iconify.design</a> et gérées avec <a href="https://unocss.dev">UnoCSS</a>.</p>
+</li>
+<li>
+<p>Les développements sont effectués en <a href="https://www.typescriptlang.org"><code>typescript</code></a> et compilés avec <a href="https://vitejs.dev">Vite</a>. La documentation du code source est mise en forme par <a href="https://typedoc.org">typedoc</a>.</p>
+</li>
+<li>
+<p>Les codes source sont déposés sur <a href="https://github.com">Github</a> dans le répertoire <a href="https://github.com/enibook/enibook"><code>https://github.com/enibook/enibook</code></a> sous <a href="https://choosealicense.com/licenses/">licence open source MIT</a>.</p>
+</li>
+</ul>
 </div>
-<div class="font-size-8 flex justify-center mb-4">
-  <div class="inline-block" style="color:var(--sl-color-warning-500)">
-    <sl-icon name="exclamation-triangle"></sl-icon>
-    <span>Site en construction</span>
-    <sl-icon name="exclamation-triangle"></sl-icon>
-  </div>
 </div>
-
-<div class="flex justify-center items-center">
-  <div class="flex flex-wrap gap-y-8 justify-around items-stretch">
-    <sl-card class="card">
-      <h3>Pour les curieux</h3>
-      <p>quand des exemples valent mieux qu'un long discours...</p>
-      <sl-button slot="footer" size="large" href="./examples/index.html"><it-mdi-monitor-eye slot="prefix"></it-mdi-monitor-eye> Exemples</sl-button>
-    </sl-card>
-
-    <sl-card class="card">
-      <h3>Pour les impatients</h3>
-      <p>rien de tel que d'apprendre en faisant par soi-même...</p>
-      <sl-button slot="footer" size="large" href="./elements/index.html"><it-mdi-language-html5 slot="prefix"></it-mdi-language-html5>Documentation</sl-button>
-    </sl-card>
-
-    <sl-card class="card">
-      <h3>Pour les pragmatiques</h3>
-      <p>HTML ? bof <span style="color:var(--sl-color-warning-500)"><sl-icon name="emoji-frown"></sl-icon></span> ; il y a plus sympa comme langage de balisage...</p>
-      <sl-select placeholder="Choisir" size="medium" slot="footer">
-        <it-mdi-xml slot="prefix"></it-mdi-xml>
-        <sl-option value="asciidoc"><it-simple-icons-asciidoctor slot="prefix"></it-simple-icons-asciidoctor>asciidoc</sl-option>
-        <sl-option value="markdown"><it-mdi-language-markdown slot="prefix"></it-mdi-language-markdown>  markdown</sl-option>
-        <sl-option value="restructuredText"><it-file-icons-restructuredtext slot="prefix"></it-file-icons-restructuredtext>restructuredText</sl-option>
-      </sl-select>
-    </sl-card>
-
-    <sl-card class="card">
-      <h3>Pour les « clicophiles »</h3>
-      <p>mais où est donc le « clicodrome » ?...</p>
-      <sl-button slot="footer" size="large" href=""><sl-icon slot="prefix" name="file-earmark-richtext"></sl-icon> Editeur</sl-button>
-    </sl-card>
-
-    <sl-card class="card">
-      <h3>Pour les geeks</h3>
-      <p>si <code>typescript</code> m'était conté...</p>
-      <sl-button slot="footer" size="large" href="./api/index.html"><it-mdi-language-typescript slot="prefix"></it-mdi-language-typescript>API</sl-button>
-    </sl-card>
-
-    <sl-card class="card">
-      <h3>Pour les sceptiques</h3>
-      <p></p>
-      <sl-button slot="footer" size="large" href="./why/index.html"><span slot="prefix">🤨</span> Argumentaire</sl-button>
-    </sl-card>
-
-  </div>
 </div>
 </div>
 </body>

@@ -27,6 +27,7 @@ export async function discover(root: Element | ShadowRoot) {
 
   // Rendre la liste sans doublons.
   const tagsToRegister = [...new Set(tags)];
+  console.log('tagsToRegister',tagsToRegister)
 
   await Promise.allSettled(tagsToRegister.map(tagName => register(tagName)));
 }
@@ -50,6 +51,7 @@ function register(tagName: string): Promise<void> {
 }
 
 // Découverte initiale
+console.log('discover')
 discover(document.body);
 
 // Écouter les nouveaux éléments non définis

@@ -23,6 +23,7 @@ export async function discover(root) {
     }
     // Rendre la liste sans doublons.
     const tagsToRegister = [...new Set(tags)];
+    console.log('tagsToRegister', tagsToRegister);
     await Promise.allSettled(tagsToRegister.map(tagName => register(tagName)));
 }
 /**
@@ -41,6 +42,7 @@ function register(tagName) {
     });
 }
 // Découverte initiale
+console.log('discover');
 discover(document.body);
 // Écouter les nouveaux éléments non définis
 observer.observe(document.documentElement, { subtree: true, childList: true });

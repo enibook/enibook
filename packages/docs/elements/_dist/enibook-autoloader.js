@@ -23,7 +23,7 @@ export async function discover(root) {
     }
     // Rendre la liste sans doublons.
     const tagsToRegister = [...new Set(tags)];
-    console.log('tagsToRegister', tagsToRegister);
+    console.log('tags to register', tagsToRegister);
     await Promise.allSettled(tagsToRegister.map(tagName => register(tagName)));
 }
 /**
@@ -32,17 +32,18 @@ export async function discover(root) {
 function register(tagName) {
     // Si l'élément est déjà défini, il n'y a rien à faire.
     if (customElements.get(tagName)) {
+        console.log(`${tagName} already set`);
         return Promise.resolve();
     }
     const tagWithoutSuffix = tagName.replace(/-it$/i, '');
     const path = getBasePath(`elements/${tagWithoutSuffix}/${tagWithoutSuffix}.js`);
+    console.log(`trying to import ${path}`);
     // L'enregistrer.
     return new Promise((resolve, reject) => {
         import(path).then(() => resolve()).catch(() => reject(new Error(`Unable to autoload <${tagName}> from ${path}`)));
     });
 }
 // Découverte initiale
-console.log('discover');
 discover(document.body);
 // Écouter les nouveaux éléments non définis
 observer.observe(document.documentElement, { subtree: true, childList: true });

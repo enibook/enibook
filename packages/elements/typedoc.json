@@ -11,7 +11,7 @@
   "darkHighlightTheme": "dark-plus",
   "excludeTags": ["@csspart", "@dependency"],
   "navigationLinks": {
-    "EniBook": "https://enibook.org"
+    "EniBook": "https://enibook.github.io/enibook/"
   },
   "readme": "README.md",
   "plugin": [

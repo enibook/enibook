@@ -147,7 +147,7 @@ import styles from './tools.css?inline'
           <chrono-it size=${this.size} hidden></chrono-it>
           <timer-it size=${this.size} hidden></timer-it>
           -->
-          <clock-it size=${this.size} time hidden></clock-it>
+          <clock-it size=${this.size} date time hidden></clock-it>
           <color-it size=${this.size} hidden></color-it>
           <theme-it size=${this.size} hidden></theme-it>
         </div>

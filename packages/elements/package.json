@@ -33,9 +33,6 @@
     "api": "typedoc --options typedoc.json",
     "build": "npx tsc && vite build",
     "dev": "vite",
-    "doc:adoc": "asciidoctor ./docs/elements/elements.adoc && unocss ./docs/elements/elements.html && asciidoctor-chunker docs/elements/elements.html --titlePage 'Eléments EniBook' -o docs/elements",
-    "doc:gen": "asciidoctor ./docs/index.adoc && unocss -c uno.config-doc.ts ./docs/index.html",
-    "docs": "pnpm run doc:api && pnpm run doc:adoc && pnpm run doc:gen",
     "preview": "vite -c vite.config.adoc.ts preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

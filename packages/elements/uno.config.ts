@@ -25,6 +25,6 @@ export default defineConfig({
     entry: {
       patterns: ['docs/**/*.html'],
       outFile: 'docs/elements/elements-uno.css'
-    }, // CliEntryItem | CliEntryItem[]
+    }, 
   },
 })

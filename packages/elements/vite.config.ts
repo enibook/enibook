@@ -44,10 +44,6 @@ export default defineConfig({
     vitePluginCp({
       targets: [
         { src: 'dist/', dest: '../docs/elements/_dist/', flatten: false },
-        /*
-        { src: 'dist/enibook.css', dest: '../docs/elements/_dist/' },
-        { src: 'dist/custom-elements.json', dest: '../docs/elements/_dist/' },
-        */
         { src: 'dist/custom-elements.json', dest: 'dev' },
       ],
     }),

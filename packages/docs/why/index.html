@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.20">
 <title>EniBook : pourquoi ?</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 /* Uncomment the following line when using as a custom stylesheet */
@@ -39,7 +38,7 @@ legend{border:0;padding:0}
 button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
 button,input{line-height:normal}
 button,select{text-transform:none}
-button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button,html input[type=button],input[type=reset],input[type=submit]{appearance:button;cursor:pointer}
 button[disabled],html input[disabled]{cursor:default}
 input[type=checkbox],input[type=radio]{padding:0}
 button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
@@ -133,7 +132,7 @@ b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
 b.button::before{content:"[";padding:0 3px 0 2px}
 b.button::after{content:"]";padding:0 2px 0 3px}
 p a>code:hover{color:rgba(0,0,0,.9)}
-#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:65em;zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
 #header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
 #header::after,#content::after,#footnotes::after,#footer::after{clear:both}
 #content{margin-top:1.25em}
@@ -431,9 +430,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer{background:none}
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+
+</style>
+<link rel="stylesheet" type="text/css" href="../elements/_dist/enibook.css">
+<link rel="stylesheet" type="text/css" href="../elements/doc.css">
+<link rel="stylesheet" type="text/css" href="../elements/hljs-themes.css">
+<link rel="stylesheet" type="text/css" href="../elements/elements-uno.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
+<script type="module" src="../elements/_dist/enibook.js"></script>
+<style>
 </style>
 </head>
 <body class="article">
+<toolbar-it class="toolbar-doc-enibook" fixed>
+  <sl-button-group slot="start">
+    <sl-tooltip content="Documentations EniBook"><sl-button size="medium" href="../index.html"><it-mdi-home></it-mdi-home></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : exemples"><sl-button size="medium" href="../examples/index.html"><it-mdi-monitor-eye></it-mdi-monitor-eye></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : éléments HTML"><sl-button size="medium" href="../elements/index.html"><it-mdi-language-html5></it-mdi-language-html5></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : API typescript"><sl-button size="medium" href="../api/index.html"><it-mdi-language-typescript></it-mdi-language-typescript></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : codes sources"><sl-button size="medium" href="https://github.com/enibook/enibook"><it-mdi-github></it-mdi-github></sl-button></sl-tooltip>
+  </sl-button-group>
+  <tools-it size="medium" slot="end"></tools-it>
+  </div>
+</toolbar-it>
 <div id="header">
 <h1>EniBook : pourquoi ?</h1>
 </div>
@@ -465,7 +484,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Les développements sont effectués en <a href="https://www.typescriptlang.org"><code>typescript</code></a> et compilés avec <a href="https://vitejs.dev">Vite</a>. La documentation du code source est mise en forme par <a href="https://typedoc.org">typedoc</a>.</p>
 </li>
 <li>
-<p>Les codes source sont déposés sur <a href="https://github.com">Github</a> dans le répertoire <a href="https://github.com/enibook/enibook"><code>https://github.com/enibook/enibook</code></a> sous <a href="https://choosealicense.com/licenses/">licence open source MIT</a>.</p>
+<p>Les codes source sont déposés sur <a href="https://github.com/enibook/enibook">Github</a> sous <a href="https://choosealicense.com/licenses/">licence open source MIT</a>.</p>
 </li>
 </ul>
 </div>

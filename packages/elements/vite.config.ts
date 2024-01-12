@@ -1,8 +1,8 @@
-import { defineConfig } from "vite";
 import { glob } from 'glob'
+import { defineConfig } from "vite";
+import vitePluginCp from 'vite-plugin-cp'
 import VitePluginCustomElementsManifest from 'vite-plugin-cem'
 import { jsdocExamplePlugin } from 'cem-plugin-jsdoc-example'
-import vitePluginCp from 'vite-plugin-cp'
 import UnoCSS from 'unocss/vite'
 import presetIcons from '@unocss/preset-icons'
 import presetUno from '@unocss/preset-uno'
@@ -66,6 +66,6 @@ export default defineConfig({
     },
   },
   preview: {
-    open: 'dist/index.html',
+    open: 'index.html',
   },
 });

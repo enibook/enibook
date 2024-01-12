@@ -1,8 +1,0 @@
-    VitePluginCustomElementsManifest({
-      files: glob.sync('./src/elements/**/*.ts'),
-      lit: true,
-      dev: true,
-      packageJson: true,
-      plugins: []
-    }),
-

@@ -33,7 +33,7 @@
     "api": "typedoc --options typedoc.json",
     "build": "npx tsc && vite build",
     "dev": "vite",
-    "preview": "vite -c vite.config.adoc.ts preview",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jacques Tisseau",

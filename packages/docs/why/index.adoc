@@ -1,5 +1,7 @@
 = EniBook : pourquoi ?
+:docinfo:
 :nofooter:
+:stylesheet: ../elements/asciidoctor.css
 
 == Un peu de technique
 * Les composants sont construits avec link:https://lit.dev[Lit].
@@ -9,4 +11,5 @@
 * Les interfaces utilisateurs sont développées avec link:https://shoelace.style[Shoelace].
 * Les icônes sont issues de link:https://iconify.design[iconify.design] et gérées avec link:https://unocss.dev[UnoCSS].
 * Les développements sont effectués en link:https://www.typescriptlang.org[`typescript`] et compilés avec link:https://vitejs.dev[Vite]. La documentation du code source est mise en forme par link:https://typedoc.org[typedoc].
-* Les codes source sont déposés sur link:https://github.com[Github] dans le répertoire link:https://github.com/enibook/enibook[`https://github.com/enibook/enibook`] sous link:https://choosealicense.com/licenses/[licence open source MIT].
+* Les codes source sont déposés sur link:https://github.com/enibook/enibook[Github] sous link:https://choosealicense.com/licenses/[licence open source MIT].
+

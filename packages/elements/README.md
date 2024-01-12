@@ -1,21 +1,29 @@
 # Eléments EniBook
 
-Bibliothèque de composants web à vocation pédagogique sous la forme d'éléments HTML personnalisés ([_custom element_](https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_custom_elements)).
+EniBook propose une bibliothèque de composants web à vocation pédagogique sous la forme d'éléments HTML personnalisés ([_custom element_](https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_custom_elements)).
 
 
-* Les développements sont effectués en [`typescript`](https://www.typescriptlang.org) et compilés avec [Vite](https://vitejs.dev). La documentation du code source est mise en forme par [typedoc](https://typedoc.org).
-* Les codes source sont déposés sur [Github](https://github.com) dans le répertoire [`https://github.com/enibook/enibook`](https://github.com/enibook/enibook) sous licence open source [MIT](https://choosealicense.com/licenses/mit/).
-* Les composants sont construits avec [Lit](https://lit.dev).
-* Les métadonnées des composants sont générées par le [Custom Elements Manifest Analyzer](https://custom-elements-manifest.open-wc.org).
-* Les interfaces utilisateurs sont développées avec [Shoelace](https://shoelace.style).
-* Les icônes sont issues de [iconify.design](https://iconify.design) et gérées avec [UnoCSS](https://unocss.dev).
+* Les développements sont effectués en [`typescript`](https://www.typescriptlang.org) et compilés avec [Vite](https://vitejs.dev) par le gestionnaire de modules [`pnpm`](https://pnpm.io) (un gestionnaire de paquets open-source et multiplateforme pour l'environnement d'exécution JavaScript [Node.js](https://nodejs.org/en)). 
+
+* Les codes source sont déposés sur [Github](https://github.com/enibook/enibook) sous [licence open source MIT](https://choosealicense.com/licenses/). La documentation du code source, mise en forme par [typedoc](https://typedoc.org), est également consultable sur [Github](https://enibook.github.io/enibook/packages/docs/api/index.html).
+
+* Les composants sont construits à partir de la bibliothèque [Lit](https://lit.dev).
+
+* Les métadonnées des composants sont générées par le [Custom Elements Manifest Analyzer](https://custom-elements-manifest.open-wc.org). Le manifeste des éléments personnalisés est un format de fichier texte qui décrit les éléments personnalisés d'un projet. Ce format permet aux outils et aux IDE (_Integrated Development Environment_ : environnement de développement « intégré ») de fournir des informations détaillées sur les éléments personnalisés de ce projet.
+
+* Les interfaces utilisateurs sont développées avec la bibliothèque [Shoelace](https://shoelace.style) elle-même composée de composants web d'interface (boutons, menus...) construits avec [Lit](https://lit.dev).
+
+* Les icônes sont issues du projet open source [iconify.design](https://iconify.design) et gérées avec [UnoCSS](https://unocss.dev).
 
 * Les services CDN (_Content Delivery Network_ : réseau de diffusion de contenu) sont fournis par [jsDelivr](https://www.jsdelivr.com).
-* La [documentation](https://enibook.github.io/enibook/) est écrite en [`asciidoc`](https://asciidoc.org) et transcodée en `html` avec [Asciidoctor](https://docs.asciidoctor.org).
+
+* La [documentation générale](https://enibook.github.io/enibook/) est écrite en [`asciidoc`](https://asciidoc.org) et transcodée en `html` avec [Asciidoctor](https://docs.asciidoctor.org).
 
 
 <details>
   <summary>Fichier <code>package.json</code></summary>
+
+  Le fichier `package.json` décrit toutes les spécificités, et en particulier toutes les dépendances, du projet EniBook.
 
   ```json
   {

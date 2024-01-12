@@ -40,7 +40,12 @@ function register(tagName) {
     console.log(`trying to import ${path}`);
     // L'enregistrer.
     return new Promise((resolve, reject) => {
-        import(path).then(() => resolve()).catch(() => reject(new Error(`Unable to autoload <${tagName}> from ${path}`)));
+        import(path)
+            .then(() => {
+            resolve();
+            console.log(`${tagName} found`);
+        })
+            .catch(() => reject(new Error(`Unable to autoload <${tagName}> from ${path}`)));
     });
 }
 // Découverte initiale

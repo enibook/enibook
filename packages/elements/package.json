@@ -2,8 +2,33 @@
   "name": "elements",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
-  "main": "index.js",
+  "types": "dist/enibook.d.ts",
+  "jsdelivr": "./cdn/enibook-autoloader.js",
+  "exports": {
+    ".": {
+      "types": "./dist/enibook.d.ts",
+      "import": "./dist/enibook.js"
+    },
+    "./dist/custom-elements.json": "./dist/custom-elements.json",
+    "./dist/enibook.js": "./dist/enibook.js",
+    "./dist/enibook-autoloader.js": "./dist/enibook-autoloader.js",
+    "./dist/elements/*": "./dist/elements/*",
+    "./dist/utilities/*": "./dist/utilities/*"
+  },
+  "files": [
+    "dist",
+    "cdn"
+  ],
+  "description": "Bibliothèque de composants web à vocation pédagogique sous la forme d’éléments HTML personnalisés.",
+  "keywords": [
+    "web components",
+    "custom elements",
+    "components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enibook/enibook.git"
+  },
   "scripts": {
     "api": "typedoc --options typedoc.json",
     "build": "npx tsc && vite build",
@@ -14,7 +39,6 @@
     "preview": "vite -c vite.config.adoc.ts preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "Jacques Tisseau",
   "license": "MIT",
   "devDependencies": {

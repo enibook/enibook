@@ -43,8 +43,8 @@ export default defineConfig({
     }),
     vitePluginCp({
       targets: [
-        { src: 'dist/elements.js', dest: '../docs/elements/_dist/' },
-        { src: 'dist/style.css', dest: '../docs/elements/_dist/' },
+        { src: 'dist/enibook*.js', dest: '../docs/elements/_dist/' },
+        { src: 'dist/enibook.css', dest: '../docs/elements/_dist/' },
         { src: 'dist/custom-elements.json', dest: '../docs/elements/_dist/' },
         { src: 'dist/custom-elements.json', dest: 'dev' },
       ],
@@ -58,15 +58,16 @@ export default defineConfig({
     lib: {
       entry: 'src/enibook.ts',
       name: 'enibook',
+      fileName: 'enibook'
     },
     outDir: 'dist',
     rollupOptions: {
       output: {
-        
-      },
+        assetFileNames: 'enibook.css'
+      }
     },
   },
   preview: {
-    open: 'dist/index.html'
+    open: 'dist/index.html',
   },
 });

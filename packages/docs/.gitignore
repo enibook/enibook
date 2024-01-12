@@ -6,3 +6,4 @@
 
 # Ignorer le répertoire dist
 **/dist
+**/cdn

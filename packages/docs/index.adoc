@@ -3,7 +3,7 @@
 :nofooter:
 :stylesheet: elements/asciidoctor.css
 
-EniBook propose une collection de composants à vocation pédagogique sous la forme d'éléments HTML personnalisés.
+Bibliothèque de composants web à vocation pédagogique sous la forme d’éléments HTML personnalisés.
 
 ++++
 <div class="font-size-8 flex justify-center mb-4">

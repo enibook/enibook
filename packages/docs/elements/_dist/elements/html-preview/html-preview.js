@@ -1,7 +1,7 @@
 var _a, _b;
 // lit
 import '@shoelace-style/shoelace/dist/components/split-panel/split-panel.js';
-import { css /*, unsafeCSS*/ } from 'lit';
+import { css } from 'lit';
 // enibook
 import { PreviewIt } from '../preview/preview';
 import { runScript } from '../../utilities/run-script';
@@ -32,7 +32,7 @@ export class HtmlPreviewIt extends (_b = PreviewIt) {
      * ```
      * [style,attributes]
      * ----
-     * code
+     * code html
      * ----
      * ```
      *
@@ -42,7 +42,6 @@ export class HtmlPreviewIt extends (_b = PreviewIt) {
      * Voir la documentation Asciidoc sur le [style d'un bloc](https://docs.asciidoctor.org/asciidoc/latest/blocks/#block-style).
      *
      * @example
-     *
      * ```
      * [html-preview-it,position=75]
      * ----

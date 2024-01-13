@@ -25,7 +25,7 @@ export declare class HtmlPreviewIt extends PreviewIt {
      * ```
      * [style,attributes]
      * ----
-     * code
+     * code html
      * ----
      * ```
      *
@@ -35,7 +35,6 @@ export declare class HtmlPreviewIt extends PreviewIt {
      * Voir la documentation Asciidoc sur le [style d'un bloc](https://docs.asciidoctor.org/asciidoc/latest/blocks/#block-style).
      *
      * @example
-     *
      * ```
      * [html-preview-it,position=75]
      * ----

@@ -27,17 +27,17 @@ export declare class AdocPreviewIt extends PreviewIt {
      * ```
      * [style,attributes]
      * ----
-     * code
+     * code asciidoc
      * ----
      * ```
      *
      * - `style` : `adoc-preview-it` (le style `asciidoc` a le même nom que l'élément `html` correspondant);
-     * - `attributes` : `position`.
+     * - `attributes` : `position`, `src`, `theme`.
      *
      * Voir la documentation Asciidoc sur le [style d'un bloc](https://docs.asciidoctor.org/asciidoc/latest/blocks/#block-style).
      *
      * @example
-     * ```asciidoc
+     * ```
      * [adoc-preview-it,position=75]
      * ----
      * // code asciidoc

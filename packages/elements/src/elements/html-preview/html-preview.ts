@@ -1,6 +1,6 @@
 // lit
 import '@shoelace-style/shoelace/dist/components/split-panel/split-panel.js'
-import { css/*, unsafeCSS*/ } from 'lit'
+import { css } from 'lit'
 import type { CSSResultGroup} from 'lit';
 // enibook
 import { PreviewIt } from '../preview/preview';
@@ -41,7 +41,7 @@ export class HtmlPreviewIt extends PreviewIt {
    * ```
    * [style,attributes]
    * ----
-   * code
+   * code html
    * ----
    * ```
    *
@@ -51,7 +51,6 @@ export class HtmlPreviewIt extends PreviewIt {
    * Voir la documentation Asciidoc sur le [style d'un bloc](https://docs.asciidoctor.org/asciidoc/latest/blocks/#block-style).
    *
    * @example
-   *
    * ```
    * [html-preview-it,position=75]
    * ----

@@ -2,9 +2,8 @@
 import '@shoelace-style/shoelace/dist/components/split-panel/split-panel.js'
 import { css } from 'lit'
 import type { CSSResultGroup} from 'lit';
-// asciidoctor
-import AsciiDoctor, { Asciidoctor } from 'asciidoctor'
 // enibook
+import { AsciidoctorType, AsciidoctorProcessor } from '../../utilities/asciidoc'
 import { PreviewIt } from '../preview/preview';
 import { runScript } from '../../utilities/run-script'
 
@@ -25,7 +24,7 @@ export class AdocPreviewIt extends PreviewIt {
     css`@unocss-placeholder` 
   ]
 
-  private static asciidoctor: Asciidoctor = AsciiDoctor()
+  private static asciidoctor: AsciidoctorType = AsciidoctorProcessor()
 
   constructor() {
     super()
@@ -56,17 +55,17 @@ export class AdocPreviewIt extends PreviewIt {
    * ```
    * [style,attributes]
    * ----
-   * code
+   * code asciidoc
    * ----
    * ```
    *
    * - `style` : `adoc-preview-it` (le style `asciidoc` a le même nom que l'élément `html` correspondant);
-   * - `attributes` : `position`.
+   * - `attributes` : `position`, `src`, `theme`.
    *
    * Voir la documentation Asciidoc sur le [style d'un bloc](https://docs.asciidoctor.org/asciidoc/latest/blocks/#block-style).
    *
    * @example
-   * ```asciidoc
+   * ```
    * [adoc-preview-it,position=75]
    * ----
    * // code asciidoc

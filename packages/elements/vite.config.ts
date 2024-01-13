@@ -37,9 +37,7 @@ export default defineConfig({
       lit: true,
       dev: true,
       packageJson: true,
-      plugins: [
-        jsdocExamplePlugin()
-      ]
+      plugins: []
     }),
     vitePluginCp({
       targets: [

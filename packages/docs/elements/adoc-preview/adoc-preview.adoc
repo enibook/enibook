@@ -18,6 +18,8 @@
   </script>
 </adoc-preview-it>
 ++++
+
+Le transcodage `asciidoc` -> `html` est réalisé par le processeur https://docs.asciidoctor.org/asciidoctor.js/latest/[asciidoctor].
 | ``<adoc-preview-it>``
 
 type : « link:https://developer.mozilla.org/fr/docs/Glossary/Block-level_content[bloc] » (_block-level element_)

@@ -35,10 +35,11 @@
 <ul class="sectlevel1">
 <li><a href="index.html">Eléments EniBook</a></li><li><a href="chap1.html">1. Aperçu asciidoc</a></li>
 <li><a href="chap2.html">2. Aperçu HTML</a></li>
-<li><a href="chap3.html">3. Bascule</a></li>
-<li><a href="chap4.html">4. Horloge</a></li>
-<li><a href="chap5.html">5. Lorem Ipsum</a></li>
-<li class="current"><a href="chap6.html">6. Barre d’outils</a></li>
+<li><a href="chap3.html">3. Aperçu markdown</a></li>
+<li><a href="chap4.html">4. Bascule</a></li>
+<li><a href="chap5.html">5. Horloge</a></li>
+<li class="current"><a href="chap6.html">6. Lorem Ipsum</a></li>
+<li><a href="chap7.html">7. Barre d’outils</a></li>
 </ul>
 </div>
 </div>
@@ -50,22 +51,287 @@
 
 
 
+
 <div class="sect1">
-<h2 id="_barre_doutils">6. Barre d’outils</h2>
+<h2 id="_lorem_ipsum">6. Lorem Ipsum</h2>
 <div class="sectionbody">
-<toolbar-it fixed="" placement="top">
-  <it-mdi-menu slot="start"></it-mdi-menu>
-  <span slot="center">Hello</span>
-  <clock-it slot="end"></clock-it>
-</toolbar-it>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Fonction</th>
+<th class="tableblock halign-left valign-top">Elément <code>html</code></th>
+<th class="tableblock halign-left valign-top">Classe <code>typescript</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Le Lorem Ipsum permet d’illustrer une mise en page avec différents gabarits contenant du texte vide de sens<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup>.</p>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_10">
+<a href="#_footnoteref_10">10</a>. Un texte lisible et contenant du sens serait source de distractions et empêcherait de se concentrer sur la mise en page elle-même.
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>&lt;lorem-ipsum-it&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>type : « <a href="https://developer.mozilla.org/fr/docs/Glossary/Block-level_content">bloc</a> » (<em>block-level element</em>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a href="../api/classes/LoremIpsumIt.html"><code>LoremIpsumIt</code></a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary class="title">Structure</summary>
+<div class="content">
+<div class="paragraph">
+<p>Le Lorem Ipsum a simplement la structure du texte qu’il représente : mot, phrase, paragraphe, item de liste.</p>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Interactivité</summary>
+<div class="content">
+<div class="paragraph">
+<p>Cet élément n’est pas interactif : il est non cliquable
+<span class="it-mdi-mouse-off" style="width:24px" title="non cliquable"></span>
+et non éditable
+<it-mdi-keyboard-off-outline style="width:24px" title="non éditable"></it-mdi-keyboard-off-outline>.</p>
+</div>
+</div>
+</details>
+<div class="sect2">
+<h3 id="_gabarits">6.1. Gabarits</h3>
+<div class="paragraph">
+<p>L’élément <code>&lt;lorem-ipsum-it&gt;</code> peut générer 6 types de gabarits différents.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 66.6668%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Gabarit</th>
+<th class="tableblock halign-left valign-top">Paramètre correspondant</th>
+<th class="tableblock halign-left valign-top">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>word</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><lorem-ipsum-it type="word"></lorem-ipsum-it></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">phrase</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sentence</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><lorem-ipsum-it type="sentence"></lorem-ipsum-it></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">paragraphe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>paragraph</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><lorem-ipsum-it type="paragraph"></lorem-ipsum-it></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">item de liste à puces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ulist</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><lorem-ipsum-it type="ulist"></lorem-ipsum-it></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">item de liste ordonnée</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>olist</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><lorem-ipsum-it type="olist"></lorem-ipsum-it></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">item de liste de descriptions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dlist</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><lorem-ipsum-it type="dlist"></lorem-ipsum-it></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_attributs_et_propriétés_5">6.2. Attributs et propriétés</h3>
+<div class="paragraph">
+<p>Cette balise possède 2 attributs spécifiques optionnels :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> : le gabarit des objets textuels à générer, à savoir : <code>word</code>, <code>sentence</code>, <code>paragraph</code> (valeur par défaut), <code>ulist</code>, <code>olist</code> ou <code>dlist</code>;</p>
+</li>
+<li>
+<p><code>count</code> : le nombre d’objets textuels à générer (valeur par défaut: <code>1</code>).</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Quatre mots</dt>
+<dd>
+<p></p>
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="word" count="4">
+    </lorem-ipsum-it>
+  </script>
+</html-preview-it>
+</dd>
+<dt class="hdlist1">Deux phrases</dt>
+<dd>
+<p></p>
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="sentence" count="2">
+    </lorem-ipsum-it>
+  </script>
+</html-preview-it>
+</dd>
+<dt class="hdlist1">Un paragraphe</dt>
+<dd>
+<p></p>
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="paragraph" count="1">
+    </lorem-ipsum-it>
+    <!-- ou <lorem-ipsum-it></lorem-ipsum-it> -->
+  </script>
+</html-preview-it>
+</dd>
+<dt class="hdlist1">Une liste à puces de 2 items</dt>
+<dd>
+<p></p>
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="ulist" count="2">
+    </lorem-ipsum-it>
+  </script>
+</html-preview-it>
+</dd>
+<dt class="hdlist1">Une liste énumérée de 3 items</dt>
+<dd>
+<p></p>
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="olist" count="3">
+    </lorem-ipsum-it>
+  </script>
+</html-preview-it>
+</dd>
+<dt class="hdlist1">Une liste de descriptions de 2 items</dt>
+<dd>
+<p></p>
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="dlist" count="2">
+    </lorem-ipsum-it>
+  </script>
+</html-preview-it>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_api_5">6.3. API</h3>
+<div class="paragraph">
+<p>L’<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l’élément <code>&lt;lorem-ipsum-it&gt;</code> est
+consultable <a href="../api/classes/LoremIpsumIt.html">ici</a>.</p>
+</div>
+<details>
+<summary class="title">L’API en bref</summary>
+<div class="content">
+<api-viewer src="dist/custom-elements.json" only="lorem-ipsum-it" exclude-knobs="type" style="max-width:100%">
+  <template data-element="lorem-ipsum-it" data-target="knob" data-attr="type" data-type="select">
+    <select>
+      <option value="word">word</option>
+      <option value="sentence">sentence</option>
+      <option value="paragraph">paragraph</option>
+      <option value="dlist">dlist</option>
+      <option value="olist">olist</option>
+      <option value="ulist">ulist</option>
+    </select>
+  </template>
+</api-viewer>
+</div>
+</details>
+<details>
+<summary class="title">Usage en <code>typescript</code></summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { LoremIpsumIt } from '@enibook/elements/lorem-ipsum/lorem-ipsum' <i class="conum" data-value="1"></i><b>(1)</b>
+const lorem = new LoremIpsumIt()                                         <i class="conum" data-value="2"></i><b>(2)</b>
+lorem.type = 'dlist'                                                     <i class="conum" data-value="3"></i><b>(3)</b>
+lorem.count = 3                                                          <i class="conum" data-value="4"></i><b>(4)</b>
+document.body.appendChild(lorem)                                         <i class="conum" data-value="5"></i><b>(5)</b>
+/*
+&lt;body&gt;
+...
+&lt;lorem-ipsum-it type="dlist" count="3"&gt;&lt;/lorem-ipsum-it&gt;
+&lt;/body&gt;
+*/</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>importer la classe <a href="../docs/api/classes/LoremIpsumIt.html"><code>LoremIpsumIt</code></a>;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>créer une instance de cette classe;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>préciser le type de gabarit de l’instance;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>préciser le nombre d’objets textuels à générer par l’instance;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>ajouter l’instance dans le <a href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model">DOM</a>.</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</details>
+</div>
 </div>
 </div></div>
-<div id="footnotes"></div>
+<div id="footnotes">
+<hr>
+
+
+
+
+
+
+
+
+
+</div>
 <nav>
   <a rel="prev" href="chap5.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>
      </a>
-  
+  <a rel="next" href="chap7.html" class="nav nav-next" title="Next page" aria-label="Next page" aria-keyshortcuts="Right">
+        <i class="fa fa-angle-right"></i>
+     </a>
   <div style="clear: both"></div>
 </nav>
 

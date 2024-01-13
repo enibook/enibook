@@ -18,6 +18,7 @@ link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'l
 
 include::./adoc-preview/adoc-preview.adoc[]
 include::./html-preview/html-preview.adoc[]
+include::./md-preview/md-preview.adoc[]
 include::./toggle/toggle.adoc[]
 include::./clock/clock.adoc[]
 include::./lorem-ipsum/lorem-ipsum.adoc[]

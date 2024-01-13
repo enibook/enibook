@@ -35,10 +35,11 @@
 <ul class="sectlevel1">
 <li><a href="index.html">Eléments EniBook</a></li><li><a href="chap1.html">1. Aperçu asciidoc</a></li>
 <li><a href="chap2.html">2. Aperçu HTML</a></li>
-<li><a href="chap3.html">3. Bascule</a></li>
-<li class="current"><a href="chap4.html">4. Horloge</a></li>
-<li><a href="chap5.html">5. Lorem Ipsum</a></li>
-<li><a href="chap6.html">6. Barre d’outils</a></li>
+<li><a href="chap3.html">3. Aperçu markdown</a></li>
+<li class="current"><a href="chap4.html">4. Bascule</a></li>
+<li><a href="chap5.html">5. Horloge</a></li>
+<li><a href="chap6.html">6. Lorem Ipsum</a></li>
+<li><a href="chap7.html">7. Barre d’outils</a></li>
 </ul>
 </div>
 </div>
@@ -50,10 +51,11 @@
 
 
 
+
 <div class="sect1">
-<h2 id="_horloge">4. Horloge</h2>
+<h2 id="_bascule">4. Bascule</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
+<table id="bascule-init" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 25%;">
@@ -69,19 +71,20 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Cet élément affiche une horloge numérique indiquant l’heure et la date courantes.</p>
+<p>Cet élément propose un bouton pour montrer ou cacher un autre élément <code>html</code> défini par son <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a>.</p>
 </div>
-<div class="paragraph">
-<p><clock-it time="" date=""></clock-it></p>
+<div class="flex flex-justify-between">
+  <toggle-it id="toggle-left" visibility="" selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
+  <toggle-it id="toggle-right" visibility="" selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"></toggle-it>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>&lt;clock-it&gt;</code></p>
+<p><code>&lt;toggle-it&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>type : « <a href="https://developer.mozilla.org/fr/docs/Glossary/Inline-level_content">en ligne</a> » (<em>inline-level element</em>)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a href="../api/classes/ClockIt.html"><code>ClockIt</code></a></p>
+<p><a href="../api/classes/ToggleIt.html"><code>ToggleIt</code></a></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -89,16 +92,8 @@
 <details>
 <summary class="title">Structure</summary>
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>A gauche de l’icône <it-mdi-calendar-clock-outline></it-mdi-calendar-clock-outline>, la date est affichée sous la forme <code>jour quantième mois année</code><sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup> où <code>jour</code> est le nom du jour (lundi, mardi…​), <code>quantième</code> le numéro du jour dans le mois (1, 2…​), <code>mois</code> le mois  en toutes lettres (janvier, février…​) et <code>année</code> l’année en chiffres
-(exemples: <code>jeudi 8 juin 2023</code>, <code>mercredi 5 avril 2034</code>).</p>
-</li>
-<li>
-<p>A droite de l’icône <it-mdi-calendar-clock-outline></it-mdi-calendar-clock-outline>, l’heure est présentée sous la forme <code>hh:mm:ss</code> où <code>hh</code> représente l’heure avec deux chiffres, <code>mm</code> les minutes avec deux chiffres et <code>ss</code> les secondes également avec deux chiffres (exemples: <code>08:12:54</code>, <code>13:02:05</code>).</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Il s’agit d’un simple bouton qui affiche dans une infobulle l’action qui lui est associée : montrer ou cacher un autre élément.</p>
 </div>
 </div>
 </details>
@@ -106,79 +101,146 @@
 <summary class="title">Interactivité</summary>
 <div class="content">
 <div class="paragraph">
-<p>Cet élément est cliquable <it-mdi-mouse title="cliquable"></it-mdi-mouse> mais non éditable  <it-mdi-keyboard-off-outline title="non éditable"></it-mdi-keyboard-off-outline>.
-L’interaction consiste à adapter l’affichage de l’horloge aux besoins de l’utilisateur.</p>
+<p>Cet élément est cliquable <it-mdi-mouse title="cliquable"></it-mdi-mouse> mais non éditable  <it-mdi-keyboard-off-outline title="non éditable"></it-mdi-keyboard-off-outline>.</p>
 </div>
 <div class="paragraph">
-<p>L’horloge est un bouton cliquable à 4 états.
-En cliquant sur l’horloge, on passe successivement dans les états suivants :</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>affichage de l’heure uniquement : <clock-it time=""></clock-it></p>
-</li>
-<li>
-<p>affichage de la date et de l’heure : <clock-it time="" date=""></clock-it></p>
-</li>
-<li>
-<p>affichage de la date uniquement : <clock-it date=""></clock-it></p>
-</li>
-<li>
-<p>affichage de l’icône uniquement :  <clock-it></clock-it></p>
-</li>
-</ol>
+<p>L’interaction est de type bascule (<em>toggle</em>) et consiste à montrer ou cacher un autre élément : si cet élément est caché alors le clic sur le bouton conduit à le montrer,
+sinon il le cache.</p>
 </div>
 </div>
 </details>
 <div class="sect2">
-<h3 id="_attributs_et_propriétés_4">4.1. Attributs et propriétés</h3>
+<h3 id="_attributs_et_propriétés_3">4.1. Attributs et propriétés</h3>
 <div class="paragraph">
-<p>Cette balise possède 3 attributs spécifiques optionnels : <code>date</code>, <code>size</code> et <code>time</code>.</p>
+<p>Cette balise possède 7 attributs spécifiques optionnels : <code>selector</code>, <code>size</code>, <code>text-hide</code>, <code>text-show</code>, <code>tooltip-hide</code>, <code>tooltip-show</code> et <code>visibility</code>.</p>
+</div>
+<div class="paragraph">
+<p><a href="chap4.html#bascule-init">Le premier exemple</a> définit ces 7 attributs :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;div class="flex flex-justify-between"&gt;
+  &lt;toggle-it id="toggle-left" visibility selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"&gt;&lt;/toggle-it&gt;
+  &lt;toggle-it id="toggle-right" visibility selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"&gt;&lt;/toggle-it&gt;
+&lt;/div&gt;</code></pre>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_taille_de_lhorloge">4.1.1. Taille de l’horloge</h4>
+<h4 id="_sélecteur_css">4.1.1. Sélecteur <code>css</code></h4>
 <div class="paragraph">
-<p>L’attribut <code>size</code> (<code>small</code> par défaut, <code>medium</code> ou <code>large</code>) précise la taille de l’horloge.</p>
+<p>L’attribut <code>selector</code> (attribut <strong>obligatoire</strong>) définit l’élément <code>html</code> à cacher ou à montrer à l’aide d’un sélecteur <code>css</code>.</p>
 </div>
-<html-preview-it position="60">
+<div class="paragraph">
+<p>Un <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a> est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s’applique un ensemble de règles <code>css</code> <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup>. Si plusieurs éléments répondent au même critère, seul le premier d’entre-eux est concerné par la bascule.</p>
+</div>
+<html-preview-it>
   <script type="enibook">
-    <p><clock-it size="small"></clock-it></p>
-
-    <p><clock-it size="medium"></clock-it></p>
-
-    <p><clock-it size="large"></clock-it></p>
+    <toggle-it selector="#header"></toggle-it> :
+    bascule l'en-tête du document
   </script>
 </html-preview-it>
 </div>
 <div class="sect3">
-<h4 id="_réglage_de_laffichage">4.1.2. Réglage de l’affichage</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>L’attribut <code>date</code> permet d’afficher la date.</p>
-</li>
-<li>
-<p>L’attribut <code>time</code> permet d’afficher l’heure.</p>
-</li>
-</ul>
+<h4 id="_visibilité">4.1.2. Visibilité</h4>
+<div class="paragraph">
+<p>Par défaut, cacher un élément signifie le supprimer de la page : la mise en page du document est ainsi potentiellement modifiée.</p>
 </div>
-<html-preview-it position="60">
-  <script type="enibook">
-    <p><clock-it date></clock-it></p>
-
-    <p><clock-it time></clock-it></p>
-
-    <p><clock-it date time></clock-it></p>
-  </script>
-</html-preview-it>
+<div class="paragraph">
+<p>L’attribut <code>visibility</code> peut être utilisé afin de cacher un élément tout en conservant occupé l’espace dans lequel il aurait été visible : la mise en page du document reste ainsi identique qu’il soit visible ou non, contrairement au fonctionnement par défaut.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Sans l’attribut <code>visibility</code></dt>
+<dd>
+<p><code>&lt;toggle-it selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-2" selector="#toggle-right-2" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
+  <toggle-it id="toggle-right-2" selector="#toggle-left-2" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
+  <span>fin</span>
+</div>
+</dd>
+<dt class="hdlist1">Avec l’attribut <code>visibility</code></dt>
+<dd>
+<p><code>&lt;toggle-it visibility selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-3" visibility="" selector="#toggle-right-3" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
+  <toggle-it id="toggle-right-3" visibility="" selector="#toggle-left-3" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
+  <span>fin</span>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_textes_du_bouton">4.1.3. Textes du bouton</h4>
+<div class="paragraph">
+<p>Deux attributs  <code>text-hide</code> (défaut : <it-mdi-hide-outline></it-mdi-hide-outline>) et <code>text-show</code> (défaut : <it-mdi-show-outline></it-mdi-show-outline>) permettent de définir le texte du bouton
+respectivement quand l’élément est caché ou non.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Fonctionnement par défaut</dt>
+<dd>
+<p><code>&lt;toggle-it selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-4" selector="#toggle-right-4"></toggle-it>
+  <toggle-it id="toggle-right-4" selector="#toggle-left-4"></toggle-it>
+  <span>fin</span>
+</div>
+</dd>
+<dt class="hdlist1">Adaptation des textes</dt>
+<dd>
+<p><code>&lt;toggle-it selector="…​" text-show="…​" text-hide="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-5" selector="#toggle-right-5" text-show="Show" text-hide="Hide"></toggle-it>
+  <toggle-it id="toggle-right-5" selector="#toggle-left-5" text-show="Montrer" text-hide="Cacher"></toggle-it>
+  <span>fin</span>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_infobulles">4.1.4. Infobulles</h4>
+<div class="paragraph">
+<p>Deux attributs <code>tooltip-hide</code> (défaut : <code>Cacher</code> <em>selector</em>) et <code>tooltip-show</code> (défaut : <code>Montrer</code> <em>selector</em>) permettent de définir le texte de l’infobulle
+respectivement quand l’élément est caché ou non.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Fonctionnement par défaut</dt>
+<dd>
+<p><code>&lt;toggle-it selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-6" selector="#toggle-right-6"></toggle-it>
+  <toggle-it id="toggle-right-6" selector="#toggle-left-6"></toggle-it>
+  <span>fin</span>
+</div>
+</dd>
+<dt class="hdlist1">Adaptation des infobulles</dt>
+<dd>
+<p><code>&lt;toggle-it selector="…​" tooltip-show="…​" tooltip-hide="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-7" selector="#toggle-right-7" tooltip-show="Montrer le bouton de droite" tooltip-hide="Cacher le bouton de droite"></toggle-it>
+  <toggle-it id="toggle-right-7" selector="#toggle-left-7" tooltip-show="Montrer le bouton de gauche" tooltip-hide="Cacher le bouton de gauche"></toggle-it>
+  <span>fin</span>
+</div>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_api_4">4.2. API</h3>
+<h3 id="_api_3">4.2. API</h3>
 <div class="paragraph">
-<p>L’<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l’élément <code>&lt;clock-it&gt;</code> est
-consultable <a href="../api/classes/ClockIt.html">ici</a>.</p>
+<p>L’<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l’élément <code>&lt;toggle-it&gt;</code> est
+consultable <a href="../api/classes/ToggleIt.html">ici</a>.</p>
 </div>
 <details>
 <summary class="title">L’API en bref</summary>
@@ -189,7 +251,7 @@ consultable <a href="../api/classes/ClockIt.html">ici</a>.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><api-viewer src="dist/custom-elements.json" only="clock-it">
+<td class="tableblock halign-left valign-top"><div class="content"><api-viewer src="dist/custom-elements.json" only="toggle-it">
 </api-viewer></div></td>
 </tr>
 </tbody>
@@ -207,15 +269,14 @@ consultable <a href="../api/classes/ClockIt.html">ici</a>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { ClockIt } from '@enibook/elements/dist/elements/clock/clock' <i class="conum" data-value="1"></i><b>(1)</b>
-const clock = new ClockIt()                                           <i class="conum" data-value="2"></i><b>(2)</b>
-clock.size = 'large'                                                  <i class="conum" data-value="3"></i><b>(3)</b>
-clock.date = true                                                     <i class="conum" data-value="4"></i><b>(4)</b>
-document.body.appendChild(clock)                                      <i class="conum" data-value="5"></i><b>(5)</b>
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { ToggleIt } from '@enibook/elements/dist/elements/toggle/toggle' <i class="conum" data-value="1"></i><b>(1)</b>
+const toggle = new ToggleIt()                                            <i class="conum" data-value="2"></i><b>(2)</b>
+toggle.selector = "#ident"                                               <i class="conum" data-value="3"></i><b>(3)</b>
+document.body.appendChild(toggle)                                        <i class="conum" data-value="4"></i><b>(4)</b>
 /*
 &lt;body&gt;
 ...
-&lt;clock-it size="large" date&gt;&lt;/clock-it&gt;
+&lt;toggle-it selector="#ident"&gt;&lt;/toggle-it&gt;
 &lt;/body&gt;
 */</code></pre>
 </div>
@@ -224,7 +285,7 @@ document.body.appendChild(clock)                                      <i class="
 <table>
 <tbody><tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>importer la classe <a href="../api/classes/ClockIt.html"><code>ClockIt</code></a>;</td>
+<td>importer la classe <a href="../api/classes/ToggleIt.html"><code>ToggleIt</code></a>;</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -232,14 +293,10 @@ document.body.appendChild(clock)                                      <i class="
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>préciser la taille de l’instance;</td>
+<td>préciser le sélecteur de l’élément que l’instance doit cacher ou montrer;</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>préciser le type affichage désiré;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
 <td>ajouter l’instance dans le <a href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model">DOM</a>.</td>
 </tr>
 </tbody></table>
@@ -261,10 +318,10 @@ document.body.appendChild(clock)                                      <i class="
 
 
 
-
-<div class="footnote" id="_footnotedef_9">
-<a href="#_footnoteref_9">9</a>. La manière d’afficher ces 4 informations dépend de la langue considérée. Par exemple, le <code>dimanche 20 décembre 2020</code> en français s’écrira <code>Sunday, 20 December 2020</code> en anglais, <code>Sonntag, 20. Dezember 2020</code> en allemand, <code>domingo, 20 de diciembre de 2020</code> en espagnol ou encore <code>2020年12月20日 日曜日</code> en japonais.
+<div class="footnote" id="_footnotedef_8">
+<a href="#_footnoteref_8">8</a>. On pourra également consulter <a href="https://www.w3schools.com/cssref/css_selectors.php">la référence des sélecteurs <code>css</code> sur W3schools.</a>
 </div>
+
 </div>
 <nav>
   <a rel="prev" href="chap3.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">

@@ -1,0 +1,40 @@
+== Aperçu markdown
+
+++++
+<md-preview-it>
+  <script type="enibook">
+    <!-- code markdown -->
+    # Markdown
+
+    ## Titre de section
+    * item de liste
+    * autre item
+    * lien [pour en savoir plus...](https://docs.markdowntor.org/markdown/latest/)
+  </script>
+</md-preview-it>
+++++
+
+[%header,cols="2a,1a,1a"]
+|===
+| Fonction
+| Elément ``html``
+| Classe ``typescript``
+
+| Cet élément présente côte à côte un code source `markdown` à interpréter et le rendu de son interprétation en `html`.
+
+++++
+<md-preview-it>
+  <script type="enibook">
+    du code _**markdown**_
+  </script>
+</md-preview-it>
+++++
+
+Le transcodage `markdown` -> `html` est réalisé par la bibliothèque https://github.com/markdown-it/markdown-it[markdown-it].
+| ``<md-preview-it>``
+
+type : « link:https://developer.mozilla.org/fr/docs/Glossary/Block-level_content[bloc] » (_block-level element_)
+| link:api/classes/MdPreviewIt.html[``MdPreviewIt``]
+|===
+
+

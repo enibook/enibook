@@ -3,13 +3,13 @@ var _a, _b;
 import '@shoelace-style/shoelace/dist/components/split-panel/split-panel.js';
 import { css } from 'lit';
 // enibook
-import { AsciidoctorProcessor } from '../../utilities/asciidoc';
+import { md } from '../../utilities/markdown';
 import { PreviewIt } from '../preview/preview';
 import { runScript } from '../../utilities/run-script';
 /**
- * Présentation d'un code source `asciidoc` et de son rendu.
- * @title Aperçu asciidoc
- * @summary Cet élément présente côte à côte un code source `asciidoc` à interpréter
+ * Présentation d'un code source `markdown` et de son rendu.
+ * @title Aperçu markdown
+ * @summary Cet élément présente côte à côte un code source `markdown` à interpréter
  * et le rendu de son interprétation `html` par le navigateur.
  *
  * @csspart base - `div` englobant le composant.
@@ -17,26 +17,20 @@ import { runScript } from '../../utilities/run-script';
  * @csspart handle - `div` de la poignée séparatrice.
  * @csspart preview - `div` de l'aperçu.
  */
-export class AdocPreviewIt extends (_b = PreviewIt) {
+export class MdPreviewIt extends (_b = PreviewIt) {
     constructor() {
         super();
-        this.language = 'asciidoc';
+        this.language = 'markdown';
     }
     renderCode() {
-        const html = _a.asciidoctor.convert(this.code, {
-            'safe': 'unsafe',
-            'attributes': {
-                'showtitle': true,
-                'icons': 'font'
-            }
-        });
+        const html = _a.markdown.render(this.code, {});
         return html;
     }
     /**
-     * Le nom courant de l'élément : `Aperçu asciidoc`.
+     * Le nom courant de l'élément : `Aperçu markdown`.
      */
     get tagTitle() {
-        return 'Aperçu asciidoc';
+        return 'Aperçu markdown';
     }
     /**
      * Syntaxe `asciidoc` équivalente :
@@ -44,27 +38,26 @@ export class AdocPreviewIt extends (_b = PreviewIt) {
      * ```
      * [style,attributes]
      * ----
-     * code asciidoc
+     * code markdown
      * ----
      * ```
      *
-     * - `style` : `adoc-preview-it` (le style `asciidoc` a le même nom que l'élément `html` correspondant);
+     * - `style` : `md-preview-it` (le style `asciidoc` a le même nom que l'élément `html` correspondant);
      * - `attributes` : `position`, `src`, `theme`.
      *
-     * Voir la documentation Asciidoc sur le [style d'un bloc](https://docs.asciidoctor.org/asciidoc/latest/blocks/#block-style).
+     * Voir la documentation asciidoc sur le [style d'un bloc](https://docs.markdowntor.org/asciidoc/latest/blocks/#block-style).
      *
      * @example
      * ```
-     * [adoc-preview-it,position=75]
+     * [md-preview-it,position=75]
      * ----
-     * // code asciidoc
-     * = Asciidoc
+     * // code markdown
+     * # markdown
      *
-     * == Titre de section
-     * .Liste _asciidoc_
+     * ## Titre de section
      * * item de liste
      * * autre item
-     * * lien https://docs.asciidoctor.org/asciidoc/latest/[pour en savoir plus...]
+     * * lien [pour en savoir plus...](https://docs.markdowntor.org/markdown/latest/)
      * ----
      * ```
      *
@@ -83,7 +76,7 @@ export class AdocPreviewIt extends (_b = PreviewIt) {
             }
         }
         const asciidoc = `
-    [adoc-preview-it,${attrs.join(',')}]
+    [md-preview-it,${attrs.join(',')}]
     ----
     ${this.code}
     ----
@@ -101,12 +94,12 @@ export class AdocPreviewIt extends (_b = PreviewIt) {
         }
     }
 }
-_a = AdocPreviewIt;
-AdocPreviewIt.styles = [
+_a = MdPreviewIt;
+MdPreviewIt.styles = [
     Reflect.get(_b, "styles", _a),
     css `@unocss-placeholder`
 ];
-AdocPreviewIt.asciidoctor = AsciidoctorProcessor();
-if (customElements && !customElements.get('adoc-preview-it')) {
-    customElements.define('adoc-preview-it', AdocPreviewIt);
+MdPreviewIt.markdown = md;
+if (customElements && !customElements.get('md-preview-it')) {
+    customElements.define('md-preview-it', MdPreviewIt);
 }

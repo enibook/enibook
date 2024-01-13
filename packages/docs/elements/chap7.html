@@ -35,11 +35,11 @@
 <ul class="sectlevel1">
 <li><a href="index.html">Eléments EniBook</a></li><li><a href="chap1.html">1. Aperçu asciidoc</a></li>
 <li><a href="chap2.html">2. Aperçu HTML</a></li>
-<li class="current"><a href="chap3.html">3. Aperçu markdown</a></li>
+<li><a href="chap3.html">3. Aperçu markdown</a></li>
 <li><a href="chap4.html">4. Bascule</a></li>
 <li><a href="chap5.html">5. Horloge</a></li>
 <li><a href="chap6.html">6. Lorem Ipsum</a></li>
-<li><a href="chap7.html">7. Barre d’outils</a></li>
+<li class="current"><a href="chap7.html">7. Barre d’outils</a></li>
 </ul>
 </div>
 </div>
@@ -53,67 +53,21 @@
 
 
 <div class="sect1">
-<h2 id="_aperçu_markdown">3. Aperçu markdown</h2>
+<h2 id="_barre_doutils">7. Barre d’outils</h2>
 <div class="sectionbody">
-<md-preview-it>
-  <script type="enibook">
-    <!-- code markdown -->
-    # Markdown
-
-    ## Titre de section
-    * item de liste
-    * autre item
-    * lien [pour en savoir plus...](https://docs.markdowntor.org/markdown/latest/)
-  </script>
-</md-preview-it>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Fonction</th>
-<th class="tableblock halign-left valign-top">Elément <code>html</code></th>
-<th class="tableblock halign-left valign-top">Classe <code>typescript</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Cet élément présente côte à côte un code source <code>markdown</code> à interpréter et le rendu de son interprétation en <code>html</code>.</p>
-</div>
-<md-preview-it>
-  <script type="enibook">
-    du code _**markdown**_
-  </script>
-</md-preview-it>
-<div class="paragraph">
-<p>Le transcodage <code>markdown</code> → <code>html</code> est réalisé par la bibliothèque <a href="https://github.com/markdown-it/markdown-it">markdown-it</a>.</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>&lt;md-preview-it&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>type : « <a href="https://developer.mozilla.org/fr/docs/Glossary/Block-level_content">bloc</a> » (<em>block-level element</em>)</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a href="api/classes/MdPreviewIt.html"><code>MdPreviewIt</code></a></p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
+<toolbar-it fixed="" placement="top">
+  <it-mdi-menu slot="start"></it-mdi-menu>
+  <span slot="center">Hello</span>
+  <clock-it slot="end"></clock-it>
+</toolbar-it>
 </div>
 </div></div>
 <div id="footnotes"></div>
 <nav>
-  <a rel="prev" href="chap2.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
+  <a rel="prev" href="chap6.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>
      </a>
-  <a rel="next" href="chap4.html" class="nav nav-next" title="Next page" aria-label="Next page" aria-keyshortcuts="Right">
-        <i class="fa fa-angle-right"></i>
-     </a>
+  
   <div style="clear: both"></div>
 </nav>
 

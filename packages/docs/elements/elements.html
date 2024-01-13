@@ -439,6 +439,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <link rel="stylesheet" type="text/css" href="hljs-themes.css">
 <link rel="stylesheet" type="text/css" href="elements-uno.css">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
+<script type="module" src="https://jspm.dev/api-viewer-element"></script>
 <script type="module" src="_dist/enibook.js"></script>
 <style>
 </style>
@@ -460,11 +461,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#_aperçu_html">1. Aperçu HTML</a></li>
-<li><a href="#_bascule">2. Bascule</a></li>
-<li><a href="#_horloge">3. Horloge</a></li>
-<li><a href="#_lorem_ipsum">4. Lorem Ipsum</a></li>
-<li><a href="#_barre_doutils">5. Barre d&#8217;outils</a></li>
+<li><a href="#_aperçu_asciidoc">1. Aperçu asciidoc</a></li>
+<li><a href="#_aperçu_html">2. Aperçu HTML</a></li>
+<li><a href="#_bascule">3. Bascule</a></li>
+<li><a href="#_horloge">4. Horloge</a></li>
+<li><a href="#_lorem_ipsum">5. Lorem Ipsum</a></li>
+<li><a href="#_barre_doutils">6. Barre d&#8217;outils</a></li>
 </ul>
 </div>
 </div>
@@ -481,7 +483,362 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_aperçu_html">1. Aperçu HTML</h2>
+<h2 id="_aperçu_asciidoc">1. Aperçu asciidoc</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Fonction</th>
+<th class="tableblock halign-left valign-top">Elément <code>html</code></th>
+<th class="tableblock halign-left valign-top">Classe <code>typescript</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Cet élément présente côte à côte un code source <code>asciidoc</code> à interpréter et le rendu de son interprétation en <code>html</code>.</p>
+</div>
+<adoc-preview-it>
+  <script type="enibook">
+    du code *_asciidoc_*
+  </script>
+</adoc-preview-it></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>&lt;adoc-preview-it&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>type : « <a href="https://developer.mozilla.org/fr/docs/Glossary/Block-level_content">bloc</a> » (<em>block-level element</em>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a href="api/classes/AdocPreviewIt.html"><code>AdocPreviewIt</code></a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary class="title">Structure</summary>
+<div class="content">
+<div class="paragraph">
+<p>L&#8217;élément est structuré en deux parties :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>à gauche<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>, le code source à interpréter;</p>
+</li>
+<li>
+<p>à droite, l&#8217;aperçu de l&#8217;interprétation du code source.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Les deux parties sont séparées par une barre verticale munie d&#8217;un grip <it-mdi-drag-vertical style="width:24px" title="grip vertical"></it-mdi-drag-vertical>.</p>
+</div>
+<adoc-preview-it>
+  <script type="enibook">
+    // code asciidoc
+    = Asciidoc
+
+    == Titre de section
+    .Liste _asciidoc_
+    * item de liste
+    * autre item
+    * lien https://docs.asciidoctor.org/asciidoc/latest/[pour en savoir plus...]
+  </script>
+</adoc-preview-it>
+</div>
+</details>
+<details>
+<summary class="title">Interactivité</summary>
+<div class="content">
+<div class="paragraph">
+<p>Cet élément est interactif : il est cliquable
+<it-mdi-mouse style="width:24px" title="non cliquable"></it-mdi-mouse>
+mais non éditable
+<it-mdi-keyboard-off-outline style="width:24px" title="non éditable"></it-mdi-keyboard-off-outline>.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;interaction consiste à adapter les largeurs respectives des parties gauche et droite.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Quand on passe la souris sur l&#8217;élément, ses bords ainsi que la barre verticale qui sépare les deux parties, sont mis en évidence par une coloration différente.</p>
+</li>
+<li>
+<p>La barre verticale est déplaçable horizontalement. Quand on passe la souris sur la barre (y compris sur son grip central), le curseur de la souris change de forme pour signifier un déplacement horizontal possible : <it-mdi-resize-horizontal></it-mdi-resize-horizontal>.</p>
+<div class="paragraph">
+<p>Pour déplacer la barre séparatrice, on opère par glissement de la souris : il suffit de cliquer<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> sur cette barre <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>, maintenir le bouton de la souris enfoncé et ne le relâcher que lorsque le pointeur a atteint la position désirée pour la barre verticale.</p>
+</div>
+<div class="paragraph">
+<p>Le déplacement est limité pour laisser au moins un quart de la largeur totale à la partie la moins large.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</details>
+<div class="sect2">
+<h3 id="_script_enibook">1.1. Script <code>enibook</code></h3>
+<div class="paragraph">
+<p>Le code source à visualiser peut être défini dans le contenu de la balise <code>adoc-preview-it</code> à l&#8217;aide d&#8217;un script de type <code>enibook</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;adoc-preview-it&gt;
+  &lt;script type="enibook"&gt;
+    // le code asciidoc à interpréter et à visualiser
+  &lt;/script&gt;
+&lt;/adoc-preview-it&gt;</code></pre>
+</div>
+</div>
+<details id="ex-adoc1">
+<summary class="title">Code défini par un script <code>enibook</code></summary>
+<div class="content">
+<html-preview-it>
+  <script type="enibook">
+    <adoc-preview-it>
+      <script type="enibook">
+        Du code *_asciidoc_*
+      &lt;/script&gt;
+    </adoc-preview-it>
+  </script>
+</html-preview-it>
+</div>
+</details>
+</div>
+<div class="sect2">
+<h3 id="_attributs_et_propriétés">1.2. Attributs et propriétés</h3>
+<div class="paragraph">
+<p>Cette balise possède 3 attributs spécifiques optionnels : <code>position</code>, <code>src</code> et <code>theme</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_code_source">1.2.1. Code source</h4>
+<div class="paragraph">
+<p>L&#8217;attribut <code>src</code> permet de définir le code source à visualiser à partir d&#8217;un fichier extérieur.</p>
+</div>
+<details>
+<summary class="title">Code issu d&#8217;un fichier</summary>
+<div class="content">
+<div class="listingblock">
+<div class="title">Fichier <code>adoc-preview-file.txt</code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">Du code *_asciidoc_*</code></pre>
+</div>
+</div>
+<html-preview-it>
+  <script type="enibook">
+    <adoc-preview-it src="adoc-preview/adoc-preview-file.txt">
+    </adoc-preview-it>
+  </script>
+</html-preview-it>
+</div>
+</details>
+<div class="paragraph">
+<p>Il est possible de combiner l&#8217;utilisation d&#8217;un script <code>enibook</code> et l&#8217;attribut <code>src</code>. Dans ce cas, le contenu du fichier est inséré avant le contenu du script comme dans l&#8217;exemple ci-dessous.</p>
+</div>
+<details>
+<summary class="title">Codes issus d&#8217;un script et d&#8217;un fichier</summary>
+<div class="content">
+<html-preview-it>
+  <script type="enibook">
+    <adoc-preview-it src="adoc-preview/adoc-preview-file.txt">
+      <script type="enibook">
+        Paragraphe ajouté par le script `enibook`
+      &lt;/script&gt;
+    </adoc-preview-it>
+  </script>
+</html-preview-it>
+</div>
+</details>
+<div class="paragraph">
+<p>En dernier ressort, le code source à visualiser peut être défini par un script <code>javascript</code> à l&#8217;aide de la propriété <code>code</code> de la classe <code>AdocPreviewIt</code>.</p>
+</div>
+<details>
+<summary class="title">Code défini par programme</summary>
+<div class="content">
+<html-preview-it id="demo-prop">
+  <script type="enibook">
+    <!-- visualisateur sans code -->
+    <adoc-preview-it class="demo"></adoc-preview-it>
+    <!-- ajout du code par script javascript -->
+    <script type="text/javascript">
+      const demo = document.body.querySelector("#demo-prop")
+      const preview = demo.shadowRoot.querySelector("adoc-preview-it")
+      preview.code = `
+Code source ajouté par la propriété \`code\` :
+
+du code *_asciidoc_*.
+`
+    &lt;/script&gt;
+    <!-- ajout d'un style -->
+    <style>
+      .demo { padding: 0.5em; background-color: lightcyan; }
+    </style>
+  </script>
+</html-review-it>
+</div>
+</details>
+</div>
+<div class="sect3">
+<h4 id="_position_du_séparateur_vertical">1.2.2. Position du séparateur vertical</h4>
+<div class="paragraph">
+<p>La position initiale du séparateur entre le code source et son aperçu est définie par l&#8217;attribut <code>position</code>, exprimé en % de la largeur de l&#8217;élément (comprise entre 25 et 75, 50 par défaut).</p>
+</div>
+<details>
+<summary class="title">Attribut <code>position</code></summary>
+<div class="content">
+<html-preview-it>
+  <script type="enibook">
+    <adoc-preview-it position=75>
+      <script type="enibook">
+        du code *_asciidoc_*
+      &lt;/script&gt;
+    </adoc-preview-it>
+  </script>
+</html-preview-it>
+</div>
+</details>
+</div>
+<div class="sect3">
+<h4 id="_thème_du_code_source">1.2.3. Thème du code source</h4>
+<div class="paragraph">
+<p>Le thème de colorisation du code source (clair : <code>light</code> ou sombre : <code>dark</code>) est précisé par l&#8217;attribut <code>theme</code> (<code>dark</code> par défaut).</p>
+</div>
+<details>
+<summary class="title">Attribut <code>theme</code></summary>
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Mode clair</dt>
+<dd>
+<p></p>
+<html-preview-it>
+  <script type="enibook">
+    <adoc-preview-it theme="light">
+      <script type="enibook">
+        du code *_asciidoc_* en mode clair
+      &lt;/script&gt;
+    </adoc-preview-it>
+  </script>
+</html-preview-it>
+</dd>
+<dt class="hdlist1">Mode sombre</dt>
+<dd>
+<p></p>
+<html-preview-it>
+  <script type="enibook">
+    <adoc-preview-it theme="dark">
+      <script type="enibook">
+        du code *_asciidoc_* en mode sombre
+      &lt;/script&gt;
+    </adoc-preview-it>
+  </script>
+</html-preview-it>
+</dd>
+</dl>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_api">1.3. API</h3>
+<div class="paragraph">
+<p>L&#8217;<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l&#8217;élément <code>&lt;adoc-preview-it&gt;</code> est
+consultable <a href="../api/classes/AdocPreviewIt.html">ici</a>.</p>
+</div>
+<details>
+<summary class="title">L&#8217;API en bref</summary>
+<div class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><api-viewer
+src="_dist/custom-elements.json"
+only="adoc-preview-it"
+exclude-knobs="src"
+>
+  <template data-element="adoc-preview-it" data-target="host">
+    <adoc-preview-it>
+      <script type="enibook">
+        Du code *_asciidoc_*
+      </script>
+    </adoc-preview-it>
+  </template>
+</api-viewer></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary class="title">Usage en <code>typescript</code></summary>
+<div class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { AdocPreviewIt } from '@enibook/elements/dist/elements/adoc-preview/adoc-preview' <i class="conum" data-value="1"></i><b>(1)</b>
+const adocPreview = new AdocPreviewIt() <i class="conum" data-value="2"></i><b>(2)</b>
+adocPreview.code = `
+Le code \`asciidoc\` à visualiser
+`                                       <i class="conum" data-value="3"></i><b>(3)</b>
+document.body.appendChild(adocPreview)  <i class="conum" data-value="4"></i><b>(4)</b>
+/*
+&lt;body&gt;
+...
+&lt;adoc-preview-it&gt;
+  &lt;script type="enibook"&gt;
+    Le code `asciidoc` à visualiser
+  &lt;/script&gt;
+&lt;/adoc-preview-it&gt;
+&lt;/body&gt;
+*/</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>importer la classe <a href="../api/classes/AdocPreviewIt.html"><code>AdocPreviewIt</code></a>;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>créer une instance de cette classe;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>définir le code à visualiser;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>ajouter l&#8217;instance dans le <a href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model">DOM</a>.</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_aperçu_html">2. Aperçu HTML</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -500,7 +857,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Cet élément présente côte à côte un code source <code>html</code> à interpréter et le rendu de son interprétation.</p>
-</div></div></td>
+</div>
+<html-preview-it>
+  <script type="enibook">
+    <p>du code <em>html</em></p>
+  </script>
+</html-preview-it></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>&lt;html-preview-it&gt;</code></p>
 </div>
@@ -522,7 +884,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>à gauche<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>, le code source à interpréter;</p>
+<p>à gauche<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>, le code source à interpréter;</p>
 </li>
 <li>
 <p>à droite, l&#8217;aperçu de l&#8217;interprétation du code source.</p>
@@ -562,7 +924,7 @@ mais non éditable
 <li>
 <p>La barre verticale est déplaçable horizontalement. Quand on passe la souris sur la barre (y compris sur son grip central), le curseur de la souris change de forme pour signifier un déplacement horizontal possible : <it-mdi-resize-horizontal></it-mdi-resize-horizontal>.</p>
 <div class="paragraph">
-<p>Pour déplacer la barre séparatrice, on opère par glissement de la souris : il suffit de cliquer<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> sur cette barre <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>, maintenir le bouton de la souris enfoncé et ne le relâcher que lorsque le pointeur a atteint la position désirée pour la barre verticale.</p>
+<p>Pour déplacer la barre séparatrice, on opère par glissement de la souris : il suffit de cliquer<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup> sur cette barre <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>, maintenir le bouton de la souris enfoncé et ne le relâcher que lorsque le pointeur a atteint la position désirée pour la barre verticale.</p>
 </div>
 <div class="paragraph">
 <p>Le déplacement est limité pour laisser au moins un quart de la largeur totale à la partie la moins large.</p>
@@ -573,9 +935,9 @@ mais non éditable
 </div>
 </details>
 <div class="sect2">
-<h3 id="_script_enibook">1.1. Script <code>enibook</code></h3>
+<h3 id="_script_enibook_2">2.1. Script <code>enibook</code></h3>
 <div class="paragraph">
-<p>Le code source à visualiser peut être défini en précisant le contenu de la balise <code>html-preview-it</code> à l&#8217;aide d&#8217;un script de type <code>enibook</code>.</p>
+<p>Le code source à visualiser peut être défini dans le contenu de la balise <code>html-preview-it</code> à l&#8217;aide d&#8217;un script de type <code>enibook</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -607,7 +969,7 @@ mais non éditable
 <p>L'<a href="#ex1">Exemple 1, &#8220;Script <code>enibook</code>&#8221;</a> montre un aperçu HTML qui contient lui-même un aperçu HTML.</p>
 </div>
 <div class="paragraph">
-<p>Il est donc possible d&#8217;insérer un script dans le script <code>enibook</code> à condition de neutraliser la balise fermante du deuxième script : écrire <code>&amp;lt;/script&amp;gt;</code> au lieu de <code>&lt;/script&gt;</code>. Les séquences d&#8217;échappement <code>&amp;lt;</code> et <code>&amp;gt;</code> représentent respectivement les caractères <code>&lt;</code> (<em>less than</em>, plus petit que) et <code>&gt;</code> (<em>greater than</em>, plus grand que)<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>.</p>
+<p>Il est donc possible d&#8217;insérer un script dans le script <code>enibook</code> à condition de neutraliser la balise fermante du deuxième script : écrire <code>&amp;lt;/script&amp;gt;</code> au lieu de <code>&lt;/script&gt;</code>. Les séquences d&#8217;échappement <code>&amp;lt;</code> et <code>&amp;gt;</code> représentent respectivement les caractères <code>&lt;</code> (<em>less than</em>, plus petit que) et <code>&gt;</code> (<em>greater than</em>, plus grand que)<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -767,12 +1129,12 @@ mais non éditable
 </details>
 </div>
 <div class="sect2">
-<h3 id="_attributs_et_propriétés">1.2. Attributs et propriétés</h3>
+<h3 id="_attributs_et_propriétés_2">2.2. Attributs et propriétés</h3>
 <div class="paragraph">
 <p>Cette balise possède 3 attributs spécifiques optionnels : <code>position</code>, <code>src</code> et <code>theme</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="_code_source">1.2.1. Code source</h4>
+<h4 id="_code_source_2">2.2.1. Code source</h4>
 <div class="paragraph">
 <p>L&#8217;attribut <code>src</code> permet de définir le code source à visualiser à partir d&#8217;un fichier extérieur.</p>
 </div>
@@ -838,7 +1200,7 @@ mais non éditable
 </div>
 </div>
 <div class="sect3">
-<h4 id="_position_du_séparateur_vertical">1.2.2. Position du séparateur vertical</h4>
+<h4 id="_position_du_séparateur_vertical_2">2.2.2. Position du séparateur vertical</h4>
 <div class="paragraph">
 <p>La position initiale du séparateur entre le code source et son aperçu est définie par l&#8217;attribut <code>position</code>, exprimé en % de la largeur de l&#8217;élément (comprise entre 25 et 75, 50 par défaut).</p>
 </div>
@@ -853,7 +1215,7 @@ mais non éditable
 </html-preview-it>
 </div>
 <div class="sect3">
-<h4 id="_thème_du_code_source">1.2.3. Thème du code source</h4>
+<h4 id="_thème_du_code_source_2">2.2.3. Thème du code source</h4>
 <div class="paragraph">
 <p>Le thème de colorisation du code source (clair : <code>light</code> ou sombre : <code>dark</code>) est précisé par l&#8217;attribut <code>theme</code> (<code>dark</code> par défaut).</p>
 </div>
@@ -890,7 +1252,7 @@ mais non éditable
 </div>
 </div>
 <div class="sect2">
-<h3 id="_api">1.3. API</h3>
+<h3 id="_api_2">2.3. API</h3>
 <div class="paragraph">
 <p>L&#8217;<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l&#8217;élément <code>&lt;html-preview-it&gt;</code> est
 consultable <a href="../api/classes/HtmlPreviewIt.html">ici</a>.</p>
@@ -972,7 +1334,7 @@ document.body.appendChild(htmlPreview)  <i class="conum" data-value="4"></i><b>(
 </div>
 </div>
 <div class="sect1">
-<h2 id="_bascule">2. Bascule</h2>
+<h2 id="_bascule">3. Bascule</h2>
 <div class="sectionbody">
 <table id="bascule-init" class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1029,7 +1391,7 @@ sinon il le cache.</p>
 </div>
 </details>
 <div class="sect2">
-<h3 id="_attributs_et_propriétés_2">2.1. Attributs et propriétés</h3>
+<h3 id="_attributs_et_propriétés_3">3.1. Attributs et propriétés</h3>
 <div class="paragraph">
 <p>Cette balise possède 7 attributs spécifiques optionnels : <code>selector</code>, <code>size</code>, <code>text-hide</code>, <code>text-show</code>, <code>tooltip-hide</code>, <code>tooltip-show</code> et <code>visibility</code>.</p>
 </div>
@@ -1045,12 +1407,12 @@ sinon il le cache.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_sélecteur_css">2.1.1. Sélecteur <code>css</code></h4>
+<h4 id="_sélecteur_css">3.1.1. Sélecteur <code>css</code></h4>
 <div class="paragraph">
 <p>L&#8217;attribut <code>selector</code> (attribut <strong>obligatoire</strong>) définit l&#8217;élément <code>html</code> à cacher ou à montrer à l&#8217;aide d&#8217;un sélecteur <code>css</code>.</p>
 </div>
 <div class="paragraph">
-<p>Un <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a> est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s&#8217;applique un ensemble de règles <code>css</code> <sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>. Si plusieurs éléments répondent au même critère, seul le premier d&#8217;entre-eux est concerné par la bascule.</p>
+<p>Un <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a> est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s&#8217;applique un ensemble de règles <code>css</code> <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup>. Si plusieurs éléments répondent au même critère, seul le premier d&#8217;entre-eux est concerné par la bascule.</p>
 </div>
 <html-preview-it>
   <script type="enibook">
@@ -1060,7 +1422,7 @@ sinon il le cache.</p>
 </html-preview-it>
 </div>
 <div class="sect3">
-<h4 id="_visibilité">2.1.2. Visibilité</h4>
+<h4 id="_visibilité">3.1.2. Visibilité</h4>
 <div class="paragraph">
 <p>Par défaut, cacher un élément signifie le supprimer de la page : la mise en page du document est ainsi potentiellement modifiée.</p>
 </div>
@@ -1093,7 +1455,7 @@ sinon il le cache.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_textes_du_bouton">2.1.3. Textes du bouton</h4>
+<h4 id="_textes_du_bouton">3.1.3. Textes du bouton</h4>
 <div class="paragraph">
 <p>Deux attributs  <code>text-hide</code> (défaut : <it-mdi-hide-outline></it-mdi-hide-outline>) et <code>text-show</code> (défaut : <it-mdi-show-outline></it-mdi-show-outline>) permettent de définir le texte du bouton
 respectivement quand l&#8217;élément est caché ou non.</p>
@@ -1124,7 +1486,7 @@ respectivement quand l&#8217;élément est caché ou non.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_infobulles">2.1.4. Infobulles</h4>
+<h4 id="_infobulles">3.1.4. Infobulles</h4>
 <div class="paragraph">
 <p>Deux attributs <code>tooltip-hide</code> (défaut : <code>Cacher</code> <em>selector</em>) et <code>tooltip-show</code> (défaut : <code>Montrer</code> <em>selector</em>) permettent de définir le texte de l&#8217;infobulle
 respectivement quand l&#8217;élément est caché ou non.</p>
@@ -1156,7 +1518,7 @@ respectivement quand l&#8217;élément est caché ou non.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_api_2">2.2. API</h3>
+<h3 id="_api_3">3.2. API</h3>
 <div class="paragraph">
 <p>L&#8217;<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l&#8217;élément <code>&lt;toggle-it&gt;</code> est
 consultable <a href="../api/classes/ToggleIt.html">ici</a>.</p>
@@ -1232,7 +1594,7 @@ document.body.appendChild(toggle)                                        <i clas
 </div>
 </div>
 <div class="sect1">
-<h2 id="_horloge">3. Horloge</h2>
+<h2 id="_horloge">4. Horloge</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1273,7 +1635,7 @@ document.body.appendChild(toggle)                                        <i clas
 <div class="ulist">
 <ul>
 <li>
-<p>A gauche de l&#8217;icône <it-mdi-calendar-clock-outline></it-mdi-calendar-clock-outline>, la date est affichée sous la forme <code>jour quantième mois année</code><sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup> où <code>jour</code> est le nom du jour (lundi, mardi&#8230;&#8203;), <code>quantième</code> le numéro du jour dans le mois (1, 2&#8230;&#8203;), <code>mois</code> le mois  en toutes lettres (janvier, février&#8230;&#8203;) et <code>année</code> l&#8217;année en chiffres
+<p>A gauche de l&#8217;icône <it-mdi-calendar-clock-outline></it-mdi-calendar-clock-outline>, la date est affichée sous la forme <code>jour quantième mois année</code><sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup> où <code>jour</code> est le nom du jour (lundi, mardi&#8230;&#8203;), <code>quantième</code> le numéro du jour dans le mois (1, 2&#8230;&#8203;), <code>mois</code> le mois  en toutes lettres (janvier, février&#8230;&#8203;) et <code>année</code> l&#8217;année en chiffres
 (exemples: <code>jeudi 8 juin 2023</code>, <code>mercredi 5 avril 2034</code>).</p>
 </li>
 <li>
@@ -1313,12 +1675,12 @@ En cliquant sur l&#8217;horloge, on passe successivement dans les états suivant
 </div>
 </details>
 <div class="sect2">
-<h3 id="_attributs_et_propriétés_3">3.1. Attributs et propriétés</h3>
+<h3 id="_attributs_et_propriétés_4">4.1. Attributs et propriétés</h3>
 <div class="paragraph">
 <p>Cette balise possède 3 attributs spécifiques optionnels : <code>date</code>, <code>size</code> et <code>time</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="_taille_de_lhorloge">3.1.1. Taille de l&#8217;horloge</h4>
+<h4 id="_taille_de_lhorloge">4.1.1. Taille de l&#8217;horloge</h4>
 <div class="paragraph">
 <p>L&#8217;attribut <code>size</code> (<code>small</code> par défaut, <code>medium</code> ou <code>large</code>) précise la taille de l&#8217;horloge.</p>
 </div>
@@ -1333,7 +1695,7 @@ En cliquant sur l&#8217;horloge, on passe successivement dans les états suivant
 </html-preview-it>
 </div>
 <div class="sect3">
-<h4 id="_réglage_de_laffichage">3.1.2. Réglage de l&#8217;affichage</h4>
+<h4 id="_réglage_de_laffichage">4.1.2. Réglage de l&#8217;affichage</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1356,7 +1718,7 @@ En cliquant sur l&#8217;horloge, on passe successivement dans les états suivant
 </div>
 </div>
 <div class="sect2">
-<h3 id="_api_3">3.2. API</h3>
+<h3 id="_api_4">4.2. API</h3>
 <div class="paragraph">
 <p>L&#8217;<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l&#8217;élément <code>&lt;clock-it&gt;</code> est
 consultable <a href="../api/classes/ClockIt.html">ici</a>.</p>
@@ -1437,7 +1799,7 @@ document.body.appendChild(clock)                                      <i class="
 </div>
 </div>
 <div class="sect1">
-<h2 id="_lorem_ipsum">4. Lorem Ipsum</h2>
+<h2 id="_lorem_ipsum">5. Lorem Ipsum</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1455,12 +1817,12 @@ document.body.appendChild(clock)                                      <i class="
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Le Lorem Ipsum permet d&#8217;illustrer une mise en page avec différents gabarits contenant du texte vide de sens<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>.</p>
+<p>Le Lorem Ipsum permet d&#8217;illustrer une mise en page avec différents gabarits contenant du texte vide de sens<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup>.</p>
 </div>
 <div id="footnotes">
 <hr>
-<div class="footnote" id="_footnotedef_7">
-<a href="#_footnoteref_7">7</a>. Un texte lisible et contenant du sens serait source de distractions et empêcherait de se concentrer sur la mise en page elle-même.
+<div class="footnote" id="_footnotedef_10">
+<a href="#_footnoteref_10">10</a>. Un texte lisible et contenant du sens serait source de distractions et empêcherait de se concentrer sur la mise en page elle-même.
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1495,7 +1857,7 @@ et non éditable
 </div>
 </details>
 <div class="sect2">
-<h3 id="_gabarits">4.1. Gabarits</h3>
+<h3 id="_gabarits">5.1. Gabarits</h3>
 <div class="paragraph">
 <p>L&#8217;élément <code>&lt;lorem-ipsum-it&gt;</code> peut générer 6 types de gabarits différents.</p>
 </div>
@@ -1547,7 +1909,7 @@ et non éditable
 </table>
 </div>
 <div class="sect2">
-<h3 id="_attributs_et_propriétés_4">4.2. Attributs et propriétés</h3>
+<h3 id="_attributs_et_propriétés_5">5.2. Attributs et propriétés</h3>
 <div class="paragraph">
 <p>Cette balise possède 2 attributs spécifiques optionnels :</p>
 </div>
@@ -1628,7 +1990,7 @@ et non éditable
 </div>
 </div>
 <div class="sect2">
-<h3 id="_api_4">4.3. API</h3>
+<h3 id="_api_5">5.3. API</h3>
 <div class="paragraph">
 <p>L&#8217;<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l&#8217;élément <code>&lt;lorem-ipsum-it&gt;</code> est
 consultable <a href="../api/classes/LoremIpsumIt.html">ici</a>.</p>
@@ -1703,7 +2065,7 @@ document.body.appendChild(lorem)                                         <i clas
 </div>
 </div>
 <div class="sect1">
-<h2 id="_barre_doutils">5. Barre d&#8217;outils</h2>
+<h2 id="_barre_doutils">6. Barre d&#8217;outils</h2>
 <div class="sectionbody">
 <toolbar-it fixed placement="top">
   <it-mdi-menu slot="start"></it-mdi-menu>
@@ -1725,13 +2087,22 @@ document.body.appendChild(lorem)                                         <i clas
 <a href="#_footnoteref_3">3</a>. Le grip vertical <it-mdi-drag-vertical></it-mdi-drag-vertical> est présent pour faciliter le déplacement de la barre verticale séparatrice.
 </div>
 <div class="footnote" id="_footnotedef_4">
-<a href="#_footnoteref_4">4</a>. Une séquence d&#8217;échappement permet de représenter n&#8217;importe quel caractère <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> en HTML en utilisant uniquement des caractères <a href="https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange">ASCII</a>. (voir <a href="https://www.w3.org/International/questions/qa-escapes.fr.html#:~:text=Une%20séquence%20d%27échappement%20permet,référence%20d%27entité%20de%20caractère%20.">W3C</a>)
+<a href="#_footnoteref_4">4</a>. Selon le sens de lecture&#8201;&#8212;&#8201;de gauche à droite (<code>ltr</code> : <em>left to right</em>) ou de droite à gauche (<code>rtl</code> : <em>right to left</em>)&#8201;&#8212;&#8201;le code source sera à gauche pour une lecture de gauche à droite, à droite pour une lecture de droite à gauche. Le sens de lecture&#8201;&#8212;&#8201;de gauche à droite (<code>ltr</code> : <em>left to right</em>) ou de droite à gauche (<code>rtl</code> : <em>right to left</em>)&#8201;&#8212;&#8201;dépend de la langue retenue pour les éléments. Par exemple, le français, l&#8217;anglais ou l&#8217;espagnol se lisent de gauche à droite tandis que l’arabe, le farsi, l’ourdou ou l’hébreu se lisent de droite à gauche.
 </div>
 <div class="footnote" id="_footnotedef_5">
-<a href="#_footnoteref_5">5</a>. On pourra également consulter <a href="https://www.w3schools.com/cssref/css_selectors.php">la référence des sélecteurs <code>css</code> sur W3schools.</a>
+<a href="#_footnoteref_5">5</a>. Le clic se fait à l&#8217;aide du bouton principal de la souris : le gauche en mode droitier, le droit en mode gaucher, ou le bouton unique.
 </div>
 <div class="footnote" id="_footnotedef_6">
-<a href="#_footnoteref_6">6</a>. La manière d&#8217;afficher ces 4 informations dépend de la langue considérée. Par exemple, le <code>dimanche 20 décembre 2020</code> en français s&#8217;écrira <code>Sunday, 20 December 2020</code> en anglais, <code>Sonntag, 20. Dezember 2020</code> en allemand, <code>domingo, 20 de diciembre de 2020</code> en espagnol ou encore <code>2020年12月20日 日曜日</code> en japonais.
+<a href="#_footnoteref_6">6</a>. Le grip vertical <it-mdi-drag-vertical></it-mdi-drag-vertical> est présent pour faciliter le déplacement de la barre verticale séparatrice.
+</div>
+<div class="footnote" id="_footnotedef_7">
+<a href="#_footnoteref_7">7</a>. Une séquence d&#8217;échappement permet de représenter n&#8217;importe quel caractère <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> en HTML en utilisant uniquement des caractères <a href="https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange">ASCII</a>. (voir <a href="https://www.w3.org/International/questions/qa-escapes.fr.html#:~:text=Une%20séquence%20d%27échappement%20permet,référence%20d%27entité%20de%20caractère%20.">W3C</a>)
+</div>
+<div class="footnote" id="_footnotedef_8">
+<a href="#_footnoteref_8">8</a>. On pourra également consulter <a href="https://www.w3schools.com/cssref/css_selectors.php">la référence des sélecteurs <code>css</code> sur W3schools.</a>
+</div>
+<div class="footnote" id="_footnotedef_9">
+<a href="#_footnoteref_9">9</a>. La manière d&#8217;afficher ces 4 informations dépend de la langue considérée. Par exemple, le <code>dimanche 20 décembre 2020</code> en français s&#8217;écrira <code>Sunday, 20 December 2020</code> en anglais, <code>Sonntag, 20. Dezember 2020</code> en allemand, <code>domingo, 20 de diciembre de 2020</code> en espagnol ou encore <code>2020年12月20日 日曜日</code> en japonais.
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

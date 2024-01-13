@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="hljs-themes.css">
 <link rel="stylesheet" type="text/css" href="elements-uno.css">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
+<script type="module" src="https://jspm.dev/api-viewer-element"></script>
 <script type="module" src="_dist/enibook.js"></script>
 <link rel="stylesheet" href="style1.css" type="text/css">
 <link rel="stylesheet" href="asciidoctor-chunker.css" type="text/css"></head>
@@ -32,11 +33,12 @@
 <div id="toc" class="toc2">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="index.html">Eléments EniBook</a></li><li class="current"><a href="chap1.html">1. Aperçu HTML</a></li>
-<li><a href="chap2.html">2. Bascule</a></li>
-<li><a href="chap3.html">3. Horloge</a></li>
-<li><a href="chap4.html">4. Lorem Ipsum</a></li>
-<li><a href="chap5.html">5. Barre d’outils</a></li>
+<li><a href="index.html">Eléments EniBook</a></li><li class="current"><a href="chap1.html">1. Aperçu asciidoc</a></li>
+<li><a href="chap2.html">2. Aperçu HTML</a></li>
+<li><a href="chap3.html">3. Bascule</a></li>
+<li><a href="chap4.html">4. Horloge</a></li>
+<li><a href="chap5.html">5. Lorem Ipsum</a></li>
+<li><a href="chap6.html">6. Barre d’outils</a></li>
 </ul>
 </div>
 </div>
@@ -47,8 +49,9 @@
 
 
 
+
 <div class="sect1">
-<h2 id="_aperçu_html">1. Aperçu HTML</h2>
+<h2 id="_aperçu_asciidoc">1. Aperçu asciidoc</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -66,16 +69,21 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Cet élément présente côte à côte un code source <code>html</code> à interpréter et le rendu de son interprétation.</p>
-</div></div></td>
+<p>Cet élément présente côte à côte un code source <code>asciidoc</code> à interpréter et le rendu de son interprétation en <code>html</code>.</p>
+</div>
+<adoc-preview-it>
+  <script type="enibook">
+    du code *_asciidoc_*
+  </script>
+</adoc-preview-it></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>&lt;html-preview-it&gt;</code></p>
+<p><code>&lt;adoc-preview-it&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>type : « <a href="https://developer.mozilla.org/fr/docs/Glossary/Block-level_content">bloc</a> » (<em>block-level element</em>)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a href="api/classes/HtmlPreviewIt.html"><code>HtmlPreviewIt</code></a></p>
+<p><a href="api/classes/AdocPreviewIt.html"><code>AdocPreviewIt</code></a></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -99,14 +107,18 @@
 <div class="paragraph">
 <p>Les deux parties sont séparées par une barre verticale munie d’un grip <it-mdi-drag-vertical style="width:24px" title="grip vertical"></it-mdi-drag-vertical>.</p>
 </div>
-<html-preview-it>
+<adoc-preview-it>
   <script type="enibook">
-    <ul>
-      <li>à gauche : code source;</li>
-      <li>à droite : aperçu.</li>
-    </ul>
+    // code asciidoc
+    = Asciidoc
+
+    == Titre de section
+    .Liste _asciidoc_
+    * item de liste
+    * autre item
+    * lien https://docs.asciidoctor.org/asciidoc/latest/[pour en savoir plus...]
   </script>
-</html-preview-it>
+</adoc-preview-it>
 </div>
 </details>
 <details>
@@ -142,194 +154,29 @@ mais non éditable
 <div class="sect2">
 <h3 id="_script_enibook">1.1. Script <code>enibook</code></h3>
 <div class="paragraph">
-<p>Le code source à visualiser peut être défini en précisant le contenu de la balise <code>html-preview-it</code> à l’aide d’un script de type <code>enibook</code>.</p>
+<p>Le code source à visualiser peut être défini dans le contenu de la balise <code>adoc-preview-it</code> à l’aide d’un script de type <code>enibook</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;html-preview-it&gt;
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;adoc-preview-it&gt;
   &lt;script type="enibook"&gt;
-    &lt;!-- le code HTML à interpréter et à visualiser --&gt;
+    // le code asciidoc à interpréter et à visualiser
   &lt;/script&gt;
-&lt;/html-preview-it&gt;</code></pre>
+&lt;/adoc-preview-it&gt;</code></pre>
 </div>
 </div>
-<div id="ex1" class="exampleblock">
-<div class="title">Exemple 1. Script <code>enibook</code></div>
+<details id="ex-adoc1">
+<summary class="title">Code défini par un script <code>enibook</code></summary>
 <div class="content">
 <html-preview-it>
   <script type="enibook">
-    <html-preview-it>
+    <adoc-preview-it>
       <script type="enibook">
-        <clock-it time></clock-it>
+        Du code *_asciidoc_*
       &lt;/script&gt;
-    </html-preview-it>
+    </adoc-preview-it>
   </script>
 </html-preview-it>
-</div>
-</div>
-<details>
-<summary class="title">Remarque : un script dans le script <code>enibook</code></summary>
-<div class="content">
-<div class="paragraph">
-<p>L'<a href="chap1.html#ex1">Exemple 1, “Script <code>enibook</code>”</a> montre un aperçu HTML qui contient lui-même un aperçu HTML.</p>
-</div>
-<div class="paragraph">
-<p>Il est donc possible d’insérer un script dans le script <code>enibook</code> à condition de neutraliser la balise fermante du deuxième script : écrire <code>&amp;lt;/script&amp;gt;</code> au lieu de <code>&lt;/script&gt;</code>. Les séquences d’échappement <code>&amp;lt;</code> et <code>&amp;gt;</code> représentent respectivement les caractères <code>&lt;</code> (<em>less than</em>, plus petit que) et <code>&gt;</code> (<em>greater than</em>, plus grand que)<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;html-preview-it&gt;
-  &lt;script type="enibook"&gt;
-    &lt;!-- le code HTML à interpréter et à visualiser --&gt;
-    &lt;!-- qui contient lui-même un script --&gt;
-    &lt;script&gt;
-      ...
-    &amp;lt;/script&amp;gt;
-  &lt;/script&gt;
-&lt;/html-preview-it&gt;</code></pre>
-</div>
-</div>
-<div class="exampleblock">
-<div class="title">Exemple 2. Un script dans le script <code>enibook</code></div>
-<div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">sans script <code>javascript</code></dt>
-<dd>
-<p></p>
-<html-preview-it id="demo-script-1" position="40">
-  <script type="enibook">
-    <html-preview-it id="demo-script-2" position="75">
-      <script type="enibook">
-        <clock-it time></clock-it>
-      &lt;/script&gt;
-    </html-preview-it>
-  </script>
-</html-preview-it>
-<div class="paragraph">
-<p>Pour obtenir l’exemple précédent, on interprète le code suivant :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;html-preview-it id="demo-script-1" position=40&gt;       <i class="conum" data-value="1"></i><b>(1)</b>
-  &lt;script type="enibook"&gt;                              <i class="conum" data-value="2"></i><b>(2)</b>
-    &lt;html-preview-it id="demo-script-2" position="75"&gt; <i class="conum" data-value="3"></i><b>(3)</b>
-      &lt;script type="enibook"&gt;                          <i class="conum" data-value="4"></i><b>(4)</b>
-        &lt;clock-it time&gt;&lt;/clock-it&gt;                     <i class="conum" data-value="5"></i><b>(5)</b>
-      &amp;lt;/script&amp;gt;                                  <i class="conum" data-value="6"></i><b>(6)</b>
-    &lt;/html-preview-it&gt;                                 <i class="conum" data-value="7"></i><b>(7)</b>
-  &lt;/script&gt;                                            <i class="conum" data-value="8"></i><b>(8)</b>
-&lt;/html-preview-it&gt;                                     <i class="conum" data-value="9"></i><b>(9)</b></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tbody><tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>on ouvre un premier aperçu HTML avec pour identifiant <code>demo-script-1</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>on ouvre le script <code>enibook</code> de ce premier aperçu;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>on ouvre un deuxième aperçu HTML d’identifiant <code>demo-script-2</code> à l’intérieur du premier aperçu <code>demo-script-1</code>; ce deuxième aperçu HTML sera visualisé dans le premier aperçu;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>on ouvre le script <code>enibook</code> du deuxième aperçu;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>le code HTML à visualiser dans le deuxième aperçu <code>demo-script-2</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>on ferme le script <code>enibook</code> du deuxième aperçu avec la séquence d’échappement <code>&amp;lt;/script&amp;gt;</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>on ferme le deuxième aperçu <code>demo-script-2</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>on ferme le script du premier aperçu normalement (ie. sans séquence d’échappement);</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="9"></i><b>9</b></td>
-<td>on ferme le premier aperçu <code>demo-script-1</code>.</td>
-</tr>
-</tbody></table>
-</div>
-</dd>
-<dt class="hdlist1">avec un script <code>javascript</code></dt>
-<dd>
-<p></p>
-<div class="paragraph">
-<p>On ajoute ici un script <code>javascript</code> dans le deuxième aperçu de l’exemple précédent.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;html-preview-it id="demo-script-1" position=40&gt;
-  &lt;script type="enibook"&gt;
-    &lt;html-preview-it id="demo-script-2" position="75"&gt;
-      &lt;script type="enibook"&gt;
-        &lt;clock-it time&gt;&lt;/clock-it&gt;
-        &lt;script type="text/javascript"&gt;                                  <i class="conum" data-value="1"></i><b>(1)</b>
-          const demo1 = document.querySelector("#demo-script-1")         <i class="conum" data-value="2"></i><b>(2)</b>
-          const demo2 = demo1.shadowRoot.querySelector("#demo-script-2") <i class="conum" data-value="3"></i><b>(3)</b>
-          demo2.shadowRoot.prepend("Texte ajouté par script.")           <i class="conum" data-value="4"></i><b>(4)</b>
-        &amp;lt;/script&amp;gt;                                                  <i class="conum" data-value="5"></i><b>(5)</b>
-      &amp;lt;/script&amp;gt;
-    &lt;/html-preview-it&gt;
-  &lt;/script&gt;
-&lt;/html-preview-it&gt;</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tbody><tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>on ouvre le script <code>javascript</code> dans le script <code>enibook</code> du deuxième aperçu <code>demo-script-2</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>la constante <code>demo1</code> représente le premier aperçu <code>demo-script-1</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>la constante <code>demo2</code> représente le deuxième aperçu <code>demo-script-2</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>on insère le texte <code>Texte ajouté par script.</code> au début du deuxième aperçu;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>on ferme le script <code>javascript</code> avec la séquence d’échappement <code>&amp;lt;/script&amp;gt;</code>.</td>
-</tr>
-</tbody></table>
-</div>
-<html-preview-it id="demo-script-3" position="40">
-  <script type="enibook">
-    <html-preview-it id="demo-script-4" position="75">
-      <script type="enibook">
-        <clock-it time></clock-it>
-        <script type="text/javascript">
-          const demo1 = document.querySelector("#demo-script-3")
-          const demo2 = demo1.shadowRoot.querySelector("#demo-script-4")
-          demo2.shadowRoot.prepend("Texte ajouté par script.")
-        &lt;/script&gt;
-      &lt;/script&gt;
-    </html-preview-it>
-  </script>
-</html-preview-it>
-</dd>
-</dl>
-</div>
-</div>
-</div>
 </div>
 </details>
 </div>
@@ -343,56 +190,58 @@ mais non éditable
 <div class="paragraph">
 <p>L’attribut <code>src</code> permet de définir le code source à visualiser à partir d’un fichier extérieur.</p>
 </div>
-<div class="exampleblock">
-<div class="title">Exemple 3. Code issu d’un fichier</div>
+<details>
+<summary class="title">Code issu d’un fichier</summary>
 <div class="content">
 <div class="listingblock">
-<div class="title">Fichier <code>html-preview-file.txt</code></div>
+<div class="title">Fichier <code>adoc-preview-file.txt</code></div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;clock-it time&gt;&lt;/clock-it&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">Du code *_asciidoc_*</code></pre>
 </div>
 </div>
 <html-preview-it>
   <script type="enibook">
-    <html-preview-it src="html-preview/html-preview-file.txt">
-    </html-preview-it>
+    <adoc-preview-it src="adoc-preview/adoc-preview-file.txt">
+    </adoc-preview-it>
   </script>
 </html-preview-it>
 </div>
-</div>
+</details>
 <div class="paragraph">
 <p>Il est possible de combiner l’utilisation d’un script <code>enibook</code> et l’attribut <code>src</code>. Dans ce cas, le contenu du fichier est inséré avant le contenu du script comme dans l’exemple ci-dessous.</p>
 </div>
-<div class="exampleblock">
-<div class="title">Exemple 4. Codes issus d’un script et d’un fichier</div>
+<details>
+<summary class="title">Codes issus d’un script et d’un fichier</summary>
 <div class="content">
 <html-preview-it>
   <script type="enibook">
-    <html-preview-it src="html-preview/html-preview-file.txt">
+    <adoc-preview-it src="adoc-preview/adoc-preview-file.txt">
       <script type="enibook">
-        <p>Paragraphe ajouté par le script <code>enibook</code></p>
+        Paragraphe ajouté par le script `enibook`
       &lt;/script&gt;
-    </html-preview-it>
+    </adoc-preview-it>
   </script>
 </html-preview-it>
 </div>
-</div>
+</details>
 <div class="paragraph">
-<p>En dernier ressort, le code source à visualiser peut être défini par un script <code>javascript</code> à l’aide de la propriété <code>code</code> de la classe <code>HtmlPreviewIt</code>.</p>
+<p>En dernier ressort, le code source à visualiser peut être défini par un script <code>javascript</code> à l’aide de la propriété <code>code</code> de la classe <code>AdocPreviewIt</code>.</p>
 </div>
-<div class="exampleblock">
-<div class="title">Exemple 5. Code défini par programme</div>
+<details>
+<summary class="title">Code défini par programme</summary>
 <div class="content">
 <html-preview-it id="demo-prop">
   <script type="enibook">
     <!-- visualisateur sans code -->
-    <html-preview-it class="demo"></html-preview-it>
+    <adoc-preview-it class="demo"></adoc-preview-it>
     <!-- ajout du code par script javascript -->
     <script type="text/javascript">
       const demo = document.body.querySelector("#demo-prop")
-      const preview = demo.shadowRoot.querySelector("html-preview-it")
+      const preview = demo.shadowRoot.querySelector("adoc-preview-it")
       preview.code = `
-<p>Code source ajouté par la propriété code : <clock-it></clock-it>.</p>
+Code source ajouté par la propriété \`code\` :
+
+du code *_asciidoc_*.
 `
     &lt;/script&gt;
     <!-- ajout d'un style -->
@@ -402,28 +251,36 @@ mais non éditable
   </script>
 
 </html-preview-it></div>
-</div>
+</details>
 </div>
 <div class="sect3">
 <h4 id="_position_du_séparateur_vertical">1.2.2. Position du séparateur vertical</h4>
 <div class="paragraph">
 <p>La position initiale du séparateur entre le code source et son aperçu est définie par l’attribut <code>position</code>, exprimé en % de la largeur de l’élément (comprise entre 25 et 75, 50 par défaut).</p>
 </div>
+<details>
+<summary class="title">Attribut <code>position</code></summary>
+<div class="content">
 <html-preview-it>
   <script type="enibook">
-    <html-preview-it position=75>
+    <adoc-preview-it position=75>
       <script type="enibook">
-        <clock-it></clock-it>
+        du code *_asciidoc_*
       &lt;/script&gt;
-    </html-preview-it>
+    </adoc-preview-it>
   </script>
 </html-preview-it>
+</div>
+</details>
 </div>
 <div class="sect3">
 <h4 id="_thème_du_code_source">1.2.3. Thème du code source</h4>
 <div class="paragraph">
 <p>Le thème de colorisation du code source (clair : <code>light</code> ou sombre : <code>dark</code>) est précisé par l’attribut <code>theme</code> (<code>dark</code> par défaut).</p>
 </div>
+<details>
+<summary class="title">Attribut <code>theme</code></summary>
+<div class="content">
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Mode clair</dt>
@@ -431,11 +288,11 @@ mais non éditable
 <p></p>
 <html-preview-it>
   <script type="enibook">
-    <html-preview-it theme="light">
+    <adoc-preview-it theme="light">
       <script type="enibook">
-        <clock-it></clock-it>
+        du code *_asciidoc_* en mode clair
       &lt;/script&gt;
-    </html-preview-it>
+    </adoc-preview-it>
   </script>
 </html-preview-it>
 </dd>
@@ -444,23 +301,25 @@ mais non éditable
 <p></p>
 <html-preview-it>
   <script type="enibook">
-    <html-preview-it theme="dark">
+    <adoc-preview-it theme="dark">
       <script type="enibook">
-        <clock-it></clock-it>
+        du code *_asciidoc_* en mode sombre
       &lt;/script&gt;
-    </html-preview-it>
+    </adoc-preview-it>
   </script>
 </html-preview-it>
 </dd>
 </dl>
 </div>
 </div>
+</details>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_api">1.3. API</h3>
 <div class="paragraph">
-<p>L’<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l’élément <code>&lt;html-preview-it&gt;</code> est
-consultable <a href="../api/classes/HtmlPreviewIt.html">ici</a>.</p>
+<p>L’<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l’élément <code>&lt;adoc-preview-it&gt;</code> est
+consultable <a href="../api/classes/AdocPreviewIt.html">ici</a>.</p>
 </div>
 <details>
 <summary class="title">L’API en bref</summary>
@@ -471,7 +330,14 @@ consultable <a href="../api/classes/HtmlPreviewIt.html">ici</a>.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><api-viewer src="dist/custom-elements.json" only="html-preview-it">
+<td class="tableblock halign-left valign-top"><div class="content"><api-viewer src="_dist/custom-elements.json" only="adoc-preview-it" exclude-knobs="src">
+  <template data-element="adoc-preview-it" data-target="host">
+    <adoc-preview-it>
+      <script type="enibook">
+        Du code *_asciidoc_*
+      </script>
+    </adoc-preview-it>
+  </template>
 </api-viewer></div></td>
 </tr>
 </tbody>
@@ -489,20 +355,20 @@ consultable <a href="../api/classes/HtmlPreviewIt.html">ici</a>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { ToggleIt } from '@enibook/elements/dist/elements/html-preview/html-preview' <i class="conum" data-value="1"></i><b>(1)</b>
-const htmlPreview = new HtmlPreviewIt() <i class="conum" data-value="2"></i><b>(2)</b>
-htmlPreview.code = `
-&lt;p&gt;Le code à visualiser&lt;/p&gt;
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { AdocPreviewIt } from '@enibook/elements/dist/elements/adoc-preview/adoc-preview' <i class="conum" data-value="1"></i><b>(1)</b>
+const adocPreview = new AdocPreviewIt() <i class="conum" data-value="2"></i><b>(2)</b>
+adocPreview.code = `
+Le code \`asciidoc\` à visualiser
 `                                       <i class="conum" data-value="3"></i><b>(3)</b>
-document.body.appendChild(htmlPreview)  <i class="conum" data-value="4"></i><b>(4)</b>
+document.body.appendChild(adocPreview)  <i class="conum" data-value="4"></i><b>(4)</b>
 /*
 &lt;body&gt;
 ...
-&lt;html-preview-it&gt;
+&lt;adoc-preview-it&gt;
   &lt;script type="enibook"&gt;
-    &lt;p&gt;Le code à visualiser&lt;/p&gt;
+    Le code `asciidoc` à visualiser
   &lt;/script&gt;
-&lt;/html-preview-it&gt;
+&lt;/adoc-preview-it&gt;
 &lt;/body&gt;
 */</code></pre>
 </div>
@@ -511,7 +377,7 @@ document.body.appendChild(htmlPreview)  <i class="conum" data-value="4"></i><b>(
 <table>
 <tbody><tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>importer la classe <a href="../api/classes/HtmlPreviewIt.html"><code>HtmlPreviewIt</code></a>;</td>
+<td>importer la classe <a href="../api/classes/AdocPreviewIt.html"><code>AdocPreviewIt</code></a>;</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -546,9 +412,10 @@ document.body.appendChild(htmlPreview)  <i class="conum" data-value="4"></i><b>(
 <div class="footnote" id="_footnotedef_3">
 <a href="#_footnoteref_3">3</a>. Le grip vertical <it-mdi-drag-vertical></it-mdi-drag-vertical> est présent pour faciliter le déplacement de la barre verticale séparatrice.
 </div>
-<div class="footnote" id="_footnotedef_4">
-<a href="#_footnoteref_4">4</a>. Une séquence d’échappement permet de représenter n’importe quel caractère <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> en HTML en utilisant uniquement des caractères <a href="https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange">ASCII</a>. (voir <a href="https://www.w3.org/International/questions/qa-escapes.fr.html#:~:text=Une%20séquence%20d%27échappement%20permet,référence%20d%27entité%20de%20caractère%20.">W3C</a>)
-</div>
+
+
+
+
 
 
 </div>

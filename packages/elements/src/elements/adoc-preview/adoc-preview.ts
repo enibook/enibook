@@ -1,38 +1,53 @@
 // lit
 import '@shoelace-style/shoelace/dist/components/split-panel/split-panel.js'
-import { css/*, unsafeCSS*/ } from 'lit'
+import { css } from 'lit'
 import type { CSSResultGroup} from 'lit';
+// asciidoctor
+import AsciiDoctor, { Asciidoctor } from 'asciidoctor'
 // enibook
 import { PreviewIt } from '../preview/preview';
 import { runScript } from '../../utilities/run-script'
 
 /**
- * Présentation d'un code source `html` et de son rendu.
- * @title Aperçu HTML
- * @summary Cet élément présente côte à côte un code source `html` à interpréter
- * et le rendu de son interprétation par le navigateur.
+ * Présentation d'un code source `asciidoc` et de son rendu.
+ * @title Aperçu asciidoc
+ * @summary Cet élément présente côte à côte un code source `asciidoc` à interpréter
+ * et le rendu de son interprétation `html` par le navigateur.
  *
  * @csspart base - `div` englobant le composant.
  * @csspart code - `div` du code source.
  * @csspart handle - `div` de la poignée séparatrice.
  * @csspart preview - `div` de l'aperçu.
  */
-export class HtmlPreviewIt extends PreviewIt {
+export class AdocPreviewIt extends PreviewIt {
   static styles: CSSResultGroup = [ 
-    // unsafeCSS(styles),
     super.styles,
     css`@unocss-placeholder` 
   ]
 
+  private static asciidoctor: Asciidoctor = AsciiDoctor()
+
+  constructor() {
+    super()
+    this.language = 'asciidoc'
+  }
+
   protected override renderCode(): string {
-    return this.code
+    const html = AdocPreviewIt.asciidoctor.convert(this.code, { 
+      'safe': 'unsafe', 
+      'attributes': { 
+        'showtitle': true, 
+        'icons': 'font' 
+      } 
+    })
+    return html as string
   }
 
   /**
-   * Le nom courant de l'élément : `Aperçu HTML`.
+   * Le nom courant de l'élément : `Aperçu asciidoc`.
    */
   override get tagTitle(): string {
-    return 'Aperçu HTML'
+    return 'Aperçu asciidoc'
   }
 
   /**
@@ -45,20 +60,23 @@ export class HtmlPreviewIt extends PreviewIt {
    * ----
    * ```
    *
-   * - `style` : `html-preview-it` (le style `asciidoc` a le même nom que l'élément `html` correspondant);
+   * - `style` : `adoc-preview-it` (le style `asciidoc` a le même nom que l'élément `html` correspondant);
    * - `attributes` : `position`.
    *
    * Voir la documentation Asciidoc sur le [style d'un bloc](https://docs.asciidoctor.org/asciidoc/latest/blocks/#block-style).
    *
    * @example
-   *
-   * ```
-   * [html-preview-it,position=75]
+   * ```asciidoc
+   * [adoc-preview-it,position=75]
    * ----
-   * <p>
-   *  Voici une horloge :
-   *  <clock-it date time></clock-it>
-   * </p>
+   * // code asciidoc
+   * = Asciidoc
+   * 
+   * == Titre de section
+   * .Liste _asciidoc_
+   * * item de liste
+   * * autre item
+   * * lien https://docs.asciidoctor.org/asciidoc/latest/[pour en savoir plus...]
    * ----
    * ```
    *
@@ -77,7 +95,7 @@ export class HtmlPreviewIt extends PreviewIt {
       }
     }
     const asciidoc = `
-    [html-preview-it,${attrs.join(',')}]
+    [adoc-preview-it,${attrs.join(',')}]
     ----
     ${this.code}
     ----
@@ -99,10 +117,10 @@ export class HtmlPreviewIt extends PreviewIt {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'html-preview-it': HtmlPreviewIt;
+    'adoc-preview-it': AdocPreviewIt;
   }
 }
 
-if (customElements && !customElements.get('html-preview-it')) {
-  customElements.define('html-preview-it', HtmlPreviewIt)
+if (customElements && !customElements.get('adoc-preview-it')) {
+  customElements.define('adoc-preview-it', AdocPreviewIt)
 }

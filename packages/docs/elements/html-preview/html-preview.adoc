@@ -10,6 +10,15 @@
 | Classe ``typescript``
 
 | Cet élément présente côte à côte un code source `html` à interpréter et le rendu de son interprétation.
+
+++++
+<html-preview-it>
+  <script type="enibook">
+    <p>du code <em>html</em></p>
+  </script>
+</html-preview-it>
+++++
+
 | ``<html-preview-it>``
 
 type : « link:https://developer.mozilla.org/fr/docs/Glossary/Block-level_content[bloc] » (_block-level element_)
@@ -58,7 +67,7 @@ Le déplacement est limité pour laisser au moins un quart de la largeur totale 
 ====
 
 === Script ``enibook``
-Le code source à visualiser peut être défini en précisant le contenu de la balise ``html-preview-it`` à l'aide d'un script de type ``enibook``.
+Le code source à visualiser peut être défini dans le contenu de la balise ``html-preview-it`` à l'aide d'un script de type ``enibook``.
 
 [source,html]
 ----

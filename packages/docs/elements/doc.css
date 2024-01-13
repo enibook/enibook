@@ -46,6 +46,12 @@ table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td {
 
 table tr.even,table tr.alt{background:#f8f8f7}
 
+.exampleblock > .content {
+  background: var(--sl-color-amber-50); /*#fffef7;*/
+  border-color: var(--sl-color-amber-200); /*#e0e0dc;*/
+  box-shadow: 0 1px 4px var(--sl-color-amber-200); /*#e0e0dc*/
+}
+
 .literalblock pre,
 .listingblock > .content > pre:not(.highlight),
 .listingblock > .content > pre[class=highlight],

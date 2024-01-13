@@ -76,4 +76,9 @@
   --adoc-strong-font-weight: bold;
   --adoc-strong-line-height: inherit;
 
+  /* exampleblock */
+  --adoc-example-background: var(--sl-color-amber-50); /*#fffef7;*/
+  --adoc-example-border-color: var(--sl-color-amber-100); /*#e0e0dc;*/
+  --adoc-example-box-shadow: 0 1px 4px var(--sl-color-amber-100); /*#e0e0dc*/
+
 }

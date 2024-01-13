@@ -1,5 +1,6 @@
 import './styles/enibook-root.css';
 export { default as SlButton } from '@shoelace-style/shoelace/dist/components/button/button.js';
+export { AdocPreviewIt } from './elements/adoc-preview/adoc-preview';
 export { ClockIt } from './elements/clock/clock';
 export { ColorIt } from './elements/color/color';
 export { HtmlPreviewIt } from './elements/html-preview/html-preview';

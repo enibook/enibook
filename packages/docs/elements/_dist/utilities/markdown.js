@@ -1,6 +1,11 @@
 // markdown-it
 import markdownIt from 'markdown-it';
 import markdownItAttributes from 'markdown-it-attrs';
+import markdownItContainer from 'markdown-it-container';
+import markdownItDefList from 'markdown-it-deflist';
+import markdownItFootnote from 'markdown-it-footnote';
+import markdownItTable from 'markdown-it-multimd-table';
+import markdownItSpan from 'markdown-it-bracketed-spans';
 // highlight
 import hjs from 'highlight.js';
 const markdownItOptions = {
@@ -22,8 +27,36 @@ const markdownItOptions = {
     },
     xhtmlOut: false,
 };
+const markdownItContainerDetailsOptions = {
+    validate: function (params) {
+        return params.trim().match(/^details\s+(.*)$/);
+    },
+    render: function (tokens, idx) {
+        var m = tokens[idx].info.trim().match(/^details\s+(.*)$/);
+        if (tokens[idx].nesting === 1) {
+            // opening tag
+            return '<details><summary>' + md.renderInline(m[1]) + '</summary>\n'; // md.utils.escapeHtml(m[1])
+        }
+        else {
+            // closing tag
+            return '</details>\n';
+        }
+    }
+};
+const markdownItTableOptions = {
+    multiline: true,
+    rowspan: true,
+    headerless: true,
+    multibody: true,
+    autolabel: true
+};
 export const md = markdownIt(markdownItOptions)
-    .use(markdownItAttributes);
+    .use(markdownItAttributes)
+    .use(markdownItSpan)
+    .use(markdownItContainer, 'details', markdownItContainerDetailsOptions)
+    .use(markdownItDefList)
+    .use(markdownItFootnote)
+    .use(markdownItTable, markdownItTableOptions);
 /*
 const markdownItAbbr = require('markdown-it-abbr')
 const markdownItAnchor = require('markdown-it-anchor')
@@ -31,7 +64,6 @@ const markdownItAnchorOptions = {
   permalink: false,
   slugify: function (s) { return slugify(s) }
 }
-const markdownItAttributes = require('markdown-it-attrs')
 const markdownItSpan = require('markdown-it-bracketed-spans')
 const markdownItContainer = require('markdown-it-container')
 const markdownItContainerBlockOptions = {

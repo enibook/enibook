@@ -24,7 +24,8 @@
   --color-warning: var(--sl-color-warning-500);
   --color-danger: var(--sl-color-danger-500);
   --color-neutral: var(--sl-color-neutral-500);
-  --color-code: var(--sl-color-amber-600);
+  --color-code: var(--sl-color-primary-900);
+  --background-color-code: inherit;
 }
 :root {
   font-synthesis: none;

@@ -40,7 +40,7 @@ export declare class MdPreviewIt extends PreviewIt {
      * ```
      * [md-preview-it,position=75]
      * ----
-     * // code markdown
+     * <!-- code markdown -->
      * # markdown
      *
      * ## Titre de section

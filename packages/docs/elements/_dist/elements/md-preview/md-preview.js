@@ -51,7 +51,7 @@ export class MdPreviewIt extends (_b = PreviewIt) {
      * ```
      * [md-preview-it,position=75]
      * ----
-     * // code markdown
+     * <!-- code markdown -->
      * # markdown
      *
      * ## Titre de section

@@ -4,7 +4,7 @@
   "description": "EniBook documentations",
   "main": "index.html",
   "scripts": {
-    "doc:adoc": "asciidoctor elements/elements.adoc && unocss -c uno.config-elements.ts elements/elements.html && asciidoctor-chunker elements/elements.html --titlePage 'Eléments EniBook' -o elements",
+    "doc:adoc": "asciidoctor -r asciidoctor-highlight.js elements/elements.adoc && unocss -c uno.config-elements.ts elements/elements.html && asciidoctor-chunker elements/elements.html --titlePage 'EniBook : éléments HTML' -o elements",
     "doc:ex": "asciidoctor examples/index.adoc",
     "doc:gen": "asciidoctor ./index.adoc && unocss -c uno.config-gen.ts ./index.html",
     "doc:why": "asciidoctor why/index.adoc",
@@ -31,6 +31,7 @@
     "@unocss/preset-tagify": "^0.58.3",
     "@unocss/preset-typography": "^0.58.3",
     "@unocss/preset-uno": "^0.58.3",
+    "asciidoctor-highlight.js": "^0.4.0",
     "unocss": "^0.58.3"
   }
 }

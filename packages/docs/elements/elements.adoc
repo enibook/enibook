@@ -8,13 +8,13 @@
 :stylesheet: asciidoctor.css
 :toc: left
 :toc-title!: 
-:toclevels: 1
+:toclevels: 2
 :xrefstyle: full
 
-Les composants EniBook sont des link:https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_custom_elements[éléments HTML personnalisés] (_custom element_) représentés par des balises du type `<element-name-it></element-name-it>` dont le nom se termine toujours par le suffixe `-it`.
+Les composants EniBook sont des link:https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_custom_elements[éléments HTML personnalisés] (_custom element_) représentés par des balises du type `_<element-name-it></element-name-it>_` dont le nom se termine toujours par le suffixe `-it`.
 
 Les développements sont réalisés en
-link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'link:http://127.0.0.1:5500/packages/elements/docs/api/index.html[API] (_Application Programming Interface_).
+link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'link:http://127.0.0.1:5500/packages/docs/api/index.html[API] (_Application Programming Interface_).
 
 include::./adoc-preview/adoc-preview.adoc[]
 include::./html-preview/html-preview.adoc[]

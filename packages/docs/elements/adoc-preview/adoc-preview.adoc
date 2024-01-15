@@ -84,7 +84,7 @@ Le code source à visualiser peut être défini dans le contenu de la balise ``a
 ----
 
 [#ex-adoc1%collapsible]
-.Code défini par un script ``enibook``
+.Exemple de code défini par un script ``enibook``
 ====
 ++++
 <html-preview-it>
@@ -107,7 +107,7 @@ Cette balise possède 3 attributs spécifiques optionnels : ``position``, ``src`
 L'attribut ``src`` permet de définir le code source à visualiser à partir d'un fichier extérieur.
 
 [%collapsible]
-.Code issu d'un fichier
+.Exemple de code issu d'un fichier
 ====
 .Fichier ``adoc-preview-file.txt``
 [source,html]
@@ -128,7 +128,7 @@ include::adoc-preview-file.txt[]
 Il est possible de combiner l'utilisation d'un script ``enibook`` et l'attribut ``src``. Dans ce cas, le contenu du fichier est inséré avant le contenu du script comme dans l'exemple ci-dessous.
 
 [%collapsible]
-.Codes issus d'un script et d'un fichier
+.Exemple de codes issus d'un script et d'un fichier
 ====
 ++++
 <html-preview-it>
@@ -146,7 +146,7 @@ Il est possible de combiner l'utilisation d'un script ``enibook`` et l'attribut 
 En dernier ressort, le code source à visualiser peut être défini par un script ``javascript`` à l'aide de la propriété ``code`` de la classe ``AdocPreviewIt``.
 
 [%collapsible]
-.Code défini par programme
+.Exemple de code défini par programme
 ====
 ++++
 <html-preview-it id="demo-prop">
@@ -176,7 +176,7 @@ du code *_asciidoc_*.
 La position initiale du séparateur entre le code source et son aperçu est définie par l'attribut ``position``, exprimé en % de la largeur de l'élément (comprise entre 25 et 75, 50 par défaut).
 
 [%collapsible]
-.Attribut `position`
+.Exemple d'utilisation de l'attribut `position`
 ====
 ++++
 <html-preview-it>
@@ -195,7 +195,7 @@ La position initiale du séparateur entre le code source et son aperçu est déf
 Le thème de colorisation du code source (clair : `light` ou sombre : `dark`) est précisé par l'attribut `theme` (`dark` par défaut).
 
 [%collapsible]
-.Attribut `theme`
+.Exemple d'utilisation de l'attribut `theme`
 ====
 Mode clair:: {empty}
 +
@@ -233,9 +233,6 @@ consultable link:../api/classes/AdocPreviewIt.html[ici].
 .L'API en bref
 [%collapsible]
 ====
-[cols="1a"]
-|===
-|
 ++++
 <api-viewer
 src="_dist/custom-elements.json"
@@ -251,15 +248,11 @@ exclude-knobs="src"
   </template>
 </api-viewer>
 ++++
-|===
 ====
 
 .Usage en ``typescript``
 [%collapsible]
 ====
-[cols="100a"]
-|===
-|
 [source,typescript]
 ----
 import { AdocPreviewIt } from '@enibook/elements/dist/elements/adoc-preview/adoc-preview' // <1>
@@ -283,7 +276,6 @@ document.body.appendChild(adocPreview)  // <4>
 <2> créer une instance de cette classe;
 <3> définir le code à visualiser;
 <4> ajouter l'instance dans le link:https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model[DOM].
-|===
 ====
 
 

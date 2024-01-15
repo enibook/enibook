@@ -44,6 +44,9 @@ importers:
       '@unocss/preset-uno':
         specifier: ^0.58.3
         version: 0.58.3
+      asciidoctor-highlight.js:
+        specifier: ^0.4.0
+        version: 0.4.0(@asciidoctor/core@2.2.6)
       unocss:
         specifier: ^0.58.3
         version: 0.58.3(postcss@8.4.33)(vite@5.0.11)
@@ -68,6 +71,18 @@ importers:
       markdown-it-bracketed-spans:
         specifier: ^1.0.1
         version: 1.0.1
+      markdown-it-container:
+        specifier: ^4.0.0
+        version: 4.0.0
+      markdown-it-deflist:
+        specifier: ^3.0.0
+        version: 3.0.0
+      markdown-it-footnote:
+        specifier: ^4.0.0
+        version: 4.0.0
+      markdown-it-multimd-table:
+        specifier: ^4.2.3
+        version: 4.2.3
     devDependencies:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.9.0
@@ -81,6 +96,12 @@ importers:
       '@types/markdown-it-attrs':
         specifier: ^4.1.3
         version: 4.1.3
+      '@types/markdown-it-container':
+        specifier: ^2.0.9
+        version: 2.0.9
+      '@types/markdown-it-footnote':
+        specifier: ^3.0.3
+        version: 3.0.3
       '@unocss/cli':
         specifier: ^0.58.3
         version: 0.58.3
@@ -181,6 +202,14 @@ packages:
     dependencies:
       '@asciidoctor/core': 3.0.2
       yargs: 17.3.1
+    dev: true
+
+  /@asciidoctor/core@2.2.6:
+    resolution: {integrity: sha512-TmB2K5UfpDpSbCNBBntXzKHcAk2EA3/P68jmWvmJvglVUdkO9V6kTAuXVe12+h6C4GK0ndwuCrHHtEVcL5t6pQ==}
+    engines: {node: '>=8.11', npm: '>=5.0.0', yarn: '>=1.1.0'}
+    dependencies:
+      asciidoctor-opal-runtime: 0.3.3
+      unxhr: 1.0.1
     dev: true
 
   /@asciidoctor/core@3.0.2:
@@ -1060,6 +1089,18 @@ packages:
       '@types/markdown-it': 13.0.7
     dev: true
 
+  /@types/markdown-it-container@2.0.9:
+    resolution: {integrity: sha512-pW2W5ibThEXN/wKXTCsORMRJ0zKdFae/v+/n2YV8p6L/1gWQKIaW9KovmckuNV+v9u6yInMV1cXtfmDj+Q52NA==}
+    dependencies:
+      '@types/markdown-it': 13.0.7
+    dev: true
+
+  /@types/markdown-it-footnote@3.0.3:
+    resolution: {integrity: sha512-sMLBj0VcWo/4vi1J7jx3DNdup2w+14RwDMdQtcFJPabeDwt945ghc8sFBgsUfnEjcBOuKaELY22JwGb7KGmsVw==}
+    dependencies:
+      '@types/markdown-it': 13.0.7
+    dev: true
+
   /@types/markdown-it@13.0.7:
     resolution: {integrity: sha512-U/CBi2YUUcTHBt5tjO2r5QV/x0Po6nsYwQU4Y04fBS6vfoImaiZ6f8bi3CjTCxBPQSO1LMyUqkByzi8AidyxfA==}
     dependencies:
@@ -1415,6 +1456,24 @@ packages:
 
   /asap@2.0.6:
     resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
+    dev: true
+
+  /asciidoctor-highlight.js@0.4.0(@asciidoctor/core@2.2.6):
+    resolution: {integrity: sha512-sachM8RiDUCZZRWI9p3sSRF6ssFyp2j3N/sSU/Zv7oVhaLhlJ8Bgi2g9jT7dKL8RSiOvzpMD87ZsmjidGr1dpw==}
+    engines: {node: '>=8.10.0', yarn: ^1.0.0}
+    peerDependencies:
+      '@asciidoctor/core': '>=2.0.0 <2.3.0'
+    dependencies:
+      '@asciidoctor/core': 2.2.6
+      highlight.js: 11.9.0
+    dev: true
+
+  /asciidoctor-opal-runtime@0.3.3:
+    resolution: {integrity: sha512-/CEVNiOia8E5BMO9FLooo+Kv18K4+4JBFRJp8vUy/N5dMRAg+fRNV4HA+o6aoSC79jVU/aT5XvUpxSxSsTS8FQ==}
+    engines: {node: '>=8.11'}
+    dependencies:
+      glob: 7.1.3
+      unxhr: 1.0.1
     dev: true
 
   /asciidoctor@3.0.2:
@@ -2000,6 +2059,17 @@ packages:
       path-scurry: 1.10.1
     dev: true
 
+  /glob@7.1.3:
+    resolution: {integrity: sha512-vcfuiIxogLV4DlGBHIUOwI0IbrJ8HWPc4MU7HzviGeNho/UJDfi6B5p3sHeWIQ0KGIU0Jpxi5ZHxemQfLkkAwQ==}
+    dependencies:
+      fs.realpath: 1.0.0
+      inflight: 1.0.6
+      inherits: 2.0.4
+      minimatch: 3.1.2
+      once: 1.4.0
+      path-is-absolute: 1.0.1
+    dev: true
+
   /glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
@@ -2112,7 +2182,6 @@ packages:
   /highlight.js@11.9.0:
     resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
     engines: {node: '>=12.0.0'}
-    dev: false
 
   /human-signals@2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
@@ -2377,6 +2446,22 @@ packages:
     resolution: {integrity: sha512-ffDHx7bdOEecvo/EPpsatFLNnLZBRdj+ZF/v6gGJh0ixU0oVWxUUeJn5daVnT0sn0MU73G9oPDTqBX82z99fnw==}
     dev: false
 
+  /markdown-it-container@4.0.0:
+    resolution: {integrity: sha512-HaNccxUH0l7BNGYbFbjmGpf5aLHAMTinqRZQAEQbMr2cdD3z91Q6kIo1oUn1CQndkT03jat6ckrdRYuwwqLlQw==}
+    dev: false
+
+  /markdown-it-deflist@3.0.0:
+    resolution: {integrity: sha512-OxPmQ/keJZwbubjiQWOvKLHwpV2wZ5I3Smc81OjhwbfJsjdRrvD5aLTQxmZzzePeO0kbGzAo3Krk4QLgA8PWLg==}
+    dev: false
+
+  /markdown-it-footnote@4.0.0:
+    resolution: {integrity: sha512-WYJ7urf+khJYl3DqofQpYfEYkZKbmXmwxQV8c8mO/hGIhgZ1wOe7R4HLFNwqx7TjILbnC98fuyeSsin19JdFcQ==}
+    dev: false
+
+  /markdown-it-multimd-table@4.2.3:
+    resolution: {integrity: sha512-KepCr2OMJqm7IT6sOIbuqHGe+NERhgy66XMrc5lo6dHW7oaPzMDtYwR1EGwK16/blb6mCSg4jqityOe0o/H7HA==}
+    dev: false
+
   /markdown-it@14.0.0:
     resolution: {integrity: sha512-seFjF0FIcPt4P9U39Bq1JYblX0KZCjDLFFQPHpL5AzHpqPEKtosxmdq/LTVZnjfH7tjt9BxStm+wXcDBNuYmzw==}
     hasBin: true
@@ -2560,6 +2645,11 @@ packages:
   /path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
     engines: {node: '>=8'}
+    dev: true
+
+  /path-is-absolute@1.0.1:
+    resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
+    engines: {node: '>=0.10.0'}
     dev: true
 
   /path-key@3.1.1:
@@ -3158,6 +3248,11 @@ packages:
       - postcss
       - rollup
       - supports-color
+    dev: true
+
+  /unxhr@1.0.1:
+    resolution: {integrity: sha512-MAhukhVHyaLGDjyDYhy8gVjWJyhTECCdNsLwlMoGFoNJ3o79fpQhtQuzmAE4IxCMDwraF4cW8ZjpAV0m9CRQbg==}
+    engines: {node: '>=8.11'}
     dev: true
 
   /unxhr@1.2.0:

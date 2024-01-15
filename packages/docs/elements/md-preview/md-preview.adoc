@@ -10,6 +10,15 @@
     * item de liste
     * autre item
     * lien [pour en savoir plus...](https://docs.markdowntor.org/markdown/latest/)
+
+    ::: details exemple de code python
+
+    ```python
+    def f(x):
+      return 3*x
+    ```
+    :::
+
   </script>
 </md-preview-it>
 ++++

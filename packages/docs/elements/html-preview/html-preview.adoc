@@ -78,8 +78,8 @@ Le code source à visualiser peut être défini dans le contenu de la balise ``h
 </html-preview-it>
 ----
 
-.Script ``enibook``
-[#ex1]
+[#ex1%collapsible]
+.Exemple de code défini par un script ``enibook``
 ====
 ++++
 <html-preview-it>
@@ -114,7 +114,8 @@ Il est donc possible d'insérer un script dans le script ``enibook`` à conditio
 </html-preview-it>
 ----
 
-.Un script dans le script ``enibook``
+[%collapsible]
+.Exemple d'un script dans le script ``enibook``
 ======
 sans script ``javascript``:: {empty}
 +
@@ -206,7 +207,8 @@ Cette balise possède 3 attributs spécifiques optionnels : ``position``, ``src`
 ==== Code source
 L'attribut ``src`` permet de définir le code source à visualiser à partir d'un fichier extérieur.
 
-.Code issu d'un fichier
+[%collapsible]
+.Exemple de code issu d'un fichier
 ====
 .Fichier ``html-preview-file.txt``
 [source,html]
@@ -226,7 +228,8 @@ include::html-preview-file.txt[]
 
 Il est possible de combiner l'utilisation d'un script ``enibook`` et l'attribut ``src``. Dans ce cas, le contenu du fichier est inséré avant le contenu du script comme dans l'exemple ci-dessous.
 
-.Codes issus d'un script et d'un fichier
+[%collapsible]
+.Exemple de codes issus d'un script et d'un fichier
 ====
 ++++
 <html-preview-it>
@@ -243,7 +246,8 @@ Il est possible de combiner l'utilisation d'un script ``enibook`` et l'attribut 
 
 En dernier ressort, le code source à visualiser peut être défini par un script ``javascript`` à l'aide de la propriété ``code`` de la classe ``HtmlPreviewIt``.
 
-.Code défini par programme
+[%collapsible]
+.Exemple de code défini par programme
 ====
 ++++
 <html-preview-it id="demo-prop">
@@ -270,6 +274,9 @@ En dernier ressort, le code source à visualiser peut être défini par un scrip
 ==== Position du séparateur vertical
 La position initiale du séparateur entre le code source et son aperçu est définie par l'attribut ``position``, exprimé en % de la largeur de l'élément (comprise entre 25 et 75, 50 par défaut).
 
+[%collapsible]
+.Exemple d'utilisation de l'attribut `position`
+====
 ++++
 <html-preview-it>
   <script type="enibook">
@@ -281,10 +288,14 @@ La position initiale du séparateur entre le code source et son aperçu est déf
   </script>
 </html-preview-it>
 ++++
+====
 
 ==== Thème du code source
 Le thème de colorisation du code source (clair : `light` ou sombre : `dark`) est précisé par l'attribut `theme` (`dark` par défaut).
 
+[%collapsible]
+.Exemple d'utilisation de l'attribut `theme`
+====
 Mode clair:: {empty}
 +
 ++++
@@ -312,6 +323,7 @@ Mode sombre:: {empty}
   </script>
 </html-preview-it>
 ++++
+====
 
 === API
 L'link:https://developer.mozilla.org/fr/docs/Glossary/API[API] (_Application Programming Interface_) de l'élément ``<html-preview-it>`` est

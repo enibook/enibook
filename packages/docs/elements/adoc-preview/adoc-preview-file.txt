@@ -1,1 +1,1 @@
-Du code *_asciidoc_*
+Du code *_asciidoc_* en provenance d'un fichier

@@ -16,6 +16,7 @@ Les composants EniBook sont des link:https://developer.mozilla.org/fr/docs/Web/W
 Les développements sont réalisés en
 link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'link:http://127.0.0.1:5500/packages/docs/api/index.html[API] (_Application Programming Interface_).
 
+
 include::./adoc-preview/adoc-preview.adoc[]
 include::./html-preview/html-preview.adoc[]
 include::./md-preview/md-preview.adoc[]

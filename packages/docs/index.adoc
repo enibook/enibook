@@ -28,6 +28,7 @@ Bibliothèque de composants web à vocation pédagogique sous la forme d’élé
       <sl-button slot="footer" size="large" href="./elements/index.html"><it-mdi-language-html5 slot="prefix"></it-mdi-language-html5>Documentation</sl-button>
     </sl-card>
 
+    <!--
     <sl-card class="card">
       <h3>Pour les pragmatiques</h3>
       <p>HTML ? bof <span style="color:var(--sl-color-warning-500)"><sl-icon name="emoji-frown"></sl-icon></span> ; il y a plus sympa comme langage de balisage...</p>
@@ -39,24 +40,26 @@ Bibliothèque de composants web à vocation pédagogique sous la forme d’élé
       </sl-select>
     </sl-card>
 
+
     <sl-card class="card">
       <h3>Pour les « clicophiles »</h3>
       <p>mais où est donc le « clicodrome » ?...</p>
       <sl-button slot="footer" size="large" href=""><sl-icon slot="prefix" name="file-earmark-richtext"></sl-icon> Editeur</sl-button>
     </sl-card>
-
+    -->
     <sl-card class="card">
       <h3>Pour les geeks</h3>
       <p>si <code>typescript</code> m'était conté...</p>
       <sl-button slot="footer" size="large" href="./api/index.html"><it-mdi-language-typescript slot="prefix"></it-mdi-language-typescript>API</sl-button>
     </sl-card>
 
+    <!--
     <sl-card class="card">
       <h3>Pour les sceptiques</h3>
       <p></p>
       <sl-button slot="footer" size="large" href="./why/index.html"><span slot="prefix">🤨</span> Argumentaire</sl-button>
     </sl-card>
-
+    -->
   </div>
 </div>
 ++++

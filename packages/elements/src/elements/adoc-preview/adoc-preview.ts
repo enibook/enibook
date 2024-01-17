@@ -1,11 +1,12 @@
 // lit
 import '@shoelace-style/shoelace/dist/components/split-panel/split-panel.js'
-import { css } from 'lit'
+import { css, unsafeCSS } from 'lit'
 import type { CSSResultGroup} from 'lit';
 // enibook
 import { AsciidoctorType, AsciidoctorProcessor } from '../../utilities/asciidoc'
 import { PreviewIt } from '../preview/preview';
 import { runScript } from '../../utilities/run-script'
+import styles from './adoc-preview.css?inline'
 
 /**
  * Présentation d'un code source `asciidoc` et de son rendu.
@@ -20,7 +21,7 @@ import { runScript } from '../../utilities/run-script'
  */
 export class AdocPreviewIt extends PreviewIt {
   static styles: CSSResultGroup = [ 
-    super.styles,
+    unsafeCSS(styles),
     css`@unocss-placeholder` 
   ]
 

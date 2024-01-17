@@ -28,6 +28,7 @@ export declare abstract class PreviewIt extends BaseIt {
     /** Le theme (clair ou sombre) du code source */
     theme: 'light' | 'dark';
     protected firstUpdated(_changedProperties: PropertyValueMap<unknown> | Map<PropertyKey, unknown>): Promise<void>;
+    renderbis(): TemplateResult;
     render(): TemplateResult;
     protected abstract renderCode(): string;
     protected renderHighlight(): string;

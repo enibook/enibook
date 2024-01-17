@@ -60,7 +60,7 @@ export class PreviewIt extends BaseIt {
         }
         this.validatePosition();
     }
-    render() {
+    renderbis() {
         this.validatePosition();
         return html `
       <div part='base' class="preview">
@@ -77,6 +77,21 @@ export class PreviewIt extends BaseIt {
             <div class="preview__view__code">${unsafeHTML(this.renderCode())}</div>
           </div>
         </sl-split-panel>
+      </div>
+      <slot></slot>
+    `;
+    }
+    render() {
+        return html `
+      <div part='base' class="preview">
+        <div part='code' class="preview__code ${this.theme}">
+          <p class="preview__code__title">Code <code>${this.language}</code></p>
+          ${unsafeHTML(this.renderHighlight())}
+        </div>
+        <div part='view' class="preview__view">
+          <p class="preview__view__title">Aperçu</p>
+          <div class="preview__view__code">${unsafeHTML(this.renderCode())}</div>
+        </div>
       </div>
       <slot></slot>
     `;

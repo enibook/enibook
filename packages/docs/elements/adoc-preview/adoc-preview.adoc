@@ -42,12 +42,14 @@ Les deux parties sont séparées par une barre verticale munie d'un grip +++<it-
   <script type="enibook">
     // code asciidoc
     = Asciidoc
+    :source-highlighter: highlight.js
 
     == Titre de section
     .Liste _asciidoc_
     * item de liste
     * autre item
     * lien https://docs.asciidoctor.org/asciidoc/latest/[pour en savoir plus...]
+
   </script>
 </adoc-preview-it>
 ++++

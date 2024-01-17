@@ -31,17 +31,19 @@ type : « link:https://developer.mozilla.org/fr/docs/Glossary/Block-level_conten
 ====
 L'élément est structuré en deux parties :
 
-- à gauche{fn-sens-de-lecture}, le code source à interpréter;
-- à droite, l'aperçu de l'interprétation du code source.
+- à gauche{fn-sens-de-lecture} (ou au-dessus selon la taille de l'écran), le code source à interpréter;
+- à droite (ou au-dessous), l'aperçu de l'interprétation du code source.
 
+////
 Les deux parties sont séparées par une barre verticale munie d'un grip +++<it-mdi-drag-vertical style="width:24px" title="grip vertical"></it-mdi-drag-vertical>+++.
+////
 
 ++++
 <html-preview-it>
   <script type="enibook">
     <ul>
-      <li>à gauche : code source;</li>
-      <li>à droite : aperçu.</li>
+      <li>à gauche (ou au-dessus) : code source;</li>
+      <li>à droite (ou au-dessous) : aperçu.</li>
     </ul>
   </script>
 </html-preview-it>
@@ -51,11 +53,13 @@ Les deux parties sont séparées par une barre verticale munie d'un grip +++<it-
 [%collapsible]
 .Interactivité
 ====
-Cet élément est interactif : il est cliquable 
-+++<it-mdi-mouse style="width:24px" title="non cliquable"></it-mdi-mouse>+++ 
-mais non éditable 
+Cet élément n'est pas interactif : il est ni cliquable 
++++<it-mdi-mouse-off style="width:24px" title="non cliquable"></it-mdi-mouse-off>+++ 
+ni éditable 
 +++<it-mdi-keyboard-off-outline style="width:24px" title="non éditable"></it-mdi-keyboard-off-outline>+++.
 
+Cependant, lorsqu'on passe la souris sur l'élément, les bords des deux parties sont mis en évidence par une coloration différente.
+////
 L'interaction consiste à adapter les largeurs respectives des parties gauche et droite.
 
 - Quand on passe la souris sur l'élément, ses bords ainsi que la barre verticale qui sépare les deux parties, sont mis en évidence par une coloration différente.
@@ -64,6 +68,7 @@ L'interaction consiste à adapter les largeurs respectives des parties gauche et
 Pour déplacer la barre séparatrice, on opère par glissement de la souris : il suffit de cliquer{fn-clic-souris} sur cette barre footnote:[Le grip vertical +++<it-mdi-drag-vertical></it-mdi-drag-vertical>+++ est présent pour faciliter le déplacement de la barre verticale séparatrice.], maintenir le bouton de la souris enfoncé et ne le relâcher que lorsque le pointeur a atteint la position désirée pour la barre verticale.
 +
 Le déplacement est limité pour laisser au moins un quart de la largeur totale à la partie la moins large.
+////
 ====
 
 === Script ``enibook``
@@ -202,7 +207,7 @@ On ajoute ici un script ``javascript`` dans le deuxième aperçu de l'exemple pr
 ====
 
 === Attributs et propriétés
-Cette balise possède 3 attributs spécifiques optionnels : ``position``, ``src`` et ``theme``.
+Cette balise possède 2 attributs spécifiques optionnels : ``src`` et ``theme``.
 
 ==== Code source
 L'attribut ``src`` permet de définir le code source à visualiser à partir d'un fichier extérieur.
@@ -236,7 +241,7 @@ Il est possible de combiner l'utilisation d'un script ``enibook`` et l'attribut 
   <script type="enibook">
     <html-preview-it src="html-preview/html-preview-file.txt">
       <script type="enibook">
-        <p>Paragraphe ajouté par le script <code>enibook</code></p>
+        <p>Paragraphe ajouté par le script <code>enibook</code>.</p>
       &lt;/script&gt;
     </html-preview-it>
   </script>
@@ -271,6 +276,7 @@ En dernier ressort, le code source à visualiser peut être défini par un scrip
 ++++
 ====
 
+////
 ==== Position du séparateur vertical
 La position initiale du séparateur entre le code source et son aperçu est définie par l'attribut ``position``, exprimé en % de la largeur de l'élément (comprise entre 25 et 75, 50 par défaut).
 
@@ -289,6 +295,7 @@ La position initiale du séparateur entre le code source et son aperçu est déf
 </html-preview-it>
 ++++
 ====
+////
 
 ==== Thème du code source
 Le thème de colorisation du code source (clair : `light` ou sombre : `dark`) est précisé par l'attribut `theme` (`dark` par défaut).

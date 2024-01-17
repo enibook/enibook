@@ -127,21 +127,18 @@
 <div class="ulist">
 <ul>
 <li>
-<p>à gauche<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>, le code source à interpréter;</p>
+<p>à gauche<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup> (ou au-dessus selon la taille de l’écran), le code source à interpréter;</p>
 </li>
 <li>
-<p>à droite, l’aperçu de l’interprétation du code source.</p>
+<p>à droite (ou au-dessous), l’aperçu de l’interprétation du code source.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>Les deux parties sont séparées par une barre verticale munie d’un grip <it-mdi-drag-vertical style="width:24px" title="grip vertical"></it-mdi-drag-vertical>.</p>
 </div>
 <html-preview-it>
   <script type="enibook">
     <ul>
-      <li>à gauche : code source;</li>
-      <li>à droite : aperçu.</li>
+      <li>à gauche (ou au-dessus) : code source;</li>
+      <li>à droite (ou au-dessous) : aperçu.</li>
     </ul>
   </script>
 </html-preview-it>
@@ -151,29 +148,13 @@
 <summary class="title">Interactivité</summary>
 <div class="content">
 <div class="paragraph">
-<p>Cet élément est interactif : il est cliquable
-<it-mdi-mouse style="width:24px" title="non cliquable"></it-mdi-mouse>
-mais non éditable
+<p>Cet élément n’est pas interactif : il est ni cliquable
+<it-mdi-mouse-off style="width:24px" title="non cliquable"></it-mdi-mouse-off>
+ni éditable
 <it-mdi-keyboard-off-outline style="width:24px" title="non éditable"></it-mdi-keyboard-off-outline>.</p>
 </div>
 <div class="paragraph">
-<p>L’interaction consiste à adapter les largeurs respectives des parties gauche et droite.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Quand on passe la souris sur l’élément, ses bords ainsi que la barre verticale qui sépare les deux parties, sont mis en évidence par une coloration différente.</p>
-</li>
-<li>
-<p>La barre verticale est déplaçable horizontalement. Quand on passe la souris sur la barre (y compris sur son grip central), le curseur de la souris change de forme pour signifier un déplacement horizontal possible : <it-mdi-resize-horizontal></it-mdi-resize-horizontal>.</p>
-<div class="paragraph">
-<p>Pour déplacer la barre séparatrice, on opère par glissement de la souris : il suffit de cliquer<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup> sur cette barre <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>, maintenir le bouton de la souris enfoncé et ne le relâcher que lorsque le pointeur a atteint la position désirée pour la barre verticale.</p>
-</div>
-<div class="paragraph">
-<p>Le déplacement est limité pour laisser au moins un quart de la largeur totale à la partie la moins large.</p>
-</div>
-</li>
-</ul>
+<p>Cependant, lorsqu’on passe la souris sur l’élément, les bords des deux parties sont mis en évidence par une coloration différente.</p>
 </div>
 </div>
 </details>
@@ -212,7 +193,7 @@ mais non éditable
 <p>L'<a href="chap2.html#ex1">Exemple de code défini par un script <code>enibook</code></a> montre un aperçu HTML qui contient lui-même un aperçu HTML.</p>
 </div>
 <div class="paragraph">
-<p>Il est donc possible d’insérer un script dans le script <code>enibook</code> à condition de neutraliser la balise fermante du deuxième script : écrire <code>&amp;lt;/script&amp;gt;</code> au lieu de <code>&lt;/script&gt;</code>. Les séquences d’échappement <code>&amp;lt;</code> et <code>&amp;gt;</code> représentent respectivement les caractères <code>&lt;</code> (<em>less than</em>, plus petit que) et <code>&gt;</code> (<em>greater than</em>, plus grand que)<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>.</p>
+<p>Il est donc possible d’insérer un script dans le script <code>enibook</code> à condition de neutraliser la balise fermante du deuxième script : écrire <code>&amp;lt;/script&amp;gt;</code> au lieu de <code>&lt;/script&gt;</code>. Les séquences d’échappement <code>&amp;lt;</code> et <code>&amp;gt;</code> représentent respectivement les caractères <code>&lt;</code> (<em>less than</em>, plus petit que) et <code>&gt;</code> (<em>greater than</em>, plus grand que)<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -374,7 +355,7 @@ mais non éditable
 <div class="sect2">
 <h3 id="_attributs_et_propriétés_2">2.2. Attributs et propriétés</h3>
 <div class="paragraph">
-<p>Cette balise possède 3 attributs spécifiques optionnels : <code>position</code>, <code>src</code> et <code>theme</code>.</p>
+<p>Cette balise possède 2 attributs spécifiques optionnels : <code>src</code> et <code>theme</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="_code_source_2">2.2.1. Code source</h4>
@@ -387,7 +368,7 @@ mais non éditable
 <div class="listingblock">
 <div class="title">Fichier <code>html-preview-file.txt</code></div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;clock-it time&gt;&lt;/clock-it&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">Code issu d'un fichier : &lt;clock-it time&gt;&lt;/clock-it&gt;</code></pre>
 </div>
 </div>
 <html-preview-it>
@@ -408,7 +389,7 @@ mais non éditable
   <script type="enibook">
     <html-preview-it src="html-preview/html-preview-file.txt">
       <script type="enibook">
-        <p>Paragraphe ajouté par le script <code>enibook</code></p>
+        <p>Paragraphe ajouté par le script <code>enibook</code>.</p>
       &lt;/script&gt;
     </html-preview-it>
   </script>
@@ -443,27 +424,7 @@ mais non éditable
 </details>
 </div>
 <div class="sect3">
-<h4 id="_position_du_séparateur_vertical_2">2.2.2. Position du séparateur vertical</h4>
-<div class="paragraph">
-<p>La position initiale du séparateur entre le code source et son aperçu est définie par l’attribut <code>position</code>, exprimé en % de la largeur de l’élément (comprise entre 25 et 75, 50 par défaut).</p>
-</div>
-<details>
-<summary class="title">Exemple d’utilisation de l’attribut <code>position</code></summary>
-<div class="content">
-<html-preview-it>
-  <script type="enibook">
-    <html-preview-it position=75>
-      <script type="enibook">
-        <clock-it></clock-it>
-      &lt;/script&gt;
-    </html-preview-it>
-  </script>
-</html-preview-it>
-</div>
-</details>
-</div>
-<div class="sect3">
-<h4 id="_thème_du_code_source_2">2.2.3. Thème du code source</h4>
+<h4 id="_thème_du_code_source_2">2.2.2. Thème du code source</h4>
 <div class="paragraph">
 <p>Le thème de colorisation du code source (clair : <code>light</code> ou sombre : <code>dark</code>) est précisé par l’attribut <code>theme</code> (<code>dark</code> par défaut).</p>
 </div>
@@ -592,13 +553,7 @@ document.body.appendChild(htmlPreview)  <i class="conum" data-value="4"></i><b>(
 <a href="#_footnoteref_4">4</a>. Selon le sens de lecture — de gauche à droite (<code>ltr</code> : <em>left to right</em>) ou de droite à gauche (<code>rtl</code> : <em>right to left</em>) — le code source sera à gauche pour une lecture de gauche à droite, à droite pour une lecture de droite à gauche. Le sens de lecture — de gauche à droite (<code>ltr</code> : <em>left to right</em>) ou de droite à gauche (<code>rtl</code> : <em>right to left</em>) — dépend de la langue retenue pour les éléments. Par exemple, le français, l’anglais ou l’espagnol se lisent de gauche à droite tandis que l’arabe, le farsi, l’ourdou ou l’hébreu se lisent de droite à gauche.
 </div>
 <div class="footnote" id="_footnotedef_5">
-<a href="#_footnoteref_5">5</a>. Le clic se fait à l’aide du bouton principal de la souris : le gauche en mode droitier, le droit en mode gaucher, ou le bouton unique.
-</div>
-<div class="footnote" id="_footnotedef_6">
-<a href="#_footnoteref_6">6</a>. Le grip vertical <it-mdi-drag-vertical></it-mdi-drag-vertical> est présent pour faciliter le déplacement de la barre verticale séparatrice.
-</div>
-<div class="footnote" id="_footnotedef_7">
-<a href="#_footnoteref_7">7</a>. Une séquence d’échappement permet de représenter n’importe quel caractère <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> en HTML en utilisant uniquement des caractères <a href="https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange">ASCII</a>. (voir <a href="https://www.w3.org/International/questions/qa-escapes.fr.html#:~:text=Une%20séquence%20d%27échappement%20permet,référence%20d%27entité%20de%20caractère%20.">W3C</a>)
+<a href="#_footnoteref_5">5</a>. Une séquence d’échappement permet de représenter n’importe quel caractère <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> en HTML en utilisant uniquement des caractères <a href="https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange">ASCII</a>. (voir <a href="https://www.w3.org/International/questions/qa-escapes.fr.html#:~:text=Une%20séquence%20d%27échappement%20permet,référence%20d%27entité%20de%20caractère%20.">W3C</a>)
 </div>
 
 

@@ -11,3 +11,4 @@ export { ThemeIt } from './elements/theme/theme';
 export { ToggleIt } from './elements/toggle/toggle';
 export { ToolbarIt } from './elements/toolbar/toolbar';
 export { ToolsIt } from './elements/tools/tools';
+export { TsPlaygroundIt } from './elements/ts-playground/ts-playground';

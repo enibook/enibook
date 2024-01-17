@@ -575,12 +575,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   <script type="enibook">
     // code asciidoc
     = Asciidoc
+    :source-highlighter: highlight.js
 
     == Titre de section
     .Liste _asciidoc_
     * item de liste
     * autre item
     * lien https://docs.asciidoctor.org/asciidoc/latest/[pour en savoir plus...]
+
   </script>
 </adoc-preview-it>
 </div>
@@ -660,7 +662,7 @@ mais non éditable
 <div class="listingblock">
 <div class="title">Fichier <code>adoc-preview-file.txt</code></div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">Du code *_asciidoc_*</code></pre>
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">Du code *_asciidoc_* en provenance d'un fichier</code></pre>
 </div>
 </div>
 <html-preview-it>
@@ -898,21 +900,18 @@ document.body.appendChild(adocPreview)  <i class="conum" data-value="4"></i><b>(
 <div class="ulist">
 <ul>
 <li>
-<p>à gauche<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>, le code source à interpréter;</p>
+<p>à gauche<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup> (ou au-dessus selon la taille de l&#8217;écran), le code source à interpréter;</p>
 </li>
 <li>
-<p>à droite, l&#8217;aperçu de l&#8217;interprétation du code source.</p>
+<p>à droite (ou au-dessous), l&#8217;aperçu de l&#8217;interprétation du code source.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>Les deux parties sont séparées par une barre verticale munie d&#8217;un grip <it-mdi-drag-vertical style="width:24px" title="grip vertical"></it-mdi-drag-vertical>.</p>
 </div>
 <html-preview-it>
   <script type="enibook">
     <ul>
-      <li>à gauche : code source;</li>
-      <li>à droite : aperçu.</li>
+      <li>à gauche (ou au-dessus) : code source;</li>
+      <li>à droite (ou au-dessous) : aperçu.</li>
     </ul>
   </script>
 </html-preview-it>
@@ -922,29 +921,13 @@ document.body.appendChild(adocPreview)  <i class="conum" data-value="4"></i><b>(
 <summary class="title">Interactivité</summary>
 <div class="content">
 <div class="paragraph">
-<p>Cet élément est interactif : il est cliquable
-<it-mdi-mouse style="width:24px" title="non cliquable"></it-mdi-mouse>
-mais non éditable
+<p>Cet élément n&#8217;est pas interactif : il est ni cliquable
+<it-mdi-mouse-off style="width:24px" title="non cliquable"></it-mdi-mouse-off>
+ni éditable
 <it-mdi-keyboard-off-outline style="width:24px" title="non éditable"></it-mdi-keyboard-off-outline>.</p>
 </div>
 <div class="paragraph">
-<p>L&#8217;interaction consiste à adapter les largeurs respectives des parties gauche et droite.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Quand on passe la souris sur l&#8217;élément, ses bords ainsi que la barre verticale qui sépare les deux parties, sont mis en évidence par une coloration différente.</p>
-</li>
-<li>
-<p>La barre verticale est déplaçable horizontalement. Quand on passe la souris sur la barre (y compris sur son grip central), le curseur de la souris change de forme pour signifier un déplacement horizontal possible : <it-mdi-resize-horizontal></it-mdi-resize-horizontal>.</p>
-<div class="paragraph">
-<p>Pour déplacer la barre séparatrice, on opère par glissement de la souris : il suffit de cliquer<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup> sur cette barre <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>, maintenir le bouton de la souris enfoncé et ne le relâcher que lorsque le pointeur a atteint la position désirée pour la barre verticale.</p>
-</div>
-<div class="paragraph">
-<p>Le déplacement est limité pour laisser au moins un quart de la largeur totale à la partie la moins large.</p>
-</div>
-</li>
-</ul>
+<p>Cependant, lorsqu&#8217;on passe la souris sur l&#8217;élément, les bords des deux parties sont mis en évidence par une coloration différente.</p>
 </div>
 </div>
 </details>
@@ -983,7 +966,7 @@ mais non éditable
 <p>L'<a href="#ex1">Exemple de code défini par un script <code>enibook</code></a> montre un aperçu HTML qui contient lui-même un aperçu HTML.</p>
 </div>
 <div class="paragraph">
-<p>Il est donc possible d&#8217;insérer un script dans le script <code>enibook</code> à condition de neutraliser la balise fermante du deuxième script : écrire <code>&amp;lt;/script&amp;gt;</code> au lieu de <code>&lt;/script&gt;</code>. Les séquences d&#8217;échappement <code>&amp;lt;</code> et <code>&amp;gt;</code> représentent respectivement les caractères <code>&lt;</code> (<em>less than</em>, plus petit que) et <code>&gt;</code> (<em>greater than</em>, plus grand que)<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>.</p>
+<p>Il est donc possible d&#8217;insérer un script dans le script <code>enibook</code> à condition de neutraliser la balise fermante du deuxième script : écrire <code>&amp;lt;/script&amp;gt;</code> au lieu de <code>&lt;/script&gt;</code>. Les séquences d&#8217;échappement <code>&amp;lt;</code> et <code>&amp;gt;</code> représentent respectivement les caractères <code>&lt;</code> (<em>less than</em>, plus petit que) et <code>&gt;</code> (<em>greater than</em>, plus grand que)<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1145,7 +1128,7 @@ mais non éditable
 <div class="sect2">
 <h3 id="_attributs_et_propriétés_2">2.2. Attributs et propriétés</h3>
 <div class="paragraph">
-<p>Cette balise possède 3 attributs spécifiques optionnels : <code>position</code>, <code>src</code> et <code>theme</code>.</p>
+<p>Cette balise possède 2 attributs spécifiques optionnels : <code>src</code> et <code>theme</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="_code_source_2">2.2.1. Code source</h4>
@@ -1158,7 +1141,7 @@ mais non éditable
 <div class="listingblock">
 <div class="title">Fichier <code>html-preview-file.txt</code></div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;clock-it time&gt;&lt;/clock-it&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">Code issu d'un fichier : &lt;clock-it time&gt;&lt;/clock-it&gt;</code></pre>
 </div>
 </div>
 <html-preview-it>
@@ -1179,7 +1162,7 @@ mais non éditable
   <script type="enibook">
     <html-preview-it src="html-preview/html-preview-file.txt">
       <script type="enibook">
-        <p>Paragraphe ajouté par le script <code>enibook</code></p>
+        <p>Paragraphe ajouté par le script <code>enibook</code>.</p>
       &lt;/script&gt;
     </html-preview-it>
   </script>
@@ -1214,27 +1197,7 @@ mais non éditable
 </details>
 </div>
 <div class="sect3">
-<h4 id="_position_du_séparateur_vertical_2">2.2.2. Position du séparateur vertical</h4>
-<div class="paragraph">
-<p>La position initiale du séparateur entre le code source et son aperçu est définie par l&#8217;attribut <code>position</code>, exprimé en % de la largeur de l&#8217;élément (comprise entre 25 et 75, 50 par défaut).</p>
-</div>
-<details>
-<summary class="title">Exemple d&#8217;utilisation de l&#8217;attribut <code>position</code></summary>
-<div class="content">
-<html-preview-it>
-  <script type="enibook">
-    <html-preview-it position=75>
-      <script type="enibook">
-        <clock-it></clock-it>
-      &lt;/script&gt;
-    </html-preview-it>
-  </script>
-</html-preview-it>
-</div>
-</details>
-</div>
-<div class="sect3">
-<h4 id="_thème_du_code_source_2">2.2.3. Thème du code source</h4>
+<h4 id="_thème_du_code_source_2">2.2.2. Thème du code source</h4>
 <div class="paragraph">
 <p>Le thème de colorisation du code source (clair : <code>light</code> ou sombre : <code>dark</code>) est précisé par l&#8217;attribut <code>theme</code> (<code>dark</code> par défaut).</p>
 </div>
@@ -1499,7 +1462,7 @@ sinon il le cache.</p>
 <p>L&#8217;attribut <code>selector</code> (attribut <strong>obligatoire</strong>) définit l&#8217;élément <code>html</code> à cacher ou à montrer à l&#8217;aide d&#8217;un sélecteur <code>css</code>.</p>
 </div>
 <div class="paragraph">
-<p>Un <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a> est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s&#8217;applique un ensemble de règles <code>css</code> <sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup>. Si plusieurs éléments répondent au même critère, seul le premier d&#8217;entre-eux est concerné par la bascule.</p>
+<p>Un <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a> est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s&#8217;applique un ensemble de règles <code>css</code> <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>. Si plusieurs éléments répondent au même critère, seul le premier d&#8217;entre-eux est concerné par la bascule.</p>
 </div>
 <html-preview-it>
   <script type="enibook">
@@ -1722,7 +1685,7 @@ document.body.appendChild(toggle)                                        <i clas
 <div class="ulist">
 <ul>
 <li>
-<p>A gauche de l&#8217;icône <it-mdi-calendar-clock-outline></it-mdi-calendar-clock-outline>, la date est affichée sous la forme <code>jour quantième mois année</code><sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup> où <code>jour</code> est le nom du jour (lundi, mardi&#8230;&#8203;), <code>quantième</code> le numéro du jour dans le mois (1, 2&#8230;&#8203;), <code>mois</code> le mois  en toutes lettres (janvier, février&#8230;&#8203;) et <code>année</code> l&#8217;année en chiffres
+<p>A gauche de l&#8217;icône <it-mdi-calendar-clock-outline></it-mdi-calendar-clock-outline>, la date est affichée sous la forme <code>jour quantième mois année</code><sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup> où <code>jour</code> est le nom du jour (lundi, mardi&#8230;&#8203;), <code>quantième</code> le numéro du jour dans le mois (1, 2&#8230;&#8203;), <code>mois</code> le mois  en toutes lettres (janvier, février&#8230;&#8203;) et <code>année</code> l&#8217;année en chiffres
 (exemples: <code>jeudi 8 juin 2023</code>, <code>mercredi 5 avril 2034</code>).</p>
 </li>
 <li>
@@ -1904,12 +1867,12 @@ document.body.appendChild(clock)                                      <i class="
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Le Lorem Ipsum permet d&#8217;illustrer une mise en page avec différents gabarits contenant du texte vide de sens<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup>.</p>
+<p>Le Lorem Ipsum permet d&#8217;illustrer une mise en page avec différents gabarits contenant du texte vide de sens<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup>.</p>
 </div>
 <div id="footnotes">
 <hr>
-<div class="footnote" id="_footnotedef_10">
-<a href="#_footnoteref_10">10</a>. Un texte lisible et contenant du sens serait source de distractions et empêcherait de se concentrer sur la mise en page elle-même.
+<div class="footnote" id="_footnotedef_8">
+<a href="#_footnoteref_8">8</a>. Un texte lisible et contenant du sens serait source de distractions et empêcherait de se concentrer sur la mise en page elle-même.
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -2177,19 +2140,13 @@ document.body.appendChild(lorem)                                         <i clas
 <a href="#_footnoteref_4">4</a>. Selon le sens de lecture&#8201;&#8212;&#8201;de gauche à droite (<code>ltr</code> : <em>left to right</em>) ou de droite à gauche (<code>rtl</code> : <em>right to left</em>)&#8201;&#8212;&#8201;le code source sera à gauche pour une lecture de gauche à droite, à droite pour une lecture de droite à gauche. Le sens de lecture&#8201;&#8212;&#8201;de gauche à droite (<code>ltr</code> : <em>left to right</em>) ou de droite à gauche (<code>rtl</code> : <em>right to left</em>)&#8201;&#8212;&#8201;dépend de la langue retenue pour les éléments. Par exemple, le français, l&#8217;anglais ou l&#8217;espagnol se lisent de gauche à droite tandis que l’arabe, le farsi, l’ourdou ou l’hébreu se lisent de droite à gauche.
 </div>
 <div class="footnote" id="_footnotedef_5">
-<a href="#_footnoteref_5">5</a>. Le clic se fait à l&#8217;aide du bouton principal de la souris : le gauche en mode droitier, le droit en mode gaucher, ou le bouton unique.
+<a href="#_footnoteref_5">5</a>. Une séquence d&#8217;échappement permet de représenter n&#8217;importe quel caractère <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> en HTML en utilisant uniquement des caractères <a href="https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange">ASCII</a>. (voir <a href="https://www.w3.org/International/questions/qa-escapes.fr.html#:~:text=Une%20séquence%20d%27échappement%20permet,référence%20d%27entité%20de%20caractère%20.">W3C</a>)
 </div>
 <div class="footnote" id="_footnotedef_6">
-<a href="#_footnoteref_6">6</a>. Le grip vertical <it-mdi-drag-vertical></it-mdi-drag-vertical> est présent pour faciliter le déplacement de la barre verticale séparatrice.
+<a href="#_footnoteref_6">6</a>. On pourra également consulter <a href="https://www.w3schools.com/cssref/css_selectors.php">la référence des sélecteurs <code>css</code> sur W3schools.</a>
 </div>
 <div class="footnote" id="_footnotedef_7">
-<a href="#_footnoteref_7">7</a>. Une séquence d&#8217;échappement permet de représenter n&#8217;importe quel caractère <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> en HTML en utilisant uniquement des caractères <a href="https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange">ASCII</a>. (voir <a href="https://www.w3.org/International/questions/qa-escapes.fr.html#:~:text=Une%20séquence%20d%27échappement%20permet,référence%20d%27entité%20de%20caractère%20.">W3C</a>)
-</div>
-<div class="footnote" id="_footnotedef_8">
-<a href="#_footnoteref_8">8</a>. On pourra également consulter <a href="https://www.w3schools.com/cssref/css_selectors.php">la référence des sélecteurs <code>css</code> sur W3schools.</a>
-</div>
-<div class="footnote" id="_footnotedef_9">
-<a href="#_footnoteref_9">9</a>. La manière d&#8217;afficher ces 4 informations dépend de la langue considérée. Par exemple, le <code>dimanche 20 décembre 2020</code> en français s&#8217;écrira <code>Sunday, 20 December 2020</code> en anglais, <code>Sonntag, 20. Dezember 2020</code> en allemand, <code>domingo, 20 de diciembre de 2020</code> en espagnol ou encore <code>2020年12月20日 日曜日</code> en japonais.
+<a href="#_footnoteref_7">7</a>. La manière d&#8217;afficher ces 4 informations dépend de la langue considérée. Par exemple, le <code>dimanche 20 décembre 2020</code> en français s&#8217;écrira <code>Sunday, 20 December 2020</code> en anglais, <code>Sonntag, 20. Dezember 2020</code> en allemand, <code>domingo, 20 de diciembre de 2020</code> en espagnol ou encore <code>2020年12月20日 日曜日</code> en japonais.
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

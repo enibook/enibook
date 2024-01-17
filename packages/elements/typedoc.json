@@ -8,8 +8,12 @@
   "excludeNotDocumented": false,
   "excludeExternals": true,
   "includeVersion": true,
-  "darkHighlightTheme": "dark-plus",
+  "darkHighlightTheme": "vitesse-dark",
+  "lightHighlightTheme": "vitesse-light",
   "excludeTags": ["@csspart", "@dependency"],
+  "hideGenerator": true,
+  "htmlLang": "fr",
+  "name": "EniBook : éléments",
   "navigationLinks": {
     "EniBook": "https://enibook.github.io/enibook/"
   },
@@ -19,10 +23,9 @@
     "typedoc-plugin-mdn-links",
     "typedoc-plugin-merge-modules",
     "typedoc-plugin-missing-exports",
-    "typedoc-plugin-keywords",
-    "typedoc-theme-hierarchy"
+    "typedoc-plugin-keywords"
   ],
-  "theme": "hierarchy",
+  "theme": "default",
   "tsconfig": "./tsconfig.json",
   "visibilityFilters": {
     "protected": false,

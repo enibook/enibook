@@ -44,9 +44,11 @@ details > summary {
   color: var(--sl-color-neutral-600);
 }
 details[open] > .content {
-  border: 1px solid var(--sl-color-neutral-600);
+  border: 4px solid var(--sl-color-neutral-200);
   border-top: none;
-  border-radius: var(--sl-border-radius-large);
+  border-right: none;
+  border-bottom: none;
+  border-radius: none; /*var(--sl-border-radius-large);*/
   padding: 0.5em;
 }
 

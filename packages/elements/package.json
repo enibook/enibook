@@ -62,7 +62,6 @@
     "typedoc-plugin-merge-modules": "^5.1.0",
     "typedoc-plugin-missing-exports": "^2.1.0",
     "typedoc-theme-category-nav": "^0.0.2",
-    "typedoc-theme-hierarchy": "^4.1.2",
     "typescript": "^5.3.3",
     "unocss": "^0.58.3",
     "vite": "^5.0.11",
@@ -79,7 +78,8 @@
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-footnote": "^4.0.0",
-    "markdown-it-multimd-table": "^4.2.3"
+    "markdown-it-multimd-table": "^4.2.3",
+    "playground-elements": "^0.18.1"
   },
   "customElements": "dist/custom-elements.json"
 }

@@ -1,11 +1,11 @@
-var _a, _b;
 // lit
 import '@shoelace-style/shoelace/dist/components/split-panel/split-panel.js';
-import { css } from 'lit';
+import { css, unsafeCSS } from 'lit';
 // enibook
 import { AsciidoctorProcessor } from '../../utilities/asciidoc';
 import { PreviewIt } from '../preview/preview';
 import { runScript } from '../../utilities/run-script';
+import styles from './adoc-preview.css?inline';
 /**
  * Présentation d'un code source `asciidoc` et de son rendu.
  * @title Aperçu asciidoc
@@ -17,13 +17,13 @@ import { runScript } from '../../utilities/run-script';
  * @csspart handle - `div` de la poignée séparatrice.
  * @csspart preview - `div` de l'aperçu.
  */
-export class AdocPreviewIt extends (_b = PreviewIt) {
+export class AdocPreviewIt extends PreviewIt {
     constructor() {
         super();
         this.language = 'asciidoc';
     }
     renderCode() {
-        const html = _a.asciidoctor.convert(this.code, {
+        const html = AdocPreviewIt.asciidoctor.convert(this.code, {
             'safe': 'unsafe',
             'attributes': {
                 'showtitle': true,
@@ -101,9 +101,8 @@ export class AdocPreviewIt extends (_b = PreviewIt) {
         }
     }
 }
-_a = AdocPreviewIt;
 AdocPreviewIt.styles = [
-    Reflect.get(_b, "styles", _a),
+    unsafeCSS(styles),
     css `@unocss-placeholder`
 ];
 AdocPreviewIt.asciidoctor = AsciidoctorProcessor();

@@ -1,0 +1,10 @@
+@import '../../styles/element.css';
+
+:host {
+  display: block;
+}
+
+sl-details.custom-icons::part(summary-icon) {
+  /* Disable the expand/collapse animation */
+  rotate: none;
+}

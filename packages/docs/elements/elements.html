@@ -7,9 +7,6 @@
 <meta name="generator" content="Asciidoctor 2.0.20">
 <title>EniBook : éléments HTML</title>
 <style>
-/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
-/* Uncomment the following line when using as a custom stylesheet */
-/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
 html{font-family:sans-serif;-webkit-text-size-adjust:100%}
 a{background:none}
 a:focus{outline:thin dotted}
@@ -509,6 +506,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Les développements sont réalisés en
 <a href="https://www.typescriptlang.org"><code>typescript</code></a> et sont accessibles depuis l&#8217;<a href="http://127.0.0.1:5500/packages/docs/api/index.html">API</a> (<em>Application Programming Interface</em>).</p>
 </div>
+<asciidoc-it
+  title="Exemple asciidoc"
+  mode="codeblock"
+  theme="light"
+  line-numbers
+>
+  <script type="enibook/css">
+    .class { margin: 1em; }
+  </script>
+  <script type="enibook/asciidoc">
+  = Titre
+  :showtitle:
+
+  == section
+
+  .liste à puces
+  * un
+  * deux
+  </script>
+</asciidoc-it>
 </div>
 </div>
 <div class="sect1">

@@ -3,7 +3,7 @@ var _a, _b;
 import { css, unsafeCSS } from "lit";
 // enibook
 import { PlaygroundIt } from "../playground/playground";
-import styles from './asciidoc.css?inline';
+// import styles from './asciidoc.css?inline'
 export class AsciidocIt extends (_b = PlaygroundIt) {
     get options() {
         this.markupLanguage = 'asciidoc';
@@ -16,7 +16,7 @@ export class AsciidocIt extends (_b = PlaygroundIt) {
 _a = AsciidocIt;
 AsciidocIt.styles = [
     unsafeCSS(Reflect.get(_b, "styles", _a)),
-    unsafeCSS(styles),
+    // unsafeCSS(styles),
     css `@unocss-placeholder`
 ];
 if (customElements && !customElements.get('asciidoc-it')) {

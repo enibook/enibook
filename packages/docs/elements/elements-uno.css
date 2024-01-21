@@ -72,5 +72,6 @@ it-simple-icons-asciidoctor{--un-icon:url("data:image/svg+xml;utf8,%3Csvg viewBo
 [stroke~="\#FF984D"]{--un-stroke-opacity:1;stroke:rgb(255 152 77 / var(--un-stroke-opacity));}
 [stroke~="none"]{stroke:none;}
 [px=""]{padding-left:1rem;padding-right:1rem;}
+.indent{text-indent:1.5rem;}
 .font-size-8{font-size:2rem;}
 .uppercase{text-transform:uppercase;}

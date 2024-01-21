@@ -34,6 +34,7 @@ enum State {
 // @customElement('clock-it')
 export class ClockIt extends BaseIt {
   static override styles: CSSResultGroup = [
+    super.styles,
     unsafeCSS(styles),
     css`@unocss-placeholder`
   ]

@@ -5,6 +5,7 @@ export { default as SlButton } from '@shoelace-style/shoelace/dist/components/bu
 export { AdocPreviewIt } from './elements/adoc-preview/adoc-preview'
 export { AsciidocIt } from './elements/asciidoc/asciidoc'
 export { ClockIt } from './elements/clock/clock'
+export { CodeIt } from './elements/code/code'
 export { ColorIt } from './elements/color/color'
 export { HtmlPreviewIt } from './elements/html-preview/html-preview'
 export { LoremIpsumIt } from './elements/lorem-ipsum/lorem-ipsum'

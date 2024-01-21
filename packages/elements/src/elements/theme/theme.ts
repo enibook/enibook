@@ -20,6 +20,7 @@ import styles from './theme.css?inline'
  */
 export class ThemeIt extends BaseIt {
   static styles: CSSResultGroup = [ 
+    super.styles,
     unsafeCSS(styles),
     css`@unocss-placeholder`
   ]

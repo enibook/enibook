@@ -21,6 +21,7 @@ import styles from './toolbar.css?inline'
     throw new Error('Method not implemented.');
   }
   static styles: CSSResultGroup = [ 
+    super.styles,
     unsafeCSS(styles),
     css`@unocss-placeholder`
   ]

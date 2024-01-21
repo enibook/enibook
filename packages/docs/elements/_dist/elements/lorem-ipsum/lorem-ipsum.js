@@ -4,6 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var _a, _b;
 // lit
 import { css, html, unsafeCSS } from "lit";
 import { property } from "lit/decorators.js";
@@ -11,7 +12,7 @@ import { property } from "lit/decorators.js";
 import { BaseIt } from "../base/base";
 import { dictionary } from "./dictionary";
 import styles from "./lorem-ipsum.css?inline";
-export class LoremIpsumIt extends BaseIt {
+export class LoremIpsumIt extends (_b = BaseIt) {
     constructor() {
         super(...arguments);
         /** Nombre d'objets textuels (mots, paragraphes, phrases, items de liste) générés. */
@@ -180,7 +181,9 @@ export class LoremIpsumIt extends BaseIt {
         return asciidoc.replace(/^ +| +$/gm, "");
     }
 }
+_a = LoremIpsumIt;
 LoremIpsumIt.styles = [
+    Reflect.get(_b, "styles", _a),
     unsafeCSS(styles),
     css `@unocss-placeholder`
 ];

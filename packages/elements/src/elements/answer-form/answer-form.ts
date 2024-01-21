@@ -9,6 +9,7 @@ import styles from './answer-form.css?inline'
 
 export abstract class AnswerForm extends BaseIt {
   static override styles: CSSResultGroup = [ 
+    super.styles,
     unsafeCSS(styles),
     css`@unocss-placeholder`
   ]

@@ -27,17 +27,14 @@ import { prolog as cmProlog } from 'codemirror-lang-prolog'
 import { python as cmPython } from '@codemirror/lang-python'
 import { sql as cmSql } from "@codemirror/lang-sql"
 */
-import { html as cmHtml } from "@codemirror/lang-html"
-
 import { Compartment, EditorState } from "@codemirror/state"
 import { EditorView, keymap, lineNumbers, placeholder } from "@codemirror/view"
 import { indentationMarkers } from '@replit/codemirror-indentation-markers'
-import { indentUnit, LanguageDescription, StreamLanguage } from "@codemirror/language"
-import { languages } from '@codemirror/language-data'
+import { indentUnit /*, LanguageDescription, StreamLanguage */ } from "@codemirror/language"
+// import { languages } from '@codemirror/language-data'
 import type { Command} from "@codemirror/view";
 import type { Extension, StateField } from "@codemirror/state";
 import type { LanguageSupport} from "@codemirror/language";
-// import type { LanguageSupport} from "@codemirror/language";
 // enibook
 import '../toolbar/toolbar'
 import { emit } from '../../utilities/emit';
@@ -352,19 +349,15 @@ export class CodeIt extends AnswerForm {
   }
 
   protected getCmLang(): LanguageSupport {
-    return []
+    const lang = [] as unknown
+    return lang as LanguageSupport
   }
 
   protected getHelpUrl(language: string): string {
-    switch (language) {
-      case 'asciidoc':
-        return 'https://docs.asciidoctor.org/asciidoc/latest/'
-      case 'prolog':
-        return 'https://www.swi-prolog.org/pldoc/doc_for?object=manual'
-      case 'text':
-        return ''
-      default:
-        return `https://devdocs.io/${language}/`
+    if (this.language && this.language !== 'text') {
+      return `https://devdocs.io/${language}/`
+    } else {
+      return ''
     }
   }
 
@@ -413,8 +406,8 @@ export class CodeIt extends AnswerForm {
 
   protected handleCopyClipboard() {
     navigator.clipboard.writeText(this.value).then(
-      () => { this.notify("Contenu de l'éditeur copié dans le presse-papier.", "success", "mdi-check-circle-outline") },
-      () => { this.notify("A priori, interdiction d'écrire dans le presse-papier !", "warning", "mdi-alert-outline") }
+      () => { this.notify("Contenu de l'éditeur copié dans le presse-papier.", "success", "it-mdi-check-circle-outline") },
+      () => { this.notify("A priori, interdiction d'écrire dans le presse-papier !", "warning", "it-mdi-alert-outline") }
     )
   }
 
@@ -436,6 +429,7 @@ export class CodeIt extends AnswerForm {
     (0, eval)(`${value}(this.editor)`)
   }
 
+  /*
   protected handleSelectLanguage(event: CustomEvent) {
     const item = event.detail.item
     this.languageMenuItems.forEach(anItem => { anItem.checked = false })
@@ -443,18 +437,19 @@ export class CodeIt extends AnswerForm {
     this.language = item.value
     this.editor.dispatch({
       effects: [
-        this.languageConfig.reconfigure(this.getCmLang(this.language)),
+        this.languageConfig.reconfigure(this.getCmLang()),
         this.placeholderConfig.reconfigure(placeholder(this.placeholder))
       ]
     })
   }
-
+  */
+ /*
   protected async loadLanguage(lang: string): Promise<LanguageSupport | undefined>{
     const desc = LanguageDescription.matchLanguageName(languages, lang, true)
     const support = await desc?.load()
     return support
   }
-
+  */
   protected override renderAnswer(): TemplateResult {
     return html`
       <div part="base" class="code-edit">
@@ -465,10 +460,10 @@ export class CodeIt extends AnswerForm {
           <div part="editor" class="editor"></div>
           <div part="menuBtn" class="menu-button">
             <sl-tooltip content="activer/désactiver la barre d'outils">
-              <sl-button variant="neutral" size="small" @click=${() => { this.toolbar = !this.toolbar }}>${svgIcon(icons['mdi-tools'])}</sl-button>
+              <sl-button variant="neutral" size="small" @click=${() => { this.toolbar = !this.toolbar }}><it-mdi-tools></it-mdi-tools></sl-button>
             </sl-tooltip>
             ${this.btnFeedback
-              ? html`<sl-tooltip content="interprétation"><sl-button variant="neutral" size="small" @click=${() => { this.emit('feedback-requested-it') }}>${svgIcon(icons['mdi-play'])}</sl-button></sl-tooltip>`
+              ? html`<sl-tooltip content="interprétation"><sl-button variant="neutral" size="small" @click=${() => { this.emit('feedback-requested-it') }}><it-mdi-play></it-mdi-play></sl-button></sl-tooltip>`
               : html``
             }
           </div>
@@ -487,7 +482,7 @@ export class CodeIt extends AnswerForm {
           <sl-button size="small" @click=${() => { command.toggleComment(this.editor) }}><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;display:inline-block" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M5 5v14h2v2H3V3h4v2H5m15 6H7v2h13V7m0 4Z"/></svg></sl-button>
         </sl-tooltip>
         <sl-tooltip content="commenter/décommenter le bloc">
-          <sl-button size="small" @click=${() => { command.toggleBlockComment(this.editor) }}>${svgIcon(icons['mdi-format-list-group'])}</sl-button>
+          <sl-button size="small" @click=${() => { command.toggleBlockComment(this.editor) }}><it-mdi-format-list-group></it-mdi-format-list-group></sl-button>
         </sl-tooltip>
       </sl-button-group>
     `
@@ -497,13 +492,13 @@ export class CodeIt extends AnswerForm {
     return html`
       <sl-button-group ?hidden=${this.readOnly} label="historique">
         <sl-tooltip content="annuler toutes les modifications">
-          <sl-button size="small" @click=${() => { this.reset() }}>${svgIcon(icons['mdi-refresh'])}</sl-button>
+          <sl-button size="small" @click=${() => { this.reset() }}><it-mdi-refresh></it-mdi-refresh></sl-button>
         </sl-tooltip>
         <sl-tooltip content="annuler la dernière modification">
-          <sl-button size="small" @click=${() => { command.undo(this.editor) }}>${svgIcon(icons['mdi-undo'])}</sl-button>
+          <sl-button size="small" @click=${() => { command.undo(this.editor) }}><it-mdi-undo></it-mdi-undo></sl-button>
         </sl-tooltip>
         <sl-tooltip content="rétablir la dernière annulation">
-          <sl-button size="small" @click=${() => { command.redo(this.editor) }}>${svgIcon(icons['mdi-redo'])}</sl-button>
+          <sl-button size="small" @click=${() => { command.redo(this.editor) }}><it-mdi-redo></it-mdi-redo></sl-button>
         </sl-tooltip>
       </sl-button-group>
     `
@@ -513,10 +508,10 @@ export class CodeIt extends AnswerForm {
     return html`
       <sl-button-group ?hidden=${this.readOnly} label="indentation">
         <sl-tooltip content="indenter">
-          <sl-button size="small" @click=${() => { command.indentMore(this.editor) }}>${svgIcon(icons['mdi-format-indent-increase'])}</sl-button>
+          <sl-button size="small" @click=${() => { command.indentMore(this.editor) }}><it-mdi-format-indent-increase></it-mdi-format-indent-increase></sl-button>
         </sl-tooltip>
         <sl-tooltip content="désindenter">
-          <sl-button size="small" @click=${() => { command.indentLess(this.editor) }}>${svgIcon(icons['mdi-format-indent-decrease'])}</sl-button>
+          <sl-button size="small" @click=${() => { command.indentLess(this.editor) }}><it-mdi-format-indent-decrease></it-mdi-format-indent-decrease></sl-button>
         </sl-tooltip>
       </sl-button-group>
     `
@@ -526,37 +521,29 @@ export class CodeIt extends AnswerForm {
     return html`
       <sl-button-group label="outils">
         <sl-tooltip content="afficher/cacher les numéros de ligne">
-          <sl-button size="small" @click=${() => this.handleLineNumbers()}>${svgIcon(icons['mdi-format-list-numbered'])}</sl-button>
-        </sl-tooltip>
-        <sl-tooltip content="choisir un langage">
-          <sl-dropdown stay-open-on-select hoist ?hidden=${!!this.language}>
-            <sl-button slot="trigger" size="small" caret>${svgIcon(icons[`mdi-language-${this.language}`])}</sl-button>
-            <sl-menu class="dropdown__languages" @sl-select=${this.handleSelectLanguage}>
-              ${Object.keys(cmLanguages).map(language => html`<sl-menu-item type="checkbox" value="${language}" ?checked=${this.language === language}>${language}<div slot="prefix">${svgIcon(icons[`mdi-language-${language}`])}</div></sl-menu-item>`)}
-            </sl-menu>
-          </sl-dropdown>
+          <sl-button size="small" @click=${() => this.handleLineNumbers()}><it-mdi-format-list-numbered></it-mdi-format-list-numbered></sl-button>
         </sl-tooltip>
         <sl-tooltip content="raccourcis clavier">
           <sl-dropdown stay-open-on-select hoist ?hidden=${this.readOnly}>
-            <sl-button slot="trigger" size="small" caret>${svgIcon(icons['mdi-keyboard'])}</sl-button>
+            <sl-button slot="trigger" size="small" caret><it-mdi-keyboard></it-mdi-keyboard></sl-button>
             <sl-menu class="dropdown__shortcuts">
               <sl-menu-item disabled>Commande<div slot="suffix">Raccourci clavier</div></sl-menu-item>
               <sl-divider></sl-divider>
-              ${CodeEditIt.keymap.map(map => html`<sl-menu-item @click=${() => { map.run(this.editor) }}>${map.name}<div slot="suffix">${map.key}</div></sl-menu-item>`)}
+              ${CodeIt.keymap.map(map => html`<sl-menu-item @click=${() => { map.run(this.editor) }}>${map.name}<div slot="suffix">${map.key}</div></sl-menu-item>`)}
               <sl-divider></sl-divider>
               <sl-menu-item disabled>Commande<div slot="suffix">Raccourci clavier</div></sl-menu-item>
             </sl-menu>
           </sl-dropdown>
         </sl-tooltip>
         <sl-tooltip content="copier dans le presse-papier">
-          <sl-button size="small" @click=${() => this.handleCopyClipboard()}>${svgIcon(icons['mdi-content-copy'])}</sl-button>
+          <sl-button size="small" @click=${() => this.handleCopyClipboard()}><it-mdi-content-copy></it-mdi-content-copy></sl-button>
         </sl-tooltip>
         <sl-tooltip content="changer de thème">
-          <sl-button size="small" @click=${() => this.toggleTheme()}>${svgIcon(icons['mdi-theme-light-dark'])}</sl-button>
+          <sl-button size="small" @click=${() => this.toggleTheme()}><it-mdi-theme-light-dark></it-mdi-theme-light-dark></sl-button>
         </sl-tooltip>
         <sl-tooltip .content=${!this.fullscreen ? 'passer en mode plein écran' : 'quitter le mode plein écran'}>
           <sl-button size="small" @click=${() => this.toggleFullscreen()}>
-            ${!this.fullscreen ? svgIcon(icons['mdi-fullscreen']) : svgIcon(icons['mdi-fullscreen-exit'])}
+            ${!this.fullscreen ? html`<it-mdi-fullscreen></it-mdi-fullscreen>` : html`<it-mdi-fullscreen-exit></it-mdi-fullscreen-exit>`}
           </sl-button>
         </sl-tooltip>
       </sl-button-group>
@@ -567,10 +554,10 @@ export class CodeIt extends AnswerForm {
     return html`
       <sl-button-group label="rechercher/remplacer">
         <sl-tooltip content="${this.readOnly ? 'rechercher' : 'rechercher/remplacer'}">
-          <sl-button size="small" @click=${() => { search.openSearchPanel(this.editor) }}>${svgIcon(icons['mdi-find-replace'])}</sl-button>
+          <sl-button size="small" @click=${() => { search.openSearchPanel(this.editor) }}><it-mdi-find-replace></it-mdi-find-replace></sl-button>
         </sl-tooltip>
         <sl-tooltip content="atteindre la ligne:colonne">
-          <sl-button size="small" @click=${() => { search.gotoLine(this.editor) }}>${svgIcon(icons['mdi-text-search'])}</sl-button>
+          <sl-button size="small" @click=${() => { search.gotoLine(this.editor) }}><it-mdi-text-search></it-mdi-text-search></sl-button>
         </sl-tooltip>
       </sl-button-group>
     `
@@ -616,24 +603,14 @@ export class CodeIt extends AnswerForm {
 
 
   protected async setLanguageExtension() {
-    const langs = Object.keys(cmLanguages)
-    if (langs.includes(this.language)) {
+    if (this.language && this.language !== 'text') {
       this.editor.dispatch({
         effects: [
-          this.languageConfig.reconfigure(cmLanguages[this.language]),
+          this.languageConfig.reconfigure(this.getCmLang()),
         ]
       })
-    } else {
-      const cmLang = await this.loadLanguage(this.language)
-      if (cmLang) {
-        this.editor.dispatch({
-          effects: [
-            this.languageConfig.reconfigure(cmLang),
-          ]
-        })
-      }
     }
-  }
+  } 
 
   protected setPlaceholderExtension() {
     this.editor.dispatch({

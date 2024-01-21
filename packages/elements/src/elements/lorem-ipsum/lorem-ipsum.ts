@@ -8,6 +8,7 @@ import styles from "./lorem-ipsum.css?inline";
 
 export class LoremIpsumIt extends BaseIt {
   static override styles: CSSResultGroup = [
+    super.styles,
     unsafeCSS(styles),
     css`@unocss-placeholder`
   ];

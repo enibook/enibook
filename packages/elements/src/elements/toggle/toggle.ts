@@ -20,6 +20,7 @@ const SHOW = 'Montrer'
  */
 export class ToggleIt extends BaseIt {
   static styles: CSSResultGroup = [ 
+    super.styles,
     unsafeCSS(styles),
     css`@unocss-placeholder`
   ]

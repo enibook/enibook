@@ -4,6 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var _a, _b;
 // lit
 import { css, html, unsafeCSS } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
@@ -35,7 +36,7 @@ var State;
  * @credit [Shoelace](https://shoelace.style) pour ses éléments d'interface utilisateur.
  */
 // @customElement('clock-it')
-export class ClockIt extends BaseIt {
+export class ClockIt extends (_b = BaseIt) {
     constructor() {
         super(...arguments);
         this._state = State.none;
@@ -125,7 +126,9 @@ export class ClockIt extends BaseIt {
         return `clock-it:[${attrs.join(',')}]`;
     }
 }
+_a = ClockIt;
 ClockIt.styles = [
+    Reflect.get(_b, "styles", _a),
     unsafeCSS(styles),
     css `@unocss-placeholder`
 ];

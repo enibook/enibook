@@ -43,6 +43,7 @@ export const colorNames: string[] = [
  */
 export class ColorIt extends BaseIt {
   static styles: CSSResultGroup = [
+    super.styles,
     unsafeCSS(styles),
     css`@unocss-placeholder`
   ]

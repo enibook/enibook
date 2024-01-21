@@ -31,6 +31,7 @@ import styles from './tools.css?inline'
  */
  export class ToolsIt extends BaseIt {
   static styles: CSSResultGroup = [
+    super.styles,
     unsafeCSS(styles),
     css`@unocss-placeholder`
   ]

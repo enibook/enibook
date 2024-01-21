@@ -2228,7 +2228,7 @@ it-mdi-calendar-clock-outline{--un-icon:url("data:image/svg+xml;utf8,%3Csvg view
         <div class="editor-base">
           <div part="editor" class="editor"></div>
           <div part="menuBtn" class="menu-button">
-            <sl-tooltip content="activer/désactiver la barre d'outils">
+            <sl-tooltip content="activer/désactiver les barres d'outils et d'informations">
               <sl-button variant="neutral" size="small" @click=${()=>{this.toolbar=!this.toolbar}}><it-mdi-tools></it-mdi-tools></sl-button>
             </sl-tooltip>
             ${this.btnFeedback?Ct`<sl-tooltip content="interprétation"><sl-button variant="neutral" size="small" @click=${()=>{this.emit("feedback-requested-it")}}><it-mdi-play></it-mdi-play></sl-button></sl-tooltip>`:Ct``}

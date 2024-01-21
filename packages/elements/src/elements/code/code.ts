@@ -149,7 +149,6 @@ export class CodeIt extends AnswerForm {
   get indentSize(): number {
     return this._indentSize
   }
-
   set indentSize(value: number) {
     if (value !== this._indentSize) {
       this._indentSize = value
@@ -168,7 +167,6 @@ export class CodeIt extends AnswerForm {
   get language(): string {
     return this._language
   }
-
   set language(value: string) {
     if (value !== this._language) {
       this._language = value
@@ -195,7 +193,6 @@ export class CodeIt extends AnswerForm {
   get placeholder(): string {
     return this._placeholder
   }
-
   set placeholder(value: string) {
     if (value !== this._placeholder) {
       this._placeholder = value
@@ -214,7 +211,6 @@ export class CodeIt extends AnswerForm {
   get readOnly(): boolean {
     return this._readOnly
   }
-
   set readOnly(value: boolean) {
     if (value !== this._readOnly) {
       this._readOnly = value
@@ -240,7 +236,6 @@ export class CodeIt extends AnswerForm {
   get theme(): 'light' | 'dark' {
     return this._theme
   }
-
   set theme(value: 'light' | 'dark') {
     if (value !== this._theme) {
       this._theme = value
@@ -270,7 +265,6 @@ export class CodeIt extends AnswerForm {
     }
     return res
   }
-
   set value(value: string) {
     if (value !== this.value) {
       if (this.editor) {
@@ -459,7 +453,7 @@ export class CodeIt extends AnswerForm {
         <div class="editor-base">
           <div part="editor" class="editor"></div>
           <div part="menuBtn" class="menu-button">
-            <sl-tooltip content="activer/désactiver la barre d'outils">
+            <sl-tooltip content="activer/désactiver les barres d'outils et d'informations">
               <sl-button variant="neutral" size="small" @click=${() => { this.toolbar = !this.toolbar }}><it-mdi-tools></it-mdi-tools></sl-button>
             </sl-tooltip>
             ${this.btnFeedback

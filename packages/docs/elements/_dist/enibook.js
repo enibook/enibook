@@ -85773,7 +85773,7 @@ const Hr = (ui = class extends Es {
         <div class="editor-base">
           <div part="editor" class="editor"></div>
           <div part="menuBtn" class="menu-button">
-            <sl-tooltip content="activer/désactiver la barre d'outils">
+            <sl-tooltip content="activer/désactiver les barres d'outils et d'informations">
               <sl-button variant="neutral" size="small" @click=${() => {
       this.toolbar = !this.toolbar;
     }}><it-mdi-tools></it-mdi-tools></sl-button>

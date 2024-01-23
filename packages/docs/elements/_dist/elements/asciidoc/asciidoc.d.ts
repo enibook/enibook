@@ -1,9 +1,12 @@
 import { CSSResultGroup } from "lit";
-import { type EmbedOptions } from 'livecodes';
-import { PlaygroundIt } from "../playground/playground";
-export declare class AsciidocIt extends PlaygroundIt {
+import type { LanguageSupport } from "@codemirror/language";
+import type { Extension } from "@codemirror/state";
+import { CodeIt } from "../code/code";
+export declare class AsciidocIt extends CodeIt {
     static styles: CSSResultGroup;
-    protected get options(): EmbedOptions;
+    constructor();
+    protected getCmLang(): Extension | LanguageSupport;
+    protected getHelpUrl(): string;
 }
 declare global {
     interface HTMLElementTagNameMap {

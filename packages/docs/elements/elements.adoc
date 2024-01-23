@@ -17,12 +17,34 @@ Les développements sont réalisés en
 link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'link:http://127.0.0.1:5500/packages/docs/api/index.html[API] (_Application Programming Interface_).
 
 ++++
-<code-it read-only>
+<code-it fieldset>
   <script type="enibook">
-  Un petit texte
+  Un petit paragraphe.
   </script>
 </code-it>
 ++++
+
+++++
+<code-it fieldset language="asciidoc">
+  <script type="enibook">
+  = Titre
+
+  == Section
+  Un petit paragraphe.
+  </script>
+</code-it>
+++++
+
+++++
+<code-it fieldset language="html" read-only>
+  <script type="enibook">
+  <h1>Titre</h1>
+  <h2>Section</h2>
+  <p>Un petit paragraphe.</p>
+  </script>
+</code-it>
+++++
+
 
 include::./adoc-preview/adoc-preview.adoc[]
 include::./html-preview/html-preview.adoc[]

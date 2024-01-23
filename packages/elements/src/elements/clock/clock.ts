@@ -1,6 +1,6 @@
 // lit
 import { css, html, unsafeCSS } from 'lit'
-import { property, query, state } from 'lit/decorators.js'
+import { customElement, property, query, state } from 'lit/decorators.js'
 import type { CSSResultGroup, PropertyValueMap, TemplateResult } from 'lit'
 // shoelace
 import '@shoelace-style/shoelace/dist/components/button/button.js'
@@ -31,7 +31,7 @@ enum State {
  *
  * @credit [Shoelace](https://shoelace.style) pour ses éléments d'interface utilisateur.
  */
-// @customElement('clock-it')
+@customElement('clock-it')
 export class ClockIt extends BaseIt {
   static override styles: CSSResultGroup = [
     super.styles,

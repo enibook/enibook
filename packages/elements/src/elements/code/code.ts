@@ -16,7 +16,7 @@ import type SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/
 import * as command from '@codemirror/commands'
 import * as search from '@codemirror/search'
 import { basicSetup } from "codemirror"
-/*
+// import { languages } from '@codemirror/language-data'
 import { asciidoc as cmAsciidoc } from "codemirror-asciidoc"
 import { css as cmCss } from "@codemirror/lang-css"
 import { html as cmHtml } from "@codemirror/lang-html"
@@ -26,15 +26,13 @@ import { markdown as cmMarkdown } from "@codemirror/lang-markdown"
 import { prolog as cmProlog } from 'codemirror-lang-prolog'
 import { python as cmPython } from '@codemirror/lang-python'
 import { sql as cmSql } from "@codemirror/lang-sql"
-*/
 import { Compartment, EditorState } from "@codemirror/state"
 import { EditorView, keymap, lineNumbers, placeholder } from "@codemirror/view"
 import { indentationMarkers } from '@replit/codemirror-indentation-markers'
-import { indentUnit /*, LanguageDescription, StreamLanguage */ } from "@codemirror/language"
-// import { languages } from '@codemirror/language-data'
+import { indentUnit, /*LanguageDescription,*/ StreamLanguage } from "@codemirror/language"
+import type { LanguageSupport } from "@codemirror/language";
 import type { Command} from "@codemirror/view";
 import type { Extension, StateField } from "@codemirror/state";
-import type { LanguageSupport} from "@codemirror/language";
 // enibook
 import '../toolbar/toolbar'
 import { emit } from '../../utilities/emit';
@@ -45,6 +43,7 @@ import { getKeymap } from './code-keymap';
 import { darkTheme } from './themes/dark'
 import { lightTheme } from './themes/light'
 import styles from './code.css?inline'
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 const outlineNone = EditorView.theme({
   "&.cm-editor.cm-focused": { outline: 'none' },
@@ -74,8 +73,8 @@ const helpKeymap = [
   command.indentWithTab
 ]
 
-/*
-const cmLanguages = {
+
+const cmLanguages: { [name: string]: Extension } = {
   'asciidoc': StreamLanguage.define(cmAsciidoc),
   'css': cmCss(),
   'html': cmHtml(),
@@ -88,7 +87,21 @@ const cmLanguages = {
   'text': [],
   'typescript': cmJavascript({ 'typescript': true })
 }
-*/
+
+const logos: { [name: string]: string } = {
+  '': '<it-mdi-help></it-mdi-help>',
+  'asciidoc': '<it-simple-icons-asciidoctor></it-simple-icons-asciidoctor>',
+  'css': '<it-mdi-language-css3></it-mdi-language-css3>',
+  'html': '<it-mdi-language-html5></it-mdi-language-html5>',
+  'javascript': '<it-mdi-language-javascript></it-mdi-language-javascript>',
+  'json': '<it-mdi-code-json></it-mdi-code-json>',
+  'markdown': '<it-mdi-language-markdown></it-mdi-language-markdown>',
+  'prolog': '<svg xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><text x="2" y="15" fill="currentColor" style="font-weight:bold;font-size:inherit">?-</text></svg>',
+  'python': '<it-mdi-language-python></it-mdi-language-python>',
+  'sql': '<it-mdi-database></it-mdi-database>',
+  'text': '<it-mdi-format-text></it-mdi-format-text>',
+  'typescript': '<it-mdi-language-typescript></it-mdi-language-typescript>'
+}
 
 /**
  * Editeur de code.
@@ -112,11 +125,11 @@ export class CodeIt extends AnswerForm {
 
   // private firstUpdateOk = false
 
-  private _language = 'text'
-  private _placeholder = "F1: afficher/masquer les barres d'outils et d'informations"
-  private _readOnly = false
-  private _indentSize = 2
-  private _theme: 'dark' | 'light' = 'dark'
+  protected _language = ''
+  protected _placeholder = "F1: afficher/masquer les barres d'outils et d'informations"
+  protected _readOnly = false
+  protected _indentSize = 2
+  protected _theme: 'dark' | 'light' = 'dark'
 
   @state() protected message = ''
 
@@ -342,14 +355,13 @@ export class CodeIt extends AnswerForm {
     // this.firstUpdateOk = true
   }
 
-  protected getCmLang(): LanguageSupport {
-    const lang = [] as unknown
-    return lang as LanguageSupport
+  protected getCmLang(): Extension | LanguageSupport {
+    return []
   }
 
-  protected getHelpUrl(language: string): string {
+  protected getHelpUrl(): string {
     if (this.language && this.language !== 'text') {
-      return `https://devdocs.io/${language}/`
+      return `https://devdocs.io/${this.language}/`
     } else {
       return ''
     }
@@ -423,7 +435,7 @@ export class CodeIt extends AnswerForm {
     (0, eval)(`${value}(this.editor)`)
   }
 
-  /*
+  
   protected handleSelectLanguage(event: CustomEvent) {
     const item = event.detail.item
     this.languageMenuItems.forEach(anItem => { anItem.checked = false })
@@ -431,19 +443,19 @@ export class CodeIt extends AnswerForm {
     this.language = item.value
     this.editor.dispatch({
       effects: [
-        this.languageConfig.reconfigure(this.getCmLang()),
+        this.languageConfig.reconfigure(cmLanguages[this.language]),
         this.placeholderConfig.reconfigure(placeholder(this.placeholder))
       ]
     })
   }
-  */
- /*
+  
+/*
   protected async loadLanguage(lang: string): Promise<LanguageSupport | undefined>{
     const desc = LanguageDescription.matchLanguageName(languages, lang, true)
     const support = await desc?.load()
     return support
   }
-  */
+*/
   protected override renderAnswer(): TemplateResult {
     return html`
       <div part="base" class="code-edit">
@@ -453,9 +465,10 @@ export class CodeIt extends AnswerForm {
         <div class="editor-base">
           <div part="editor" class="editor"></div>
           <div part="menuBtn" class="menu-button">
-            <sl-tooltip content="activer/désactiver les barres d'outils et d'informations">
-              <sl-button variant="neutral" size="small" @click=${() => { this.toolbar = !this.toolbar }}><it-mdi-tools></it-mdi-tools></sl-button>
-            </sl-tooltip>
+            ${this.readOnly
+              ? html`<sl-tooltip content="copier dans le presse-papier"><sl-button variant="neutral" size="small" @click=${() => this.handleCopyClipboard()}><it-mdi-content-copy></it-mdi-content-copy></sl-button></sl-tooltip>`
+              : html`<sl-tooltip content="activer/désactiver les barres d'outils et d'informations"><sl-button variant="neutral" size="small" @click=${() => { this.toolbar = !this.toolbar }}><it-mdi-tools></it-mdi-tools></sl-button></sl-tooltip>`
+            }
             ${this.btnFeedback
               ? html`<sl-tooltip content="interprétation"><sl-button variant="neutral" size="small" @click=${() => { this.emit('feedback-requested-it') }}><it-mdi-play></it-mdi-play></sl-button></sl-tooltip>`
               : html``
@@ -517,13 +530,21 @@ export class CodeIt extends AnswerForm {
         <sl-tooltip content="afficher/cacher les numéros de ligne">
           <sl-button size="small" @click=${() => this.handleLineNumbers()}><it-mdi-format-list-numbered></it-mdi-format-list-numbered></sl-button>
         </sl-tooltip>
+        <sl-tooltip content="choisir un langage">
+          <sl-dropdown hoist>
+            <sl-button slot="trigger" size="small" caret>${unsafeHTML(logos[this.language])}</sl-button>
+            <sl-menu class="dropdown__languages" @sl-select=${this.handleSelectLanguage}>
+              ${Object.keys(cmLanguages).map(language => html`<sl-menu-item type="checkbox" value="${language}" ?checked=${this.language === language}>${language}<div slot="prefix">${unsafeHTML(logos[language])}</div></sl-menu-item>`)}
+            </sl-menu>
+          </sl-dropdown>
+        </sl-tooltip>
         <sl-tooltip content="raccourcis clavier">
           <sl-dropdown stay-open-on-select hoist ?hidden=${this.readOnly}>
             <sl-button slot="trigger" size="small" caret><it-mdi-keyboard></it-mdi-keyboard></sl-button>
             <sl-menu class="dropdown__shortcuts">
               <sl-menu-item disabled>Commande<div slot="suffix">Raccourci clavier</div></sl-menu-item>
               <sl-divider></sl-divider>
-              ${CodeIt.keymap.map(map => html`<sl-menu-item @click=${() => { map.run(this.editor) }}>${map.name}<div slot="suffix">${map.key}</div></sl-menu-item>`)}
+              ${CodeIt.keymap.map(map => html`<sl-menu-item @click=${() => { map.run(this.editor) }}>${map.run.name}<div slot="suffix">${map.key}</div></sl-menu-item>`)}
               <sl-divider></sl-divider>
               <sl-menu-item disabled>Commande<div slot="suffix">Raccourci clavier</div></sl-menu-item>
             </sl-menu>
@@ -563,7 +584,7 @@ export class CodeIt extends AnswerForm {
         <sl-button-group slot="end" label="informations">
           <sl-button size="small" variant="neutral">L ${this.cursorLine} - C ${this.cursorColumn}</sl-button>
           <sl-button size="small" variant="neutral">Indentation : ${this.indentSize}</sl-button>
-          <sl-button size="small" variant="neutral" href="${this.getHelpUrl(this.language)}" target="_blank">Langage : ${this.language}</sl-button>
+          <sl-button size="small" variant="neutral" href="${this.getHelpUrl()}" target="_blank">Langage : ${this.language}</sl-button>
           <sl-button size="small" variant="neutral">Mode : ${this.readOnly ? html`lecture seule` : html`édition` }</sl-button>
         </sl-button-group>
       </toolbar-it>
@@ -597,14 +618,24 @@ export class CodeIt extends AnswerForm {
 
 
   protected async setLanguageExtension() {
-    if (this.language && this.language !== 'text') {
+    const langs = Object.keys(cmLanguages)
+    if (langs.includes(this.language)) {
       this.editor.dispatch({
         effects: [
-          this.languageConfig.reconfigure(this.getCmLang()),
+          this.languageConfig.reconfigure(cmLanguages[this.language]),
         ]
       })
-    }
-  } 
+    } /*else {
+      const cmLang = await this.loadLanguage(this.language)
+      if (cmLang) {
+        this.editor.dispatch({
+          effects: [
+            this.languageConfig.reconfigure(cmLang),
+          ]
+        })
+      }
+    }*/
+  }
 
   protected setPlaceholderExtension() {
     this.editor.dispatch({

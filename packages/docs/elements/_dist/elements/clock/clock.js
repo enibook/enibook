@@ -4,10 +4,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var _a, _b;
 // lit
 import { css, html, unsafeCSS } from 'lit';
-import { property, query, state } from 'lit/decorators.js';
+import { customElement, property, query, state } from 'lit/decorators.js';
 // shoelace
 import '@shoelace-style/shoelace/dist/components/button/button.js';
 import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js';
@@ -35,8 +34,7 @@ var State;
  *
  * @credit [Shoelace](https://shoelace.style) pour ses éléments d'interface utilisateur.
  */
-// @customElement('clock-it')
-export class ClockIt extends (_b = BaseIt) {
+let ClockIt = class ClockIt extends BaseIt {
     constructor() {
         super(...arguments);
         this._state = State.none;
@@ -125,10 +123,9 @@ export class ClockIt extends (_b = BaseIt) {
         }
         return `clock-it:[${attrs.join(',')}]`;
     }
-}
-_a = ClockIt;
+};
 ClockIt.styles = [
-    Reflect.get(_b, "styles", _a),
+    (void 0).styles,
     unsafeCSS(styles),
     css `@unocss-placeholder`
 ];
@@ -153,6 +150,10 @@ __decorate([
 __decorate([
     property({ type: String, reflect: true })
 ], ClockIt.prototype, "size", void 0);
+ClockIt = __decorate([
+    customElement('clock-it')
+], ClockIt);
+export { ClockIt };
 if (customElements && !customElements.get('clock-it')) {
     customElements.define('clock-it', ClockIt);
 }

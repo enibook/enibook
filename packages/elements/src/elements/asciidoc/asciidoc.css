@@ -1,2 +1,3 @@
-@import "../../styles/asciidoctor.css";
-
+:host {
+  display: block;
+}

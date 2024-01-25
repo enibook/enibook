@@ -1,1 +1,0 @@
-Code issu d'un fichier : <clock-it time></clock-it>

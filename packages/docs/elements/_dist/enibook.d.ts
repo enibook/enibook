@@ -1,15 +1,9 @@
 import './styles/enibook-root.css';
 export { default as SlButton } from '@shoelace-style/shoelace/dist/components/button/button.js';
-export { AdocPreviewIt } from './elements/adoc-preview/adoc-preview';
 export { ClockIt } from './elements/clock/clock';
 export { CodeIt } from './elements/code/code';
 export { ColorIt } from './elements/color/color';
-export { HtmlIt } from './elements/html/html';
-export { HtmlPreviewIt } from './elements/html-preview/html-preview';
 export { LoremIpsumIt } from './elements/lorem-ipsum/lorem-ipsum';
-export { MdPreviewIt } from './elements/md-preview/md-preview';
-export { PlaygroundIt } from './elements/playground/playground';
-export { PreviewIt } from './elements/preview/preview';
 export { ThemeIt } from './elements/theme/theme';
 export { ToggleIt } from './elements/toggle/toggle';
 export { ToolbarIt } from './elements/toolbar/toolbar';

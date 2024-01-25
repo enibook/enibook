@@ -1,6 +1,6 @@
 // lit
 import { css, CSSResultGroup, html, PropertyValueMap, TemplateResult, unsafeCSS } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 // shoelace
 import '@shoelace-style/shoelace/dist/components/button/button'
 import '@shoelace-style/shoelace/dist/components/tooltip/tooltip'
@@ -18,6 +18,7 @@ const SHOW = 'Montrer'
  *
  * @csspart base - The component's internal wrapper.
  */
+@customElement('toggle-it')
 export class ToggleIt extends BaseIt {
   static styles: CSSResultGroup = [ 
     super.styles,
@@ -130,7 +131,9 @@ declare global {
   }
 }
 
+/*
 if (customElements && !customElements.get('toggle-it')) {
   customElements.define('toggle-it', ToggleIt)
 }
+*/
 

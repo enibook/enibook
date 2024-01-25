@@ -4,10 +4,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var _a, _b;
 // lit
 import { css, html, unsafeCSS } from 'lit';
-import { property, query } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 // shoelace
 import '@shoelace-style/shoelace/dist/components/button/button';
 import '@shoelace-style/shoelace/dist/components/divider/divider';
@@ -29,7 +28,7 @@ import styles from './tools.css?inline';
  *
  * @csspart base - The component's internal wrapper.
  */
-export class ToolsIt extends (_b = BaseIt) {
+let ToolsIt = class ToolsIt extends BaseIt {
     constructor() {
         super(...arguments);
         this.size = 'small';
@@ -173,10 +172,9 @@ export class ToolsIt extends (_b = BaseIt) {
     toAsciidoc() {
         throw new Error('Method not implemented.');
     }
-}
-_a = ToolsIt;
+};
 ToolsIt.styles = [
-    Reflect.get(_b, "styles", _a),
+    (void 0).styles,
     unsafeCSS(styles),
     css `@unocss-placeholder`
 ];
@@ -201,6 +199,12 @@ __decorate([
 __decorate([
     property({ type: String, reflect: true })
 ], ToolsIt.prototype, "size", void 0);
+ToolsIt = __decorate([
+    customElement('tools-it')
+], ToolsIt);
+export { ToolsIt };
+/*
 if (customElements && !customElements.get('tools-it')) {
-    customElements.define('tools-it', ToolsIt);
+  customElements.define('tools-it', ToolsIt)
 }
+*/

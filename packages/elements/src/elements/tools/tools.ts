@@ -1,6 +1,6 @@
 // lit
 import { css, CSSResultGroup, html, PropertyValueMap, TemplateResult, unsafeCSS } from 'lit';
-import { property, query } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 // shoelace
 import '@shoelace-style/shoelace/dist/components/button/button'
 import '@shoelace-style/shoelace/dist/components/divider/divider'
@@ -29,7 +29,8 @@ import styles from './tools.css?inline'
  *
  * @csspart base - The component's internal wrapper.
  */
- export class ToolsIt extends BaseIt {
+@customElement('tools-it')
+export class ToolsIt extends BaseIt {
   static styles: CSSResultGroup = [
     super.styles,
     unsafeCSS(styles),
@@ -209,6 +210,8 @@ declare global {
   }
 }
 
+/*
 if (customElements && !customElements.get('tools-it')) {
   customElements.define('tools-it', ToolsIt)
 }
+*/

@@ -33,41 +33,26 @@
 <div id="toc" class="toc2">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="index.html">EniBook : éléments HTML</a></li><li class="current"><a href="chap1.html">1. Aperçu asciidoc</a>
+<li><a href="index.html">EniBook : éléments HTML</a></li><li class="current"><a href="chap1.html">1. Bascule</a>
 <ul class="sectlevel2">
-<li class="current"><a href="chap1.html#_script_enibook">1.1. Script <code>enibook</code></a></li>
-<li class="current"><a href="chap1.html#_attributs_et_propriétés">1.2. Attributs et propriétés</a></li>
-<li class="current"><a href="chap1.html#_api">1.3. API</a></li>
+<li class="current"><a href="chap1.html#_attributs_et_propriétés">1.1. Attributs et propriétés</a></li>
+<li class="current"><a href="chap1.html#_api">1.2. API</a></li>
 </ul>
 </li>
-<li><a href="chap2.html">2. Aperçu HTML</a>
+<li><a href="chap2.html">2. Horloge</a>
 <ul class="sectlevel2">
-<li><a href="chap2.html#_script_enibook_2">2.1. Script <code>enibook</code></a></li>
-<li><a href="chap2.html#_attributs_et_propriétés_2">2.2. Attributs et propriétés</a></li>
-<li><a href="chap2.html#_api_2">2.3. API</a></li>
+<li><a href="chap2.html#_attributs_et_propriétés_2">2.1. Attributs et propriétés</a></li>
+<li><a href="chap2.html#_api_2">2.2. API</a></li>
 </ul>
 </li>
-<li><a href="chap3.html">3. Aperçu markdown</a></li>
-<li><a href="chap4.html">4. Bascule</a>
+<li><a href="chap3.html">3. Lorem Ipsum</a>
 <ul class="sectlevel2">
-<li><a href="chap4.html#_attributs_et_propriétés_3">4.1. Attributs et propriétés</a></li>
-<li><a href="chap4.html#_api_3">4.2. API</a></li>
+<li><a href="chap3.html#_gabarits">3.1. Gabarits</a></li>
+<li><a href="chap3.html#_attributs_et_propriétés_3">3.2. Attributs et propriétés</a></li>
+<li><a href="chap3.html#_api_3">3.3. API</a></li>
 </ul>
 </li>
-<li><a href="chap5.html">5. Horloge</a>
-<ul class="sectlevel2">
-<li><a href="chap5.html#_attributs_et_propriétés_4">5.1. Attributs et propriétés</a></li>
-<li><a href="chap5.html#_api_4">5.2. API</a></li>
-</ul>
-</li>
-<li><a href="chap6.html">6. Lorem Ipsum</a>
-<ul class="sectlevel2">
-<li><a href="chap6.html#_gabarits">6.1. Gabarits</a></li>
-<li><a href="chap6.html#_attributs_et_propriétés_5">6.2. Attributs et propriétés</a></li>
-<li><a href="chap6.html#_api_5">6.3. API</a></li>
-</ul>
-</li>
-<li><a href="chap7.html">7. Barre d’outils</a></li>
+<li><a href="chap4.html">4. Barre d’outils</a></li>
 </ul>
 </div>
 </div>
@@ -77,13 +62,10 @@
 
 
 
-
-
-
 <div class="sect1">
-<h2 id="_aperçu_asciidoc">1. Aperçu asciidoc</h2>
+<h2 id="_bascule">1. Bascule</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
+<table id="bascule-init" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 25%;">
@@ -99,24 +81,20 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Cet élément présente côte à côte un code source <code>asciidoc</code> à interpréter et le rendu de son interprétation en <code>html</code>.</p>
+<p>Cet élément propose un bouton pour montrer ou cacher un autre élément <code>html</code> défini par son <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a>.</p>
 </div>
-<adoc-preview-it>
-  <script type="enibook">
-    du code *_asciidoc_*
-  </script>
-</adoc-preview-it>
-<div class="paragraph">
-<p>Le transcodage <code>asciidoc</code> → <code>html</code> est réalisé par le processeur <a href="https://docs.asciidoctor.org/asciidoctor.js/latest/">asciidoctor</a>.</p>
+<div class="flex flex-justify-between">
+  <toggle-it id="toggle-left" visibility="" selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
+  <toggle-it id="toggle-right" visibility="" selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"></toggle-it>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>&lt;adoc-preview-it&gt;</code></p>
+<p><code>&lt;toggle-it&gt;</code></p>
 </div>
 <div class="paragraph">
-<p>type : « <a href="https://developer.mozilla.org/fr/docs/Glossary/Block-level_content">bloc</a> » (<em>block-level element</em>)</p>
+<p>type : « <a href="https://developer.mozilla.org/fr/docs/Glossary/Inline-level_content">en ligne</a> » (<em>inline-level element</em>)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a href="api/classes/AdocPreviewIt.html"><code>AdocPreviewIt</code></a></p>
+<p><a href="../api/classes/ToggleIt.html"><code>ToggleIt</code></a></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -125,270 +103,190 @@
 <summary class="title">Structure</summary>
 <div class="content">
 <div class="paragraph">
-<p>L’élément est structuré en deux parties :</p>
+<p>Il s’agit d’un simple bouton qui affiche dans une infobulle l’action qui lui est associée : montrer ou cacher un autre élément.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>à gauche<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>, le code source à interpréter;</p>
-</li>
-<li>
-<p>à droite, l’aperçu de l’interprétation du code source.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Les deux parties sont séparées par une barre verticale munie d’un grip <it-mdi-drag-vertical style="width:24px" title="grip vertical"></it-mdi-drag-vertical>.</p>
-</div>
-<adoc-preview-it>
-  <script type="enibook">
-    // code asciidoc
-    = Asciidoc
-    :source-highlighter: highlight.js
-
-    == Titre de section
-    .Liste _asciidoc_
-    * item de liste
-    * autre item
-    * lien https://docs.asciidoctor.org/asciidoc/latest/[pour en savoir plus...]
-
-  </script>
-</adoc-preview-it>
 </div>
 </details>
 <details>
 <summary class="title">Interactivité</summary>
 <div class="content">
 <div class="paragraph">
-<p>Cet élément est interactif : il est cliquable
-<it-mdi-mouse style="width:24px" title="non cliquable"></it-mdi-mouse>
-mais non éditable
-<it-mdi-keyboard-off-outline style="width:24px" title="non éditable"></it-mdi-keyboard-off-outline>.</p>
+<p>Cet élément est cliquable <it-mdi-mouse title="cliquable"></it-mdi-mouse> mais non éditable  <it-mdi-keyboard-off-outline title="non éditable"></it-mdi-keyboard-off-outline>.</p>
 </div>
 <div class="paragraph">
-<p>L’interaction consiste à adapter les largeurs respectives des parties gauche et droite.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Quand on passe la souris sur l’élément, ses bords ainsi que la barre verticale qui sépare les deux parties, sont mis en évidence par une coloration différente.</p>
-</li>
-<li>
-<p>La barre verticale est déplaçable horizontalement. Quand on passe la souris sur la barre (y compris sur son grip central), le curseur de la souris change de forme pour signifier un déplacement horizontal possible : <it-mdi-resize-horizontal></it-mdi-resize-horizontal>.</p>
-<div class="paragraph">
-<p>Pour déplacer la barre séparatrice, on opère par glissement de la souris : il suffit de cliquer<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> sur cette barre <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>, maintenir le bouton de la souris enfoncé et ne le relâcher que lorsque le pointeur a atteint la position désirée pour la barre verticale.</p>
-</div>
-<div class="paragraph">
-<p>Le déplacement est limité pour laisser au moins un quart de la largeur totale à la partie la moins large.</p>
-</div>
-</li>
-</ul>
+<p>L’interaction est de type bascule (<em>toggle</em>) et consiste à montrer ou cacher un autre élément : si cet élément est caché alors le clic sur le bouton conduit à le montrer,
+sinon il le cache.</p>
 </div>
 </div>
 </details>
 <div class="sect2">
-<h3 id="_script_enibook">1.1. Script <code>enibook</code></h3>
+<h3 id="_attributs_et_propriétés">1.1. Attributs et propriétés</h3>
 <div class="paragraph">
-<p>Le code source à visualiser peut être défini dans le contenu de la balise <code>adoc-preview-it</code> à l’aide d’un script de type <code>enibook</code>.</p>
+<p>Cette balise possède 7 attributs spécifiques optionnels : <code>selector</code>, <code>size</code>, <code>text-hide</code>, <code>text-show</code>, <code>tooltip-hide</code>, <code>tooltip-show</code> et <code>visibility</code>.</p>
+</div>
+<div class="paragraph">
+<p><a href="chap1.html#bascule-init">Le premier exemple</a> définit ces 7 attributs :</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;adoc-preview-it&gt;
-  &lt;script type="enibook"&gt;
-    // le code asciidoc à interpréter et à visualiser
-  &lt;/script&gt;
-&lt;/adoc-preview-it&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;div class="flex flex-justify-between"&gt;
+  &lt;toggle-it id="toggle-left" visibility selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"&gt;&lt;/toggle-it&gt;
+  &lt;toggle-it id="toggle-right" visibility selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"&gt;&lt;/toggle-it&gt;
+&lt;/div&gt;</code></pre>
 </div>
-</div>
-<details id="ex-adoc1">
-<summary class="title">Exemple de code défini par un script <code>enibook</code></summary>
-<div class="content">
-<html-preview-it>
-  <script type="enibook">
-    <adoc-preview-it>
-      <script type="enibook">
-        Du code *_asciidoc_*
-      &lt;/script&gt;
-    </adoc-preview-it>
-  </script>
-</html-preview-it>
-</div>
-</details>
-</div>
-<div class="sect2">
-<h3 id="_attributs_et_propriétés">1.2. Attributs et propriétés</h3>
-<div class="paragraph">
-<p>Cette balise possède 3 attributs spécifiques optionnels : <code>position</code>, <code>src</code> et <code>theme</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="_code_source">1.2.1. Code source</h4>
+<h4 id="_sélecteur_css">1.1.1. Sélecteur <code>css</code></h4>
 <div class="paragraph">
-<p>L’attribut <code>src</code> permet de définir le code source à visualiser à partir d’un fichier extérieur.</p>
+<p>L’attribut <code>selector</code> (attribut <strong>obligatoire</strong>) définit l’élément <code>html</code> à cacher ou à montrer à l’aide d’un sélecteur <code>css</code>.</p>
 </div>
-<details>
-<summary class="title">Exemple de code issu d’un fichier</summary>
-<div class="content">
-<div class="listingblock">
-<div class="title">Fichier <code>adoc-preview-file.txt</code></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">Du code *_asciidoc_* en provenance d'un fichier</code></pre>
-</div>
+<div class="paragraph">
+<p>Un <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a> est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s’applique un ensemble de règles <code>css</code> <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>. Si plusieurs éléments répondent au même critère, seul le premier d’entre-eux est concerné par la bascule.</p>
 </div>
 <html-preview-it>
   <script type="enibook">
-    <adoc-preview-it src="adoc-preview/adoc-preview-file.txt">
-    </adoc-preview-it>
+    <toggle-it selector="#header"></toggle-it> :
+    bascule l'en-tête du document
   </script>
 </html-preview-it>
-</div>
-</details>
-<div class="paragraph">
-<p>Il est possible de combiner l’utilisation d’un script <code>enibook</code> et l’attribut <code>src</code>. Dans ce cas, le contenu du fichier est inséré avant le contenu du script comme dans l’exemple ci-dessous.</p>
-</div>
-<details>
-<summary class="title">Exemple de codes issus d’un script et d’un fichier</summary>
-<div class="content">
-<html-preview-it>
-  <script type="enibook">
-    <adoc-preview-it src="adoc-preview/adoc-preview-file.txt">
-      <script type="enibook">
-        Paragraphe ajouté par le script `enibook`
-      &lt;/script&gt;
-    </adoc-preview-it>
-  </script>
-</html-preview-it>
-</div>
-</details>
-<div class="paragraph">
-<p>En dernier ressort, le code source à visualiser peut être défini par un script <code>javascript</code> à l’aide de la propriété <code>code</code> de la classe <code>AdocPreviewIt</code>.</p>
-</div>
-<details>
-<summary class="title">Exemple de code défini par programme</summary>
-<div class="content">
-<html-preview-it id="demo-prop">
-  <script type="enibook">
-    <!-- visualisateur sans code -->
-    <adoc-preview-it class="demo"></adoc-preview-it>
-    <!-- ajout du code par script javascript -->
-    <script type="text/javascript">
-      const demo = document.body.querySelector("#demo-prop")
-      const preview = demo.shadowRoot.querySelector("adoc-preview-it")
-      preview.code = `
-Code source ajouté par la propriété \`code\` :
-
-du code *_asciidoc_*.
-`
-    &lt;/script&gt;
-    <!-- ajout d'un style -->
-    <style>
-      .demo { padding: 0.5em; background-color: lightcyan; }
-    </style>
-  </script>
-
-</html-preview-it></div>
-</details>
 </div>
 <div class="sect3">
-<h4 id="_position_du_séparateur_vertical">1.2.2. Position du séparateur vertical</h4>
+<h4 id="_visibilité">1.1.2. Visibilité</h4>
 <div class="paragraph">
-<p>La position initiale du séparateur entre le code source et son aperçu est définie par l’attribut <code>position</code>, exprimé en % de la largeur de l’élément (comprise entre 25 et 75, 50 par défaut).</p>
+<p>Par défaut, cacher un élément signifie le supprimer de la page : la mise en page du document est ainsi potentiellement modifiée.</p>
 </div>
-<details>
-<summary class="title">Exemple d’utilisation de l’attribut <code>position</code></summary>
-<div class="content">
-<html-preview-it>
-  <script type="enibook">
-    <adoc-preview-it position=75>
-      <script type="enibook">
-        du code *_asciidoc_*
-      &lt;/script&gt;
-    </adoc-preview-it>
-  </script>
-</html-preview-it>
-</div>
-</details>
-</div>
-<div class="sect3">
-<h4 id="_thème_du_code_source">1.2.3. Thème du code source</h4>
 <div class="paragraph">
-<p>Le thème de colorisation du code source (clair : <code>light</code> ou sombre : <code>dark</code>) est précisé par l’attribut <code>theme</code> (<code>dark</code> par défaut).</p>
+<p>L’attribut <code>visibility</code> peut être utilisé afin de cacher un élément tout en conservant occupé l’espace dans lequel il aurait été visible : la mise en page du document reste ainsi identique qu’il soit visible ou non, contrairement au fonctionnement par défaut.</p>
 </div>
-<details>
-<summary class="title">Exemple d’utilisation de l’attribut <code>theme</code></summary>
-<div class="content">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Mode clair</dt>
+<dt class="hdlist1">Sans l’attribut <code>visibility</code></dt>
 <dd>
-<p></p>
-<html-preview-it>
-  <script type="enibook">
-    <adoc-preview-it theme="light">
-      <script type="enibook">
-        du code *_asciidoc_* en mode clair
-      &lt;/script&gt;
-    </adoc-preview-it>
-  </script>
-</html-preview-it>
+<p><code>&lt;toggle-it selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-2" selector="#toggle-right-2" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
+  <toggle-it id="toggle-right-2" selector="#toggle-left-2" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
+  <span>fin</span>
+</div>
 </dd>
-<dt class="hdlist1">Mode sombre</dt>
+<dt class="hdlist1">Avec l’attribut <code>visibility</code></dt>
 <dd>
-<p></p>
-<html-preview-it>
-  <script type="enibook">
-    <adoc-preview-it theme="dark">
-      <script type="enibook">
-        du code *_asciidoc_* en mode sombre
-      &lt;/script&gt;
-    </adoc-preview-it>
-  </script>
-</html-preview-it>
+<p><code>&lt;toggle-it visibility selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-3" visibility="" selector="#toggle-right-3" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
+  <toggle-it id="toggle-right-3" visibility="" selector="#toggle-left-3" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
+  <span>fin</span>
+</div>
 </dd>
 </dl>
 </div>
 </div>
-</details>
+<div class="sect3">
+<h4 id="_textes_du_bouton">1.1.3. Textes du bouton</h4>
+<div class="paragraph">
+<p>Deux attributs  <code>text-hide</code> (défaut : <it-mdi-hide-outline></it-mdi-hide-outline>) et <code>text-show</code> (défaut : <it-mdi-show-outline></it-mdi-show-outline>) permettent de définir le texte du bouton
+respectivement quand l’élément est caché ou non.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Fonctionnement par défaut</dt>
+<dd>
+<p><code>&lt;toggle-it selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-4" selector="#toggle-right-4"></toggle-it>
+  <toggle-it id="toggle-right-4" selector="#toggle-left-4"></toggle-it>
+  <span>fin</span>
+</div>
+</dd>
+<dt class="hdlist1">Adaptation des textes</dt>
+<dd>
+<p><code>&lt;toggle-it selector="…​" text-show="…​" text-hide="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-5" selector="#toggle-right-5" text-show="Show" text-hide="Hide"></toggle-it>
+  <toggle-it id="toggle-right-5" selector="#toggle-left-5" text-show="Montrer" text-hide="Cacher"></toggle-it>
+  <span>fin</span>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_infobulles">1.1.4. Infobulles</h4>
+<div class="paragraph">
+<p>Deux attributs <code>tooltip-hide</code> (défaut : <code>Cacher</code> <em>selector</em>) et <code>tooltip-show</code> (défaut : <code>Montrer</code> <em>selector</em>) permettent de définir le texte de l’infobulle
+respectivement quand l’élément est caché ou non.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Fonctionnement par défaut</dt>
+<dd>
+<p><code>&lt;toggle-it selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-6" selector="#toggle-right-6"></toggle-it>
+  <toggle-it id="toggle-right-6" selector="#toggle-left-6"></toggle-it>
+  <span>fin</span>
+</div>
+</dd>
+<dt class="hdlist1">Adaptation des infobulles</dt>
+<dd>
+<p><code>&lt;toggle-it selector="…​" tooltip-show="…​" tooltip-hide="…​"&gt;&lt;/toggle-it&gt;</code></p>
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-7" selector="#toggle-right-7" tooltip-show="Montrer le bouton de droite" tooltip-hide="Cacher le bouton de droite"></toggle-it>
+  <toggle-it id="toggle-right-7" selector="#toggle-left-7" tooltip-show="Montrer le bouton de gauche" tooltip-hide="Cacher le bouton de gauche"></toggle-it>
+  <span>fin</span>
+</div>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_api">1.3. API</h3>
+<h3 id="_api">1.2. API</h3>
 <div class="paragraph">
-<p>L’<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l’élément <code>&lt;adoc-preview-it&gt;</code> est
-consultable <a href="../api/classes/AdocPreviewIt.html">ici</a>.</p>
+<p>L’<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l’élément <code>&lt;toggle-it&gt;</code> est
+consultable <a href="../api/classes/ToggleIt.html">ici</a>.</p>
 </div>
 <details>
 <summary class="title">L’API en bref</summary>
 <div class="content">
-<api-viewer src="_dist/custom-elements.json" only="adoc-preview-it" exclude-knobs="src">
-  <template data-element="adoc-preview-it" data-target="host">
-    <adoc-preview-it>
-      <script type="enibook">
-        Du code *_asciidoc_*
-      </script>
-    </adoc-preview-it>
-  </template>
-</api-viewer>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><api-viewer src="_dist/custom-elements.json" only="toggle-it">
+</api-viewer></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </details>
 <details>
 <summary class="title">Usage en <code>typescript</code></summary>
 <div class="content">
-<div class="listingblock">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { AdocPreviewIt } from '@enibook/elements/dist/elements/adoc-preview/adoc-preview' <i class="conum" data-value="1"></i><b>(1)</b>
-const adocPreview = new AdocPreviewIt() <i class="conum" data-value="2"></i><b>(2)</b>
-adocPreview.code = `
-Le code \`asciidoc\` à visualiser
-`                                       <i class="conum" data-value="3"></i><b>(3)</b>
-document.body.appendChild(adocPreview)  <i class="conum" data-value="4"></i><b>(4)</b>
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { ToggleIt } from '@enibook/elements/dist/elements/toggle/toggle' <i class="conum" data-value="1"></i><b>(1)</b>
+const toggle = new ToggleIt()                                            <i class="conum" data-value="2"></i><b>(2)</b>
+toggle.selector = "#ident"                                               <i class="conum" data-value="3"></i><b>(3)</b>
+document.body.appendChild(toggle)                                        <i class="conum" data-value="4"></i><b>(4)</b>
 /*
 &lt;body&gt;
 ...
-&lt;adoc-preview-it&gt;
-  &lt;script type="enibook"&gt;
-    Le code `asciidoc` à visualiser
-  &lt;/script&gt;
-&lt;/adoc-preview-it&gt;
+&lt;toggle-it selector="#ident"&gt;&lt;/toggle-it&gt;
 &lt;/body&gt;
 */</code></pre>
 </div>
@@ -397,7 +295,7 @@ document.body.appendChild(adocPreview)  <i class="conum" data-value="4"></i><b>(
 <table>
 <tbody><tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>importer la classe <a href="../api/classes/AdocPreviewIt.html"><code>AdocPreviewIt</code></a>;</td>
+<td>importer la classe <a href="../api/classes/ToggleIt.html"><code>ToggleIt</code></a>;</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -405,14 +303,17 @@ document.body.appendChild(adocPreview)  <i class="conum" data-value="4"></i><b>(
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>définir le code à visualiser;</td>
+<td>préciser le sélecteur de l’élément que l’instance doit cacher ou montrer;</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>ajouter l’instance dans le <a href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model">DOM</a>.</td>
 </tr>
 </tbody></table>
-</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </details>
 </div>
@@ -421,17 +322,8 @@ document.body.appendChild(adocPreview)  <i class="conum" data-value="4"></i><b>(
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. Selon le sens de lecture — de gauche à droite (<code>ltr</code> : <em>left to right</em>) ou de droite à gauche (<code>rtl</code> : <em>right to left</em>) — le code source sera à gauche pour une lecture de gauche à droite, à droite pour une lecture de droite à gauche. Le sens de lecture — de gauche à droite (<code>ltr</code> : <em>left to right</em>) ou de droite à gauche (<code>rtl</code> : <em>right to left</em>) — dépend de la langue retenue pour les éléments. Par exemple, le français, l’anglais ou l’espagnol se lisent de gauche à droite tandis que l’arabe, le farsi, l’ourdou ou l’hébreu se lisent de droite à gauche.
+<a href="#_footnoteref_1">1</a>. On pourra également consulter <a href="https://www.w3schools.com/cssref/css_selectors.php">la référence des sélecteurs <code>css</code> sur W3schools.</a>
 </div>
-<div class="footnote" id="_footnotedef_2">
-<a href="#_footnoteref_2">2</a>. Le clic se fait à l’aide du bouton principal de la souris : le gauche en mode droitier, le droit en mode gaucher, ou le bouton unique.
-</div>
-<div class="footnote" id="_footnotedef_3">
-<a href="#_footnoteref_3">3</a>. Le grip vertical <it-mdi-drag-vertical></it-mdi-drag-vertical> est présent pour faciliter le déplacement de la barre verticale séparatrice.
-</div>
-
-
-
 
 </div>
 <nav>

@@ -33,41 +33,26 @@
 <div id="toc" class="toc2">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="index.html">EniBook : éléments HTML</a></li><li><a href="chap1.html">1. Aperçu asciidoc</a>
+<li><a href="index.html">EniBook : éléments HTML</a></li><li><a href="chap1.html">1. Bascule</a>
 <ul class="sectlevel2">
-<li><a href="chap1.html#_script_enibook">1.1. Script <code>enibook</code></a></li>
-<li><a href="chap1.html#_attributs_et_propriétés">1.2. Attributs et propriétés</a></li>
-<li><a href="chap1.html#_api">1.3. API</a></li>
+<li><a href="chap1.html#_attributs_et_propriétés">1.1. Attributs et propriétés</a></li>
+<li><a href="chap1.html#_api">1.2. API</a></li>
 </ul>
 </li>
-<li class="current"><a href="chap2.html">2. Aperçu HTML</a>
+<li class="current"><a href="chap2.html">2. Horloge</a>
 <ul class="sectlevel2">
-<li class="current"><a href="chap2.html#_script_enibook_2">2.1. Script <code>enibook</code></a></li>
-<li class="current"><a href="chap2.html#_attributs_et_propriétés_2">2.2. Attributs et propriétés</a></li>
-<li class="current"><a href="chap2.html#_api_2">2.3. API</a></li>
+<li class="current"><a href="chap2.html#_attributs_et_propriétés_2">2.1. Attributs et propriétés</a></li>
+<li class="current"><a href="chap2.html#_api_2">2.2. API</a></li>
 </ul>
 </li>
-<li><a href="chap3.html">3. Aperçu markdown</a></li>
-<li><a href="chap4.html">4. Bascule</a>
+<li><a href="chap3.html">3. Lorem Ipsum</a>
 <ul class="sectlevel2">
-<li><a href="chap4.html#_attributs_et_propriétés_3">4.1. Attributs et propriétés</a></li>
-<li><a href="chap4.html#_api_3">4.2. API</a></li>
+<li><a href="chap3.html#_gabarits">3.1. Gabarits</a></li>
+<li><a href="chap3.html#_attributs_et_propriétés_3">3.2. Attributs et propriétés</a></li>
+<li><a href="chap3.html#_api_3">3.3. API</a></li>
 </ul>
 </li>
-<li><a href="chap5.html">5. Horloge</a>
-<ul class="sectlevel2">
-<li><a href="chap5.html#_attributs_et_propriétés_4">5.1. Attributs et propriétés</a></li>
-<li><a href="chap5.html#_api_4">5.2. API</a></li>
-</ul>
-</li>
-<li><a href="chap6.html">6. Lorem Ipsum</a>
-<ul class="sectlevel2">
-<li><a href="chap6.html#_gabarits">6.1. Gabarits</a></li>
-<li><a href="chap6.html#_attributs_et_propriétés_5">6.2. Attributs et propriétés</a></li>
-<li><a href="chap6.html#_api_5">6.3. API</a></li>
-</ul>
-</li>
-<li><a href="chap7.html">7. Barre d’outils</a></li>
+<li><a href="chap4.html">4. Barre d’outils</a></li>
 </ul>
 </div>
 </div>
@@ -77,11 +62,8 @@
 
 
 
-
-
-
 <div class="sect1">
-<h2 id="_aperçu_html">2. Aperçu HTML</h2>
+<h2 id="_horloge">2. Horloge</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -99,21 +81,19 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Cet élément présente côte à côte un code source <code>html</code> à interpréter et le rendu de son interprétation.</p>
-</div>
-<html-preview-it>
-  <script type="enibook">
-    <p>du code <em>html</em></p>
-  </script>
-</html-preview-it></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>&lt;html-preview-it&gt;</code></p>
+<p>Cet élément affiche une horloge numérique indiquant l’heure et la date courantes.</p>
 </div>
 <div class="paragraph">
-<p>type : « <a href="https://developer.mozilla.org/fr/docs/Glossary/Block-level_content">bloc</a> » (<em>block-level element</em>)</p>
+<p><clock-it time="" date=""></clock-it></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a href="api/classes/HtmlPreviewIt.html"><code>HtmlPreviewIt</code></a></p>
+<p><code>&lt;clock-it&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>type : « <a href="https://developer.mozilla.org/fr/docs/Glossary/Inline-level_content">en ligne</a> » (<em>inline-level element</em>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a href="../api/classes/ClockIt.html"><code>ClockIt</code></a></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -121,355 +101,96 @@
 <details>
 <summary class="title">Structure</summary>
 <div class="content">
-<div class="paragraph">
-<p>L’élément est structuré en deux parties :</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p>à gauche<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup> (ou au-dessus selon la taille de l’écran), le code source à interpréter;</p>
+<p>A gauche de l’icône <it-mdi-calendar-clock-outline></it-mdi-calendar-clock-outline>, la date est affichée sous la forme <code>jour quantième mois année</code><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> où <code>jour</code> est le nom du jour (lundi, mardi…​), <code>quantième</code> le numéro du jour dans le mois (1, 2…​), <code>mois</code> le mois  en toutes lettres (janvier, février…​) et <code>année</code> l’année en chiffres
+(exemples: <code>jeudi 8 juin 2023</code>, <code>mercredi 5 avril 2034</code>).</p>
 </li>
 <li>
-<p>à droite (ou au-dessous), l’aperçu de l’interprétation du code source.</p>
+<p>A droite de l’icône <it-mdi-calendar-clock-outline></it-mdi-calendar-clock-outline>, l’heure est présentée sous la forme <code>hh:mm:ss</code> où <code>hh</code> représente l’heure avec deux chiffres, <code>mm</code> les minutes avec deux chiffres et <code>ss</code> les secondes également avec deux chiffres (exemples: <code>08:12:54</code>, <code>13:02:05</code>).</p>
 </li>
 </ul>
 </div>
-<html-preview-it>
-  <script type="enibook">
-    <ul>
-      <li>à gauche (ou au-dessus) : code source;</li>
-      <li>à droite (ou au-dessous) : aperçu.</li>
-    </ul>
-  </script>
-</html-preview-it>
 </div>
 </details>
 <details>
 <summary class="title">Interactivité</summary>
 <div class="content">
 <div class="paragraph">
-<p>Cet élément n’est pas interactif : il est ni cliquable
-<it-mdi-mouse-off style="width:24px" title="non cliquable"></it-mdi-mouse-off>
-ni éditable
-<it-mdi-keyboard-off-outline style="width:24px" title="non éditable"></it-mdi-keyboard-off-outline>.</p>
+<p>Cet élément est cliquable <it-mdi-mouse title="cliquable"></it-mdi-mouse> mais non éditable  <it-mdi-keyboard-off-outline title="non éditable"></it-mdi-keyboard-off-outline>.
+L’interaction consiste à adapter l’affichage de l’horloge aux besoins de l’utilisateur.</p>
 </div>
 <div class="paragraph">
-<p>Cependant, lorsqu’on passe la souris sur l’élément, les bords des deux parties sont mis en évidence par une coloration différente.</p>
+<p>L’horloge est un bouton cliquable à 4 états.
+En cliquant sur l’horloge, on passe successivement dans les états suivants :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>affichage de l’heure uniquement : <clock-it time=""></clock-it></p>
+</li>
+<li>
+<p>affichage de la date et de l’heure : <clock-it time="" date=""></clock-it></p>
+</li>
+<li>
+<p>affichage de la date uniquement : <clock-it date=""></clock-it></p>
+</li>
+<li>
+<p>affichage de l’icône uniquement :  <clock-it></clock-it></p>
+</li>
+</ol>
 </div>
 </div>
 </details>
 <div class="sect2">
-<h3 id="_script_enibook_2">2.1. Script <code>enibook</code></h3>
+<h3 id="_attributs_et_propriétés_2">2.1. Attributs et propriétés</h3>
 <div class="paragraph">
-<p>Le code source à visualiser peut être défini dans le contenu de la balise <code>html-preview-it</code> à l’aide d’un script de type <code>enibook</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;html-preview-it&gt;
-  &lt;script type="enibook"&gt;
-    &lt;!-- le code HTML à interpréter et à visualiser --&gt;
-  &lt;/script&gt;
-&lt;/html-preview-it&gt;</code></pre>
-</div>
-</div>
-<details id="ex1">
-<summary class="title">Exemple de code défini par un script <code>enibook</code></summary>
-<div class="content">
-<html-preview-it>
-  <script type="enibook">
-    <html-preview-it>
-      <script type="enibook">
-        <clock-it time></clock-it>
-      &lt;/script&gt;
-    </html-preview-it>
-  </script>
-</html-preview-it>
-</div>
-</details>
-<details>
-<summary class="title">Remarque : un script dans le script <code>enibook</code></summary>
-<div class="content">
-<div class="paragraph">
-<p>L'<a href="chap2.html#ex1">Exemple de code défini par un script <code>enibook</code></a> montre un aperçu HTML qui contient lui-même un aperçu HTML.</p>
-</div>
-<div class="paragraph">
-<p>Il est donc possible d’insérer un script dans le script <code>enibook</code> à condition de neutraliser la balise fermante du deuxième script : écrire <code>&amp;lt;/script&amp;gt;</code> au lieu de <code>&lt;/script&gt;</code>. Les séquences d’échappement <code>&amp;lt;</code> et <code>&amp;gt;</code> représentent respectivement les caractères <code>&lt;</code> (<em>less than</em>, plus petit que) et <code>&gt;</code> (<em>greater than</em>, plus grand que)<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;html-preview-it&gt;
-  &lt;script type="enibook"&gt;
-    &lt;!-- le code HTML à interpréter et à visualiser --&gt;
-    &lt;!-- qui contient lui-même un script --&gt;
-    &lt;script&gt;
-      ...
-    &amp;lt;/script&amp;gt;
-  &lt;/script&gt;
-&lt;/html-preview-it&gt;</code></pre>
-</div>
-</div>
-<details>
-<summary class="title">Exemple d’un script dans le script <code>enibook</code></summary>
-<div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">sans script <code>javascript</code></dt>
-<dd>
-<p></p>
-<html-preview-it id="demo-script-1" position="40">
-  <script type="enibook">
-    <html-preview-it id="demo-script-2" position="75">
-      <script type="enibook">
-        <clock-it time></clock-it>
-      &lt;/script&gt;
-    </html-preview-it>
-  </script>
-</html-preview-it>
-<div class="paragraph">
-<p>Pour obtenir l’exemple précédent, on interprète le code suivant :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;html-preview-it id="demo-script-1" position=40&gt;       <i class="conum" data-value="1"></i><b>(1)</b>
-  &lt;script type="enibook"&gt;                              <i class="conum" data-value="2"></i><b>(2)</b>
-    &lt;html-preview-it id="demo-script-2" position="75"&gt; <i class="conum" data-value="3"></i><b>(3)</b>
-      &lt;script type="enibook"&gt;                          <i class="conum" data-value="4"></i><b>(4)</b>
-        &lt;clock-it time&gt;&lt;/clock-it&gt;                     <i class="conum" data-value="5"></i><b>(5)</b>
-      &amp;lt;/script&amp;gt;                                  <i class="conum" data-value="6"></i><b>(6)</b>
-    &lt;/html-preview-it&gt;                                 <i class="conum" data-value="7"></i><b>(7)</b>
-  &lt;/script&gt;                                            <i class="conum" data-value="8"></i><b>(8)</b>
-&lt;/html-preview-it&gt;                                     <i class="conum" data-value="9"></i><b>(9)</b></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tbody><tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>on ouvre un premier aperçu HTML avec pour identifiant <code>demo-script-1</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>on ouvre le script <code>enibook</code> de ce premier aperçu;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>on ouvre un deuxième aperçu HTML d’identifiant <code>demo-script-2</code> à l’intérieur du premier aperçu <code>demo-script-1</code>; ce deuxième aperçu HTML sera visualisé dans le premier aperçu;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>on ouvre le script <code>enibook</code> du deuxième aperçu;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>le code HTML à visualiser dans le deuxième aperçu <code>demo-script-2</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>on ferme le script <code>enibook</code> du deuxième aperçu avec la séquence d’échappement <code>&amp;lt;/script&amp;gt;</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>on ferme le deuxième aperçu <code>demo-script-2</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>on ferme le script du premier aperçu normalement (ie. sans séquence d’échappement);</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="9"></i><b>9</b></td>
-<td>on ferme le premier aperçu <code>demo-script-1</code>.</td>
-</tr>
-</tbody></table>
-</div>
-</dd>
-<dt class="hdlist1">avec un script <code>javascript</code></dt>
-<dd>
-<p></p>
-<div class="paragraph">
-<p>On ajoute ici un script <code>javascript</code> dans le deuxième aperçu de l’exemple précédent.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;html-preview-it id="demo-script-1" position=40&gt;
-  &lt;script type="enibook"&gt;
-    &lt;html-preview-it id="demo-script-2" position="75"&gt;
-      &lt;script type="enibook"&gt;
-        &lt;clock-it time&gt;&lt;/clock-it&gt;
-        &lt;script type="text/javascript"&gt;                                  <i class="conum" data-value="1"></i><b>(1)</b>
-          const demo1 = document.querySelector("#demo-script-1")         <i class="conum" data-value="2"></i><b>(2)</b>
-          const demo2 = demo1.shadowRoot.querySelector("#demo-script-2") <i class="conum" data-value="3"></i><b>(3)</b>
-          demo2.shadowRoot.prepend("Texte ajouté par script.")           <i class="conum" data-value="4"></i><b>(4)</b>
-        &amp;lt;/script&amp;gt;                                                  <i class="conum" data-value="5"></i><b>(5)</b>
-      &amp;lt;/script&amp;gt;
-    &lt;/html-preview-it&gt;
-  &lt;/script&gt;
-&lt;/html-preview-it&gt;</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tbody><tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>on ouvre le script <code>javascript</code> dans le script <code>enibook</code> du deuxième aperçu <code>demo-script-2</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>la constante <code>demo1</code> représente le premier aperçu <code>demo-script-1</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>la constante <code>demo2</code> représente le deuxième aperçu <code>demo-script-2</code>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>on insère le texte <code>Texte ajouté par script.</code> au début du deuxième aperçu;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>on ferme le script <code>javascript</code> avec la séquence d’échappement <code>&amp;lt;/script&amp;gt;</code>.</td>
-</tr>
-</tbody></table>
-</div>
-<html-preview-it id="demo-script-3" position="40">
-  <script type="enibook">
-    <html-preview-it id="demo-script-4" position="75">
-      <script type="enibook">
-        <clock-it time></clock-it>
-        <script type="text/javascript">
-          const demo1 = document.querySelector("#demo-script-3")
-          const demo2 = demo1.shadowRoot.querySelector("#demo-script-4")
-          demo2.shadowRoot.prepend("Texte ajouté par script.")
-        &lt;/script&gt;
-      &lt;/script&gt;
-    </html-preview-it>
-  </script>
-</html-preview-it>
-</dd>
-</dl>
-</div>
-</div>
-</details>
-</div>
-</details>
-</div>
-<div class="sect2">
-<h3 id="_attributs_et_propriétés_2">2.2. Attributs et propriétés</h3>
-<div class="paragraph">
-<p>Cette balise possède 2 attributs spécifiques optionnels : <code>src</code> et <code>theme</code>.</p>
+<p>Cette balise possède 3 attributs spécifiques optionnels : <code>date</code>, <code>size</code> et <code>time</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="_code_source_2">2.2.1. Code source</h4>
+<h4 id="_taille_de_lhorloge">2.1.1. Taille de l’horloge</h4>
 <div class="paragraph">
-<p>L’attribut <code>src</code> permet de définir le code source à visualiser à partir d’un fichier extérieur.</p>
+<p>L’attribut <code>size</code> (<code>small</code> par défaut, <code>medium</code> ou <code>large</code>) précise la taille de l’horloge.</p>
 </div>
-<details>
-<summary class="title">Exemple de code issu d’un fichier</summary>
-<div class="content">
-<div class="listingblock">
-<div class="title">Fichier <code>html-preview-file.txt</code></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">Code issu d'un fichier : &lt;clock-it time&gt;&lt;/clock-it&gt;</code></pre>
-</div>
-</div>
-<html-preview-it>
+<html-preview-it position="60">
   <script type="enibook">
-    <html-preview-it src="html-preview/html-preview-file.txt">
-    </html-preview-it>
-  </script>
-</html-preview-it>
-</div>
-</details>
-<div class="paragraph">
-<p>Il est possible de combiner l’utilisation d’un script <code>enibook</code> et l’attribut <code>src</code>. Dans ce cas, le contenu du fichier est inséré avant le contenu du script comme dans l’exemple ci-dessous.</p>
-</div>
-<details>
-<summary class="title">Exemple de codes issus d’un script et d’un fichier</summary>
-<div class="content">
-<html-preview-it>
-  <script type="enibook">
-    <html-preview-it src="html-preview/html-preview-file.txt">
-      <script type="enibook">
-        <p>Paragraphe ajouté par le script <code>enibook</code>.</p>
-      &lt;/script&gt;
-    </html-preview-it>
-  </script>
-</html-preview-it>
-</div>
-</details>
-<div class="paragraph">
-<p>En dernier ressort, le code source à visualiser peut être défini par un script <code>javascript</code> à l’aide de la propriété <code>code</code> de la classe <code>HtmlPreviewIt</code>.</p>
-</div>
-<details>
-<summary class="title">Exemple de code défini par programme</summary>
-<div class="content">
-<html-preview-it id="demo-prop">
-  <script type="enibook">
-    <!-- visualisateur sans code -->
-    <html-preview-it class="demo"></html-preview-it>
-    <!-- ajout du code par script javascript -->
-    <script type="text/javascript">
-      const demo = document.body.querySelector("#demo-prop")
-      const preview = demo.shadowRoot.querySelector("html-preview-it")
-      preview.code = `
-<p>Code source ajouté par la propriété code : <clock-it></clock-it>.</p>
-`
-    &lt;/script&gt;
-    <!-- ajout d'un style -->
-    <style>
-      .demo { padding: 0.5em; background-color: lightcyan; }
-    </style>
-  </script>
+    <p><clock-it size="small"></clock-it></p>
 
-</html-preview-it></div>
-</details>
+    <p><clock-it size="medium"></clock-it></p>
+
+    <p><clock-it size="large"></clock-it></p>
+  </script>
+</html-preview-it>
 </div>
 <div class="sect3">
-<h4 id="_thème_du_code_source_2">2.2.2. Thème du code source</h4>
-<div class="paragraph">
-<p>Le thème de colorisation du code source (clair : <code>light</code> ou sombre : <code>dark</code>) est précisé par l’attribut <code>theme</code> (<code>dark</code> par défaut).</p>
+<h4 id="_réglage_de_laffichage">2.1.2. Réglage de l’affichage</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>L’attribut <code>date</code> permet d’afficher la date.</p>
+</li>
+<li>
+<p>L’attribut <code>time</code> permet d’afficher l’heure.</p>
+</li>
+</ul>
 </div>
-<details>
-<summary class="title">Exemple d’utilisation de l’attribut <code>theme</code></summary>
-<div class="content">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Mode clair</dt>
-<dd>
-<p></p>
-<html-preview-it>
+<html-preview-it position="60">
   <script type="enibook">
-    <html-preview-it theme="light">
-      <script type="enibook">
-        <clock-it></clock-it>
-      &lt;/script&gt;
-    </html-preview-it>
+    <p><clock-it date></clock-it></p>
+
+    <p><clock-it time></clock-it></p>
+
+    <p><clock-it date time></clock-it></p>
   </script>
 </html-preview-it>
-</dd>
-<dt class="hdlist1">Mode sombre</dt>
-<dd>
-<p></p>
-<html-preview-it>
-  <script type="enibook">
-    <html-preview-it theme="dark">
-      <script type="enibook">
-        <clock-it></clock-it>
-      &lt;/script&gt;
-    </html-preview-it>
-  </script>
-</html-preview-it>
-</dd>
-</dl>
-</div>
-</div>
-</details>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_api_2">2.3. API</h3>
+<h3 id="_api_2">2.2. API</h3>
 <div class="paragraph">
-<p>L’<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l’élément <code>&lt;html-preview-it&gt;</code> est
-consultable <a href="../api/classes/HtmlPreviewIt.html">ici</a>.</p>
+<p>L’<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l’élément <code>&lt;clock-it&gt;</code> est
+consultable <a href="../api/classes/ClockIt.html">ici</a>.</p>
 </div>
 <details>
 <summary class="title">L’API en bref</summary>
@@ -480,7 +201,7 @@ consultable <a href="../api/classes/HtmlPreviewIt.html">ici</a>.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><api-viewer src="dist/custom-elements.json" only="html-preview-it">
+<td class="tableblock halign-left valign-top"><div class="content"><api-viewer src="_dist/custom-elements.json" only="clock-it">
 </api-viewer></div></td>
 </tr>
 </tbody>
@@ -498,20 +219,15 @@ consultable <a href="../api/classes/HtmlPreviewIt.html">ici</a>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { ToggleIt } from '@enibook/elements/dist/elements/html-preview/html-preview' <i class="conum" data-value="1"></i><b>(1)</b>
-const htmlPreview = new HtmlPreviewIt() <i class="conum" data-value="2"></i><b>(2)</b>
-htmlPreview.code = `
-&lt;p&gt;Le code à visualiser&lt;/p&gt;
-`                                       <i class="conum" data-value="3"></i><b>(3)</b>
-document.body.appendChild(htmlPreview)  <i class="conum" data-value="4"></i><b>(4)</b>
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { ClockIt } from '@enibook/elements/dist/elements/clock/clock' <i class="conum" data-value="1"></i><b>(1)</b>
+const clock = new ClockIt()                                           <i class="conum" data-value="2"></i><b>(2)</b>
+clock.size = 'large'                                                  <i class="conum" data-value="3"></i><b>(3)</b>
+clock.date = true                                                     <i class="conum" data-value="4"></i><b>(4)</b>
+document.body.appendChild(clock)                                      <i class="conum" data-value="5"></i><b>(5)</b>
 /*
 &lt;body&gt;
 ...
-&lt;html-preview-it&gt;
-  &lt;script type="enibook"&gt;
-    &lt;p&gt;Le code à visualiser&lt;/p&gt;
-  &lt;/script&gt;
-&lt;/html-preview-it&gt;
+&lt;clock-it size="large" date&gt;&lt;/clock-it&gt;
 &lt;/body&gt;
 */</code></pre>
 </div>
@@ -520,7 +236,7 @@ document.body.appendChild(htmlPreview)  <i class="conum" data-value="4"></i><b>(
 <table>
 <tbody><tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>importer la classe <a href="../api/classes/HtmlPreviewIt.html"><code>HtmlPreviewIt</code></a>;</td>
+<td>importer la classe <a href="../api/classes/ClockIt.html"><code>ClockIt</code></a>;</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -528,10 +244,14 @@ document.body.appendChild(htmlPreview)  <i class="conum" data-value="4"></i><b>(
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>définir le code à visualiser;</td>
+<td>préciser la taille de l’instance;</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>préciser le type affichage désiré;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
 <td>ajouter l’instance dans le <a href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model">DOM</a>.</td>
 </tr>
 </tbody></table>
@@ -547,16 +267,9 @@ document.body.appendChild(htmlPreview)  <i class="conum" data-value="4"></i><b>(
 <div id="footnotes">
 <hr>
 
-
-
-<div class="footnote" id="_footnotedef_4">
-<a href="#_footnoteref_4">4</a>. Selon le sens de lecture — de gauche à droite (<code>ltr</code> : <em>left to right</em>) ou de droite à gauche (<code>rtl</code> : <em>right to left</em>) — le code source sera à gauche pour une lecture de gauche à droite, à droite pour une lecture de droite à gauche. Le sens de lecture — de gauche à droite (<code>ltr</code> : <em>left to right</em>) ou de droite à gauche (<code>rtl</code> : <em>right to left</em>) — dépend de la langue retenue pour les éléments. Par exemple, le français, l’anglais ou l’espagnol se lisent de gauche à droite tandis que l’arabe, le farsi, l’ourdou ou l’hébreu se lisent de droite à gauche.
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. La manière d’afficher ces 4 informations dépend de la langue considérée. Par exemple, le <code>dimanche 20 décembre 2020</code> en français s’écrira <code>Sunday, 20 December 2020</code> en anglais, <code>Sonntag, 20. Dezember 2020</code> en allemand, <code>domingo, 20 de diciembre de 2020</code> en espagnol ou encore <code>2020年12月20日 日曜日</code> en japonais.
 </div>
-<div class="footnote" id="_footnotedef_5">
-<a href="#_footnoteref_5">5</a>. Une séquence d’échappement permet de représenter n’importe quel caractère <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> en HTML en utilisant uniquement des caractères <a href="https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange">ASCII</a>. (voir <a href="https://www.w3.org/International/questions/qa-escapes.fr.html#:~:text=Une%20séquence%20d%27échappement%20permet,référence%20d%27entité%20de%20caractère%20.">W3C</a>)
-</div>
-
-
 </div>
 <nav>
   <a rel="prev" href="chap1.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">

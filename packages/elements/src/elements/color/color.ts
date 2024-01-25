@@ -1,6 +1,6 @@
 // lit
 import { css, CSSResultGroup, html, TemplateResult, unsafeCSS } from 'lit';
-import { property } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 // shoelace
 import type SlRange from '@shoelace-style/shoelace/dist/components/range/range.js';
 import '@shoelace-style/shoelace/dist/components/button/button'
@@ -41,6 +41,7 @@ export const colorNames: string[] = [
  *
  * @csspart base - The component's internal wrapper.
  */
+@customElement('color-it')
 export class ColorIt extends BaseIt {
   static styles: CSSResultGroup = [
     super.styles,
@@ -165,6 +166,8 @@ declare global {
   }
 }
 
+/*
 if (customElements && !customElements.get('color-it')) {
   customElements.define('color-it', ColorIt)
 }
+*/

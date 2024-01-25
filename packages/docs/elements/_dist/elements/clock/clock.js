@@ -154,6 +154,8 @@ ClockIt = __decorate([
     customElement('clock-it')
 ], ClockIt);
 export { ClockIt };
+/*
 if (customElements && !customElements.get('clock-it')) {
-    customElements.define('clock-it', ClockIt);
+  customElements.define('clock-it', ClockIt)
 }
+*/

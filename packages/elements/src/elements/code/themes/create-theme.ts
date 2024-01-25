@@ -5,17 +5,17 @@ import type { TagStyle } from '@codemirror/language';
 
 interface Options {
 	/**
-	 * Theme variant. Determines which styles CodeMirror will apply by default.
+	 * Variante de thème. Détermine les styles que CodeMirror appliquera par défaut.
 	 */
 	variant: Variant;
 
 	/**
-	 * Settings to customize the look of the editor, like background, gutter, selection and others.
+	 * Paramètres pour personnaliser l'aspect de l'éditeur, comme l'arrière-plan, la gouttière, la sélection et autres.
 	 */
 	settings: Settings;
 
 	/**
-	 * Syntax highlighting styles.
+	 * Styles de mise en évidence syntaxique.
 	 */
 	styles: TagStyle[];
 }

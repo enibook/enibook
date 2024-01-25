@@ -1,6 +1,6 @@
 // lit
 import { classMap } from 'lit/directives/class-map.js';
-import { property } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { css, html, unsafeCSS } from 'lit';
 import type { CSSResultGroup, TemplateResult} from 'lit';
 // enibook
@@ -13,7 +13,8 @@ import styles from './toolbar.css?inline'
  *
  * @csspart base - The component's internal wrapper.
  */
- export class ToolbarIt extends BaseIt {
+@customElement('toolbar-it')
+export class ToolbarIt extends BaseIt {
   override get tagTitle(): string {
     return 'Barre d\'outils'
   }
@@ -58,7 +59,8 @@ declare global {
   }
 }
 
+/*
 if (customElements && !customElements.get('toolbar-it')) {
   customElements.define('toolbar-it', ToolbarIt)
 }
-
+*/

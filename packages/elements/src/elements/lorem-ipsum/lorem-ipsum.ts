@@ -1,11 +1,12 @@
 // lit
 import { CSSResultGroup, TemplateResult, css, html, unsafeCSS } from "lit";
-import { property } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 // enibook
 import { BaseIt } from "../base/base";
 import { dictionary } from "./dictionary";
 import styles from "./lorem-ipsum.css?inline";
 
+@customElement('lorem-ipsum-it')
 export class LoremIpsumIt extends BaseIt {
   static override styles: CSSResultGroup = [
     super.styles,
@@ -219,6 +220,8 @@ declare global {
   }
 }
 
+/*
 if (customElements && !customElements.get('lorem-ipsum-it')) {
   customElements.define('lorem-ipsum-it', LoremIpsumIt)
 }
+*/

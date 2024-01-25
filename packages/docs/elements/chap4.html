@@ -33,41 +33,26 @@
 <div id="toc" class="toc2">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="index.html">EniBook : éléments HTML</a></li><li><a href="chap1.html">1. Aperçu asciidoc</a>
+<li><a href="index.html">EniBook : éléments HTML</a></li><li><a href="chap1.html">1. Bascule</a>
 <ul class="sectlevel2">
-<li><a href="chap1.html#_script_enibook">1.1. Script <code>enibook</code></a></li>
-<li><a href="chap1.html#_attributs_et_propriétés">1.2. Attributs et propriétés</a></li>
-<li><a href="chap1.html#_api">1.3. API</a></li>
+<li><a href="chap1.html#_attributs_et_propriétés">1.1. Attributs et propriétés</a></li>
+<li><a href="chap1.html#_api">1.2. API</a></li>
 </ul>
 </li>
-<li><a href="chap2.html">2. Aperçu HTML</a>
+<li><a href="chap2.html">2. Horloge</a>
 <ul class="sectlevel2">
-<li><a href="chap2.html#_script_enibook_2">2.1. Script <code>enibook</code></a></li>
-<li><a href="chap2.html#_attributs_et_propriétés_2">2.2. Attributs et propriétés</a></li>
-<li><a href="chap2.html#_api_2">2.3. API</a></li>
+<li><a href="chap2.html#_attributs_et_propriétés_2">2.1. Attributs et propriétés</a></li>
+<li><a href="chap2.html#_api_2">2.2. API</a></li>
 </ul>
 </li>
-<li><a href="chap3.html">3. Aperçu markdown</a></li>
-<li class="current"><a href="chap4.html">4. Bascule</a>
+<li><a href="chap3.html">3. Lorem Ipsum</a>
 <ul class="sectlevel2">
-<li class="current"><a href="chap4.html#_attributs_et_propriétés_3">4.1. Attributs et propriétés</a></li>
-<li class="current"><a href="chap4.html#_api_3">4.2. API</a></li>
+<li><a href="chap3.html#_gabarits">3.1. Gabarits</a></li>
+<li><a href="chap3.html#_attributs_et_propriétés_3">3.2. Attributs et propriétés</a></li>
+<li><a href="chap3.html#_api_3">3.3. API</a></li>
 </ul>
 </li>
-<li><a href="chap5.html">5. Horloge</a>
-<ul class="sectlevel2">
-<li><a href="chap5.html#_attributs_et_propriétés_4">5.1. Attributs et propriétés</a></li>
-<li><a href="chap5.html#_api_4">5.2. API</a></li>
-</ul>
-</li>
-<li><a href="chap6.html">6. Lorem Ipsum</a>
-<ul class="sectlevel2">
-<li><a href="chap6.html#_gabarits">6.1. Gabarits</a></li>
-<li><a href="chap6.html#_attributs_et_propriétés_5">6.2. Attributs et propriétés</a></li>
-<li><a href="chap6.html#_api_5">6.3. API</a></li>
-</ul>
-</li>
-<li><a href="chap7.html">7. Barre d’outils</a></li>
+<li class="current"><a href="chap4.html">4. Barre d’outils</a></li>
 </ul>
 </div>
 </div>
@@ -77,285 +62,22 @@
 
 
 
-
-
-
 <div class="sect1">
-<h2 id="_bascule">4. Bascule</h2>
+<h2 id="_barre_doutils">4. Barre d’outils</h2>
 <div class="sectionbody">
-<table id="bascule-init" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Fonction</th>
-<th class="tableblock halign-left valign-top">Elément <code>html</code></th>
-<th class="tableblock halign-left valign-top">Classe <code>typescript</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Cet élément propose un bouton pour montrer ou cacher un autre élément <code>html</code> défini par son <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a>.</p>
-</div>
-<div class="flex flex-justify-between">
-  <toggle-it id="toggle-left" visibility="" selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
-  <toggle-it id="toggle-right" visibility="" selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"></toggle-it>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code>&lt;toggle-it&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>type : « <a href="https://developer.mozilla.org/fr/docs/Glossary/Inline-level_content">en ligne</a> » (<em>inline-level element</em>)</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a href="../api/classes/ToggleIt.html"><code>ToggleIt</code></a></p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<details>
-<summary class="title">Structure</summary>
-<div class="content">
-<div class="paragraph">
-<p>Il s’agit d’un simple bouton qui affiche dans une infobulle l’action qui lui est associée : montrer ou cacher un autre élément.</p>
-</div>
-</div>
-</details>
-<details>
-<summary class="title">Interactivité</summary>
-<div class="content">
-<div class="paragraph">
-<p>Cet élément est cliquable <it-mdi-mouse title="cliquable"></it-mdi-mouse> mais non éditable  <it-mdi-keyboard-off-outline title="non éditable"></it-mdi-keyboard-off-outline>.</p>
-</div>
-<div class="paragraph">
-<p>L’interaction est de type bascule (<em>toggle</em>) et consiste à montrer ou cacher un autre élément : si cet élément est caché alors le clic sur le bouton conduit à le montrer,
-sinon il le cache.</p>
-</div>
-</div>
-</details>
-<div class="sect2">
-<h3 id="_attributs_et_propriétés_3">4.1. Attributs et propriétés</h3>
-<div class="paragraph">
-<p>Cette balise possède 7 attributs spécifiques optionnels : <code>selector</code>, <code>size</code>, <code>text-hide</code>, <code>text-show</code>, <code>tooltip-hide</code>, <code>tooltip-show</code> et <code>visibility</code>.</p>
-</div>
-<div class="paragraph">
-<p><a href="chap4.html#bascule-init">Le premier exemple</a> définit ces 7 attributs :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;div class="flex flex-justify-between"&gt;
-  &lt;toggle-it id="toggle-left" visibility selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"&gt;&lt;/toggle-it&gt;
-  &lt;toggle-it id="toggle-right" visibility selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"&gt;&lt;/toggle-it&gt;
-&lt;/div&gt;</code></pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_sélecteur_css">4.1.1. Sélecteur <code>css</code></h4>
-<div class="paragraph">
-<p>L’attribut <code>selector</code> (attribut <strong>obligatoire</strong>) définit l’élément <code>html</code> à cacher ou à montrer à l’aide d’un sélecteur <code>css</code>.</p>
-</div>
-<div class="paragraph">
-<p>Un <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a> est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s’applique un ensemble de règles <code>css</code> <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>. Si plusieurs éléments répondent au même critère, seul le premier d’entre-eux est concerné par la bascule.</p>
-</div>
-<html-preview-it>
-  <script type="enibook">
-    <toggle-it selector="#header"></toggle-it> :
-    bascule l'en-tête du document
-  </script>
-</html-preview-it>
-</div>
-<div class="sect3">
-<h4 id="_visibilité">4.1.2. Visibilité</h4>
-<div class="paragraph">
-<p>Par défaut, cacher un élément signifie le supprimer de la page : la mise en page du document est ainsi potentiellement modifiée.</p>
-</div>
-<div class="paragraph">
-<p>L’attribut <code>visibility</code> peut être utilisé afin de cacher un élément tout en conservant occupé l’espace dans lequel il aurait été visible : la mise en page du document reste ainsi identique qu’il soit visible ou non, contrairement au fonctionnement par défaut.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Sans l’attribut <code>visibility</code></dt>
-<dd>
-<p><code>&lt;toggle-it selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
-<div class="flex flex-justify-between w-sm">
-  <span>début</span>
-  <toggle-it id="toggle-left-2" selector="#toggle-right-2" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
-  <toggle-it id="toggle-right-2" selector="#toggle-left-2" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
-  <span>fin</span>
-</div>
-</dd>
-<dt class="hdlist1">Avec l’attribut <code>visibility</code></dt>
-<dd>
-<p><code>&lt;toggle-it visibility selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
-<div class="flex flex-justify-between w-sm">
-  <span>début</span>
-  <toggle-it id="toggle-left-3" visibility="" selector="#toggle-right-3" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
-  <toggle-it id="toggle-right-3" visibility="" selector="#toggle-left-3" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
-  <span>fin</span>
-</div>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_textes_du_bouton">4.1.3. Textes du bouton</h4>
-<div class="paragraph">
-<p>Deux attributs  <code>text-hide</code> (défaut : <it-mdi-hide-outline></it-mdi-hide-outline>) et <code>text-show</code> (défaut : <it-mdi-show-outline></it-mdi-show-outline>) permettent de définir le texte du bouton
-respectivement quand l’élément est caché ou non.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Fonctionnement par défaut</dt>
-<dd>
-<p><code>&lt;toggle-it selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
-<div class="flex flex-justify-between w-sm">
-  <span>début</span>
-  <toggle-it id="toggle-left-4" selector="#toggle-right-4"></toggle-it>
-  <toggle-it id="toggle-right-4" selector="#toggle-left-4"></toggle-it>
-  <span>fin</span>
-</div>
-</dd>
-<dt class="hdlist1">Adaptation des textes</dt>
-<dd>
-<p><code>&lt;toggle-it selector="…​" text-show="…​" text-hide="…​"&gt;&lt;/toggle-it&gt;</code></p>
-<div class="flex flex-justify-between w-sm">
-  <span>début</span>
-  <toggle-it id="toggle-left-5" selector="#toggle-right-5" text-show="Show" text-hide="Hide"></toggle-it>
-  <toggle-it id="toggle-right-5" selector="#toggle-left-5" text-show="Montrer" text-hide="Cacher"></toggle-it>
-  <span>fin</span>
-</div>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_infobulles">4.1.4. Infobulles</h4>
-<div class="paragraph">
-<p>Deux attributs <code>tooltip-hide</code> (défaut : <code>Cacher</code> <em>selector</em>) et <code>tooltip-show</code> (défaut : <code>Montrer</code> <em>selector</em>) permettent de définir le texte de l’infobulle
-respectivement quand l’élément est caché ou non.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Fonctionnement par défaut</dt>
-<dd>
-<p><code>&lt;toggle-it selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
-<div class="flex flex-justify-between w-sm">
-  <span>début</span>
-  <toggle-it id="toggle-left-6" selector="#toggle-right-6"></toggle-it>
-  <toggle-it id="toggle-right-6" selector="#toggle-left-6"></toggle-it>
-  <span>fin</span>
-</div>
-</dd>
-<dt class="hdlist1">Adaptation des infobulles</dt>
-<dd>
-<p><code>&lt;toggle-it selector="…​" tooltip-show="…​" tooltip-hide="…​"&gt;&lt;/toggle-it&gt;</code></p>
-<div class="flex flex-justify-between w-sm">
-  <span>début</span>
-  <toggle-it id="toggle-left-7" selector="#toggle-right-7" tooltip-show="Montrer le bouton de droite" tooltip-hide="Cacher le bouton de droite"></toggle-it>
-  <toggle-it id="toggle-right-7" selector="#toggle-left-7" tooltip-show="Montrer le bouton de gauche" tooltip-hide="Cacher le bouton de gauche"></toggle-it>
-  <span>fin</span>
-</div>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_api_3">4.2. API</h3>
-<div class="paragraph">
-<p>L’<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l’élément <code>&lt;toggle-it&gt;</code> est
-consultable <a href="../api/classes/ToggleIt.html">ici</a>.</p>
-</div>
-<details>
-<summary class="title">L’API en bref</summary>
-<div class="content">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><api-viewer src="dist/custom-elements.json" only="toggle-it">
-</api-viewer></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-</details>
-<details>
-<summary class="title">Usage en <code>typescript</code></summary>
-<div class="content">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { ToggleIt } from '@enibook/elements/dist/elements/toggle/toggle' <i class="conum" data-value="1"></i><b>(1)</b>
-const toggle = new ToggleIt()                                            <i class="conum" data-value="2"></i><b>(2)</b>
-toggle.selector = "#ident"                                               <i class="conum" data-value="3"></i><b>(3)</b>
-document.body.appendChild(toggle)                                        <i class="conum" data-value="4"></i><b>(4)</b>
-/*
-&lt;body&gt;
-...
-&lt;toggle-it selector="#ident"&gt;&lt;/toggle-it&gt;
-&lt;/body&gt;
-*/</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tbody><tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>importer la classe <a href="../api/classes/ToggleIt.html"><code>ToggleIt</code></a>;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>créer une instance de cette classe;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>préciser le sélecteur de l’élément que l’instance doit cacher ou montrer;</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>ajouter l’instance dans le <a href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model">DOM</a>.</td>
-</tr>
-</tbody></table>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-</details>
-</div>
+<toolbar-it fixed="" placement="top">
+  <it-mdi-menu slot="start"></it-mdi-menu>
+  <span slot="center">Hello</span>
+  <clock-it slot="end"></clock-it>
+</toolbar-it>
 </div>
 </div></div>
-<div id="footnotes">
-<hr>
-
-
-
-
-
-<div class="footnote" id="_footnotedef_6">
-<a href="#_footnoteref_6">6</a>. On pourra également consulter <a href="https://www.w3schools.com/cssref/css_selectors.php">la référence des sélecteurs <code>css</code> sur W3schools.</a>
-</div>
-
-</div>
+<div id="footnotes"></div>
 <nav>
   <a rel="prev" href="chap3.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>
      </a>
-  <a rel="next" href="chap5.html" class="nav nav-next" title="Next page" aria-label="Next page" aria-keyshortcuts="Right">
-        <i class="fa fa-angle-right"></i>
-     </a>
+  
   <div style="clear: both"></div>
 </nav>
 

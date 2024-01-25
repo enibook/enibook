@@ -4,10 +4,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var _a, _b;
 // lit
 import { css, html, unsafeCSS } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 // shoelace
 import '@shoelace-style/shoelace/dist/components/button/button';
 import '@shoelace-style/shoelace/dist/components/tooltip/tooltip';
@@ -23,7 +22,7 @@ const SHOW = 'Montrer';
  *
  * @csspart base - The component's internal wrapper.
  */
-export class ToggleIt extends (_b = BaseIt) {
+let ToggleIt = class ToggleIt extends BaseIt {
     constructor() {
         super(...arguments);
         /** sélecteur `css` de l'élément visé */
@@ -110,10 +109,9 @@ export class ToggleIt extends (_b = BaseIt) {
         }
         this.hidden = this.getHidden();
     }
-}
-_a = ToggleIt;
+};
 ToggleIt.styles = [
-    Reflect.get(_b, "styles", _a),
+    (void 0).styles,
     unsafeCSS(styles),
     css `@unocss-placeholder`
 ];
@@ -141,6 +139,12 @@ __decorate([
 __decorate([
     state()
 ], ToggleIt.prototype, "hidden", void 0);
+ToggleIt = __decorate([
+    customElement('toggle-it')
+], ToggleIt);
+export { ToggleIt };
+/*
 if (customElements && !customElements.get('toggle-it')) {
-    customElements.define('toggle-it', ToggleIt);
+  customElements.define('toggle-it', ToggleIt)
 }
+*/

@@ -4,11 +4,11 @@
 :host:focus {
   border: 1px solid var(--color-primary);
 }
-.code-edit {
+.code-it {
   display: flex;
   flex-direction: column;
 }
-.code-edit:hover .menu-button {
+.code-it:hover .menu-button {
   display: block;
 }
 .editor {

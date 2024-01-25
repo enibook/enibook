@@ -9,7 +9,6 @@ import type SlMenu from '@shoelace-style/shoelace/dist/components/menu/menu.js';
 import type SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
 import { Compartment } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
-import type { LanguageSupport } from "@codemirror/language";
 import type { Command } from "@codemirror/view";
 import type { Extension, StateField } from "@codemirror/state";
 import '../toolbar/toolbar';
@@ -38,7 +37,7 @@ export declare class CodeIt extends AnswerForm {
     protected _indentSize: number;
     protected _theme: 'dark' | 'light';
     protected message: string;
-    protected editor: EditorView;
+    protected theEditor: EditorView;
     protected extensions: (Extension | (StateField<boolean> | Extension)[])[];
     protected initialDoc: string;
     protected languageConfig: Compartment;
@@ -86,6 +85,8 @@ export declare class CodeIt extends AnswerForm {
      */
     get placeholder(): string;
     set placeholder(value: string);
+    /**  */
+    preview: boolean;
     /**
      * Passe l'éditeur en mode « lecture seule » (ie. modifications interdites).
      *
@@ -145,14 +146,17 @@ export declare class CodeIt extends AnswerForm {
     protected fetchContent(src: string): Promise<string>;
     protected fetchSrc(src: string): Promise<string>;
     protected firstUpdated(_changedProperties: PropertyValueMap<unknown> | Map<PropertyKey, unknown>): Promise<void>;
-    protected getCmLang(): Extension | LanguageSupport;
     protected getHelpUrl(): string;
     protected getInitialDoc(): Promise<string>;
     protected getInitialExtensions(): (Extension | (StateField<boolean> | Extension)[])[];
+    /** Liste des langages reconnus par l'éditeur */
+    get validLanguages(): string[];
     protected handleCopyClipboard(): void;
     protected handleLineNumbers(): void;
     protected handleSelectCommand(event: CustomEvent): void;
     protected handleSelectLanguage(event: CustomEvent): void;
+    /** Teste si un langage fait partie des langages reconnus par l'éditeur. */
+    isValidLanguage(language: string): boolean;
     protected renderAnswer(): TemplateResult;
     protected renderCommentButtons(): TemplateResult;
     protected renderHistoryButtons(): TemplateResult;

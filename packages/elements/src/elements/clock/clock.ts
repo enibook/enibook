@@ -151,6 +151,8 @@ declare global {
   }
 }
 
+/*
 if (customElements && !customElements.get('clock-it')) {
   customElements.define('clock-it', ClockIt)
 }
+*/

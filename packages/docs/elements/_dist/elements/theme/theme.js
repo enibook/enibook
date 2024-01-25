@@ -4,10 +4,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var _a, _b;
 // lit
 import { css, html, unsafeCSS } from 'lit';
-import { property, query, state } from 'lit/decorators.js';
+import { customElement, property, query, state } from 'lit/decorators.js';
 import '@shoelace-style/shoelace/dist/components/button/button';
 import '@shoelace-style/shoelace/dist/components/divider/divider';
 import '@shoelace-style/shoelace/dist/components/dropdown/dropdown';
@@ -22,7 +21,7 @@ import styles from './theme.css?inline';
  *
  * @csspart base - The component's internal wrapper.
  */
-export class ThemeIt extends (_b = BaseIt) {
+let ThemeIt = class ThemeIt extends BaseIt {
     constructor() {
         super();
         this.size = 'small';
@@ -93,10 +92,9 @@ export class ThemeIt extends (_b = BaseIt) {
     toAsciidoc() {
         throw new Error('Method not implemented.');
     }
-}
-_a = ThemeIt;
+};
 ThemeIt.styles = [
-    Reflect.get(_b, "styles", _a),
+    (void 0).styles,
     unsafeCSS(styles),
     css `@unocss-placeholder`
 ];
@@ -109,6 +107,12 @@ __decorate([
 __decorate([
     property({ type: String, reflect: true })
 ], ThemeIt.prototype, "size", void 0);
+ThemeIt = __decorate([
+    customElement('theme-it')
+], ThemeIt);
+export { ThemeIt };
+/*
 if (customElements && !customElements.get('theme-it')) {
-    customElements.define('theme-it', ThemeIt);
+  customElements.define('theme-it', ThemeIt)
 }
+*/

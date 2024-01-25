@@ -56,3 +56,5 @@ export function getKeymap(): { name: string; key: string; run: Command }[]  {
   newKeymap.sort((a, b) => a.name < b.name ? -1 : 1)
   return newKeymap
 }
+
+console.log(getKeymap())

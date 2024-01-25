@@ -93,7 +93,7 @@ consultable link:../api/classes/ClockIt.html[ici].
 |
 ++++
 <api-viewer
-src="dist/custom-elements.json"
+src="_dist/custom-elements.json"
 only="clock-it"
 >
 </api-viewer>

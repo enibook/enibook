@@ -4,10 +4,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var _a, _b;
 // lit
 import { css, html, unsafeCSS } from 'lit';
-import { property } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import '@shoelace-style/shoelace/dist/components/button/button';
 import '@shoelace-style/shoelace/dist/components/divider/divider';
 import '@shoelace-style/shoelace/dist/components/dropdown/dropdown';
@@ -44,7 +43,7 @@ export const colorNames = [
  *
  * @csspart base - The component's internal wrapper.
  */
-export class ColorIt extends (_b = BaseIt) {
+let ColorIt = class ColorIt extends BaseIt {
     constructor() {
         super();
         this.color = 'purple';
@@ -142,10 +141,9 @@ export class ColorIt extends (_b = BaseIt) {
     toAsciidoc() {
         throw new Error('Method not implemented.');
     }
-}
-_a = ColorIt;
+};
 ColorIt.styles = [
-    Reflect.get(_b, "styles", _a),
+    (void 0).styles,
     unsafeCSS(styles),
     css `@unocss-placeholder`
 ];
@@ -158,6 +156,12 @@ __decorate([
 __decorate([
     property({ type: String, reflect: true })
 ], ColorIt.prototype, "size", void 0);
+ColorIt = __decorate([
+    customElement('color-it')
+], ColorIt);
+export { ColorIt };
+/*
 if (customElements && !customElements.get('color-it')) {
-    customElements.define('color-it', ColorIt);
+  customElements.define('color-it', ColorIt)
 }
+*/ 

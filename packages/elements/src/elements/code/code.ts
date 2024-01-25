@@ -1,7 +1,8 @@
 // lit
-import { property, query, queryAll, state } from 'lit/decorators.js';
+import { customElement, property, query, queryAll, state } from 'lit/decorators.js';
 import { css, html, unsafeCSS } from 'lit';
 import type { CSSResultGroup, PropertyValueMap, TemplateResult} from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 // shoelace
 import '@shoelace-style/shoelace/dist/components/alert/alert.js'
 import '@shoelace-style/shoelace/dist/components/badge/badge.js'
@@ -11,13 +12,11 @@ import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js'
 import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js'
 import type SlMenu from '@shoelace-style/shoelace/dist/components/menu/menu.js'
 import type SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js'
-
 // codemirror
 import * as command from '@codemirror/commands'
 import * as search from '@codemirror/search'
 import { basicSetup } from "codemirror"
-// import { languages } from '@codemirror/language-data'
-import { asciidoc as cmAsciidoc } from "codemirror-asciidoc"
+/* import { asciidoc as cmAsciidoc } from "codemirror-asciidoc"
 import { css as cmCss } from "@codemirror/lang-css"
 import { html as cmHtml } from "@codemirror/lang-html"
 import { javascript as cmJavascript} from "@codemirror/lang-javascript"
@@ -25,12 +24,11 @@ import { json as cmJson } from "@codemirror/lang-json"
 import { markdown as cmMarkdown } from "@codemirror/lang-markdown"
 import { prolog as cmProlog } from 'codemirror-lang-prolog'
 import { python as cmPython } from '@codemirror/lang-python'
-import { sql as cmSql } from "@codemirror/lang-sql"
+import { sql as cmSql } from "@codemirror/lang-sql" */
 import { Compartment, EditorState } from "@codemirror/state"
 import { EditorView, keymap, lineNumbers, placeholder } from "@codemirror/view"
 import { indentationMarkers } from '@replit/codemirror-indentation-markers'
-import { indentUnit, /*LanguageDescription,*/ StreamLanguage } from "@codemirror/language"
-import type { LanguageSupport } from "@codemirror/language";
+import { indentUnit, /*LanguageDescription, StreamLanguage */ } from "@codemirror/language"
 import type { Command} from "@codemirror/view";
 import type { Extension, StateField } from "@codemirror/state";
 // enibook
@@ -42,8 +40,8 @@ import { frenchPhrases } from './locales/fr';
 import { getKeymap } from './code-keymap';
 import { darkTheme } from './themes/dark'
 import { lightTheme } from './themes/light'
+import { languages } from './languages/languages'
 import styles from './code.css?inline'
-import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 const outlineNone = EditorView.theme({
   "&.cm-editor.cm-focused": { outline: 'none' },
@@ -73,7 +71,7 @@ const helpKeymap = [
   command.indentWithTab
 ]
 
-
+/*
 const cmLanguages: { [name: string]: Extension } = {
   'asciidoc': StreamLanguage.define(cmAsciidoc),
   'css': cmCss(),
@@ -87,7 +85,8 @@ const cmLanguages: { [name: string]: Extension } = {
   'text': [],
   'typescript': cmJavascript({ 'typescript': true })
 }
-
+*/
+/*
 const logos: { [name: string]: string } = {
   '': '<it-mdi-help></it-mdi-help>',
   'asciidoc': '<it-simple-icons-asciidoctor></it-simple-icons-asciidoctor>',
@@ -102,6 +101,7 @@ const logos: { [name: string]: string } = {
   'text': '<it-mdi-format-text></it-mdi-format-text>',
   'typescript': '<it-mdi-language-typescript></it-mdi-language-typescript>'
 }
+*/
 
 /**
  * Editeur de code.
@@ -113,6 +113,7 @@ const logos: { [name: string]: string } = {
  * @csspart statusbar - Le conteneur de la barre d'information.
  * @csspart toolbar - Le conteneur de la barre d'outils.
  */
+@customElement('code-it')
 export class CodeIt extends AnswerForm {
   static override styles: CSSResultGroup = [ 
     super.styles, 
@@ -125,7 +126,7 @@ export class CodeIt extends AnswerForm {
 
   // private firstUpdateOk = false
 
-  protected _language = ''
+  protected _language = 'text'
   protected _placeholder = "F1: afficher/masquer les barres d'outils et d'informations"
   protected _readOnly = false
   protected _indentSize = 2
@@ -133,7 +134,7 @@ export class CodeIt extends AnswerForm {
 
   @state() protected message = ''
 
-  protected editor!: EditorView
+  protected theEditor!: EditorView
   protected extensions: (Extension | (StateField<boolean> | Extension)[])[] = []
   protected initialDoc = ''
 
@@ -165,7 +166,7 @@ export class CodeIt extends AnswerForm {
   set indentSize(value: number) {
     if (value !== this._indentSize) {
       this._indentSize = value
-      if (this.editor) { this.setIndentationExtension() }
+      if (this.theEditor) { this.setIndentationExtension() }
     }
   }
 
@@ -183,7 +184,7 @@ export class CodeIt extends AnswerForm {
   set language(value: string) {
     if (value !== this._language) {
       this._language = value
-      if (this.editor) { this.setLanguageExtension() }
+      if (this.theEditor) { this.setLanguageExtension() }
     }
   }
 
@@ -209,9 +210,12 @@ export class CodeIt extends AnswerForm {
   set placeholder(value: string) {
     if (value !== this._placeholder) {
       this._placeholder = value
-      if (this.editor) { this.setPlaceholderExtension() }
+      if (this.theEditor) { this.setPlaceholderExtension() }
     }
   }
+
+  /**  */
+  @property({ type: Boolean, reflect: true }) preview: boolean = false
 
   /**
    * Passe l'éditeur en mode « lecture seule » (ie. modifications interdites).
@@ -227,7 +231,7 @@ export class CodeIt extends AnswerForm {
   set readOnly(value: boolean) {
     if (value !== this._readOnly) {
       this._readOnly = value
-      if (this.editor) { this.setReadOnlyExtension() }
+      if (this.theEditor) { this.setReadOnlyExtension() }
     }
   }
 
@@ -252,7 +256,7 @@ export class CodeIt extends AnswerForm {
   set theme(value: 'light' | 'dark') {
     if (value !== this._theme) {
       this._theme = value
-      if (this.editor) { this.setThemeExtension() }
+      if (this.theEditor) { this.setThemeExtension() }
     }
   }
 
@@ -273,18 +277,18 @@ export class CodeIt extends AnswerForm {
   @property({ attribute: false })
   get value(): string {
     let res = this.initialDoc
-    if (this.editor) {
-      res = this.editor.state.doc.toString()
+    if (this.theEditor) {
+      res = this.theEditor.state.doc.toString()
     }
     return res
   }
   set value(value: string) {
     if (value !== this.value) {
-      if (this.editor) {
-        this.editor.dispatch({
+      if (this.theEditor) {
+        this.theEditor.dispatch({
           changes: {
             from: 0,
-            to: this.editor.state.doc.length,
+            to: this.theEditor.state.doc.length,
             insert: value
           }
         })
@@ -323,7 +327,7 @@ export class CodeIt extends AnswerForm {
 
   protected createListeners() {
     this.addEventListener('keyup-mouseup-it', () => {
-      const theState = this.editor.state
+      const theState = this.theEditor.state
       this.cursorLine = theState.doc.lineAt(theState.selection.main.head).number
       this.cursorColumn = theState.selection.main.head - theState.doc.lineAt(theState.selection.main.head).from
     })
@@ -341,9 +345,9 @@ export class CodeIt extends AnswerForm {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected override async firstUpdated(_changedProperties: PropertyValueMap<unknown> | Map<PropertyKey, unknown>) {
-    this.legend = `Editeur de code ${this.language}`
+    this.legend = `Edition de code ${this.language}`
     this.extensions = this.getInitialExtensions()
-    this.editor = new EditorView({
+    this.theEditor = new EditorView({
       doc: "",
       extensions: this.extensions,
       parent: this.editorContainer,
@@ -352,18 +356,13 @@ export class CodeIt extends AnswerForm {
     this.value = await this.getInitialDoc()
     this.setLanguageExtension()
     this.createListeners()
-    // this.firstUpdateOk = true
-  }
-
-  protected getCmLang(): Extension | LanguageSupport {
-    return []
   }
 
   protected getHelpUrl(): string {
-    if (this.language && this.language !== 'text') {
-      return `https://devdocs.io/${this.language}/`
+    if (this.isValidLanguage(this.language)) {
+      return languages[this.language].helpUrl
     } else {
-      return ''
+      return `https://devdocs.io/${this.language}/`
     }
   }
 
@@ -410,6 +409,11 @@ export class CodeIt extends AnswerForm {
     return res
   }
 
+  /** Liste des langages reconnus par l'éditeur */
+  get validLanguages(): string[] {
+    return Object.keys(languages)
+  }
+
   protected handleCopyClipboard() {
     navigator.clipboard.writeText(this.value).then(
       () => { this.notify("Contenu de l'éditeur copié dans le presse-papier.", "success", "it-mdi-check-circle-outline") },
@@ -419,7 +423,7 @@ export class CodeIt extends AnswerForm {
 
   protected handleLineNumbers() {
     this.lineNumbers = !this.lineNumbers
-    this.editor.dispatch({
+    this.theEditor.dispatch({
       effects: [
         this.lineNumbers
           ? this.lineNumbersConfig.reconfigure(lineNumbers())
@@ -441,14 +445,19 @@ export class CodeIt extends AnswerForm {
     this.languageMenuItems.forEach(anItem => { anItem.checked = false })
     item.checked = true
     this.language = item.value
-    this.editor.dispatch({
+    this.theEditor.dispatch({
       effects: [
-        this.languageConfig.reconfigure(cmLanguages[this.language]),
+        this.languageConfig.reconfigure(languages[this.language].cm/*cmLanguages[this.language]*/),
         this.placeholderConfig.reconfigure(placeholder(this.placeholder))
       ]
     })
   }
   
+  /** Teste si un langage fait partie des langages reconnus par l'éditeur. */
+  isValidLanguage(language: string): boolean {
+    return Object.keys(languages).includes(language)
+  }
+
 /*
   protected async loadLanguage(lang: string): Promise<LanguageSupport | undefined>{
     const desc = LanguageDescription.matchLanguageName(languages, lang, true)
@@ -458,7 +467,7 @@ export class CodeIt extends AnswerForm {
 */
   protected override renderAnswer(): TemplateResult {
     return html`
-      <div part="base" class="code-edit">
+      <div part="base" class="code-it">
         <div part="toolbar">
           ${this.renderToolbar()}
         </div>
@@ -486,10 +495,10 @@ export class CodeIt extends AnswerForm {
     return html`
       <sl-button-group ?hidden=${this.readOnly} label="commentaires">
         <sl-tooltip content="commenter/décommenter la ligne">
-          <sl-button size="small" @click=${() => { command.toggleComment(this.editor) }}><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;display:inline-block" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M5 5v14h2v2H3V3h4v2H5m15 6H7v2h13V7m0 4Z"/></svg></sl-button>
+          <sl-button size="small" @click=${() => { command.toggleComment(this.theEditor) }}><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;display:inline-block" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M5 5v14h2v2H3V3h4v2H5m15 6H7v2h13V7m0 4Z"/></svg></sl-button>
         </sl-tooltip>
         <sl-tooltip content="commenter/décommenter le bloc">
-          <sl-button size="small" @click=${() => { command.toggleBlockComment(this.editor) }}><it-mdi-format-list-group></it-mdi-format-list-group></sl-button>
+          <sl-button size="small" @click=${() => { command.toggleBlockComment(this.theEditor) }}><it-mdi-format-list-group></it-mdi-format-list-group></sl-button>
         </sl-tooltip>
       </sl-button-group>
     `
@@ -502,10 +511,10 @@ export class CodeIt extends AnswerForm {
           <sl-button size="small" @click=${() => { this.reset() }}><it-mdi-refresh></it-mdi-refresh></sl-button>
         </sl-tooltip>
         <sl-tooltip content="annuler la dernière modification">
-          <sl-button size="small" @click=${() => { command.undo(this.editor) }}><it-mdi-undo></it-mdi-undo></sl-button>
+          <sl-button size="small" @click=${() => { command.undo(this.theEditor) }}><it-mdi-undo></it-mdi-undo></sl-button>
         </sl-tooltip>
         <sl-tooltip content="rétablir la dernière annulation">
-          <sl-button size="small" @click=${() => { command.redo(this.editor) }}><it-mdi-redo></it-mdi-redo></sl-button>
+          <sl-button size="small" @click=${() => { command.redo(this.theEditor) }}><it-mdi-redo></it-mdi-redo></sl-button>
         </sl-tooltip>
       </sl-button-group>
     `
@@ -515,10 +524,10 @@ export class CodeIt extends AnswerForm {
     return html`
       <sl-button-group ?hidden=${this.readOnly} label="indentation">
         <sl-tooltip content="indenter">
-          <sl-button size="small" @click=${() => { command.indentMore(this.editor) }}><it-mdi-format-indent-increase></it-mdi-format-indent-increase></sl-button>
+          <sl-button size="small" @click=${() => { command.indentMore(this.theEditor) }}><it-mdi-format-indent-increase></it-mdi-format-indent-increase></sl-button>
         </sl-tooltip>
         <sl-tooltip content="désindenter">
-          <sl-button size="small" @click=${() => { command.indentLess(this.editor) }}><it-mdi-format-indent-decrease></it-mdi-format-indent-decrease></sl-button>
+          <sl-button size="small" @click=${() => { command.indentLess(this.theEditor) }}><it-mdi-format-indent-decrease></it-mdi-format-indent-decrease></sl-button>
         </sl-tooltip>
       </sl-button-group>
     `
@@ -526,15 +535,12 @@ export class CodeIt extends AnswerForm {
 
   protected renderMiscButtons(): TemplateResult {
     return html`
-      <sl-button-group label="outils">
-        <sl-tooltip content="afficher/cacher les numéros de ligne">
-          <sl-button size="small" @click=${() => this.handleLineNumbers()}><it-mdi-format-list-numbered></it-mdi-format-list-numbered></sl-button>
-        </sl-tooltip>
+      <sl-button-group label="langage et raccourcis clavier">
         <sl-tooltip content="choisir un langage">
           <sl-dropdown hoist>
-            <sl-button slot="trigger" size="small" caret>${unsafeHTML(logos[this.language])}</sl-button>
+            <sl-button slot="trigger" size="small" caret>${this.language ? unsafeHTML(languages[this.language].logo)/*logos[this.language]*/ : html`<it-mdi-help></it-mdi-help>`}</sl-button>
             <sl-menu class="dropdown__languages" @sl-select=${this.handleSelectLanguage}>
-              ${Object.keys(cmLanguages).map(language => html`<sl-menu-item type="checkbox" value="${language}" ?checked=${this.language === language}>${language}<div slot="prefix">${unsafeHTML(logos[language])}</div></sl-menu-item>`)}
+              ${Object.keys(languages/*cmLanguages*/).map(language => html`<sl-menu-item type="checkbox" value="${language}" ?checked=${this.language === language}>${language}<div slot="prefix">${unsafeHTML(languages[language].logo)}</div></sl-menu-item>`)}
             </sl-menu>
           </sl-dropdown>
         </sl-tooltip>
@@ -544,11 +550,16 @@ export class CodeIt extends AnswerForm {
             <sl-menu class="dropdown__shortcuts">
               <sl-menu-item disabled>Commande<div slot="suffix">Raccourci clavier</div></sl-menu-item>
               <sl-divider></sl-divider>
-              ${CodeIt.keymap.map(map => html`<sl-menu-item @click=${() => { map.run(this.editor) }}>${map.run.name}<div slot="suffix">${map.key}</div></sl-menu-item>`)}
+              ${CodeIt.keymap.map(map => html`<sl-menu-item @click=${() => { map.run(this.theEditor) }}>${map.run.name}<div slot="suffix">${map.key}</div></sl-menu-item>`)}
               <sl-divider></sl-divider>
               <sl-menu-item disabled>Commande<div slot="suffix">Raccourci clavier</div></sl-menu-item>
             </sl-menu>
           </sl-dropdown>
+        </sl-tooltip>
+      </sl-button-group>
+      <sl-button-group label="outils">
+        <sl-tooltip content="afficher/cacher les numéros de ligne">
+          <sl-button size="small" @click=${() => this.handleLineNumbers()}><it-mdi-format-list-numbered></it-mdi-format-list-numbered></sl-button>
         </sl-tooltip>
         <sl-tooltip content="copier dans le presse-papier">
           <sl-button size="small" @click=${() => this.handleCopyClipboard()}><it-mdi-content-copy></it-mdi-content-copy></sl-button>
@@ -569,10 +580,10 @@ export class CodeIt extends AnswerForm {
     return html`
       <sl-button-group label="rechercher/remplacer">
         <sl-tooltip content="${this.readOnly ? 'rechercher' : 'rechercher/remplacer'}">
-          <sl-button size="small" @click=${() => { search.openSearchPanel(this.editor) }}><it-mdi-find-replace></it-mdi-find-replace></sl-button>
+          <sl-button size="small" @click=${() => { search.openSearchPanel(this.theEditor) }}><it-mdi-find-replace></it-mdi-find-replace></sl-button>
         </sl-tooltip>
         <sl-tooltip content="atteindre la ligne:colonne">
-          <sl-button size="small" @click=${() => { search.gotoLine(this.editor) }}><it-mdi-text-search></it-mdi-text-search></sl-button>
+          <sl-button size="small" @click=${() => { search.gotoLine(this.theEditor) }}><it-mdi-text-search></it-mdi-text-search></sl-button>
         </sl-tooltip>
       </sl-button-group>
     `
@@ -582,10 +593,18 @@ export class CodeIt extends AnswerForm {
     return html`
       <toolbar-it class="statusbar" ?hidden=${!this.toolbar}>
         <sl-button-group slot="end" label="informations">
-          <sl-button size="small" variant="neutral">L ${this.cursorLine} - C ${this.cursorColumn}</sl-button>
-          <sl-button size="small" variant="neutral">Indentation : ${this.indentSize}</sl-button>
-          <sl-button size="small" variant="neutral" href="${this.getHelpUrl()}" target="_blank">Langage : ${this.language}</sl-button>
-          <sl-button size="small" variant="neutral">Mode : ${this.readOnly ? html`lecture seule` : html`édition` }</sl-button>
+          <sl-tooltip content="numéros de la ligne et de la colonne courantes">
+            <sl-button size="small" variant="neutral">L ${this.cursorLine} - C ${this.cursorColumn}</sl-button>
+          </sl-tooltip>
+          <sl-tooltip content="indentation en nombre d'espaces">
+            <sl-button size="small" variant="neutral">Indent : ${this.indentSize}</sl-button>
+          </sl-tooltip>
+          <sl-tooltip content="format de données Mime et lien sur une page d'aide">
+            <sl-button size="small" variant="neutral" href="${this.getHelpUrl()}" target="_blank">${languages[this.language].mime}</sl-button>
+          </sl-tooltip>
+          <sl-tooltip content="mode de l'éditeur : édition ou lecture seule">
+            <sl-button size="small" variant="neutral">${this.readOnly ? html`lecture seule` : html`édition` }</sl-button>
+          </sl-tooltip>      
         </sl-button-group>
       </toolbar-it>
     `
@@ -618,27 +637,18 @@ export class CodeIt extends AnswerForm {
 
 
   protected async setLanguageExtension() {
-    const langs = Object.keys(cmLanguages)
+    const langs = Object.keys(languages/*cmLanguages*/)
     if (langs.includes(this.language)) {
-      this.editor.dispatch({
+      this.theEditor.dispatch({
         effects: [
-          this.languageConfig.reconfigure(cmLanguages[this.language]),
+          this.languageConfig.reconfigure(languages[this.language].cm/*cmLanguages[this.language]*/),
         ]
       })
-    } /*else {
-      const cmLang = await this.loadLanguage(this.language)
-      if (cmLang) {
-        this.editor.dispatch({
-          effects: [
-            this.languageConfig.reconfigure(cmLang),
-          ]
-        })
-      }
-    }*/
+    }
   }
 
   protected setPlaceholderExtension() {
-    this.editor.dispatch({
+    this.theEditor.dispatch({
       effects: [
         this.placeholderConfig.reconfigure(placeholder(this.placeholder))
       ]
@@ -646,7 +656,7 @@ export class CodeIt extends AnswerForm {
   }
 
   protected setReadOnlyExtension() {
-    this.editor.dispatch({
+    this.theEditor.dispatch({
       effects: [
         this.readOnlyConfig.reconfigure(EditorState.readOnly.of(this.readOnly))
       ]
@@ -654,7 +664,7 @@ export class CodeIt extends AnswerForm {
   }
 
   protected setIndentationExtension() {
-    this.editor.dispatch({
+    this.theEditor.dispatch({
       effects: [
         this.indentationConfig.reconfigure(indentUnit.of(this.indentString))
       ]
@@ -662,7 +672,7 @@ export class CodeIt extends AnswerForm {
   }
 
   protected setThemeExtension() {
-    this.editor.dispatch({
+    this.theEditor.dispatch({
       effects: [
         this.themeConfig.reconfigure(this.theme === 'dark' ? darkTheme : lightTheme)
       ]
@@ -681,7 +691,7 @@ export class CodeIt extends AnswerForm {
   override updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('fieldset')) {
       this.editorContainer.innerHTML = ''
-      this.editorContainer.appendChild(this.editor.dom)
+      this.editorContainer.appendChild(this.theEditor.dom)
     }
   }
 }
@@ -693,6 +703,8 @@ declare global {
   }
 }
 
+/*
 if (customElements && !customElements.get('code-it')) {
   customElements.define('code-it', CodeIt)
 }
+*/

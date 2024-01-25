@@ -153,7 +153,7 @@ consultable link:../api/classes/ToggleIt.html[ici].
 |
 ++++
 <api-viewer
-src="dist/custom-elements.json"
+src="_dist/custom-elements.json"
 only="toggle-it"
 >
 </api-viewer>

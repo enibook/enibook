@@ -166,7 +166,7 @@ consultable link:../api/classes/LoremIpsumIt.html[ici].
 ====
 ++++
 <api-viewer
-  src="dist/custom-elements.json"
+  src="_dist/custom-elements.json"
   only="lorem-ipsum-it"
   exclude-knobs="type"
   style="max-width:100%"
@@ -202,7 +202,7 @@ document.body.appendChild(lorem)                                         // <5>
 </body>
 */
 ----
-<1> importer la classe link:../docs/api/classes/LoremIpsumIt.html[``LoremIpsumIt``];
+<1> importer la classe link:../api/classes/LoremIpsumIt.html[``LoremIpsumIt``];
 <2> créer une instance de cette classe;
 <3> préciser le type de gabarit de l'instance;
 <4> préciser le nombre d'objets textuels à générer par l'instance;

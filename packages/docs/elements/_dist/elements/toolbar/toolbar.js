@@ -4,10 +4,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var _a, _b;
 // lit
 import { classMap } from 'lit/directives/class-map.js';
-import { property } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { css, html, unsafeCSS } from 'lit';
 // enibook
 import { BaseIt } from '../base/base';
@@ -18,7 +17,7 @@ import styles from './toolbar.css?inline';
  *
  * @csspart base - The component's internal wrapper.
  */
-export class ToolbarIt extends (_b = BaseIt) {
+let ToolbarIt = class ToolbarIt extends BaseIt {
     constructor() {
         super(...arguments);
         this.fixed = false;
@@ -50,10 +49,9 @@ export class ToolbarIt extends (_b = BaseIt) {
       </div>
     `;
     }
-}
-_a = ToolbarIt;
+};
 ToolbarIt.styles = [
-    Reflect.get(_b, "styles", _a),
+    (void 0).styles,
     unsafeCSS(styles),
     css `@unocss-placeholder`
 ];
@@ -63,6 +61,12 @@ __decorate([
 __decorate([
     property({ type: String, reflect: true })
 ], ToolbarIt.prototype, "placement", void 0);
+ToolbarIt = __decorate([
+    customElement('toolbar-it')
+], ToolbarIt);
+export { ToolbarIt };
+/*
 if (customElements && !customElements.get('toolbar-it')) {
-    customElements.define('toolbar-it', ToolbarIt);
+  customElements.define('toolbar-it', ToolbarIt)
 }
+*/

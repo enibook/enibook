@@ -1,6 +1,6 @@
 // lit
 import { css, CSSResultGroup, html, PropertyValueMap, TemplateResult, unsafeCSS } from 'lit';
-import { property, query, state } from 'lit/decorators.js';
+import { customElement, property, query, state } from 'lit/decorators.js';
 // shoelace
 import { SlMenu } from '@shoelace-style/shoelace';
 import '@shoelace-style/shoelace/dist/components/button/button'
@@ -18,6 +18,7 @@ import styles from './theme.css?inline'
  *
  * @csspart base - The component's internal wrapper.
  */
+@customElement('theme-it')
 export class ThemeIt extends BaseIt {
   static styles: CSSResultGroup = [ 
     super.styles,
@@ -118,7 +119,9 @@ declare global {
   }
 }
 
+/*
 if (customElements && !customElements.get('theme-it')) {
   customElements.define('theme-it', ThemeIt)
 }
+*/
 

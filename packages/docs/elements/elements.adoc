@@ -31,24 +31,30 @@ link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'l
 
   == Section
   Un petit paragraphe.
+
+  .une petite liste
+  . un
+  . deux
   </script>
 </code-it>
 ++++
 
 ++++
-<code-it fieldset language="html" read-only>
+<code-it fieldset language="html" preview>
   <script type="enibook">
   <h1>Titre</h1>
   <h2>Section</h2>
   <p>Un petit paragraphe.</p>
+
+  <ol>
+    <li>un</li>
+    <li>deux</li>
+  </ol>
   </script>
 </code-it>
 ++++
 
 
-include::./adoc-preview/adoc-preview.adoc[]
-include::./html-preview/html-preview.adoc[]
-include::./md-preview/md-preview.adoc[]
 include::./toggle/toggle.adoc[]
 include::./clock/clock.adoc[]
 include::./lorem-ipsum/lorem-ipsum.adoc[]

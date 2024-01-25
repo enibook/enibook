@@ -1,0 +1,145 @@
+api-viewer {
+  --ave-accent-color: var(--sl-color-primary-800); /*Accent color, used for property / method names*/
+  --ave-border-color: var(--sl-color-primary-500); /*	Color used for borders and dividers*/
+  --ave-border-radius: var(--sl-border-radius-large); /*	Border radius used for the outer border*/
+  --ave-button-active-background: var(--sl-color-primary-200); /*	Color of the :focus and :hover button*/
+  --ave-button-background: var(--sl-color-primary-100); /*	Background of the button (code snippet, events)*/
+  --ave-button-color: var(--sl-color-primary-500); /*	Color of the button (code snippet, events)*/
+  --ave-header-background: var(--sl-color-primary-500); /*	Background of the header used for tag name*/
+  --ave-header-color: var(--sl-color-neutral-100); /*	Header text color used for tag name*/
+  --ave-item-color: var(--sl-color-neutral-900); /*	API items content color (main text)*/
+  --ave-label-color:  var(--sl-color-neutral-800); /*	API items labels color*/
+  --ave-link-color: var(--sl-color-primary-500); /*	API description links default color*/
+  --ave-link-hover-color: var(--sl-color-primary-500); /*	API description links hover color*/
+  --ave-monospace-font: var(--sl-font-monospace); /*	Monospace font stack for the API items*/
+  --ave-primary-color: var(--sl-color-primary-500); /*	Primary color, used for header and active tab*/
+  --ave-secondary-color: var(--sl-color-neutral-100); /*	Color used for method types in API docs*/
+  --ave-tab-color: inherit; /*	Inactive tabs color*/
+  --ave-tab-selected-color: var(--sl-color-primary-500); /*	Selected tab color*/
+  --ave-tab-indicator-size: 2px; /*	Size of the selected tab indicator*/
+  --ave-tag-background-color: var(--sl-color-primary-100); /*	Background color of tags (e.g., static)*/
+  --ave-tag-border-color: var(--sl-color-primary-200); /*	Color of tag borders*/
+  --ave-tag-color: var(--sl-color-neutral-900); 
+}
+
+api-viewer::part(md-code) {
+  color: var(--color-code);
+}
+api-viewer::part(knobs) {
+  background-color: var(--sl-color-neutral-100);
+}
+a {
+  color: var(--sl-color-primary-500);
+}
+body {
+  color: var(--sl-color-neutral-900);
+  background-color: var(--sl-color-neutral-50);
+  font-family: var(--sl-font-sans);
+}
+code {
+  color: var(--color-code);
+  background-color: var(--background-color-code);
+}
+details > summary {
+  color: var(--sl-color-neutral-600);
+}
+details[open] > .content {
+  border: 4px solid var(--sl-color-neutral-200);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: none; /*var(--sl-border-radius-large);*/
+  padding: 0.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+}
+
+:not(pre):not([class^=L]) > code {
+  color: var(--color-code);
+  background-color: var(--background-color-code);/*inherit;*/ /*var(--sl-color-neutral-200);*/
+}
+
+table thead,table tfoot {
+  background:/*#f7f8f7*/ var(--sl-color-neutral-300);
+}
+table tbody {
+  background-color: var(--sl-color-neutral-100);
+}
+table tr th,table tr td {
+  color:/*rgba(0,0,0,.8)*/ var(--sl-color-neutral-900);
+  background-color: inherit;
+}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td {
+  color:/*rgba(0,0,0,.8);*/ var(--sl-color-neutral-900);
+}
+
+
+table tr.even,table tr.alt{background:#f8f8f7}
+
+.exampleblock > .content {
+  background: var(--sl-color-amber-50); /*#fffef7;*/
+  border-color: var(--sl-color-amber-200); /*#e0e0dc;*/
+  box-shadow: 0 1px 4px var(--sl-color-amber-200); /*#e0e0dc*/
+}
+
+.literalblock pre,
+.listingblock > .content > pre:not(.highlight),
+.listingblock > .content > pre[class=highlight],
+.listingblock > .content > pre[class^="highlight "] {
+  background-color: /*var(--sl-color-neutral-100);*/ green;
+}
+.literalblock.output pre {
+  color: var(--sl-color-neutral-100);
+  background: var(--sl-color-neutral-800);
+}
+
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{
+  color:/*#7a2518;*/ var(--color-primary);
+}
+
+#header::before,
+#header::after,
+#content::before,
+#content::after,
+#footnotes::before,
+#footnotes::after,
+#footer::before,
+#footer::after {
+  content:" ";
+  display:table
+}
+
+#header > h1:first-child {
+  color:/*rgba(0,0,0,.85);*/ var(--sl-color-neutral-900);
+  margin-top: 2.5rem;
+}
+#header > h1:only-child, 
+body.toc2 #header > h1:nth-last-child(2) {
+  border-bottom:1px solid var(--sl-color-neutral-300);
+}
+
+#preamble > .sectionbody > [class=paragraph]:first-of-type p {
+  color:/*rgba(0,0,0,.85);*/ var(--sl-color-neutral-800);
+}
+
+#toc.toc2 {
+  background-color: var(--sl-color-neutral-100);
+  border-right:1px solid var(--sl-color-neutral-300);
+}
+#toc a {
+  color: var(--color-primary-dark);
+}
+#toc li.current {
+  background-color: /*rgb(226, 231, 235);*/ var(--color-primary-light);
+}
+
+body.toc2.toc-right #toc.toc2 {
+  border-right-width: 0; 
+  border-left: 1px solid var(--sl-color-neutral-300);
+}
+
+#toc.toc2 #toctitle {
+  margin-bottom: 1.5em;
+}

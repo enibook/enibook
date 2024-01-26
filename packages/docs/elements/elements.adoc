@@ -17,7 +17,7 @@ Les développements sont réalisés en
 link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'link:http://127.0.0.1:5500/packages/docs/api/index.html[API] (_Application Programming Interface_).
 
 ++++
-<code-it fieldset>
+<code-it fieldset no-output>
   <script type="enibook">
   Un petit paragraphe.
   </script>
@@ -56,6 +56,7 @@ link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'l
 
 
 include::./toggle/toggle.adoc[]
+include::./code/code.adoc[]
 include::./clock/clock.adoc[]
 include::./lorem-ipsum/lorem-ipsum.adoc[]
 include::./toolbar/toolbar.adoc[]

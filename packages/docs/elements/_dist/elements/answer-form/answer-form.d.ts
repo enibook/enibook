@@ -8,7 +8,8 @@ export declare abstract class AnswerForm extends BaseIt {
      *
      * @memberof AnswerForm
      */
-    legend: string;
+    formLegend: string;
+    outputLegend: string;
     /**
      * Retours demandés.
      *
@@ -22,6 +23,7 @@ export declare abstract class AnswerForm extends BaseIt {
      * @memberof AnswerForm
      */
     fieldset: boolean;
+    noOutput: boolean;
     /**
      *
      * @ignore
@@ -31,7 +33,9 @@ export declare abstract class AnswerForm extends BaseIt {
      */
     abstract answer(): unknown;
     render(): TemplateResult;
-    protected abstract renderAnswer(): TemplateResult;
+    protected renderAnswerOutput(): TemplateResult;
+    protected abstract renderForm(): TemplateResult;
+    protected abstract renderOutput(): TemplateResult;
     /**
      *
      * @ignore

@@ -13,7 +13,7 @@ api-viewer {
   --ave-link-hover-color: var(--sl-color-primary-500); /*	API description links hover color*/
   --ave-monospace-font: var(--sl-font-monospace); /*	Monospace font stack for the API items*/
   --ave-primary-color: var(--sl-color-primary-500); /*	Primary color, used for header and active tab*/
-  --ave-secondary-color: var(--sl-color-neutral-100); /*	Color used for method types in API docs*/
+  --ave-secondary-color: var(--sl-color-neutral-600); /*	Color used for method types in API docs*/
   --ave-tab-color: inherit; /*	Inactive tabs color*/
   --ave-tab-selected-color: var(--sl-color-primary-500); /*	Selected tab color*/
   --ave-tab-indicator-size: 2px; /*	Size of the selected tab indicator*/

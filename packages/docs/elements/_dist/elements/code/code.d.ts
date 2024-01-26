@@ -72,7 +72,7 @@ export declare class CodeIt extends AnswerForm {
     /**
      * Numéroter les lignes de l'éditeur.
      *
-     * @type {string}
+     * @type {boolean}
      * @memberof CodeEditIt
      */
     lineNumbers: boolean;
@@ -85,10 +85,10 @@ export declare class CodeIt extends AnswerForm {
      */
     get placeholder(): string;
     set placeholder(value: string);
-    /**  */
+    /** @ignore */
     preview: boolean;
     /**
-     * Passe l'éditeur en mode « lecture seule » (ie. modifications interdites).
+     * Passe l'éditeur en mode « lecture seule » (ie. modifications interdites; défaut: false).
      *
      * @readonly
      * @type {boolean}
@@ -130,7 +130,6 @@ export declare class CodeIt extends AnswerForm {
      * La réponse de l'éditeur.
      *
      * @returns {string}
-     * @memberof CodeEditIt
      */
     answer(): string;
     protected get indentString(): string;
@@ -139,7 +138,6 @@ export declare class CodeIt extends AnswerForm {
      *
      * @readonly
      * @type {string}
-     * @memberof CodeEditIt
      */
     get tagTitle(): string;
     protected createListeners(): void;
@@ -157,11 +155,12 @@ export declare class CodeIt extends AnswerForm {
     protected handleSelectLanguage(event: CustomEvent): void;
     /** Teste si un langage fait partie des langages reconnus par l'éditeur. */
     isValidLanguage(language: string): boolean;
-    protected renderAnswer(): TemplateResult;
+    protected renderForm(): TemplateResult;
     protected renderCommentButtons(): TemplateResult;
     protected renderHistoryButtons(): TemplateResult;
     protected renderIndentationButtons(): TemplateResult;
     protected renderMiscButtons(): TemplateResult;
+    protected renderOutput(): TemplateResult;
     protected renderSearchButtons(): TemplateResult;
     protected renderStatusBar(): TemplateResult;
     protected renderToolbar(): TemplateResult;
@@ -176,6 +175,7 @@ export declare class CodeIt extends AnswerForm {
     protected setReadOnlyExtension(): void;
     protected setIndentationExtension(): void;
     protected setThemeExtension(): void;
+    /** Syntaxe asciidoc équivalente */
     toAsciidoc(): string;
     protected toggleTheme(): void;
     updated(changedProperties: Map<string, unknown>): void;

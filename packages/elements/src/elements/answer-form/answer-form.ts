@@ -23,7 +23,10 @@ export abstract class AnswerForm extends BaseIt {
    * @memberof AnswerForm
    */
   @property({ type: String, reflect: true })
-  public legend = ''
+  public formLegend = ''
+
+  @property({ type: String, reflect: true })
+  public outputLegend = ''
 
   /**
    * Retours demandés.
@@ -42,6 +45,9 @@ export abstract class AnswerForm extends BaseIt {
   @property({ type: Boolean, reflect: true })
   public fieldset = false
 
+  @property({ type: Boolean, reflect: true, attribute: 'no-output' })
+  public noOutput = false
+
   /**
    *
    * @ignore
@@ -52,26 +58,41 @@ export abstract class AnswerForm extends BaseIt {
   abstract answer(): unknown
 
   override render(): TemplateResult {
-    const fieldsetClasses = {
-      "answer-form__fieldset": true,
-      "rtl": this.dir === 'rtl',
-    }
     return html`
-      <form part="base" class="answer-form">
-        ${!this.fieldset
-          ? this.renderAnswer()
-          : html`
-            <fieldset class=${classMap(fieldsetClasses)}>
-              <legend class="answer-form__legend">${this.legend}</legend>
-              ${this.renderAnswer()}
-            </fieldset>
-            `
-        }
-      </form>
+      <div part="base" class="answer-form">
+        <div part="form" class="form">
+          ${this.renderForm()}
+        </div>
+        <div part="output" class="output" ?hidden=${this.noOutput}>
+          ${this.renderOutput()}
+        </div>
+      </div>
     `
   }
 
-  protected abstract renderAnswer(): TemplateResult
+  protected renderAnswerOutput(): TemplateResult {
+    const fieldsetClasses = {
+      "form__fieldset": true,
+      "rtl": this.dir === 'rtl',
+    }
+    return html`
+      <div part="output" class="answer-output">
+          ${!this.fieldset
+            ? this.renderOutput()
+            : html`
+              <fieldset class=${classMap(fieldsetClasses)}>
+                <legend class="output__legend">${this.outputLegend}</legend>
+                ${this.renderOutput()}
+              </fieldset>
+              `
+          }
+      </div>
+      `
+  }
+  
+  protected abstract renderForm(): TemplateResult
+
+  protected abstract renderOutput(): TemplateResult
 
   /**
    *

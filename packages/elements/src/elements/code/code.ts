@@ -115,7 +115,7 @@ const logos: { [name: string]: string } = {
  */
 @customElement('code-it')
 export class CodeIt extends AnswerForm {
-  static override styles: CSSResultGroup = [ 
+  static styles: CSSResultGroup = [ 
     super.styles, 
     unsafeCSS(styles),
     css`@unocss-placeholder`
@@ -191,10 +191,10 @@ export class CodeIt extends AnswerForm {
   /**
    * Numéroter les lignes de l'éditeur.
    *
-   * @type {string}
+   * @type {boolean}
    * @memberof CodeEditIt
    */
-  @property({ type: Boolean, reflect: true, attribute: 'line-numbers' }) lineNumbers = false
+  @property({ type: Boolean, reflect: true, attribute: 'line-numbers' }) lineNumbers: boolean = false
 
   /**
    * L'invite de l'éditeur.
@@ -214,11 +214,11 @@ export class CodeIt extends AnswerForm {
     }
   }
 
-  /**  */
+  /** @ignore */
   @property({ type: Boolean, reflect: true }) preview: boolean = false
 
   /**
-   * Passe l'éditeur en mode « lecture seule » (ie. modifications interdites).
+   * Passe l'éditeur en mode « lecture seule » (ie. modifications interdites; défaut: false).
    *
    * @readonly
    * @type {boolean}
@@ -265,7 +265,7 @@ export class CodeIt extends AnswerForm {
    *
    * @memberof CodeEditIt
    */
-  @property({ type: Boolean, reflect: false }) toolbar = false
+  @property({ type: Boolean, reflect: true }) toolbar = false
 
   /**
    * Le contenu de l'éditeur.
@@ -300,9 +300,8 @@ export class CodeIt extends AnswerForm {
    * La réponse de l'éditeur.
    *
    * @returns {string}
-   * @memberof CodeEditIt
    */
-  override answer(): string {
+  answer(): string {
     return this.value
   }
 
@@ -319,7 +318,6 @@ export class CodeIt extends AnswerForm {
    *
    * @readonly
    * @type {string}
-   * @memberof CodeEditIt
    */
   get tagTitle(): string {
     return `Editeur de code ${this.language}`;
@@ -344,8 +342,8 @@ export class CodeIt extends AnswerForm {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected override async firstUpdated(_changedProperties: PropertyValueMap<unknown> | Map<PropertyKey, unknown>) {
-    this.legend = `Edition de code ${this.language}`
+  protected async firstUpdated(_changedProperties: PropertyValueMap<unknown> | Map<PropertyKey, unknown>) {
+    this.formLegend = `Edition de code ${this.language}`
     this.extensions = this.getInitialExtensions()
     this.theEditor = new EditorView({
       doc: "",
@@ -465,7 +463,7 @@ export class CodeIt extends AnswerForm {
     return support
   }
 */
-  protected override renderAnswer(): TemplateResult {
+  protected renderForm(): TemplateResult {
     return html`
       <div part="base" class="code-it">
         <div part="toolbar">
@@ -475,11 +473,11 @@ export class CodeIt extends AnswerForm {
           <div part="editor" class="editor"></div>
           <div part="menuBtn" class="menu-button">
             ${this.readOnly
-              ? html`<sl-tooltip content="copier dans le presse-papier"><sl-button variant="neutral" size="small" @click=${() => this.handleCopyClipboard()}><it-mdi-content-copy></it-mdi-content-copy></sl-button></sl-tooltip>`
-              : html`<sl-tooltip content="activer/désactiver les barres d'outils et d'informations"><sl-button variant="neutral" size="small" @click=${() => { this.toolbar = !this.toolbar }}><it-mdi-tools></it-mdi-tools></sl-button></sl-tooltip>`
+              ? html`<sl-tooltip content="copier dans le presse-papier" hoist><sl-button variant="neutral" size="small" @click=${() => this.handleCopyClipboard()}><it-mdi-content-copy></it-mdi-content-copy></sl-button></sl-tooltip>`
+              : html`<sl-tooltip content="activer/désactiver les barres d'outils et d'informations" hoist><sl-button variant="neutral" size="small" @click=${() => { this.toolbar = !this.toolbar }}><it-mdi-tools></it-mdi-tools></sl-button></sl-tooltip>`
             }
             ${this.btnFeedback
-              ? html`<sl-tooltip content="interprétation"><sl-button variant="neutral" size="small" @click=${() => { this.emit('feedback-requested-it') }}><it-mdi-play></it-mdi-play></sl-button></sl-tooltip>`
+              ? html`<sl-tooltip content="interprétation" hoist><sl-button variant="neutral" size="small" @click=${() => { this.emit('feedback-requested-it') }}><it-mdi-play></it-mdi-play></sl-button></sl-tooltip>`
               : html``
             }
           </div>
@@ -494,10 +492,10 @@ export class CodeIt extends AnswerForm {
   protected renderCommentButtons(): TemplateResult {
     return html`
       <sl-button-group ?hidden=${this.readOnly} label="commentaires">
-        <sl-tooltip content="commenter/décommenter la ligne">
+        <sl-tooltip content="commenter/décommenter la ligne" hoist>
           <sl-button size="small" @click=${() => { command.toggleComment(this.theEditor) }}><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;display:inline-block" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M5 5v14h2v2H3V3h4v2H5m15 6H7v2h13V7m0 4Z"/></svg></sl-button>
         </sl-tooltip>
-        <sl-tooltip content="commenter/décommenter le bloc">
+        <sl-tooltip content="commenter/décommenter le bloc" hoist>
           <sl-button size="small" @click=${() => { command.toggleBlockComment(this.theEditor) }}><it-mdi-format-list-group></it-mdi-format-list-group></sl-button>
         </sl-tooltip>
       </sl-button-group>
@@ -507,13 +505,13 @@ export class CodeIt extends AnswerForm {
   protected renderHistoryButtons(): TemplateResult {
     return html`
       <sl-button-group ?hidden=${this.readOnly} label="historique">
-        <sl-tooltip content="annuler toutes les modifications">
+        <sl-tooltip content="annuler toutes les modifications" hoist>
           <sl-button size="small" @click=${() => { this.reset() }}><it-mdi-refresh></it-mdi-refresh></sl-button>
         </sl-tooltip>
-        <sl-tooltip content="annuler la dernière modification">
+        <sl-tooltip content="annuler la dernière modification" hoist>
           <sl-button size="small" @click=${() => { command.undo(this.theEditor) }}><it-mdi-undo></it-mdi-undo></sl-button>
         </sl-tooltip>
-        <sl-tooltip content="rétablir la dernière annulation">
+        <sl-tooltip content="rétablir la dernière annulation" hoist>
           <sl-button size="small" @click=${() => { command.redo(this.theEditor) }}><it-mdi-redo></it-mdi-redo></sl-button>
         </sl-tooltip>
       </sl-button-group>
@@ -523,10 +521,10 @@ export class CodeIt extends AnswerForm {
   protected renderIndentationButtons(): TemplateResult {
     return html`
       <sl-button-group ?hidden=${this.readOnly} label="indentation">
-        <sl-tooltip content="indenter">
+        <sl-tooltip content="indenter" hoist>
           <sl-button size="small" @click=${() => { command.indentMore(this.theEditor) }}><it-mdi-format-indent-increase></it-mdi-format-indent-increase></sl-button>
         </sl-tooltip>
-        <sl-tooltip content="désindenter">
+        <sl-tooltip content="désindenter" hoist>
           <sl-button size="small" @click=${() => { command.indentLess(this.theEditor) }}><it-mdi-format-indent-decrease></it-mdi-format-indent-decrease></sl-button>
         </sl-tooltip>
       </sl-button-group>
@@ -536,7 +534,7 @@ export class CodeIt extends AnswerForm {
   protected renderMiscButtons(): TemplateResult {
     return html`
       <sl-button-group label="langage et raccourcis clavier">
-        <sl-tooltip content="choisir un langage">
+        <sl-tooltip content="choisir un langage" hoist>
           <sl-dropdown hoist>
             <sl-button slot="trigger" size="small" caret>${this.language ? unsafeHTML(languages[this.language].logo)/*logos[this.language]*/ : html`<it-mdi-help></it-mdi-help>`}</sl-button>
             <sl-menu class="dropdown__languages" @sl-select=${this.handleSelectLanguage}>
@@ -544,7 +542,7 @@ export class CodeIt extends AnswerForm {
             </sl-menu>
           </sl-dropdown>
         </sl-tooltip>
-        <sl-tooltip content="raccourcis clavier">
+        <sl-tooltip content="raccourcis clavier" hoist>
           <sl-dropdown stay-open-on-select hoist ?hidden=${this.readOnly}>
             <sl-button slot="trigger" size="small" caret><it-mdi-keyboard></it-mdi-keyboard></sl-button>
             <sl-menu class="dropdown__shortcuts">
@@ -558,16 +556,16 @@ export class CodeIt extends AnswerForm {
         </sl-tooltip>
       </sl-button-group>
       <sl-button-group label="outils">
-        <sl-tooltip content="afficher/cacher les numéros de ligne">
+        <sl-tooltip content="afficher/cacher les numéros de ligne" hoist>
           <sl-button size="small" @click=${() => this.handleLineNumbers()}><it-mdi-format-list-numbered></it-mdi-format-list-numbered></sl-button>
         </sl-tooltip>
-        <sl-tooltip content="copier dans le presse-papier">
+        <sl-tooltip content="copier dans le presse-papier" hoist>
           <sl-button size="small" @click=${() => this.handleCopyClipboard()}><it-mdi-content-copy></it-mdi-content-copy></sl-button>
         </sl-tooltip>
-        <sl-tooltip content="changer de thème">
+        <sl-tooltip content="changer de thème" hoist>
           <sl-button size="small" @click=${() => this.toggleTheme()}><it-mdi-theme-light-dark></it-mdi-theme-light-dark></sl-button>
         </sl-tooltip>
-        <sl-tooltip .content=${!this.fullscreen ? 'passer en mode plein écran' : 'quitter le mode plein écran'}>
+        <sl-tooltip .content=${!this.fullscreen ? 'passer en mode plein écran' : 'quitter le mode plein écran'} hoist>
           <sl-button size="small" @click=${() => this.toggleFullscreen()}>
             ${!this.fullscreen ? html`<it-mdi-fullscreen></it-mdi-fullscreen>` : html`<it-mdi-fullscreen-exit></it-mdi-fullscreen-exit>`}
           </sl-button>
@@ -576,13 +574,23 @@ export class CodeIt extends AnswerForm {
     `
   }
 
+  protected renderOutput(): TemplateResult {
+    return html`
+      <iframe class="output__iframe" allowfullscreen name="output"
+        sandbox="allow-downloads allow-forms allow-modals allow-popups allow-same-origin allow-scripts allow-top-navigation"
+        src="../elements.html"
+      >
+      </iframe>
+    `
+  }
+
   protected renderSearchButtons(): TemplateResult {
     return html`
       <sl-button-group label="rechercher/remplacer">
-        <sl-tooltip content="${this.readOnly ? 'rechercher' : 'rechercher/remplacer'}">
+        <sl-tooltip content="${this.readOnly ? 'rechercher' : 'rechercher/remplacer'}" hoist>
           <sl-button size="small" @click=${() => { search.openSearchPanel(this.theEditor) }}><it-mdi-find-replace></it-mdi-find-replace></sl-button>
         </sl-tooltip>
-        <sl-tooltip content="atteindre la ligne:colonne">
+        <sl-tooltip content="atteindre la ligne:colonne" hoist>
           <sl-button size="small" @click=${() => { search.gotoLine(this.theEditor) }}><it-mdi-text-search></it-mdi-text-search></sl-button>
         </sl-tooltip>
       </sl-button-group>
@@ -593,16 +601,16 @@ export class CodeIt extends AnswerForm {
     return html`
       <toolbar-it class="statusbar" ?hidden=${!this.toolbar}>
         <sl-button-group slot="end" label="informations">
-          <sl-tooltip content="numéros de la ligne et de la colonne courantes">
+          <sl-tooltip content="numéros de la ligne et de la colonne courantes" hoist>
             <sl-button size="small" variant="neutral">L ${this.cursorLine} - C ${this.cursorColumn}</sl-button>
           </sl-tooltip>
-          <sl-tooltip content="indentation en nombre d'espaces">
+          <sl-tooltip content="indentation en nombre d'espaces" hoist>
             <sl-button size="small" variant="neutral">Indent : ${this.indentSize}</sl-button>
           </sl-tooltip>
-          <sl-tooltip content="format de données Mime et lien sur une page d'aide">
+          <sl-tooltip content="format de données Mime et lien sur une page d'aide" hoist>
             <sl-button size="small" variant="neutral" href="${this.getHelpUrl()}" target="_blank">${languages[this.language].mime}</sl-button>
           </sl-tooltip>
-          <sl-tooltip content="mode de l'éditeur : édition ou lecture seule">
+          <sl-tooltip content="mode de l'éditeur : édition ou lecture seule" hoist>
             <sl-button size="small" variant="neutral">${this.readOnly ? html`lecture seule` : html`édition` }</sl-button>
           </sl-tooltip>      
         </sl-button-group>
@@ -679,7 +687,8 @@ export class CodeIt extends AnswerForm {
     })
   }
 
-  override toAsciidoc(): string {
+  /** Syntaxe asciidoc équivalente */
+  toAsciidoc(): string {
     return 'Editeur de code';
   }
   
@@ -688,7 +697,7 @@ export class CodeIt extends AnswerForm {
     this.setThemeExtension()
   }
 
-  override updated(changedProperties: Map<string, unknown>) {
+  updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('fieldset')) {
       this.editorContainer.innerHTML = ''
       this.editorContainer.appendChild(this.theEditor.dom)

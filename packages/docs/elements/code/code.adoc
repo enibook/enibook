@@ -1,0 +1,128 @@
+== Editeur de code
+
+[%header,cols="2a,1a,1a"]
+|===
+| Fonction
+| Elément ``html``
+| Classe ``typescript``
+
+| Cet élément est un éditeur de code source.
+
+++++
+<code-it></code-it>
+++++
+| ``<code-it>``
+
+type : « link:https://developer.mozilla.org/fr/docs/Glossary/Block-level_content[bloc] » (_block-level element_)
+| link:../api/classes/CodeIt.html[``CodeIt``]
+|===
+
+[%collapsible%open]
+.Structure
+====
+La fenêtre d'édition est encadrée au-dessus par une barre d'outils et en-dessous par une barre d'informations. Ces deux barres sont escamotables.
+++++
+<code-it language="html" toolbar line-numbers>
+  <script type="enibook">
+    <!-- du code html -->
+    <p>
+      Un paragraphe
+    </p>
+  </script>
+</code-it>
+++++
+====
+
+[%collapsible]
+.Interactivité
+====
+Cet éditeur de code est évidemment cliquable +++<it-mdi-mouse title="cliquable"></it-mdi-mouse>+++ et éditable  +++<it-mdi-keyboard-outline title="éditable"></it-mdi-keyboard-outline>+++.
+
++++<it-mdi-tools></it-mdi-tools>+++
+
+[cols="1a,1a"] 
+|===
+|
+
+[horizontal]
+.Partie gauche de la barre d'outils
++++<it-mdi-refresh></it-mdi-refresh>+++:: annuler toutes les modifications et revenir au code initial
++++<it-mdi-undo></it-mdi-undo>+++:: annuler la dernière modification
++++<it-mdi-redo></it-mdi-redo>+++:: rétablir la dernière annulation
++++<it-mdi-format-indent-increase></it-mdi-format-indent-increase>+++:: indenter les lignes sélectionnées du nombre d'espaces correspondant à une tabulation (2 espaces par défaut)
++++<it-mdi-format-indent-decrease></it-mdi-format-indent-decrease>+++:: désindenter les lignes sélectionnées du nombre d'espaces correspondant à une tabulation (2 espaces par défaut)
++++<svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;display:inline-block" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M5 5v14h2v2H3V3h4v2H5m15 6H7v2h13V7m0 4Z"/></svg>+++:: commenter/décommenter ligne par ligne les lignes sélectionnées
++++<it-mdi-format-list-group></it-mdi-format-list-group>+++:: commenter/décommenter le bloc de lignes sélectionnées
+|
+
+[horizontal]
+.Partie droite de la barre d'outils
++++<it-mdi-language-html5></it-mdi-language-html5>+++:: affiche le logo du langage courant et propose un menu déroulant pour choisir le langage source de l'éditeur parmi les langages reconnus
++++<it-mdi-keyboard></it-mdi-keyboard>+++:: menu déroulant pour activer une commande de l'éditeur et indiquer le raccourci clavier associé
++++<it-mdi-format-list-numbered></it-mdi-format-list-numbered>+++:: afficher ou cacher les numéros de ligne
++++<it-mdi-content-copy></it-mdi-content-copy>+++:: copier le contenu de l'éditeur dans le presse-papier
++++<it-mdi-theme-light-dark></it-mdi-theme-light-dark>+++:: changer de thème : passer de clair à sombre ou inversement
++++<it-mdi-fullscreen></it-mdi-fullscreen>+++:: passer l'éditeur en mode plein écran
++++<it-mdi-fullscreen-exit></it-mdi-fullscreen-exit>+++:: quitter le mode plein écran
+|===
+
+++++
+
+
+
+
+
+++++
+====
+
+=== Attributs et propriétés
+Cette balise possède XXX attributs spécifiques optionnels : ``date``, ``size`` et ``time``.
+
+
+=== API
+L'link:https://developer.mozilla.org/fr/docs/Glossary/API[API] (_Application Programming Interface_) de l'élément ``<code-it>`` est
+consultable link:../../api/classes/CodeIt.html[ici].
+
+.L'API en bref
+[%collapsible]
+====
+[cols="1a"]
+|===
+|
+++++
+<api-viewer
+src="_dist/custom-elements.json"
+only="code-it"
+>
+</api-viewer>
+++++
+|===
+====
+
+.Usage en ``typescript``
+[%collapsible]
+====
+[cols="100a"]
+|===
+|
+[source,typescript]
+----
+import { CodeIt } from '@enibook/elements/dist/elements/code/code' // <1>
+const editor = new CodeIt()                                           // <2>
+editor.size = 'large'                                                  // <3>
+editor.date = true                                                     // <4>
+document.body.appendChild(editor)                                      // <5>
+/*
+<body>
+...
+<code-it size="large" date></code-it>
+</body>
+*/
+----
+<1> importer la classe link:../../api/classes/CodeIt.html[``CodeIt``];
+<2> créer une instance de cette classe;
+<3> préciser la taille de l'instance;
+<4> préciser le type affichage désiré;
+<5> ajouter l'instance dans le link:https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model[DOM].
+|===
+====

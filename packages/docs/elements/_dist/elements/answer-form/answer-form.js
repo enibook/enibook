@@ -20,7 +20,8 @@ export class AnswerForm extends (_b = BaseIt) {
          *
          * @memberof AnswerForm
          */
-        this.legend = '';
+        this.formLegend = '';
+        this.outputLegend = '';
         /**
          * Retours demandés.
          *
@@ -34,24 +35,37 @@ export class AnswerForm extends (_b = BaseIt) {
          * @memberof AnswerForm
          */
         this.fieldset = false;
+        this.noOutput = false;
     }
     render() {
+        return html `
+      <div part="base" class="answer-form">
+        <div part="form" class="form">
+          ${this.renderForm()}
+        </div>
+        <div part="output" class="output" ?hidden=${this.noOutput}>
+          ${this.renderOutput()}
+        </div>
+      </div>
+    `;
+    }
+    renderAnswerOutput() {
         const fieldsetClasses = {
-            "answer-form__fieldset": true,
+            "form__fieldset": true,
             "rtl": this.dir === 'rtl',
         };
         return html `
-      <form part="base" class="answer-form">
-        ${!this.fieldset
-            ? this.renderAnswer()
+      <div part="output" class="answer-output">
+          ${!this.fieldset
+            ? this.renderOutput()
             : html `
-            <fieldset class=${classMap(fieldsetClasses)}>
-              <legend class="answer-form__legend">${this.legend}</legend>
-              ${this.renderAnswer()}
-            </fieldset>
-            `}
-      </form>
-    `;
+              <fieldset class=${classMap(fieldsetClasses)}>
+                <legend class="output__legend">${this.outputLegend}</legend>
+                ${this.renderOutput()}
+              </fieldset>
+              `}
+      </div>
+      `;
     }
 }
 _a = AnswerForm;
@@ -65,10 +79,16 @@ __decorate([
 ], AnswerForm.prototype, "form", void 0);
 __decorate([
     property({ type: String, reflect: true })
-], AnswerForm.prototype, "legend", void 0);
+], AnswerForm.prototype, "formLegend", void 0);
+__decorate([
+    property({ type: String, reflect: true })
+], AnswerForm.prototype, "outputLegend", void 0);
 __decorate([
     property({ type: Boolean, reflect: true, attribute: 'btn-feedback' })
 ], AnswerForm.prototype, "btnFeedback", void 0);
 __decorate([
     property({ type: Boolean, reflect: true })
 ], AnswerForm.prototype, "fieldset", void 0);
+__decorate([
+    property({ type: Boolean, reflect: true, attribute: 'no-output' })
+], AnswerForm.prototype, "noOutput", void 0);

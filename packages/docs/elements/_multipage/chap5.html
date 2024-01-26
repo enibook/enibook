@@ -33,7 +33,7 @@
 <div id="toc" class="toc2">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li class="current"><a href="index.html">EniBook : éléments HTML</a></li><li><a href="chap1.html">1. Bascule</a>
+<li><a href="index.html">EniBook : éléments HTML</a></li><li><a href="chap1.html">1. Bascule</a>
 <ul class="sectlevel2">
 <li><a href="chap1.html#_attributs_et_propriétés">1.1. Attributs et propriétés</a></li>
 <li><a href="chap1.html#_api">1.2. API</a></li>
@@ -58,7 +58,7 @@
 <li><a href="chap4.html#_api_4">4.3. API</a></li>
 </ul>
 </li>
-<li><a href="chap5.html">5. Barre d’outils</a></li>
+<li class="current"><a href="chap5.html">5. Barre d’outils</a></li>
 </ul>
 </div>
 </div>
@@ -69,52 +69,22 @@
 
 
 
-<div id="preamble">
+<div class="sect1">
+<h2 id="_barre_doutils">5. Barre d’outils</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Les composants EniBook sont des <a href="https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_custom_elements">éléments HTML personnalisés</a> (<em>custom element</em>) représentés par des balises du type <code><em>&lt;element-name-it&gt;&lt;/element-name-it&gt;</em></code> dont le nom se termine toujours par le suffixe <code>-it</code>.</p>
-</div>
-<div class="paragraph">
-<p>Les développements sont réalisés en
-<a href="https://www.typescriptlang.org"><code>typescript</code></a> et sont accessibles depuis l’<a href="http://127.0.0.1:5500/packages/docs/api/index.html">API</a> (<em>Application Programming Interface</em>).</p>
-</div>
-<code-it fieldset="" no-output="">
-  <script type="enibook">
-  Un petit paragraphe.
-  </script>
-</code-it>
-<code-it fieldset="" language="asciidoc">
-  <script type="enibook">
-  = Titre
-
-  == Section
-  Un petit paragraphe.
-
-  .une petite liste
-  . un
-  . deux
-  </script>
-</code-it>
-<code-it fieldset="" language="html" preview="">
-  <script type="enibook">
-  <h1>Titre</h1>
-  <h2>Section</h2>
-  <p>Un petit paragraphe.</p>
-
-  <ol>
-    <li>un</li>
-    <li>deux</li>
-  </ol>
-  </script>
-</code-it>
+<toolbar-it fixed="" placement="top">
+  <it-mdi-menu slot="start"></it-mdi-menu>
+  <span slot="center">Hello</span>
+  <clock-it slot="end"></clock-it>
+</toolbar-it>
 </div>
 </div></div>
 <div id="footnotes"></div>
 <nav>
-  
-  <a rel="next" href="chap1.html" class="nav nav-next" title="Next page" aria-label="Next page" aria-keyshortcuts="Right">
-        <i class="fa fa-angle-right"></i>
+  <a rel="prev" href="chap4.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
+        <i class="fa fa-angle-left"></i>
      </a>
+  
   <div style="clear: both"></div>
 </nav>
 

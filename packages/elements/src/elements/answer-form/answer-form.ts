@@ -4,14 +4,13 @@ import { classMap } from 'lit/directives/class-map.js'
 import { property, query } from 'lit/decorators.js'
 import type { CSSResultGroup, TemplateResult} from 'lit';
 // enibook
-import { BaseIt } from '../base/base'
-import styles from './answer-form.css?inline'
+import { BaseIt } from '../base/base.js'
+import styles from './answer-form.css.js'
 
 export abstract class AnswerForm extends BaseIt {
   static override styles: CSSResultGroup = [ 
     super.styles,
-    unsafeCSS(styles),
-    css`@unocss-placeholder`
+    styles
   ]
 
   @query('form.answer-form')

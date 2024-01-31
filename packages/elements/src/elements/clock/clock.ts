@@ -9,9 +9,10 @@ import '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js'
 import '@shoelace-style/shoelace/dist/components/menu/menu.js'
 
 // enibook
-import { BaseIt } from '../base/base'
-import styles from './clock.css?inline'
-import { getDate, getTime } from '../../utilities/date'
+import { BaseIt } from '../base/base.js'
+import { getDate, getTime } from '../../utilities/date.js'
+import { svgIcon } from '../../utilities/icons.js'
+import styles from './clock.css.js'
 
 enum State {
   time = 0,
@@ -35,8 +36,7 @@ enum State {
 export class ClockIt extends BaseIt {
   static override styles: CSSResultGroup = [
     super.styles,
-    unsafeCSS(styles),
-    css`@unocss-placeholder`
+    styles
   ]
 
   private _state: State = State.none
@@ -102,7 +102,7 @@ export class ClockIt extends BaseIt {
     return html`
       <sl-button part="base" size=${size} @click=${() => this.handleClickButton()}>
         <span class="clock__date">${this.date ? html`${getDate()}` : html``}</span>
-        <it-mdi-calendar-clock-outline></it-mdi-calendar-clock-outline>
+        ${svgIcon('mdi-calendar-clock-outline')}
         <span class="clock__time">${this.time ? html`${this._time}` : html``}</span>
       </sl-button>
     `

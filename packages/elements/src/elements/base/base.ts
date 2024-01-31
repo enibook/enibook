@@ -1,17 +1,18 @@
 // lit
-import { CSSResultGroup, LitElement, css, unsafeCSS } from "lit";
+import { type CSSResultGroup, LitElement, css, unsafeCSS } from "lit";
 import { state } from "lit/decorators.js";
 // fscreen
 import fscreen from "fscreen";
 // enibook
-import styles from './base.css?inline'
+import { svgIcon } from "../../utilities/icons";
+import styles from './base.css.js'
+
 /**
  * Classe de base pour les éléments personnalisés EniBook
  */
 export abstract class BaseIt extends LitElement {
   static override styles: CSSResultGroup = [
-    unsafeCSS(styles),
-    css`@unocss-placeholder`
+    styles
   ]
 
   /**
@@ -52,7 +53,7 @@ export abstract class BaseIt extends LitElement {
         fscreen.exitFullscreen();
       }
     }
-  
+
   /**
    * Crée une alerte qui affiche le message associé pendant une durée donnée.
    *
@@ -63,13 +64,13 @@ export abstract class BaseIt extends LitElement {
    * @returns
    * @memberof EnibookElement
    */
-    notify(message: string, variant="primary", icon="it-mdi-information-variant-circle-outline", duration="3000") {
+    notify(message: string, variant:string="primary", icon:string="mdi-information-variant-circle-outline", duration:string="3000") {
       const alert = Object.assign(document.createElement('sl-alert'), {
         variant: variant,
         closable: true,
         duration: duration,
         innerHTML: `
-          <div slot="icon"><${icon}></${icon}</div>
+          <div slot="icon">${svgIcon(icon)}</div>
           ${this.wrap(message)}
         `
       })

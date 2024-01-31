@@ -1,18 +1,19 @@
 // lit
-import { css, CSSResultGroup, html, TemplateResult, unsafeCSS } from 'lit';
+import { css, type CSSResultGroup, html, type TemplateResult, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 // shoelace
 import type SlRange from '@shoelace-style/shoelace/dist/components/range/range.js';
-import '@shoelace-style/shoelace/dist/components/button/button'
-import '@shoelace-style/shoelace/dist/components/divider/divider'
-import '@shoelace-style/shoelace/dist/components/dropdown/dropdown'
-import '@shoelace-style/shoelace/dist/components/menu-item/menu-item'
-import '@shoelace-style/shoelace/dist/components/menu-label/menu-label'
-import '@shoelace-style/shoelace/dist/components/range/range'
-import '@shoelace-style/shoelace/dist/components/tooltip/tooltip'
+import '@shoelace-style/shoelace/dist/components/button/button.js'
+import '@shoelace-style/shoelace/dist/components/divider/divider.js'
+import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js'
+import '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js'
+import '@shoelace-style/shoelace/dist/components/menu-label/menu-label.js'
+import '@shoelace-style/shoelace/dist/components/range/range.js'
+import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js'
 // enibook
-import { BaseIt } from '../base/base';
-import styles from './color.css?inline'
+import { svgIcon } from '../../utilities/icons.js';
+import { BaseIt } from '../base/base.js';
+import styles from './color.css.js'
 
 export const colorNames: string[] = [
   'gray',
@@ -45,8 +46,7 @@ export const colorNames: string[] = [
 export class ColorIt extends BaseIt {
   static styles: CSSResultGroup = [
     super.styles,
-    unsafeCSS(styles),
-    css`@unocss-placeholder`
+    styles
   ]
 
   @property({ type: String, reflect: true }) color: string = 'purple'
@@ -121,13 +121,13 @@ export class ColorIt extends BaseIt {
       <div part="base" class="primary-color">
         <sl-dropdown hoist>
           <sl-button size=${this.size} slot="trigger" caret>
-            <it-mdi-palette-outline style="color:var(--color-primary);"></it-mdi-palette-outline>
+            <span style="color:var(--color-primary)">${svgIcon('mdi-palette-outline')}</span>
           </sl-button>
           <div class='primary-color__colors'>
             ${this.colors.map(item =>
               html`
                 <div class='primary-color__colors__color' @click=${() => { this.color = item.name; this.setPrimaryColor() }}>
-                  <it-mdi-square-rounded title=${item.name} style="cursor:pointer;width:1.5em;height:1.5em;color:${item.value}"></it-mdi-square-rounded>
+                  <span title=${item.name} style="cursor:pointer;width:1.5em;height:1.5em;color:${item.value}">${svgIcon('mdi-square-rounded')}
                 </div>
               `
             )}

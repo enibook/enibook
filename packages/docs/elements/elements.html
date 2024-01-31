@@ -434,13 +434,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
-<link rel="stylesheet" type="text/css" href="_dist/enibook.css">
+<link rel="stylesheet" type="text/css" href="assets/enibook.css">
 <link rel="stylesheet" type="text/css" href="doc.css">
 <link rel="stylesheet" type="text/css" href="hljs-themes.css">
 <link rel="stylesheet" type="text/css" href="elements-uno.css">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
 <script type="module" src="https://jspm.dev/api-viewer-element"></script>
-<script type="module" src="_dist/enibook.js"></script>
+<script type="module" src="assets/enibook.js"></script>
 <style>
 </style>
 </head>
@@ -505,18 +505,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   Un petit paragraphe.
   </script>
 </code-it>
-<code-it fieldset language="asciidoc">
+<asciidoc-it>
   <script type="enibook">
   = Titre
 
   == Section
-  Un petit paragraphe.
+  Un paragraphe.
 
-  .une petite liste
-  . un
-  . deux
+  .une liste
+  . un item
+  . stem:[\displaystyle\frac{1}{1 + \tan^2(x)}]
+
+  .une table
+  [cols="1,1"]
+  |===
+  |Cell in column 1, row 1
+  |Cell in column 2, row 1
+
+  |Cell in column 1, row 2
+  |Cell in column 2, row 2
+
+  |Cell in column 1, row 3
+  |Cell in column 2, row 3
+  |===
   </script>
-</code-it>
+</asciidoc-it>
 <code-it fieldset language="html" preview>
   <script type="enibook">
   <h1>Titre</h1>

@@ -1,4 +1,4 @@
-export const dictionary = [
+export const dictionary: string[] = [
   "enib",
   "lorem",
   "ipsum",

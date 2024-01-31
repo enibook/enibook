@@ -10,6 +10,7 @@ import { python as cmPython } from '@codemirror/lang-python'
 import { sql as cmSql } from "@codemirror/lang-sql"
 import { StreamLanguage } from "@codemirror/language"
 import type { Extension } from "@codemirror/state";
+import { icons } from "../../../utilities/icons"
 
 export type LANGUAGE = {
   name: string;
@@ -24,7 +25,7 @@ export const languages: { [name: string]: LANGUAGE } = {
   'asciidoc': {
     name: 'asciidoc',
     cm: StreamLanguage.define(cmAsciidoc),
-    logo: '<it-simple-icons-asciidoctor></it-simple-icons-asciidoctor>',
+    logo: `${icons['language-asciidoctor']}`,
     extension: 'adoc',
     mime: 'text/asciidoc',
     helpUrl: 'https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/'
@@ -32,7 +33,7 @@ export const languages: { [name: string]: LANGUAGE } = {
   'css': {
     name: 'css',
     cm: cmCss(),
-    logo: '<it-mdi-language-css3></it-mdi-language-css3>',
+    logo: `${icons['mdi-language-css3']}`,
     extension: 'css',
     mime: 'text/css',
     helpUrl: 'https://developer.mozilla.org/fr/docs/Web/CSS/Reference'
@@ -40,7 +41,7 @@ export const languages: { [name: string]: LANGUAGE } = {
   'html': {
     name: 'html',
     cm: cmHtml(),
-    logo: '<it-mdi-language-html5></it-mdi-language-html5>',
+    logo: `${icons['mdi-language-html5']}`,
     extension: 'html',
     mime: 'text/html',
     helpUrl: 'https://developer.mozilla.org/fr/docs/Web/HTML/Reference'
@@ -48,7 +49,7 @@ export const languages: { [name: string]: LANGUAGE } = {
   'javascript': {
     name: 'javascript',
     cm: cmJavascript(),
-    logo: '<it-mdi-language-javascript></it-mdi-language-javascript>',
+    logo: `${icons['mdi-language-javascript']}`,
     extension: 'js',
     mime: 'text/javascript',
     helpUrl: 'https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference'
@@ -56,7 +57,7 @@ export const languages: { [name: string]: LANGUAGE } = {
   'json': {
     name: 'json',
     cm: cmJson(),
-    logo: '<it-mdi-code-json></it-mdi-code-json>',
+    logo: `${icons['mdi-code-json']}`,
     extension: 'json',
     mime: 'application/json',
     helpUrl: 'https://www.json.org/json-fr.html'
@@ -64,7 +65,7 @@ export const languages: { [name: string]: LANGUAGE } = {
   'markdown': {
     name: 'markdown',
     cm: cmMarkdown(),
-    logo: '<it-mdi-language-markdown></it-mdi-language-markdown>',
+    logo: `${icons['mdi-language-markdown']}`,
     extension: 'md',
     mime: 'text/markdown',
     helpUrl: 'https://www.markdownguide.org/cheat-sheet/'
@@ -72,7 +73,7 @@ export const languages: { [name: string]: LANGUAGE } = {
   'prolog': {
     name: 'prolog',
     cm: cmProlog(),
-    logo: '<svg xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><text x="2" y="15" fill="currentColor" style="font-weight:bold;font-size:inherit">?-</text></svg>',
+    logo: `${icons['language-prolog']}`,
     extension: 'pl',
     mime: 'text/x-prolog',
     helpUrl: 'http://tau-prolog.org/documentation#prolog'
@@ -80,7 +81,7 @@ export const languages: { [name: string]: LANGUAGE } = {
   'python': {
     name: 'python',
     cm: cmPython(),
-    logo: '<it-mdi-language-python></it-mdi-language-python>',
+    logo: `${icons['mdi-language-python']}`,
     extension: 'py',
     mime: 'text/x-python',
     helpUrl: 'https://www.pythoncheatsheet.org/cheatsheet/dictionaries'
@@ -88,7 +89,7 @@ export const languages: { [name: string]: LANGUAGE } = {
   'sql': {
     name: 'sql',
     cm: cmSql(),
-    logo: '<it-mdi-database></it-mdi-database>',
+    logo: `${icons['mdi-database']}`,
     extension: 'sql',
     mime: 'application/sql',
     helpUrl: 'https://sql.sh'
@@ -96,7 +97,7 @@ export const languages: { [name: string]: LANGUAGE } = {
   'text': {
     name: 'text',
     cm: [],
-    logo: '<it-mdi-format-text></it-mdi-format-text>',
+    logo: `${icons['mdi-format-text']}`,
     extension: 'txt',
     mime: 'text/plain',
     helpUrl: ''
@@ -104,7 +105,7 @@ export const languages: { [name: string]: LANGUAGE } = {
   'typescript': {
     name: 'typescript',
     cm: cmJavascript({ 'typescript': true }),
-    logo: '<it-mdi-language-typescript></it-mdi-language-typescript>',
+    logo: `${icons['mdi-language-typescript']}`,
     extension: 'ts',
     mime: 'video/mp2t', // !
     helpUrl: 'https://www.typescriptlang.org/cheatsheets' 

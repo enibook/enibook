@@ -1,0 +1,84 @@
+:root {
+  /* a */
+  --adoc-a-background: none;
+  --adoc-a-color: #2156a5;
+  --adoc-a-line-height: inherit;
+  --adoc-a-text-decoration: underline;
+  --adoc-a-active-outline: 0;
+  --adoc-a-focus-color: #1d4b8f;
+  --adoc-a-focus-outline: thin dotted;
+  --adoc-a-hover-color: #1d4b8f;
+  --adoc-a-hover-cursor: pointer;
+  --adoc-a-hover-outline: 0;
+  /* abbr */
+  --adoc-abbr-font-size: sans-serif; 
+  --adoc-abbr-title-border-bottom: 1px dotted #dddddf;
+  --adoc-abbr-title-content: " (" attr(title) ")";
+  --adoc-abbr-title-cursor: help;
+  --adoc-abbr-title-text-decoration: none;
+  /* b */
+  --adoc-b-font-weight: bold;
+  --adoc-b-line-height: inherit;
+  /* body */
+  --adoc-body-font-size: 100%;
+  --adoc-body-background:#fff;
+  --adoc-body-color:rgba(0,0,0,.8);
+  --adoc-body-padding:0;
+  --adoc-body-margin:0;
+  --adoc-body-font-family: "Noto Serif","DejaVu Serif",serif;
+  --adoc-body-line-height: 1;
+  --adoc-body-position: relative;
+  --adoc-body-cursor: auto;
+  --adoc-body-tab-size: 4;
+  --adoc-body-word-wrap: anywhere;
+  --adoc-body-moz-osx-font-smoothing: grayscale;
+  --adoc-body-font-smoothing: antialiased;
+  /* code */
+  --adoc-code-color: rgba(0,0,0,.9);
+  --adoc-code-font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+  --adoc-code-font-size: 1em;
+  --adoc-code-font-weight:400;
+  /* dfn */
+  --adoc-dfn-font-style: italic;
+  /* html */
+  --adoc-html-font-family: sans-serif;
+  --adoc-html-font-size: 100%;
+  --adoc-html-text-size-adjust: 100%;
+  /* kbd */
+  --adoc-kbd-background: #f7f7f7;
+  --adoc-kbd-border: 1px solid #ccc;
+  --adoc-kbd-border-radius: 3px;
+  --adoc-kbd-box-shadow: 0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;
+  --adoc-kbd-margin: 0 .15em;
+  --adoc-kbd-padding: .2em .5em;
+  --adoc-kbd-vertical-align: middle;
+  --adoc-kbd-position: relative;
+  --adoc-kbd-top: -.1em;
+  --adoc-kbd-white-space: nowrap;
+  --adoc-kbd-color: rgba(0,0,0,.8);
+  --adoc-kbd-display: inline-block;
+  --adoc-kbd-font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+  --adoc-kbd-font-size: .65em;
+  --adoc-kbd-line-height: 1.45;
+  /* mark */
+  --adoc-mark-background: #ff0;
+  --adoc-mark-color:#000;
+  /* pre */
+  --adoc-pre-color: rgba(0,0,0,.9);
+  --adoc-pre-font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+  --adoc-pre-font-size: 1em;
+  --adoc-pre-line-height: 1.45;
+  --adoc-pre-margin: 0;
+  --adoc-pre-padding: 0;
+  --adoc-pre-text-rendering: optimizeSpeed;
+  --adoc-pre-white-space: pre-wrap;
+  /* strong */
+  --adoc-strong-font-weight: bold;
+  --adoc-strong-line-height: inherit;
+
+  /* exampleblock */
+  --adoc-example-background: var(--sl-color-amber-50); /*#fffef7;*/
+  --adoc-example-border-color: var(--sl-color-amber-100); /*#e0e0dc;*/
+  --adoc-example-box-shadow: 0 1px 4px var(--sl-color-amber-100); /*#e0e0dc*/
+
+}

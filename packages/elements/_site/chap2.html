@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>EniBook : éléments HTML</title>
+<link rel="stylesheet" href="style0.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+<link rel="stylesheet" type="text/css" href="dist/enibook.css">
+<link rel="stylesheet" type="text/css" href="styles/doc.css">
+<link rel="stylesheet" type="text/css" href="styles/hljs-themes.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
+<script type="module" src="https://jspm.dev/api-viewer-element"></script>
+<script type="module" src="dist/enibook.js"></script>
+<link rel="stylesheet" href="style1.css" type="text/css">
+<link rel="stylesheet" href="asciidoctor-chunker.css" type="text/css"></head>
+<body class="article toc2 toc-left">
+<toolbar-it fixed="">
+  <sl-button-group slot="start">
+    <sl-tooltip content="Documentations EniBook" hoist=""><sl-button size="medium" href="../index.html"><icon-it name="mdi-home"></icon-it></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : exemples" hoist=""><sl-button size="medium" href="../examples/index.html"><icon-it name="mdi-monitor-eye"></icon-it></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : éléments HTML" hoist=""><sl-button size="medium" href="../elements/index.html"><icon-it name="mdi-language-html5"></icon-it></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : API typescript" hoist=""><sl-button size="medium" href="../api/index.html"><icon-it name="mdi-language-typescript"></icon-it></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : codes sources" hoist=""><sl-button size="medium" href="https://github.com/enibook/enibook"><icon-it name="mdi-github"></icon-it></sl-button></sl-tooltip>
+  </sl-button-group>
+  <tools-it size="medium" slot="end"></tools-it>
+</toolbar-it>
+<div id="header">
+<h1>EniBook : éléments HTML</h1>
+<div id="toc" class="toc2">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="index.html">EniBook : éléments HTML</a></li><li><a href="chap1.html">1. Bascule</a>
+<ul class="sectlevel2">
+<li><a href="chap1.html#_attributs_et_propriétés">1.1. Attributs et propriétés</a></li>
+<li><a href="chap1.html#_api">1.2. API</a></li>
+</ul>
+</li>
+<li class="current"><a href="chap2.html">2. Horloge</a>
+<ul class="sectlevel2">
+<li class="current"><a href="chap2.html#_attributs_et_propriétés_2">2.1. Attributs et propriétés</a></li>
+<li class="current"><a href="chap2.html#_api_2">2.2. API</a></li>
+</ul>
+</li>
+<li><a href="chap3.html">3. Lorem Ipsum</a>
+<ul class="sectlevel2">
+<li><a href="chap3.html#_gabarits">3.1. Gabarits</a></li>
+<li><a href="chap3.html#_attributs_et_propriétés_3">3.2. Attributs et propriétés</a></li>
+<li><a href="chap3.html#_api_3">3.3. API</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+
+
+
+
+<div class="sect1">
+<h2 id="_horloge">2. Horloge</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Fonction</th>
+<th class="tableblock halign-left valign-top">Elément <code>html</code></th>
+<th class="tableblock halign-left valign-top">Classe <code>typescript</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Cet élément affiche une horloge numérique indiquant l’heure et la date courantes.</p>
+</div>
+<div class="paragraph">
+<p><clock-it time="" date=""></clock-it></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>&lt;clock-it&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>type : « <a href="https://developer.mozilla.org/fr/docs/Glossary/Inline-level_content">en ligne</a> » (<em>inline-level element</em>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a href="../api/classes/ClockIt.html"><code>ClockIt</code></a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary class="title">Structure</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>A gauche de l’icône <it-mdi-calendar-clock-outline></it-mdi-calendar-clock-outline>, la date est affichée sous la forme <code>jour quantième mois année</code><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> où <code>jour</code> est le nom du jour (lundi, mardi…​), <code>quantième</code> le numéro du jour dans le mois (1, 2…​), <code>mois</code> le mois  en toutes lettres (janvier, février…​) et <code>année</code> l’année en chiffres
+(exemples: <code>jeudi 8 juin 2023</code>, <code>mercredi 5 avril 2034</code>).</p>
+</li>
+<li>
+<p>A droite de l’icône <it-mdi-calendar-clock-outline></it-mdi-calendar-clock-outline>, l’heure est présentée sous la forme <code>hh:mm:ss</code> où <code>hh</code> représente l’heure avec deux chiffres, <code>mm</code> les minutes avec deux chiffres et <code>ss</code> les secondes également avec deux chiffres (exemples: <code>08:12:54</code>, <code>13:02:05</code>).</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Interactivité</summary>
+<div class="content">
+<div class="paragraph">
+<p>Cet élément est cliquable <it-mdi-mouse title="cliquable"></it-mdi-mouse> mais non éditable  <it-mdi-keyboard-off-outline title="non éditable"></it-mdi-keyboard-off-outline>.
+L’interaction consiste à adapter l’affichage de l’horloge aux besoins de l’utilisateur.</p>
+</div>
+<div class="paragraph">
+<p>L’horloge est un bouton cliquable à 4 états.
+En cliquant sur l’horloge, on passe successivement dans les états suivants :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>affichage de l’heure uniquement : <clock-it time=""></clock-it></p>
+</li>
+<li>
+<p>affichage de la date et de l’heure : <clock-it time="" date=""></clock-it></p>
+</li>
+<li>
+<p>affichage de la date uniquement : <clock-it date=""></clock-it></p>
+</li>
+<li>
+<p>affichage de l’icône uniquement :  <clock-it></clock-it></p>
+</li>
+</ol>
+</div>
+</div>
+</details>
+<div class="sect2">
+<h3 id="_attributs_et_propriétés_2">2.1. Attributs et propriétés</h3>
+<div class="paragraph">
+<p>Cette balise possède 3 attributs spécifiques optionnels : <code>date</code>, <code>size</code> et <code>time</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_taille_de_lhorloge">2.1.1. Taille de l’horloge</h4>
+<div class="paragraph">
+<p>L’attribut <code>size</code> (<code>small</code> par défaut, <code>medium</code> ou <code>large</code>) précise la taille de l’horloge.</p>
+</div>
+<html-preview-it position="60">
+  <script type="enibook">
+    <p><clock-it size="small"></clock-it></p>
+
+    <p><clock-it size="medium"></clock-it></p>
+
+    <p><clock-it size="large"></clock-it></p>
+  </script>
+</html-preview-it>
+</div>
+<div class="sect3">
+<h4 id="_réglage_de_laffichage">2.1.2. Réglage de l’affichage</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>L’attribut <code>date</code> permet d’afficher la date.</p>
+</li>
+<li>
+<p>L’attribut <code>time</code> permet d’afficher l’heure.</p>
+</li>
+</ul>
+</div>
+<html-preview-it position="60">
+  <script type="enibook">
+    <p><clock-it date></clock-it></p>
+
+    <p><clock-it time></clock-it></p>
+
+    <p><clock-it date time></clock-it></p>
+  </script>
+</html-preview-it>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_api_2">2.2. API</h3>
+<div class="paragraph">
+<p>L’<a href="https://developer.mozilla.org/fr/docs/Glossary/API">API</a> (<em>Application Programming Interface</em>) de l’élément <code>&lt;clock-it&gt;</code> est
+consultable <a href="../api/classes/ClockIt.html">ici</a>.</p>
+</div>
+<details>
+<summary class="title">L’API en bref</summary>
+<div class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><api-viewer src="dist/custom-elements.json" only="clock-it">
+</api-viewer></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary class="title">Usage en <code>typescript</code></summary>
+<div class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { ClockIt } from '@enibook/elements/dist/elements/clock/clock' <i class="conum" data-value="1"></i><b>(1)</b>
+const clock = new ClockIt()                                           <i class="conum" data-value="2"></i><b>(2)</b>
+clock.size = 'large'                                                  <i class="conum" data-value="3"></i><b>(3)</b>
+clock.date = true                                                     <i class="conum" data-value="4"></i><b>(4)</b>
+document.body.appendChild(clock)                                      <i class="conum" data-value="5"></i><b>(5)</b>
+/*
+&lt;body&gt;
+...
+&lt;clock-it size="large" date&gt;&lt;/clock-it&gt;
+&lt;/body&gt;
+*/</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>importer la classe <a href="../api/classes/ClockIt.html"><code>ClockIt</code></a>;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>créer une instance de cette classe;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>préciser la taille de l’instance;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>préciser le type affichage désiré;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>ajouter l’instance dans le <a href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model">DOM</a>.</td>
+</tr>
+</tbody></table>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+</div>
+</div></div>
+<div id="footnotes">
+<hr>
+
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. La manière d’afficher ces 4 informations dépend de la langue considérée. Par exemple, le <code>dimanche 20 décembre 2020</code> en français s’écrira <code>Sunday, 20 December 2020</code> en anglais, <code>Sonntag, 20. Dezember 2020</code> en allemand, <code>domingo, 20 de diciembre de 2020</code> en espagnol ou encore <code>2020年12月20日 日曜日</code> en japonais.
+</div>
+</div>
+<nav>
+  <a rel="prev" href="chap1.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
+        <i class="fa fa-angle-left"></i>
+     </a>
+  <a rel="next" href="chap3.html" class="nav nav-next" title="Next page" aria-label="Next page" aria-keyshortcuts="Right">
+        <i class="fa fa-angle-right"></i>
+     </a>
+  <div style="clear: both"></div>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+
+</body>
+  <script>
+  function isInViewport(ele) {
+    const rect = ele.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+  }
+  function yPosition (ele) {
+    const rect = ele.getBoundingClientRect();
+    return (rect.top - 20); // 20px above
+  }
+  let curr = document.getElementsByClassName('current');
+  if (!isInViewport(curr[curr.length - 1])) {
+    document.getElementById('toc').scrollTo({
+      top: yPosition(curr[0]),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  /* For page navigation */
+  function gotoPage(selector) {
+    const button = document.querySelector(selector);
+    if (button)
+      window.location.href = button.href;
+  }
+  document.addEventListener('keydown', e => {
+    if (e.shiftKey)
+      return;
+    switch (e.key) {
+      case 'ArrowRight':
+        e.preventDefault();
+        gotoPage('.nav-next');
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        gotoPage('.nav-prev');
+        break;
+    }
+  });
+  </script>
+  </html>

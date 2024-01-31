@@ -7,6 +7,8 @@ import presetAttributify from '@unocss/preset-attributify'
 import { defineConfig } from 'unocss'
 
 export default defineConfig({
+  // mode: 'shadow-dom',
+  include: ['./src/elements/**/*.ts', './src/utilities/**/*.ts'],
   presets: [
     presetUno(),
     presetAttributify(),
@@ -20,11 +22,6 @@ export default defineConfig({
       prefix: 'it-',
       warn: true,    
     }),
-  ],
-  cli: {
-    entry: {
-      patterns: ['docs/**/*.html'],
-      outFile: 'docs/elements/elements-uno.css'
-    }, 
-  },
+  ]
 })
+

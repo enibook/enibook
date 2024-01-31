@@ -1,0 +1,9 @@
+== Barre d'outils
+
+++++
+<toolbar-it fixed placement="top">
+  <it-mdi-menu slot="start"></it-mdi-menu>
+  <span slot="center">Hello</span>
+  <clock-it slot="end"></clock-it>
+</toolbar-it>
+++++

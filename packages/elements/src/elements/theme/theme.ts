@@ -1,16 +1,17 @@
 // lit
-import { css, CSSResultGroup, html, PropertyValueMap, TemplateResult, unsafeCSS } from 'lit';
+import { css, type CSSResultGroup, html, type PropertyValueMap, type TemplateResult, unsafeCSS } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 // shoelace
-import { SlMenu } from '@shoelace-style/shoelace';
-import '@shoelace-style/shoelace/dist/components/button/button'
-import '@shoelace-style/shoelace/dist/components/divider/divider'
-import '@shoelace-style/shoelace/dist/components/dropdown/dropdown'
-import '@shoelace-style/shoelace/dist/components/menu-item/menu-item'
-import '@shoelace-style/shoelace/dist/components/menu-label/menu-label'
+import SlMenu from '@shoelace-style/shoelace/dist/components/menu/menu.js';
+import '@shoelace-style/shoelace/dist/components/button/button.js'
+import '@shoelace-style/shoelace/dist/components/divider/divider.js'
+import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js'
+import '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js'
+import '@shoelace-style/shoelace/dist/components/menu-label/menu-label.js'
 // enibook
-import { BaseIt } from '../base/base';
-import styles from './theme.css?inline'
+import { svgIcon } from '../../utilities/icons.js';
+import { BaseIt } from '../base/base.js';
+import styles from './theme.css.js'
 
 /**
  * @since 2.0
@@ -73,8 +74,8 @@ export class ThemeIt extends BaseIt {
       <sl-dropdown class="theme" hoist>
         <sl-button size=${this.size} slot="trigger" caret>
           ${this.isDark() 
-            ? html`<it-mdi-weather-night style="color:var(--sl-color-yellow-500)"></it-mdi-weather-night>`
-            : html`<it-mdi-white-balance-sunny style="color:var(--sl-color-yellow-500)"></it-mdi-white-balance-sunny>`
+            ? html`<span style="color:var(--sl-color-yellow-500)">${svgIcon('mdi-weather-night')}</span>`
+            : html`<span style="color:var(--sl-color-yellow-500)">${svgIcon('mdi-white-balance-sunny')}</span>`
           }
         </sl-button>
         <sl-menu>

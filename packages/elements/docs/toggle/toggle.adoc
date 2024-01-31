@@ -1,0 +1,188 @@
+== Bascule
+
+[#bascule-init%header,cols="2a,1a,1a",reftext="Le premier exemple"]
+|===
+| Fonction
+| Elément ``html``
+| Classe ``typescript``
+
+| Cet élément propose un bouton pour montrer ou cacher un autre élément `html` défini par son link:https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors[sélecteur `css`].
+
+++++
+<div class="flex flex-justify-between">
+  <toggle-it id="toggle-left" visibility selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
+  <toggle-it id="toggle-right" visibility selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"></toggle-it>
+</div>
+++++
+| ``<toggle-it>``
+
+type : « link:https://developer.mozilla.org/fr/docs/Glossary/Inline-level_content[en ligne] » (_inline-level element_)
+| link:../api/classes/ToggleIt.html[``ToggleIt``]
+|===
+
+[%collapsible]
+.Structure
+====
+Il s'agit d'un simple bouton qui affiche dans une infobulle l'action qui lui est associée : montrer ou cacher un autre élément.
+====
+
+[%collapsible]
+.Interactivité
+====
+Cet élément est cliquable +++<it-mdi-mouse title="cliquable"></it-mdi-mouse>+++ mais non éditable  +++<it-mdi-keyboard-off-outline title="non éditable"></it-mdi-keyboard-off-outline>+++.
+
+L'interaction est de type bascule (_toggle_) et consiste à montrer ou cacher un autre élément : si cet élément est caché alors le clic sur le bouton conduit à le montrer,
+sinon il le cache.
+====
+
+=== Attributs et propriétés
+Cette balise possède 7 attributs spécifiques optionnels : ``selector``, ``size``, ``text-hide``, ``text-show``, ``tooltip-hide``, ``tooltip-show`` et ``visibility``.
+
+<<bascule-init>> définit ces 7 attributs :
+
+[source,html]
+----
+<div class="flex flex-justify-between">
+  <toggle-it id="toggle-left" visibility selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
+  <toggle-it id="toggle-right" visibility selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"></toggle-it>
+</div>
+----
+
+==== Sélecteur `css`
+L'attribut `selector` (attribut *obligatoire*) définit l'élément `html` à cacher ou à montrer à l'aide d'un sélecteur `css`.
+
+Un link:https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors[sélecteur `css`] est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s'applique un ensemble de règles `css` footnote:[On pourra également consulter link:https://www.w3schools.com/cssref/css_selectors.php[la référence des sélecteurs `css` sur W3schools.]]. Si plusieurs éléments répondent au même critère, seul le premier d'entre-eux est concerné par la bascule.
+
+++++
+<html-preview-it>
+  <script type="enibook">
+    <toggle-it selector="#header"></toggle-it> : 
+    bascule l'en-tête du document
+  </script>
+</html-preview-it>
+++++
+
+==== Visibilité
+Par défaut, cacher un élément signifie le supprimer de la page : la mise en page du document est ainsi potentiellement modifiée.
+
+L'attribut `visibility` peut être utilisé afin de cacher un élément tout en conservant occupé l'espace dans lequel il aurait été visible : la mise en page du document reste ainsi identique qu'il soit visible ou non, contrairement au fonctionnement par défaut.
+
+Sans l'attribut `visibility`:: ``<toggle-it selector="..."></toggle-it>``
++
+++++
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-2" selector="#toggle-right-2" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
+  <toggle-it id="toggle-right-2" selector="#toggle-left-2" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
+  <span>fin</span>
+</div>
+++++
+
+Avec l'attribut `visibility`:: ``<toggle-it visibility selector="..."></toggle-it>``
++
+++++
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-3" visibility selector="#toggle-right-3" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
+  <toggle-it id="toggle-right-3" visibility selector="#toggle-left-3" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
+  <span>fin</span>
+</div>
+++++
+
+==== Textes du bouton
+Deux attributs  `text-hide` (défaut : +++<it-mdi-hide-outline></it-mdi-hide-outline>+++) et `text-show` (défaut : +++<it-mdi-show-outline></it-mdi-show-outline>+++) permettent de définir le texte du bouton
+respectivement quand l'élément est caché ou non.
+
+Fonctionnement par défaut:: ``<toggle-it selector="..."></toggle-it>``
++
+++++
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-4" selector="#toggle-right-4"></toggle-it>
+  <toggle-it id="toggle-right-4" selector="#toggle-left-4"></toggle-it>
+  <span>fin</span>
+</div>
+++++
+
+Adaptation des textes:: ``<toggle-it selector="..." text-show="..." text-hide="..."></toggle-it>``
++
+++++
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-5" selector="#toggle-right-5" text-show="Show" text-hide="Hide"></toggle-it>
+  <toggle-it id="toggle-right-5" selector="#toggle-left-5" text-show="Montrer" text-hide="Cacher"></toggle-it>
+  <span>fin</span>
+</div>
+++++
+
+==== Infobulles
+Deux attributs `tooltip-hide` (défaut : `Cacher` _selector_) et `tooltip-show` (défaut : `Montrer` _selector_) permettent de définir le texte de l'infobulle
+respectivement quand l'élément est caché ou non.
+
+Fonctionnement par défaut:: ``<toggle-it selector="..."></toggle-it>``
++
+++++
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-6" selector="#toggle-right-6"></toggle-it>
+  <toggle-it id="toggle-right-6" selector="#toggle-left-6"></toggle-it>
+  <span>fin</span>
+</div>
+++++
+
+Adaptation des infobulles:: ``<toggle-it selector="..." tooltip-show="..." tooltip-hide="..."></toggle-it>``
++
+++++
+<div class="flex flex-justify-between w-sm">
+  <span>début</span>
+  <toggle-it id="toggle-left-7" selector="#toggle-right-7" tooltip-show="Montrer le bouton de droite" tooltip-hide="Cacher le bouton de droite"></toggle-it>
+  <toggle-it id="toggle-right-7" selector="#toggle-left-7" tooltip-show="Montrer le bouton de gauche" tooltip-hide="Cacher le bouton de gauche"></toggle-it>
+  <span>fin</span>
+</div>
+++++
+
+=== API
+L'link:https://developer.mozilla.org/fr/docs/Glossary/API[API] (_Application Programming Interface_) de l'élément ``<toggle-it>`` est
+consultable link:../api/classes/ToggleIt.html[ici].
+
+.L'API en bref
+[%collapsible]
+====
+[cols="1a"]
+|===
+|
+++++
+<api-viewer
+src="dist/custom-elements.json"
+only="toggle-it"
+>
+</api-viewer>
+++++
+|===
+====
+
+.Usage en ``typescript``
+[%collapsible]
+====
+[cols="100a"]
+|===
+|
+[source,typescript]
+----
+import { ToggleIt } from '@enibook/elements/dist/elements/toggle/toggle' // <1>
+const toggle = new ToggleIt()                                            // <2>
+toggle.selector = "#ident"                                               // <3>
+document.body.appendChild(toggle)                                        // <4>
+/*
+<body>
+...
+<toggle-it selector="#ident"></toggle-it>
+</body>
+*/
+----
+<1> importer la classe link:../api/classes/ToggleIt.html[``ToggleIt``];
+<2> créer une instance de cette classe;
+<3> préciser le sélecteur de l'élément que l'instance doit cacher ou montrer;
+<4> ajouter l'instance dans le link:https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model[DOM].
+|===
+====

@@ -2,7 +2,7 @@ import * as command from '@codemirror/commands'
 import * as search from '@codemirror/search'
 import { foldKeymap } from "@codemirror/language"
 import type { Command } from "@codemirror/view";
-import { system } from "../../utilities/system";
+import { system } from "../../utilities/system.js";
 
 function getHistoryKeymap(): { name: string; key: string; run: Command }[]  {
   const newHistoryKeymap: { name: string; key: string; run: Command }[] = []

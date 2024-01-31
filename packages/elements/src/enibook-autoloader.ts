@@ -48,10 +48,7 @@ function register(tagName: string): Promise<void> {
   // L'enregistrer.
   return new Promise((resolve, reject) => {
     import(path)
-      .then(() => {
-        console.log(`${tagName} found`)
-        resolve()
-      })
+      .then(() => resolve())
       .catch(() => reject(new Error(`Unable to autoload <${tagName}> from ${path}`)));
   });
 }

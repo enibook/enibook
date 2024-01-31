@@ -4,7 +4,7 @@
   "description": "EniBook documentations",
   "main": "index.html",
   "scripts": {
-    "doc:adoc": "asciidoctor -r asciidoctor-highlight.js elements/elements.adoc && unocss -c uno.config-elements.ts elements/elements.html && asciidoctor-chunker elements/elements.html --titlePage 'EniBook : éléments HTML' -o elements/_multipage",
+    "doc:adoc": "asciidoctor -r asciidoctor-highlight.js elements/elements.adoc && unocss -c uno.config-elements.ts elements/elements.html && asciidoctor-chunker elements/elements.html --titlePage 'EniBook : éléments HTML' -o elements/_multipage && cp -R elements/assets elements/_multipage/",
     "doc:ex": "asciidoctor examples/index.adoc",
     "doc:gen": "asciidoctor ./index.adoc && unocss -c uno.config-gen.ts ./index.html",
     "doc:why": "asciidoctor why/index.adoc",

@@ -1,0 +1,212 @@
+== Lorem Ipsum
+
+[%header,cols="2a,1a,1a"]
+|===
+| Fonction
+| Elément ``html``
+| Classe ``typescript``
+
+| Le Lorem Ipsum permet d'illustrer une mise en page avec différents gabarits contenant du texte vide de sensfootnote:[Un texte lisible et contenant du sens serait source de distractions et empêcherait de se concentrer sur la mise en page elle-même.].
+
+| ``<lorem-ipsum-it>``
+
+type : « link:https://developer.mozilla.org/fr/docs/Glossary/Block-level_content[bloc] » (_block-level element_)
+| link:../api/classes/LoremIpsumIt.html[``LoremIpsumIt``]
+|===
+
+[%collapsible]
+.Structure
+====
+Le Lorem Ipsum a simplement la structure du texte qu'il représente : mot, phrase, paragraphe, item de liste.
+====
+
+[%collapsible]
+.Interactivité
+====
+Cet élément n'est pas interactif : il est non cliquable 
++++<span class="it-mdi-mouse-off" style="width:24px" title="non cliquable"></span>+++ 
+et non éditable 
++++<it-mdi-keyboard-off-outline style="width:24px" title="non éditable"></it-mdi-keyboard-off-outline>+++.
+====
+
+
+=== Gabarits
+L'élément ``<lorem-ipsum-it>`` peut générer 6 types de gabarits différents.
+
+[%header,cols="1,1,4a"]
+|===
+| Gabarit
+| Paramètre correspondant
+| Exemple
+
+| mot
+| ``word``
+|
+++++
+<lorem-ipsum-it type="word"></lorem-ipsum-it>
+++++
+
+| phrase
+| ``sentence``
+|
+++++
+<lorem-ipsum-it type="sentence"></lorem-ipsum-it>
+++++
+
+| paragraphe
+| ``paragraph``
+|
+++++
+<lorem-ipsum-it type="paragraph"></lorem-ipsum-it>
+++++
+
+| item de liste à puces
+| ``ulist``
+|
+++++
+<lorem-ipsum-it type="ulist"></lorem-ipsum-it>
+++++
+
+| item de liste ordonnée
+| ``olist``
+|
+++++
+<lorem-ipsum-it type="olist"></lorem-ipsum-it>
+++++
+
+| item de liste de descriptions
+| ``dlist``
+|
+++++
+<lorem-ipsum-it type="dlist"></lorem-ipsum-it>
+++++
+
+|===
+
+
+=== Attributs et propriétés
+Cette balise possède 2 attributs spécifiques optionnels :
+
+* ``type`` : le gabarit des objets textuels à générer, à savoir : ``word``, ``sentence``, ``paragraph`` (valeur par défaut), ``ulist``, ``olist`` ou ``dlist``;
+* ``count`` : le nombre d'objets textuels à générer (valeur par défaut: ``1``).
+
+Quatre mots:: {empty}
++
+++++
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="word" count="4">
+    </lorem-ipsum-it>
+  </script>
+</html-preview-it>
+++++
+
+Deux phrases:: {empty}
++
+++++
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="sentence" count="2">
+    </lorem-ipsum-it>
+  </script>
+</html-preview-it>
+++++
+
+Un paragraphe:: {empty}
++
+++++
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="paragraph" count="1">
+    </lorem-ipsum-it>
+    <!-- ou <lorem-ipsum-it></lorem-ipsum-it> -->
+  </script>
+</html-preview-it>
+++++
+
+Une liste à puces de 2 items:: {empty}
++
+++++
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="ulist" count="2">
+    </lorem-ipsum-it>
+  </script>
+</html-preview-it>
+++++
+
+Une liste énumérée de 3 items:: {empty}
++
+++++
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="olist" count="3">
+    </lorem-ipsum-it>
+  </script>
+</html-preview-it>
+++++
+
+Une liste de descriptions de 2 items:: {empty}
++
+++++
+<html-preview-it>
+  <script type="enibook">
+    <lorem-ipsum-it type="dlist" count="2">
+    </lorem-ipsum-it>
+  </script>
+</html-preview-it>
+++++
+
+=== API
+L'link:https://developer.mozilla.org/fr/docs/Glossary/API[API] (_Application Programming Interface_) de l'élément ``<lorem-ipsum-it>`` est
+consultable link:../api/classes/LoremIpsumIt.html[ici].
+
+[%collapsible]
+.L'API en bref
+====
+++++
+<api-viewer
+  src="dist/custom-elements.json"
+  only="lorem-ipsum-it"
+  exclude-knobs="type"
+  style="max-width:100%"
+>
+  <template data-element="lorem-ipsum-it" data-target="knob" data-attr="type" data-type="select">
+    <select>
+      <option value="word">word</option>
+      <option value="sentence">sentence</option>
+      <option value="paragraph">paragraph</option>
+      <option value="dlist">dlist</option>
+      <option value="olist">olist</option>
+      <option value="ulist">ulist</option>
+    </select>
+  </template>
+</api-viewer>
+++++
+====
+
+[%collapsible]
+.Usage en ``typescript``
+====
+[source,typescript]
+----
+import { LoremIpsumIt } from '@enibook/elements/lorem-ipsum/lorem-ipsum' // <1>
+const lorem = new LoremIpsumIt()                                         // <2>
+lorem.type = 'dlist'                                                     // <3>
+lorem.count = 3                                                          // <4>
+document.body.appendChild(lorem)                                         // <5>
+/*
+<body>
+...
+<lorem-ipsum-it type="dlist" count="3"></lorem-ipsum-it>
+</body>
+*/
+----
+<1> importer la classe link:../api/classes/LoremIpsumIt.html[``LoremIpsumIt``];
+<2> créer une instance de cette classe;
+<3> préciser le type de gabarit de l'instance;
+<4> préciser le nombre d'objets textuels à générer par l'instance;
+<5> ajouter l'instance dans le link:https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model[DOM].
+====
+
+

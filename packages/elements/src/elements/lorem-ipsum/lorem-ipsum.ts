@@ -1,17 +1,16 @@
 // lit
-import { CSSResultGroup, TemplateResult, css, html, unsafeCSS } from "lit";
+import { type CSSResultGroup, type TemplateResult, css, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 // enibook
-import { BaseIt } from "../base/base";
-import { dictionary } from "./dictionary";
-import styles from "./lorem-ipsum.css?inline";
+import { BaseIt } from "../base/base.js";
+import { dictionary } from "./dictionary.js";
+import styles from "./lorem-ipsum.css.js";
 
 @customElement('lorem-ipsum-it')
 export class LoremIpsumIt extends BaseIt {
   static override styles: CSSResultGroup = [
     super.styles,
-    unsafeCSS(styles),
-    css`@unocss-placeholder`
+    styles
   ];
 
   /** Nombre d'objets textuels (mots, paragraphes, phrases, items de liste) générés. */

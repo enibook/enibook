@@ -1,13 +1,14 @@
 // lit
-import { css, CSSResultGroup, html, PropertyValueMap, TemplateResult, unsafeCSS } from 'lit';
+import { css, type CSSResultGroup, html, type PropertyValueMap, type TemplateResult, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
+// import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 // shoelace
-import '@shoelace-style/shoelace/dist/components/button/button'
-import '@shoelace-style/shoelace/dist/components/tooltip/tooltip'
+import '@shoelace-style/shoelace/dist/components/button/button.js'
+import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js'
 // enibook
-import { BaseIt } from '../base/base';
-import styles from './toggle.css?inline'
-import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { svgIcon } from '../../utilities/icons.js';
+import { BaseIt } from '../base/base.js';
+import styles from './toggle.css.js'
 
 const HIDE = 'Cacher'
 const SHOW = 'Montrer'
@@ -22,8 +23,7 @@ const SHOW = 'Montrer'
 export class ToggleIt extends BaseIt {
   static styles: CSSResultGroup = [ 
     super.styles,
-    unsafeCSS(styles),
-    css`@unocss-placeholder`
+    styles
   ]
 
   private element!: HTMLElement
@@ -35,10 +35,10 @@ export class ToggleIt extends BaseIt {
   @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'small'
 
   /** texte du bouton quand l'élément visé est caché */
-  @property({ type: String, reflect: true, attribute: 'text-show' }) textShow = "<it-mdi-show-outline></it-mdi-show-outline>"
+  @property({ type: String, reflect: true, attribute: 'text-show' }) textShow: string = 'mdi-show-outline'
 
   /** texte du bouton quand l'élément visé est visible */
-  @property({ type: String, reflect: true, attribute: 'text-hide' }) textHide = "<it-mdi-hide-outline></it-mdi-hide-outline>"
+  @property({ type: String, reflect: true, attribute: 'text-hide' }) textHide: string = 'mdi-hide-outline'
 
   /** infobulle quand l'élément visé est caché */
   @property({ type: String, reflect: true, attribute: 'tooltip-show' }) tooltipShow = SHOW
@@ -79,7 +79,7 @@ export class ToggleIt extends BaseIt {
     return html`
       <sl-tooltip content=${this.hidden ? this.tooltipShow : this.tooltipHide}>
         <sl-button size=${this.size} @click=${() => this.toggleSelector()}>
-          ${unsafeHTML(this.hidden ? this.textShow : this.textHide)}
+          ${this.hidden ? svgIcon(this.textShow) : svgIcon(this.textHide)}
         </sl-button>
       </sl-tooltip>
     `

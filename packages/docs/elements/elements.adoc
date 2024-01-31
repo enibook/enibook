@@ -25,18 +25,31 @@ link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'l
 ++++
 
 ++++
-<code-it fieldset language="asciidoc">
+<asciidoc-it>
   <script type="enibook">
   = Titre
 
   == Section
-  Un petit paragraphe.
+  Un paragraphe.
 
-  .une petite liste
-  . un
-  . deux
+  .une liste
+  . un item
+  . stem:[\displaystyle\frac{1}{1 + \tan^2(x)}]
+
+  .une table
+  [cols="1,1"]
+  |===
+  |Cell in column 1, row 1
+  |Cell in column 2, row 1
+
+  |Cell in column 1, row 2
+  |Cell in column 2, row 2
+
+  |Cell in column 1, row 3
+  |Cell in column 2, row 3
+  |===
   </script>
-</code-it>
+</asciidoc-it>
 ++++
 
 ++++

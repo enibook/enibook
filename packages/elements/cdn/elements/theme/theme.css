@@ -1,0 +1,41 @@
+/* src/styles/element.css */
+:host {
+  box-sizing: border-box;
+}
+:host *,
+:host *::before,
+:host *::after {
+  box-sizing: inherit;
+}
+.hidden,
+[hidden] {
+  display: none !important;
+}
+.rtl {
+  direction: rtl;
+}
+.title {
+  line-height: 1.45;
+  color: #7a2518;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+/* src/elements/base/base.css?inline */
+:host {
+  display: block;
+}
+
+/* src/elements/theme/theme.css?inline */
+:host {
+  display: inline-block;
+}
+kbd {
+  font-family: var(--sl-font-mono);
+  background-color: var(--sl-color-neutral-50);
+  border-radius: var(--sl-border-radius-small);
+  border: 1px solid var(--sl-color-neutral-200);
+  box-shadow: inset 0 1px 0 var(--color-white);
+  padding: var(--sl-spacing-3x-small) var(--sl-spacing-2x-small);
+}

@@ -1,11 +1,11 @@
 // lit
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
-import { css, html, unsafeCSS } from 'lit';
+import { html, unsafeCSS } from 'lit';
 import type { CSSResultGroup, TemplateResult} from 'lit';
 // enibook
-import { BaseIt } from '../base/base';
-import styles from './toolbar.css?inline'
+import { BaseIt } from '../base/base.js';
+import styles from './toolbar.css.js'
 
 /**
  * @since 2.0
@@ -23,8 +23,7 @@ export class ToolbarIt extends BaseIt {
   }
   static styles: CSSResultGroup = [ 
     super.styles,
-    unsafeCSS(styles),
-    css`@unocss-placeholder`
+    styles,
   ]
 
   @property({ type: Boolean, reflect: true }) fixed = false

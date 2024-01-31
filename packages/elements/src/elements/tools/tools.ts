@@ -1,27 +1,28 @@
 // lit
-import { css, CSSResultGroup, html, PropertyValueMap, TemplateResult, unsafeCSS } from 'lit';
+import { css, type CSSResultGroup, html, type PropertyValueMap, type TemplateResult, unsafeCSS } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 // shoelace
-import '@shoelace-style/shoelace/dist/components/button/button'
-import '@shoelace-style/shoelace/dist/components/divider/divider'
-import '@shoelace-style/shoelace/dist/components/dropdown/dropdown'
-import '@shoelace-style/shoelace/dist/components/input/input'
-import '@shoelace-style/shoelace/dist/components/menu/menu'
-import '@shoelace-style/shoelace/dist/components/menu-item/menu-item'
-import '@shoelace-style/shoelace/dist/components/menu-label/menu-label'
-import '@shoelace-style/shoelace/dist/components/tooltip/tooltip'
+import '@shoelace-style/shoelace/dist/components/button/button.js'
+import '@shoelace-style/shoelace/dist/components/divider/divider.js'
+import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js'
+import '@shoelace-style/shoelace/dist/components/input/input.js'
+import '@shoelace-style/shoelace/dist/components/menu/menu.js'
+import '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js'
+import '@shoelace-style/shoelace/dist/components/menu-label/menu-label.js'
+import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js'
 import type SlMenu from '@shoelace-style/shoelace/dist/components/menu/menu.js'
 import type SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
 // enibook
-import { BaseIt } from '../base/base';
-import { ClockIt } from '../clock/clock';
-import { ColorIt } from '../color/color';
-import { ThemeIt } from '../theme/theme';
+import { svgIcon } from '../../utilities/icons.js';
+import { BaseIt } from '../base/base.js';
+import { ClockIt } from '../clock/clock.js';
+import { ColorIt } from '../color/color.js';
+import { ThemeIt } from '../theme/theme.js';
 
-// import AlarmIt from '../alarm/alarm';
-// import ChronoIt from '../chrono/chrono';
-// import TimerIt from '../timer/timer';
-import styles from './tools.css?inline'
+// import AlarmIt from '../alarm/alarm.js';
+// import ChronoIt from '../chrono/chrono.js';
+// import TimerIt from '../timer/timer.js';
+import styles from './tools.css.js'
 
 /**
  * @since 2.0
@@ -33,8 +34,7 @@ import styles from './tools.css?inline'
 export class ToolsIt extends BaseIt {
   static styles: CSSResultGroup = [
     super.styles,
-    unsafeCSS(styles),
-    css`@unocss-placeholder`
+    styles,
   ]
 
   @query('sl-menu') menu!: SlMenu
@@ -155,7 +155,7 @@ export class ToolsIt extends BaseIt {
         </div>
         <sl-dropdown part="dropdown" stay-open-on-select hoist>
           <sl-button size=${this.size} slot="trigger" caret>
-            <it-mdi-cog class="dropdown-icon"></it-mdi-cog>
+            ${svgIcon('mdi-cog')}
           </sl-button>
           <sl-menu @sl-select=${this.handleSelectTool}>
             <sl-menu-item value="all" type="checkbox">
@@ -163,16 +163,16 @@ export class ToolsIt extends BaseIt {
             </sl-menu-item>
             <sl-divider></sl-divider>
             <sl-menu-item value="theme" type="checkbox">
-              <it-mdi-theme-light-dark slot="prefix"></it-mdi-theme-light-dark>
+              <span slot="prefix">${svgIcon('mdi-theme-light-dark')}</span>
               Thème
             </sl-menu-item>
             <sl-menu-item value="color" type="checkbox">
-              <it-mdi-palette-outline slot="prefix"></it-mdi-palette-outline>
+              <span slot="prefix">${svgIcon('mdi-palette-outline')}</span>
               Couleur
             </sl-menu-item>
             <sl-divider></sl-divider>
             <sl-menu-item value="date" type="checkbox">
-              <it-mdi-calendar-clock-outline slot="prefix"></it-mdi-calendar-clock-outline>
+              <span slot="prefix">${svgIcon('mdi-calendar-clock-outline')}</span>
               Date et heure
             </sl-menu-item>
             <!--

@@ -1,0 +1,40 @@
+= EniBook : éléments HTML
+:docinfo:
+:example-caption: Exemple
+:icons: font
+:nofooter:
+:sectnums:
+:source-highlighter: highlight.js
+:stylesheet: asciidoctor.css
+:toc: left
+:toc-title!: 
+:toclevels: 2
+:xrefstyle: full
+
+Les composants EniBook sont des link:https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_custom_elements[éléments HTML personnalisés] (_custom element_) représentés par des balises du type `_<element-name-it></element-name-it>_` dont le nom se termine toujours par le suffixe `-it`.
+
+Les développements sont réalisés en
+link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'link:http://127.0.0.1:5500/packages/docs/api/index.html[API] (_Application Programming Interface_).
+
+
+++++
+<code-it fieldset language="html" preview>
+  <script type="enibook">
+  <h1>Titre</h1>
+  <h2>Section</h2>
+  <p>Un petit paragraphe.</p>
+
+  <ol>
+    <li>un</li>
+    <li>deux</li>
+  </ol>
+  </script>
+</code-it>
+++++
+
+
+include::./toggle/toggle.adoc[]
+// include::./code/code.adoc[]
+include::./clock/clock.adoc[]
+include::./lorem-ipsum/lorem-ipsum.adoc[]
+// include::./toolbar/toolbar.adoc[]

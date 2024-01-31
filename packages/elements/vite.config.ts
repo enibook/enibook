@@ -1,8 +1,6 @@
-import { glob } from 'glob'
+// vite
 import { defineConfig } from "vite";
-import vitePluginCp from 'vite-plugin-cp'
-import VitePluginCustomElementsManifest from 'vite-plugin-cem'
-import { jsdocExamplePlugin } from 'cem-plugin-jsdoc-example'
+// unocss
 import UnoCSS from 'unocss/vite'
 import presetIcons from '@unocss/preset-icons'
 import presetUno from '@unocss/preset-uno'
@@ -24,46 +22,11 @@ export default defineConfig({
           extraProperties: {
             'display': 'inline-block',
             'vertical-align': 'middle',
-            'width': '1em',
-            'height': '1em'
           },
           prefix: 'it-',
           warn: true,    
         }),
-      ],
-    }),
-    VitePluginCustomElementsManifest({
-      files: glob.sync('./src/elements/**/*.ts'),
-      lit: true,
-      dev: true,
-      packageJson: true,
-      plugins: []
-    }),
-    vitePluginCp({
-      targets: [
-        { src: 'dist/', dest: '../docs/elements/_dist/', flatten: false },
-        { src: 'dist/custom-elements.json', dest: 'dev' },
-      ],
+      ]
     }),
   ],
-  server: {
-    open: 'dev/index.html',
-  },
-  build: {
-    emptyOutDir: false,
-    lib: {
-      entry: 'src/enibook.ts',
-      name: 'enibook',
-      fileName: 'enibook'
-    },
-    outDir: 'dist',
-    rollupOptions: {
-      output: {
-        assetFileNames: 'enibook.css'
-      }
-    },
-  },
-  preview: {
-    open: 'index.html',
-  },
 });

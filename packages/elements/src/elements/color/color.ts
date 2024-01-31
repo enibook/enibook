@@ -127,7 +127,7 @@ export class ColorIt extends BaseIt {
             ${this.colors.map(item =>
               html`
                 <div class='primary-color__colors__color' @click=${() => { this.color = item.name; this.setPrimaryColor() }}>
-                  <span title=${item.name} style="cursor:pointer;width:1.5em;height:1.5em;color:${item.value}">${svgIcon('mdi-square-rounded')}
+                  <span title=${item.name} style="cursor:pointer;font-size:2em;color:${item.value}">${svgIcon('mdi-square-rounded')}
                 </div>
               `
             )}

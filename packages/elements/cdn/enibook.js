@@ -32,7 +32,7 @@ import {
 } from "./chunks/chunk.ZDKSOXPZ.js";
 import {
   ColorIt
-} from "./chunks/chunk.7JSAJ3W6.js";
+} from "./chunks/chunk.QSG2ODAP.js";
 import "./chunks/chunk.MJ6EZYPP.js";
 import "./chunks/chunk.5SNU44DN.js";
 import "./chunks/chunk.ZH3RXYGI.js";

@@ -148,7 +148,7 @@ var ColorIt = class extends BaseIt {
         this.color = item.name;
         this.setPrimaryColor();
       }}>
-                  <span title=${item.name} style="cursor:pointer;width:1.5em;height:1.5em;color:${item.value}">${svgIcon("mdi-square-rounded")}
+                  <span title=${item.name} style="cursor:pointer;font-size:2em;color:${item.value}">${svgIcon("mdi-square-rounded")}
                 </div>
               `
     )}

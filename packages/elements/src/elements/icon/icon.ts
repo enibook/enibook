@@ -1,5 +1,5 @@
 // lit
-import { type CSSResultGroup, html, type TemplateResult, unsafeCSS, type PropertyValueMap } from 'lit';
+import { type CSSResultGroup, html, type TemplateResult, type PropertyValueMap } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 // enibook
 import { icons, svgIcon } from '../../utilities/icons.js'

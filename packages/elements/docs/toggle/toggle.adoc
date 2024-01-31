@@ -9,7 +9,7 @@
 | Cet élément propose un bouton pour montrer ou cacher un autre élément `html` défini par son link:https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors[sélecteur `css`].
 
 ++++
-<div class="flex flex-justify-between">
+<div class="toggle-demo">
   <toggle-it id="toggle-left" visibility selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
   <toggle-it id="toggle-right" visibility selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"></toggle-it>
 </div>
@@ -42,7 +42,7 @@ Cette balise possède 7 attributs spécifiques optionnels : ``selector``, ``size
 
 [source,html]
 ----
-<div class="flex flex-justify-between">
+<div class="toggle-demo">
   <toggle-it id="toggle-left" visibility selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
   <toggle-it id="toggle-right" visibility selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"></toggle-it>
 </div>
@@ -70,7 +70,7 @@ L'attribut `visibility` peut être utilisé afin de cacher un élément tout en 
 Sans l'attribut `visibility`:: ``<toggle-it selector="..."></toggle-it>``
 +
 ++++
-<div class="flex flex-justify-between w-sm">
+<div class="toggle-demo w-sm">
   <span>début</span>
   <toggle-it id="toggle-left-2" selector="#toggle-right-2" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
   <toggle-it id="toggle-right-2" selector="#toggle-left-2" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
@@ -81,7 +81,7 @@ Sans l'attribut `visibility`:: ``<toggle-it selector="..."></toggle-it>``
 Avec l'attribut `visibility`:: ``<toggle-it visibility selector="..."></toggle-it>``
 +
 ++++
-<div class="flex flex-justify-between w-sm">
+<div class="toggle-demo w-sm">
   <span>début</span>
   <toggle-it id="toggle-left-3" visibility selector="#toggle-right-3" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
   <toggle-it id="toggle-right-3" visibility selector="#toggle-left-3" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
@@ -96,7 +96,7 @@ respectivement quand l'élément est caché ou non.
 Fonctionnement par défaut:: ``<toggle-it selector="..."></toggle-it>``
 +
 ++++
-<div class="flex flex-justify-between w-sm">
+<div class="toggle-demo w-sm">
   <span>début</span>
   <toggle-it id="toggle-left-4" selector="#toggle-right-4"></toggle-it>
   <toggle-it id="toggle-right-4" selector="#toggle-left-4"></toggle-it>
@@ -107,7 +107,7 @@ Fonctionnement par défaut:: ``<toggle-it selector="..."></toggle-it>``
 Adaptation des textes:: ``<toggle-it selector="..." text-show="..." text-hide="..."></toggle-it>``
 +
 ++++
-<div class="flex flex-justify-between w-sm">
+<div class="toggle-demo w-sm">
   <span>début</span>
   <toggle-it id="toggle-left-5" selector="#toggle-right-5" text-show="Show" text-hide="Hide"></toggle-it>
   <toggle-it id="toggle-right-5" selector="#toggle-left-5" text-show="Montrer" text-hide="Cacher"></toggle-it>
@@ -122,7 +122,7 @@ respectivement quand l'élément est caché ou non.
 Fonctionnement par défaut:: ``<toggle-it selector="..."></toggle-it>``
 +
 ++++
-<div class="flex flex-justify-between w-sm">
+<div class="toggle-demo w-sm">
   <span>début</span>
   <toggle-it id="toggle-left-6" selector="#toggle-right-6"></toggle-it>
   <toggle-it id="toggle-right-6" selector="#toggle-left-6"></toggle-it>
@@ -133,7 +133,7 @@ Fonctionnement par défaut:: ``<toggle-it selector="..."></toggle-it>``
 Adaptation des infobulles:: ``<toggle-it selector="..." tooltip-show="..." tooltip-hide="..."></toggle-it>``
 +
 ++++
-<div class="flex flex-justify-between w-sm">
+<div class="toggle-demo w-sm">
   <span>début</span>
   <toggle-it id="toggle-left-7" selector="#toggle-right-7" tooltip-show="Montrer le bouton de droite" tooltip-hide="Cacher le bouton de droite"></toggle-it>
   <toggle-it id="toggle-right-7" selector="#toggle-left-7" tooltip-show="Montrer le bouton de gauche" tooltip-hide="Cacher le bouton de gauche"></toggle-it>

@@ -1,5 +1,5 @@
 // lit
-import { css, html, unsafeCSS } from 'lit'
+import { html } from 'lit'
 import { customElement, property, query, state } from 'lit/decorators.js'
 import type { CSSResultGroup, PropertyValueMap, TemplateResult } from 'lit'
 // shoelace
@@ -72,6 +72,19 @@ export class ClockIt extends BaseIt {
   protected override firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
     const that = this
     setInterval(() => that.setClock(), 1000)
+    if (this.hasAttribute('time') && this.hasAttribute('date')) {
+      this._state = State.both
+    } else {
+      if (this.hasAttribute('time')) {
+        this._state = State.time
+      } else {
+        if (this.hasAttribute('date')) {
+          this._state = State.date
+        } else {
+          this._state = State.none
+        }
+      }
+    }
     // this.handleClickButton()
   }
 

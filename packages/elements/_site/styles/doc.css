@@ -88,11 +88,23 @@ table tr.even,table tr.alt{background:#f8f8f7}
 .listingblock > .content > pre:not(.highlight),
 .listingblock > .content > pre[class=highlight],
 .listingblock > .content > pre[class^="highlight "] {
-  background-color: /*var(--sl-color-neutral-100);*/ green;
+  background-color: var(--sl-color-neutral-900);
 }
 .literalblock.output pre {
   color: var(--sl-color-neutral-100);
-  background: var(--sl-color-neutral-800);
+  background: var(--sl-color-neutral-900);
+}
+.listingblock code[data-lang]::before {
+  display: none;
+  content: attr(data-lang);
+  position: absolute;
+  font-size: .75em;
+  top: .425rem;
+  right: .5rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--sl-color-neutral-200); /*inherit;*/
+  opacity: .5;
 }
 
 .subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{
@@ -142,4 +154,14 @@ body.toc2.toc-right #toc.toc2 {
 
 #toc.toc2 #toctitle {
   margin-bottom: 1.5em;
+}
+
+.toggle-demo {
+  display: flex;
+  justify-content: space-between;
+  /*width: 24rem;*/
+}
+
+.w-sm {
+  width: 24rem;
 }

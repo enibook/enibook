@@ -1,5 +1,5 @@
 // lit
-import { type CSSResultGroup, type TemplateResult, css, html, unsafeCSS } from "lit";
+import { type CSSResultGroup, type TemplateResult, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 // enibook
 import { BaseIt } from "../base/base.js";

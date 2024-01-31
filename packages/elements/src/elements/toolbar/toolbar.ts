@@ -1,8 +1,11 @@
 // lit
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
-import { html, unsafeCSS } from 'lit';
+import { html } from 'lit';
 import type { CSSResultGroup, TemplateResult} from 'lit';
+// shoelace
+import "@shoelace-style/shoelace/dist/components/button/button.js"
+import "@shoelace-style/shoelace/dist/components/button-group/button-group.js"
 // enibook
 import { BaseIt } from '../base/base.js';
 import styles from './toolbar.css.js'

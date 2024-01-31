@@ -1,5 +1,5 @@
 // lit
-import { css, type CSSResultGroup, html, type TemplateResult, unsafeCSS } from 'lit';
+import { type CSSResultGroup, html, type TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 // shoelace
 import type SlRange from '@shoelace-style/shoelace/dist/components/range/range.js';

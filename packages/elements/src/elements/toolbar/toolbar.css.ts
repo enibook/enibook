@@ -3,7 +3,7 @@ import { css } from 'lit'
 export default css`
 :host {
   display: block;
-  z-index: 1200; /* < sl-drawer */
+  z-index: 2000; /* < sl-drawer */
 }
 .toolbar {
   display: flex;
@@ -24,6 +24,7 @@ export default css`
   position: fixed;
   left: 0;
   right: 0;
+  z-index: 2000; /* < sl-drawer */
 }
 .toolbar__top {
   top: 0;
@@ -37,6 +38,7 @@ export default css`
   position: fixed;
   top: 0;
   bottom: 0;
+  z-index: 2000; /* < sl-drawer */
 }
 .toolbar__left .toolbar__start,
 .toolbar__right .toolbar__start,

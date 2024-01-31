@@ -1,5 +1,5 @@
 // lit
-import { css, type CSSResultGroup, html, type PropertyValueMap, type TemplateResult, unsafeCSS } from 'lit';
+import { type CSSResultGroup, html, type PropertyValueMap, type TemplateResult } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 // shoelace
 import SlMenu from '@shoelace-style/shoelace/dist/components/menu/menu.js';
@@ -23,8 +23,7 @@ import styles from './theme.css.js'
 export class ThemeIt extends BaseIt {
   static styles: CSSResultGroup = [ 
     super.styles,
-    unsafeCSS(styles),
-    css`@unocss-placeholder`
+    styles
   ]
 
   @query('sl-menu') menu!: SlMenu

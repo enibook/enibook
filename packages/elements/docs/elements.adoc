@@ -4,7 +4,8 @@
 :icons: font
 :nofooter:
 :sectnums:
-:source-highlighter: highlight.js
+:source-highlighter: highlightjs-ext
+:stem: latexmath
 :stylesheet: asciidoctor.css
 :toc: left
 :toc-title!: 
@@ -17,6 +18,9 @@ Les développements sont réalisés en
 link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'link:http://127.0.0.1:5500/packages/docs/api/index.html[API] (_Application Programming Interface_).
 
 
+
+stem:[\displaystyle\cos(\frac{1}{1+x^2})]
+
 ++++
 <code-it fieldset language="html" preview>
   <script type="enibook">
@@ -25,12 +29,18 @@ link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'l
   <p>Un petit paragraphe.</p>
 
   <ol>
-    <li>un</li>
+    <li>un item</li>
     <li>deux</li>
   </ol>
   </script>
 </code-it>
 ++++
+
+[source,python]
+----
+def f(x):
+  return 3*x
+----
 
 
 include::./toggle/toggle.adoc[]

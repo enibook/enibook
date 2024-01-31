@@ -1,12 +1,12 @@
 // lit
-import { css, type CSSResultGroup, html, type PropertyValueMap, type TemplateResult, unsafeCSS } from 'lit';
+import { type CSSResultGroup, html, type PropertyValueMap, type TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 // import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 // shoelace
 import '@shoelace-style/shoelace/dist/components/button/button.js'
 import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js'
 // enibook
-import { svgIcon } from '../../utilities/icons.js';
+import { icons, svgIcon } from '../../utilities/icons.js';
 import { BaseIt } from '../base/base.js';
 import styles from './toggle.css.js'
 
@@ -76,10 +76,12 @@ export class ToggleIt extends BaseIt {
 
   
   override render(): TemplateResult {
+    const textShow = Object.keys(icons).includes(this.textShow) ? svgIcon(this.textShow) : html`${this.textShow}`
+    const textHide = Object.keys(icons).includes(this.textHide) ? svgIcon(this.textHide) : html`${this.textHide}`
     return html`
       <sl-tooltip content=${this.hidden ? this.tooltipShow : this.tooltipHide}>
         <sl-button size=${this.size} @click=${() => this.toggleSelector()}>
-          ${this.hidden ? svgIcon(this.textShow) : svgIcon(this.textHide)}
+          ${this.hidden ? textShow : textHide}
         </sl-button>
       </sl-tooltip>
     `

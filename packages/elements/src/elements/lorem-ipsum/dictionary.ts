@@ -27,6 +27,7 @@ export const dictionary: string[] = [
   "enim",
   "enit",
   "enise",
+  "gepi",
   "praesent",
   "elementum",
   "facilisis",

@@ -29,12 +29,14 @@ let packageData = JSON.parse(readFileSync(path.join(process.cwd(), 'package.json
 const enibookVersion = JSON.stringify(packageData.version.toString());
 
 //
-// Runs asciidoctor and builds the docs. The returned promise resolves after the initial publish has completed. The child
-// process and an array of strings containing any output are included in the resolved promise.
+// Runs asciidoctor and builds the docs. 
+// The returned promise resolves after the initial publish has completed. 
+// The child process and an array of strings containing any output are included in the resolved promise.
 //
 async function buildTheDocs(watch = false) {
   const htmlDoc = new Promise(async (resolve, reject) => {
     const args = [
+      '-r', '@djencks/asciidoctor-mathjax',
       '-r', 'asciidoctor-highlight.js', 
       'docs/elements.adoc', 
       '--destination-dir', `${sitedir}`
@@ -101,22 +103,17 @@ async function buildTheSource() {
     target: 'es2017',
     entryPoints: [
       //
-      // NOTE: Entry points must be mapped in package.json > exports, otherwise users won't be able to import them!
+      // NOTE: Les points d'entrée doivent être mappés dans le fichier package.json > exports, 
+      // sinon les utilisateurs ne pourront pas les importer !
       //
       // The whole shebang
       './src/enibook.ts',
       // The auto-loader
       './src/enibook-autoloader.ts',
       // Components
-      ...(await globby('./src/elements/**/!(*.(style|test)).ts')),
-      // Translations
-      // ...(await globby('./src/translations/**/*.ts')),
+      ...(await globby('./src/elements/**/!(*.(css|test)).ts')),
       // Public utilities
-      ...(await globby('./src/utilities/**/!(*.(style|test)).ts')),
-      // Theme stylesheets
-      // ...(await globby('./src/themes/**/!(*.test).ts')),
-      // React wrappers
-      // ...(await globby('./src/react/**/*.ts'))
+      ...(await globby('./src/utilities/**/!(*.(css|test)).ts')),
     ],
     outdir: cdndir,
     chunkNames: 'chunks/[name].[hash]',
@@ -192,37 +189,23 @@ async function nextTask(label, action) {
   }
 }
 
-await nextTask(`Nettoyage de ${sitedir}, ${outdir}, ${cdndir}`, async () => {
+await nextTask(`Suppression "${sitedir}", "${outdir}", "${cdndir}"`, async () => {
   await Promise.all([deleteAsync(sitedir), ...bundleDirectories.map(dir => deleteAsync(dir))]);
   await fs.mkdir(outdir, { recursive: true });
 });
 
 
-await nextTask('Manifeste custom-elements.json', () => {
+await nextTask('Manifeste "custom-elements.json"', () => {
   return execPromise(`cem analyze --litelement --outdir "${outdir}"`, { stdio: 'inherit' });
 });
 
-
-/*
-await nextTask('Wrapping components for React', () => {
-  return execPromise(`node scripts/make-react.js --outdir "${outdir}"`, { stdio: 'inherit' });
-});
-
-await nextTask('Generating themes', () => {
-  return execPromise(`node scripts/make-themes.js --outdir "${outdir}"`, { stdio: 'inherit' });
-});
-
-await nextTask('Packaging up icons', () => {
-  return execPromise(`node scripts/make-icons.js --outdir "${outdir}"`, { stdio: 'inherit' });
-});
-*/
 
 await nextTask('Compilation TypeScript', () => {
   return execPromise(`tsc --project ./tsconfig.prod.json --outdir "${outdir}"`, { stdio: 'inherit' });
 });
 
 // Copiez les étapes ci-dessus dans le répertoire CDN directement afin que nous n'ayons pas à faire deux fois le travail pour rien.
-await nextTask(`Copie ${outdir} dans ${cdndir}`, async () => {
+await nextTask(`Copie "${outdir}" dans "${cdndir}"`, async () => {
   await deleteAsync(cdndir);
   await copy(outdir, cdndir);
 });
@@ -233,7 +216,7 @@ await nextTask('Création du bundler', async () => {
 
 // Copier la compilation CDN dans les documents (prod uniquement ; nous utilisons un répertoire virtuel dans dev)
 if (!serve) {
-  await nextTask(`Copier la compilation dans "${sitedir}"`, async () => {
+  await nextTask(`Copie "${cdndir}" dans "${sitedir}"`, async () => {
     await deleteAsync(sitedir);
 
     // Nous copions la version CDN parce qu'elle contient tout ce qu'il faut. Oui, cela semble bizarre.
@@ -242,19 +225,23 @@ if (!serve) {
   });
 }
 
-// Launch the dev server
+// Lancer le serveur de développement
 if (serve) {
   let result;
 
   // Spin up Eleventy and Wait for the search index to appear before proceeding. The search index is generated during
   // eleventy.after, so it appears after the docs are fully published. This is kinda hacky, but here we are.
   // Kick off the Eleventy dev server with --watch and --incremental
-  await nextTask('Building docs', async () => {
+  await nextTask('Documentation monopage', async () => {
     result = await buildTheDocs(true);
   });
 
-  await nextTask(`Copie ${docdir}/styles dans ${sitedir}/styles`, async () => {
-    return await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'));
+  await nextTask(`Copie "${docdir}/styles" dans "${sitedir}/styles"`, async () => {
+    return await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'), { overwrite: true });
+  });
+
+  await nextTask(`Documentation multipage`, async () => {
+    result = await buildTheChunks();
   });
 
   const bs = browserSync.create();
@@ -279,7 +266,7 @@ if (serve) {
   // Launch browser sync
   bs.init(browserSyncConfig, () => {
     const url = `http://localhost:${port}`;
-    console.log(chalk.cyan(`\n🥾 Le serveur de développement est disponible à ${url}`));
+    console.log(chalk.cyan(`\nServeur de développement : ${url}`));
 
     // Log deferred output
     if (result.output.length > 0) {
@@ -297,27 +284,17 @@ if (serve) {
     console.log('[build] File changed: ', filename);
 
     try {
-      const isTheme = /^src\/themes/.test(filename);
-      const isStylesheet = /(\.css|\.styles\.ts)$/.test(filename);
+      const isStylesheet = /(\.css|\.css\.ts)$/.test(filename);
 
       // Rebuild the source
       const rebuildResults = buildResults.map(result => result.rebuild());
       await Promise.all(rebuildResults);
 
-      // Rebuild stylesheets when a theme file changes
-      if (isTheme) {
-        await Promise.all(
-          bundleDirectories.map(dir => {
-            execPromise(`node scripts/make-themes.js --outdir "${dir}"`, { stdio: 'inherit' });
-          })
-        );
-      }
-
       // Rebuild metadata (but not when styles are changed)
       if (!isStylesheet) {
         await Promise.all(
           bundleDirectories.map(dir => {
-            return execPromise(`node scripts/make-metadata.js --outdir "${dir}"`, { stdio: 'inherit' });
+            return execPromise(`cem analyze --litelement --outdir "${dir}"`, { stdio: 'inherit' })
           })
         );
       }
@@ -329,7 +306,24 @@ if (serve) {
   });
 
   // Reload without rebuilding when the docs change
-  bs.watch([`${sitedir}/**/*.*`]).on('change', filename => {
+  bs.watch([`${docdir}/**/*.*`]).on('change', async filename => {
+    console.log('[doc] File changed: ', filename);
+    await nextTask('Documentation monopage', async () => {
+      result = await buildTheDocs(true);
+    });
+  
+    await nextTask('unocss', async () => {
+      result = await exec
+    })
+
+    await nextTask(`Copie "${docdir}/styles" dans "${sitedir}/styles"`, async () => {
+      result = await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'), { overwrite: true });
+    });
+  
+    await nextTask(`Documentation multipage`, async () => {
+      result = await buildTheChunks();
+    });
+  
     bs.reload();
   });
 }
@@ -339,7 +333,7 @@ if (serve) {
 if (!serve) {
   let result;
 
-  await nextTask('Documentation', async () => {
+  await nextTask(`Documentation monopage dans "${sitedir}"`, async () => {
     result = await buildTheDocs();
   });
 
@@ -348,11 +342,11 @@ if (!serve) {
     console.log('\n' + result.output.join('\n'));
   }
 
-  await nextTask(`Copie ${docdir}/styles dans ${sitedir}/styles`, async () => {
+  await nextTask(`Copie de "${docdir}/styles" dans "${sitedir}/styles"`, async () => {
     return await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'));
   });
 
-  await nextTask('Documentation multipage', async () => {
+  await nextTask(`Documentation multipage dans "${sitedir}"`, async () => {
     result = await buildTheChunks();
   });
   // Log deferred output

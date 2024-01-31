@@ -1,5 +1,5 @@
 // lit
-import { type CSSResultGroup, LitElement, css, unsafeCSS } from "lit";
+import { type CSSResultGroup, LitElement } from "lit";
 import { state } from "lit/decorators.js";
 // fscreen
 import fscreen from "fscreen";

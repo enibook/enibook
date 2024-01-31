@@ -1,5 +1,5 @@
 // lit
-import { css, html, unsafeCSS } from 'lit'
+import { html } from 'lit'
 import { classMap } from 'lit/directives/class-map.js'
 import { property, query } from 'lit/decorators.js'
 import type { CSSResultGroup, TemplateResult} from 'lit';

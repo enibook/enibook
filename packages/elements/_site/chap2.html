@@ -6,11 +6,10 @@
 <title>EniBook : éléments HTML</title>
 <link rel="stylesheet" href="style0.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 <link rel="stylesheet" type="text/css" href="dist/enibook.css">
 <link rel="stylesheet" type="text/css" href="styles/doc.css">
 <link rel="stylesheet" type="text/css" href="styles/hljs-themes.css">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace.js"></script>
 <script type="module" src="https://jspm.dev/api-viewer-element"></script>
 <script type="module" src="dist/enibook.js"></script>
 <link rel="stylesheet" href="style1.css" type="text/css">
@@ -215,17 +214,17 @@ consultable <a href="../api/classes/ClockIt.html">ici</a>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { ClockIt } from '@enibook/elements/dist/elements/clock/clock' <i class="conum" data-value="1"></i><b>(1)</b>
-const clock = new ClockIt()                                           <i class="conum" data-value="2"></i><b>(2)</b>
-clock.size = 'large'                                                  <i class="conum" data-value="3"></i><b>(3)</b>
-clock.date = true                                                     <i class="conum" data-value="4"></i><b>(4)</b>
-document.body.appendChild(clock)                                      <i class="conum" data-value="5"></i><b>(5)</b>
-/*
+<pre class="highlight"><code class="language-typescript" data-lang="typescript"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ClockIt</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">'@enibook/elements/dist/elements/clock/clock'</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="hljs-keyword">const</span> clock = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ClockIt</span>()                                           <i class="conum" data-value="2"></i><b>(2)</b>
+clock.<span class="hljs-property">size</span> = <span class="hljs-string">'large'</span>                                                  <i class="conum" data-value="3"></i><b>(3)</b>
+clock.<span class="hljs-property">date</span> = <span class="hljs-literal">true</span>                                                     <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(clock)                                      <i class="conum" data-value="5"></i><b>(5)</b>
+<span class="hljs-comment">/*
 &lt;body&gt;
 ...
 &lt;clock-it size="large" date&gt;&lt;/clock-it&gt;
 &lt;/body&gt;
-*/</code></pre>
+*/</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -277,13 +276,30 @@ document.body.appendChild(clock)                                      <i class="
   <div style="clear: both"></div>
 </nav>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
-<script>
-if (!hljs.initHighlighting.called) {
-  hljs.initHighlighting.called = true
-  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
-}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 
 </body>
   <script>

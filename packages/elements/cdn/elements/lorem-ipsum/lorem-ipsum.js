@@ -1,10 +1,10 @@
 import {
   LoremIpsumIt
-} from "../../chunks/chunk.ROEDWEUX.js";
-import "../../chunks/chunk.PZ5QSIJN.js";
-import "../../chunks/chunk.VZVRWFDB.js";
-import "../../chunks/chunk.AZTRWFZJ.js";
-import "../../chunks/chunk.73N5W5FM.js";
+} from "../../chunks/chunk.ZKRIIYIB.js";
+import "../../chunks/chunk.I47CHKS7.js";
+import "../../chunks/chunk.V7SARTD6.js";
+import "../../chunks/chunk.S4JGPG5E.js";
+import "../../chunks/chunk.BLJAKQYI.js";
 import "../../chunks/chunk.R3ZK4RPV.js";
 export {
   LoremIpsumIt

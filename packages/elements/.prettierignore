@@ -1,0 +1,12 @@
+*.hbs
+.cache
+.github
+cspell.json
+dist
+docs/elements.html
+node_modules
+package.json
+package-lock.json
+tsconfig.json
+cdn
+_site

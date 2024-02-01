@@ -8,7 +8,7 @@ api-viewer {
   --ave-header-background: var(--sl-color-primary-500); /*	Background of the header used for tag name*/
   --ave-header-color: var(--sl-color-neutral-100); /*	Header text color used for tag name*/
   --ave-item-color: var(--sl-color-neutral-900); /*	API items content color (main text)*/
-  --ave-label-color:  var(--sl-color-neutral-800); /*	API items labels color*/
+  --ave-label-color: var(--sl-color-neutral-800); /*	API items labels color*/
   --ave-link-color: var(--sl-color-primary-500); /*	API description links default color*/
   --ave-link-hover-color: var(--sl-color-primary-500); /*	API description links hover color*/
   --ave-monospace-font: var(--sl-font-monospace); /*	Monospace font stack for the API items*/
@@ -19,7 +19,7 @@ api-viewer {
   --ave-tab-indicator-size: 2px; /*	Size of the selected tab indicator*/
   --ave-tag-background-color: var(--sl-color-primary-100); /*	Background color of tags (e.g., static)*/
   --ave-tag-border-color: var(--sl-color-primary-200); /*	Color of tag borders*/
-  --ave-tag-color: var(--sl-color-neutral-900); 
+  --ave-tag-color: var(--sl-color-neutral-900);
 }
 
 api-viewer::part(md-code) {
@@ -52,31 +52,43 @@ details[open] > .content {
   padding: 0.5em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--color-primary);
 }
 
-:not(pre):not([class^=L]) > code {
+:not(pre):not([class^='L']) > code {
   color: var(--color-code);
-  background-color: var(--background-color-code);/*inherit;*/ /*var(--sl-color-neutral-200);*/
+  background-color: var(--background-color-code); /*inherit;*/ /*var(--sl-color-neutral-200);*/
 }
 
-table thead,table tfoot {
+table thead,
+table tfoot {
   background:/*#f7f8f7*/ var(--sl-color-neutral-300);
 }
 table tbody {
   background-color: var(--sl-color-neutral-100);
 }
-table tr th,table tr td {
+table tr th,
+table tr td {
   color:/*rgba(0,0,0,.8)*/ var(--sl-color-neutral-900);
   background-color: inherit;
 }
-table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td {
+table thead tr th,
+table thead tr td,
+table tfoot tr th,
+table tfoot tr td {
   color:/*rgba(0,0,0,.8);*/ var(--sl-color-neutral-900);
 }
 
-
-table tr.even,table tr.alt{background:#f8f8f7}
+table tr.even,
+table tr.alt {
+  background: #f8f8f7;
+}
 
 .exampleblock > .content {
   background: var(--sl-color-amber-50); /*#fffef7;*/
@@ -86,8 +98,8 @@ table tr.even,table tr.alt{background:#f8f8f7}
 
 .literalblock pre,
 .listingblock > .content > pre:not(.highlight),
-.listingblock > .content > pre[class=highlight],
-.listingblock > .content > pre[class^="highlight "] {
+.listingblock > .content > pre[class='highlight'],
+.listingblock > .content > pre[class^='highlight '] {
   background-color: var(--sl-color-neutral-900);
 }
 .literalblock.output pre {
@@ -98,16 +110,34 @@ table tr.even,table tr.alt{background:#f8f8f7}
   display: none;
   content: attr(data-lang);
   position: absolute;
-  font-size: .75em;
-  top: .425rem;
-  right: .5rem;
+  font-size: 0.75em;
+  top: 0.425rem;
+  right: 0.5rem;
   line-height: 1;
   text-transform: uppercase;
   color: var(--sl-color-neutral-200); /*inherit;*/
-  opacity: .5;
+  opacity: 0.5;
 }
 
-.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{
+.subheader,
+.admonitionblock td.content > .title,
+.audioblock > .title,
+.exampleblock > .title,
+.imageblock > .title,
+.listingblock > .title,
+.literalblock > .title,
+.stemblock > .title,
+.openblock > .title,
+.paragraph > .title,
+.quoteblock > .title,
+table.tableblock > .title,
+.verseblock > .title,
+.videoblock > .title,
+.dlist > .title,
+.olist > .title,
+.ulist > .title,
+.qlist > .title,
+.hdlist > .title {
   color:/*#7a2518;*/ var(--color-primary);
 }
 
@@ -119,26 +149,26 @@ table tr.even,table tr.alt{background:#f8f8f7}
 #footnotes::after,
 #footer::before,
 #footer::after {
-  content:" ";
-  display:table
+  content: ' ';
+  display: table;
 }
 
 #header > h1:first-child {
   color:/*rgba(0,0,0,.85);*/ var(--sl-color-neutral-900);
   margin-top: 2.5rem;
 }
-#header > h1:only-child, 
+#header > h1:only-child,
 body.toc2 #header > h1:nth-last-child(2) {
-  border-bottom:1px solid var(--sl-color-neutral-300);
+  border-bottom: 1px solid var(--sl-color-neutral-300);
 }
 
-#preamble > .sectionbody > [class=paragraph]:first-of-type p {
+#preamble > .sectionbody > [class='paragraph']:first-of-type p {
   color:/*rgba(0,0,0,.85);*/ var(--sl-color-neutral-800);
 }
 
 #toc.toc2 {
   background-color: var(--sl-color-neutral-100);
-  border-right:1px solid var(--sl-color-neutral-300);
+  border-right: 1px solid var(--sl-color-neutral-300);
 }
 #toc a {
   color: var(--color-primary-dark);
@@ -148,7 +178,7 @@ body.toc2 #header > h1:nth-last-child(2) {
 }
 
 body.toc2.toc-right #toc.toc2 {
-  border-right-width: 0; 
+  border-right-width: 0;
   border-left: 1px solid var(--sl-color-neutral-300);
 }
 

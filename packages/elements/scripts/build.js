@@ -18,7 +18,7 @@ const { serve } = commandLineArgs([{ name: 'serve', type: Boolean }]);
 const outdir = 'dist';
 const cdndir = 'cdn';
 const sitedir = '_site';
-const docdir = 'docs'
+const docdir = 'docs';
 const spinner = ora({ hideCursor: false }).start();
 const execPromise = util.promisify(exec);
 let childProcess;
@@ -29,16 +29,18 @@ let packageData = JSON.parse(readFileSync(path.join(process.cwd(), 'package.json
 const enibookVersion = JSON.stringify(packageData.version.toString());
 
 //
-// Runs asciidoctor and builds the docs. 
-// The returned promise resolves after the initial publish has completed. 
+// Runs asciidoctor and builds the docs.
+// The returned promise resolves after the initial publish has completed.
 // The child process and an array of strings containing any output are included in the resolved promise.
 //
 async function buildTheDocs(watch = false) {
   const htmlDoc = new Promise(async (resolve, reject) => {
     const args = [
-      '-r', '@djencks/asciidoctor-mathjax',
-      '-r', 'asciidoctor-highlight.js', 
-      `${docdir}/elements.adoc`/*, 
+      '-r',
+      '@djencks/asciidoctor-mathjax',
+      '-r',
+      'asciidoctor-highlight.js',
+      `${docdir}/elements.adoc` /*, 
       '--destination-dir', `${sitedir}`*/
     ];
     const output = [];
@@ -57,20 +59,15 @@ async function buildTheDocs(watch = false) {
     });
 
     child.on('close', () => {
-        resolve({ child, output });
+      resolve({ child, output });
     });
   });
-  return htmlDoc
+  return htmlDoc;
 }
-
 
 async function buildTheChunks(watch = false) {
   const chunkDoc = new Promise(async (resolve, reject) => {
-    const args = [
-      `${docdir}/elements.html`,
-      '--titlePage',  '"EniBook : éléments HTML"',
-      '--outdir', `${sitedir}`
-    ];
+    const args = [`${docdir}/elements.html`, '--titlePage', '"EniBook : éléments HTML"', '--outdir', `${sitedir}`];
     const output = [];
 
     const child = spawn('asciidoctor-chunker', args, {
@@ -86,7 +83,7 @@ async function buildTheChunks(watch = false) {
     });
 
     child.on('close', () => {
-        resolve({ child, output });
+      resolve({ child, output });
     });
   });
   return chunkDoc;
@@ -103,7 +100,7 @@ async function buildTheSource() {
     target: 'es2017',
     entryPoints: [
       //
-      // NOTE: Les points d'entrée doivent être mappés dans le fichier package.json > exports, 
+      // NOTE: Les points d'entrée doivent être mappés dans le fichier package.json > exports,
       // sinon les utilisateurs ne pourront pas les importer !
       //
       // Tout en un
@@ -113,7 +110,7 @@ async function buildTheSource() {
       // Eléments
       ...(await globby('./src/elements/**/!(*.(css|test)).ts')),
       // Utilitaires
-      ...(await globby('./src/utilities/**/!(*.(css|test)).ts')),
+      ...(await globby('./src/utilities/**/!(*.(css|test)).ts'))
     ],
     outdir: cdndir,
     chunkNames: 'chunks/[name].[hash]',
@@ -123,8 +120,8 @@ async function buildTheSource() {
     },
     bundle: true,
     //
-    // We don't bundle certain dependencies in the unbundled build. 
-    // This ensures we ship bare module specifiers, allowing end users to better optimize when using a bundler. 
+    // We don't bundle certain dependencies in the unbundled build.
+    // This ensures we ship bare module specifiers, allowing end users to better optimize when using a bundler.
     // (Only packages that ship ESM can be external.)
     //
     external: alwaysExternal,
@@ -190,11 +187,9 @@ await nextTask(`Suppression "${sitedir}", "${outdir}", "${cdndir}"`, async () =>
   await fs.mkdir(outdir, { recursive: true });
 });
 
-
 await nextTask('Manifeste "custom-elements.json"', () => {
   return execPromise(`cem analyze --litelement --outdir "${outdir}"`, { stdio: 'inherit' });
 });
-
 
 await nextTask('Compilation TypeScript', () => {
   return execPromise(`tsc --project ./tsconfig.prod.json --outdir "${outdir}"`, { stdio: 'inherit' });
@@ -209,7 +204,7 @@ await nextTask('Création du bundler', async () => {
   buildResults = await buildTheSource();
 });
 
-// Copier la compilation CDN dans les documents 
+// Copier la compilation CDN dans les documents
 // (production uniquement; nous utilisons un répertoire virtuel dans dev)
 if (!serve) {
   await nextTask(`Copie "${cdndir}" dans "${sitedir}"`, async () => {
@@ -281,7 +276,7 @@ if (serve) {
       if (!isStylesheet) {
         await Promise.all(
           bundleDirectories.map(dir => {
-            return execPromise(`cem analyze --litelement --outdir "${dir}"`, { stdio: 'inherit' })
+            return execPromise(`cem analyze --litelement --outdir "${dir}"`, { stdio: 'inherit' });
           })
         );
       }
@@ -298,7 +293,7 @@ if (serve) {
     await nextTask('Documentation monopage', async () => {
       result = await buildTheDocs(true);
     });
-  
+
     await nextTask(`Copie "${docdir}/styles" dans "${sitedir}/styles"`, async () => {
       result = await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'), { overwrite: true });
     });
@@ -306,11 +301,10 @@ if (serve) {
     await nextTask(`Documentation multipage`, async () => {
       result = await buildTheChunks();
     });
-  
+
     bs.reload();
   });
 }
-
 
 // En production
 if (!serve) {
@@ -335,7 +329,6 @@ if (!serve) {
   if (result.output.length > 0) {
     console.log('\n' + result.output.join('\n'));
   }
-
 }
 
 // Nettoyage final

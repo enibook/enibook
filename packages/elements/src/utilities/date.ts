@@ -1,4 +1,3 @@
-
 /**
  * La langue courante.
  * @examples
@@ -14,13 +13,13 @@ export const language = new Intl.DateTimeFormat().resolvedOptions().locale;
  *
  * `Donnerstag, 20. Dezember 2012` en allemend (`de-DE`)
  */
-export function getDate(lang:string=language): string {
+export function getDate(lang: string = language): string {
   const date = new Date();
   return date.toLocaleDateString(lang, {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
 }
 
@@ -32,11 +31,10 @@ export function getDate(lang:string=language): string {
  *
  * `Donnerstag`en allemand (`de-DE`)
  */
-export function getDay(lang:string=language): string {
+export function getDay(lang: string = language): string {
   const date = new Date();
-  return date.toLocaleDateString(lang, { weekday: "long" });
+  return date.toLocaleDateString(lang, { weekday: 'long' });
 }
-
 
 /**
  * L'heure courante sous la forme `hh:mm:ss`.
@@ -44,12 +42,11 @@ export function getDay(lang:string=language): string {
  * @examples
  * `08:12:54` , `13:02:05`
  */
-export function getTime(lang:string=language): string {
+export function getTime(lang: string = language): string {
   const date = new Date();
   return date.toLocaleTimeString(lang, {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
   });
 }
-

@@ -32,6 +32,8 @@
   "scripts": {
     "api": "typedoc --options typedoc.json",
     "build": "node scripts/build.js",
+    "prettier": "prettier --write --log-level=warn .",
+    "prettier:check": "prettier --check --log-level=warn .",
     "start": "node scripts/build.js --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -67,6 +69,7 @@
     "glob": "^10.3.10",
     "globby": "^14.0.0",
     "ora": "^8.0.1",
+    "prettier": "^3.2.4",
     "recursive-copy": "^2.0.14",
     "typedoc": "^0.25.7",
     "typedoc-plugin-coverage": "^2.2.0",

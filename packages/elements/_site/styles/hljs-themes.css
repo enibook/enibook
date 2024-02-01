@@ -69,7 +69,7 @@ code.hljs {
 }
 .hljs-link {
   color: var(--hljs-link);
-  text-decoration: underline
+  text-decoration: underline;
 }
 .hljs-built_in {
   color: var(--hljs-built_in);
@@ -112,11 +112,11 @@ code.hljs {
 }
 .hljs-comment {
   color: var(--hljs-comment);
-  font-style: italic
+  font-style: italic;
 }
 .hljs-quote {
   color: var(--hljs-comment);
-  font-style: italic
+  font-style: italic;
 }
 .hljs-doctag {
   color: var(--hljs-doctag);
@@ -152,7 +152,7 @@ code.hljs {
   color: var(--hljs-section);
 }
 .hljs-emphasis {
-  font-style: italic
+  font-style: italic;
 }
 .hljs-strong {
   font-weight: var(--hljs-font-weight-bold);
@@ -178,10 +178,10 @@ code.hljs {
 .hljs-addition {
   background-color: var(--hljs-addition);
   display: inline-block;
-  width: 100%
+  width: 100%;
 }
 .hljs-deletion {
   background-color: var(--hljs-deletion);
   display: inline-block;
-  width: 100%
+  width: 100%;
 }

@@ -1,16 +1,16 @@
 // codemirror
-import { asciidoc as cmAsciidoc } from "codemirror-asciidoc"
-import { css as cmCss } from "@codemirror/lang-css"
-import { html as cmHtml } from "@codemirror/lang-html"
-import { javascript as cmJavascript} from "@codemirror/lang-javascript"
-import { json as cmJson } from "@codemirror/lang-json"
-import { markdown as cmMarkdown } from "@codemirror/lang-markdown"
-import { prolog as cmProlog } from 'codemirror-lang-prolog'
-import { python as cmPython } from '@codemirror/lang-python'
-import { sql as cmSql } from "@codemirror/lang-sql"
-import { StreamLanguage } from "@codemirror/language"
-import type { Extension } from "@codemirror/state";
-import { icons } from "../../../utilities/icons"
+import { asciidoc as cmAsciidoc } from 'codemirror-asciidoc';
+import { css as cmCss } from '@codemirror/lang-css';
+import { html as cmHtml } from '@codemirror/lang-html';
+import { javascript as cmJavascript } from '@codemirror/lang-javascript';
+import { json as cmJson } from '@codemirror/lang-json';
+import { markdown as cmMarkdown } from '@codemirror/lang-markdown';
+import { prolog as cmProlog } from 'codemirror-lang-prolog';
+import { python as cmPython } from '@codemirror/lang-python';
+import { sql as cmSql } from '@codemirror/lang-sql';
+import { StreamLanguage } from '@codemirror/language';
+import type { Extension } from '@codemirror/state';
+import { icons } from '../../../utilities/icons';
 
 export type LANGUAGE = {
   name: string;
@@ -19,10 +19,10 @@ export type LANGUAGE = {
   extension: string;
   mime: string;
   helpUrl: string;
-}
+};
 
 export const languages: { [name: string]: LANGUAGE } = {
-  'asciidoc': {
+  asciidoc: {
     name: 'asciidoc',
     cm: StreamLanguage.define(cmAsciidoc),
     logo: `${icons['language-asciidoctor']}`,
@@ -30,7 +30,7 @@ export const languages: { [name: string]: LANGUAGE } = {
     mime: 'text/asciidoc',
     helpUrl: 'https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/'
   },
-  'css': {
+  css: {
     name: 'css',
     cm: cmCss(),
     logo: `${icons['mdi-language-css3']}`,
@@ -38,7 +38,7 @@ export const languages: { [name: string]: LANGUAGE } = {
     mime: 'text/css',
     helpUrl: 'https://developer.mozilla.org/fr/docs/Web/CSS/Reference'
   },
-  'html': {
+  html: {
     name: 'html',
     cm: cmHtml(),
     logo: `${icons['mdi-language-html5']}`,
@@ -46,7 +46,7 @@ export const languages: { [name: string]: LANGUAGE } = {
     mime: 'text/html',
     helpUrl: 'https://developer.mozilla.org/fr/docs/Web/HTML/Reference'
   },
-  'javascript': {
+  javascript: {
     name: 'javascript',
     cm: cmJavascript(),
     logo: `${icons['mdi-language-javascript']}`,
@@ -54,7 +54,7 @@ export const languages: { [name: string]: LANGUAGE } = {
     mime: 'text/javascript',
     helpUrl: 'https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference'
   },
-  'json': {
+  json: {
     name: 'json',
     cm: cmJson(),
     logo: `${icons['mdi-code-json']}`,
@@ -62,7 +62,7 @@ export const languages: { [name: string]: LANGUAGE } = {
     mime: 'application/json',
     helpUrl: 'https://www.json.org/json-fr.html'
   },
-  'markdown': {
+  markdown: {
     name: 'markdown',
     cm: cmMarkdown(),
     logo: `${icons['mdi-language-markdown']}`,
@@ -70,7 +70,7 @@ export const languages: { [name: string]: LANGUAGE } = {
     mime: 'text/markdown',
     helpUrl: 'https://www.markdownguide.org/cheat-sheet/'
   },
-  'prolog': {
+  prolog: {
     name: 'prolog',
     cm: cmProlog(),
     logo: `${icons['language-prolog']}`,
@@ -78,7 +78,7 @@ export const languages: { [name: string]: LANGUAGE } = {
     mime: 'text/x-prolog',
     helpUrl: 'http://tau-prolog.org/documentation#prolog'
   },
-  'python': {
+  python: {
     name: 'python',
     cm: cmPython(),
     logo: `${icons['mdi-language-python']}`,
@@ -86,7 +86,7 @@ export const languages: { [name: string]: LANGUAGE } = {
     mime: 'text/x-python',
     helpUrl: 'https://www.pythoncheatsheet.org/cheatsheet/dictionaries'
   },
-  'sql': {
+  sql: {
     name: 'sql',
     cm: cmSql(),
     logo: `${icons['mdi-database']}`,
@@ -94,7 +94,7 @@ export const languages: { [name: string]: LANGUAGE } = {
     mime: 'application/sql',
     helpUrl: 'https://sql.sh'
   },
-  'text': {
+  text: {
     name: 'text',
     cm: [],
     logo: `${icons['mdi-format-text']}`,
@@ -102,12 +102,12 @@ export const languages: { [name: string]: LANGUAGE } = {
     mime: 'text/plain',
     helpUrl: ''
   },
-  'typescript': {
+  typescript: {
     name: 'typescript',
-    cm: cmJavascript({ 'typescript': true }),
+    cm: cmJavascript({ typescript: true }),
     logo: `${icons['mdi-language-typescript']}`,
     extension: 'ts',
     mime: 'video/mp2t', // !
-    helpUrl: 'https://www.typescriptlang.org/cheatsheets' 
-  },
-}
+    helpUrl: 'https://www.typescriptlang.org/cheatsheets'
+  }
+};

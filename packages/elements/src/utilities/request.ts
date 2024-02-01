@@ -7,7 +7,10 @@ interface IncludeFile {
 const includeFiles = new Map<string, IncludeFile | Promise<IncludeFile>>();
 
 /** Récupère un fichier d'inclusion à partir d'une source distante. La mise en cache est activée afin que l'origine ne soit interrogée qu'une seule fois. */
-export function requestIncludeFile(src: string, mode: 'cors' | 'no-cors' | 'same-origin' = 'cors'): Promise<IncludeFile> {
+export function requestIncludeFile(
+  src: string,
+  mode: 'cors' | 'no-cors' | 'same-origin' = 'cors'
+): Promise<IncludeFile> {
   const prev = includeFiles.get(src);
   if (prev !== undefined) {
     // Promise.resolve() décompresse de manière transparente prev s'il s'agit d'une promesse.

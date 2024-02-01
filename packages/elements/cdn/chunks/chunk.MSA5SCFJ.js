@@ -10,10 +10,10 @@ import {
   closeBracketsKeymap,
   completionKeymap,
   languages
-} from "./chunk.HL4UGBSH.js";
+} from "./chunk.ET56H6HD.js";
 import {
   frenchPhrases
-} from "./chunk.N27W2NJJ.js";
+} from "./chunk.3IXWQSYW.js";
 import {
   darkTheme
 } from "./chunk.4IDR2W55.js";
@@ -74,14 +74,14 @@ import {
 } from "./chunk.2LOO7EOW.js";
 import {
   AnswerForm
-} from "./chunk.NMOEPJGB.js";
+} from "./chunk.2ONBZE7Z.js";
 import {
   animateTo,
   getAnimation,
   setDefaultAnimation,
   stopAnimations,
   waitForEvent
-} from "./chunk.3MHQDE7W.js";
+} from "./chunk.BQYFPS5T.js";
 import {
   HasSlotController,
   LocalizeController,
@@ -93,7 +93,7 @@ import {
   o,
   s,
   watch
-} from "./chunk.UTNZY7XJ.js";
+} from "./chunk.TODZRVLS.js";
 import {
   e as e2
 } from "./chunk.FWRBNC3J.js";
@@ -103,7 +103,7 @@ import {
   r,
   r2,
   t
-} from "./chunk.V7SARTD6.js";
+} from "./chunk.UPR5MBMR.js";
 import {
   o as o2,
   svgIcon
@@ -1534,52 +1534,52 @@ function indentationMarkers(config = {}) {
 
 // src/elements/code/code.css.ts
 var code_css_default = i`
-:host {
-  display: block;
-}
-:host:focus {
-  border: 1px solid var(--color-primary);
-}
-.code-it {
-  display: flex;
-  flex-direction: column;
-}
-.code-it:hover .menu-button {
-  display: block;
-}
-.editor {
-  outline: none;
-  border-radius: 0.5em;
-}
-.editor-base {
-  position: relative;
-}
-.cm-editor {
-  border-radius: 0.375rem;
-  padding: 4px 0;
-}
-.dropdown__shortcuts__label {
-  display: inline-flex;
-  justify-content: space-between;
-}
-.menu-button {
-  display: none;
-  position: absolute;
-  top: 4px;
-  right: 4px;
-}
-.sl-toast-stack {
-  left: auto;
-  right: 0;
-}
-.output__iframe {
-  object-fit: contain;
-  object-position: top;
-  width: 100%;
-  height: 100%;
-  border: none;
-  min-height: 2rem;
-}
+  :host {
+    display: block;
+  }
+  :host:focus {
+    border: 1px solid var(--color-primary);
+  }
+  .code-it {
+    display: flex;
+    flex-direction: column;
+  }
+  .code-it:hover .menu-button {
+    display: block;
+  }
+  .editor {
+    outline: none;
+    border-radius: 0.5em;
+  }
+  .editor-base {
+    position: relative;
+  }
+  .cm-editor {
+    border-radius: 0.375rem;
+    padding: 4px 0;
+  }
+  .dropdown__shortcuts__label {
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  .menu-button {
+    display: none;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+  .sl-toast-stack {
+    left: auto;
+    right: 0;
+  }
+  .output__iframe {
+    object-fit: contain;
+    object-position: top;
+    width: 100%;
+    height: 100%;
+    border: none;
+    min-height: 2rem;
+  }
 `;
 
 // src/elements/code/code.ts
@@ -1883,23 +1883,37 @@ var CodeIt = class extends AnswerForm {
   renderForm() {
     return x`
       <div part="base" class="code-it">
-        <div part="toolbar">
-          ${this.renderToolbar()}
-        </div>
+        <div part="toolbar">${this.renderToolbar()}</div>
         <div class="editor-base">
           <div part="editor" class="editor"></div>
           <div part="menuBtn" class="menu-button">
-            ${this.readOnly ? x`<sl-tooltip content="copier dans le presse-papier" hoist><sl-button variant="neutral" size="small" @click=${() => this.handleCopyClipboard()}>${svgIcon("mdi-content-copy")}</sl-button></sl-tooltip>` : x`<sl-tooltip content="activer/désactiver les barres d'outils et d'informations" hoist><sl-button variant="neutral" size="small" @click=${() => {
+            ${this.readOnly ? x`<sl-tooltip content="copier dans le presse-papier" hoist
+                  ><sl-button variant="neutral" size="small" @click=${() => this.handleCopyClipboard()}
+                    >${svgIcon("mdi-content-copy")}</sl-button
+                  ></sl-tooltip
+                >` : x`<sl-tooltip content="activer/désactiver les barres d'outils et d'informations" hoist
+                  ><sl-button
+                    variant="neutral"
+                    size="small"
+                    @click=${() => {
       this.toolbar = !this.toolbar;
-    }}>${svgIcon("mdi-tools")}</sl-button></sl-tooltip>`}
-            ${this.btnFeedback ? x`<sl-tooltip content="interprétation" hoist><sl-button variant="neutral" size="small" @click=${() => {
+    }}
+                    >${svgIcon("mdi-tools")}</sl-button
+                  ></sl-tooltip
+                >`}
+            ${this.btnFeedback ? x`<sl-tooltip content="interprétation" hoist
+                  ><sl-button
+                    variant="neutral"
+                    size="small"
+                    @click=${() => {
       this.emit("feedback-requested-it");
-    }}>${svgIcon("mdi-play")}</sl-button></sl-tooltip>` : x``}
+    }}
+                    >${svgIcon("mdi-play")}</sl-button
+                  ></sl-tooltip
+                >` : x``}
           </div>
         </div>
-        <div part="statusbar">
-          ${this.renderStatusBar()}
-        </div>
+        <div part="statusbar">${this.renderStatusBar()}</div>
       </div>
     `;
   }
@@ -1907,14 +1921,30 @@ var CodeIt = class extends AnswerForm {
     return x`
       <sl-button-group ?hidden=${this.readOnly} label="commentaires">
         <sl-tooltip content="commenter/décommenter la ligne" hoist>
-          <sl-button size="small" @click=${() => {
+          <sl-button
+            size="small"
+            @click=${() => {
       toggleComment(this.theEditor);
-    }}><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;display:inline-block" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M5 5v14h2v2H3V3h4v2H5m15 6H7v2h13V7m0 4Z"/></svg></sl-button>
+    }}
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              style="vertical-align:middle;display:inline-block"
+              width="1em"
+              height="1em"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 24 24"
+            >
+              <path fill="currentColor" d="M5 5v14h2v2H3V3h4v2H5m15 6H7v2h13V7m0 4Z" /></svg
+          ></sl-button>
         </sl-tooltip>
         <sl-tooltip content="commenter/décommenter le bloc" hoist>
-          <sl-button size="small" @click=${() => {
+          <sl-button
+            size="small"
+            @click=${() => {
       toggleBlockComment(this.theEditor);
-    }}>${svgIcon("mdi-format-list-group")}</sl-button>
+    }}
+            >${svgIcon("mdi-format-list-group")}</sl-button
+          >
         </sl-tooltip>
       </sl-button-group>
     `;
@@ -1923,19 +1953,31 @@ var CodeIt = class extends AnswerForm {
     return x`
       <sl-button-group ?hidden=${this.readOnly} label="historique">
         <sl-tooltip content="annuler toutes les modifications" hoist>
-          <sl-button size="small" @click=${() => {
+          <sl-button
+            size="small"
+            @click=${() => {
       this.reset();
-    }}>${svgIcon("mdi-refresh")}</sl-button>
+    }}
+            >${svgIcon("mdi-refresh")}</sl-button
+          >
         </sl-tooltip>
         <sl-tooltip content="annuler la dernière modification" hoist>
-          <sl-button size="small" @click=${() => {
+          <sl-button
+            size="small"
+            @click=${() => {
       undo(this.theEditor);
-    }}>${svgIcon("mdi-undo")}</sl-button>
+    }}
+            >${svgIcon("mdi-undo")}</sl-button
+          >
         </sl-tooltip>
         <sl-tooltip content="rétablir la dernière annulation" hoist>
-          <sl-button size="small" @click=${() => {
+          <sl-button
+            size="small"
+            @click=${() => {
       redo(this.theEditor);
-    }}>${svgIcon("mdi-redo")}</sl-button>
+    }}
+            >${svgIcon("mdi-redo")}</sl-button
+          >
         </sl-tooltip>
       </sl-button-group>
     `;
@@ -1944,14 +1986,22 @@ var CodeIt = class extends AnswerForm {
     return x`
       <sl-button-group ?hidden=${this.readOnly} label="indentation">
         <sl-tooltip content="indenter" hoist>
-          <sl-button size="small" @click=${() => {
+          <sl-button
+            size="small"
+            @click=${() => {
       indentMore(this.theEditor);
-    }}>${svgIcon("mdi-format-indent-increase")}</sl-button>
+    }}
+            >${svgIcon("mdi-format-indent-increase")}</sl-button
+          >
         </sl-tooltip>
         <sl-tooltip content="désindenter" hoist>
-          <sl-button size="small" @click=${() => {
+          <sl-button
+            size="small"
+            @click=${() => {
       indentLess(this.theEditor);
-    }}>${svgIcon("mdi-format-indent-decrease")}</sl-button>
+    }}
+            >${svgIcon("mdi-format-indent-decrease")}</sl-button
+          >
         </sl-tooltip>
       </sl-button-group>
     `;
@@ -1961,9 +2011,16 @@ var CodeIt = class extends AnswerForm {
       <sl-button-group label="langage et raccourcis clavier">
         <sl-tooltip content="choisir un langage" hoist>
           <sl-dropdown hoist>
-            <sl-button slot="trigger" size="small" caret>${this.language ? o2(languages[this.language].logo) : x`${svgIcon("mdi-help")}`}</sl-button>
+            <sl-button slot="trigger" size="small" caret
+              >${this.language ? o2(languages[this.language].logo) : x`${svgIcon("mdi-help")}`}</sl-button
+            >
             <sl-menu class="dropdown__languages" @sl-select=${this.handleSelectLanguage}>
-              ${Object.keys(languages).map((language) => x`<sl-menu-item type="checkbox" value="${language}" ?checked=${this.language === language}>${language}<div slot="prefix">${o2(languages[language].logo)}</div></sl-menu-item>`)}
+              ${Object.keys(languages).map(
+      (language) => x`<sl-menu-item type="checkbox" value="${language}" ?checked=${this.language === language}
+                    >${language}
+                    <div slot="prefix">${o2(languages[language].logo)}</div></sl-menu-item
+                  >`
+    )}
             </sl-menu>
           </sl-dropdown>
         </sl-tooltip>
@@ -1971,20 +2028,34 @@ var CodeIt = class extends AnswerForm {
           <sl-dropdown stay-open-on-select hoist ?hidden=${this.readOnly}>
             <sl-button slot="trigger" size="small" caret>${svgIcon("mdi-keyboard")}</sl-button>
             <sl-menu class="dropdown__shortcuts">
-              <sl-menu-item disabled>Commande<div slot="suffix">Raccourci clavier</div></sl-menu-item>
+              <sl-menu-item disabled
+                >Commande
+                <div slot="suffix">Raccourci clavier</div></sl-menu-item
+              >
               <sl-divider></sl-divider>
-              ${CodeIt.keymap.map((map) => x`<sl-menu-item @click=${() => {
-      map.run(this.theEditor);
-    }}>${map.run.name}<div slot="suffix">${map.key}</div></sl-menu-item>`)}
+              ${CodeIt.keymap.map(
+      (map) => x`<sl-menu-item
+                    @click=${() => {
+        map.run(this.theEditor);
+      }}
+                    >${map.run.name}
+                    <div slot="suffix">${map.key}</div></sl-menu-item
+                  >`
+    )}
               <sl-divider></sl-divider>
-              <sl-menu-item disabled>Commande<div slot="suffix">Raccourci clavier</div></sl-menu-item>
+              <sl-menu-item disabled
+                >Commande
+                <div slot="suffix">Raccourci clavier</div></sl-menu-item
+              >
             </sl-menu>
           </sl-dropdown>
         </sl-tooltip>
       </sl-button-group>
       <sl-button-group label="outils">
         <sl-tooltip content="afficher/cacher les numéros de ligne" hoist>
-          <sl-button size="small" @click=${() => this.handleLineNumbers()}>${svgIcon("mdi-format-list-numbered")}</sl-button>
+          <sl-button size="small" @click=${() => this.handleLineNumbers()}
+            >${svgIcon("mdi-format-list-numbered")}</sl-button
+          >
         </sl-tooltip>
         <sl-tooltip content="copier dans le presse-papier" hoist>
           <sl-button size="small" @click=${() => this.handleCopyClipboard()}>${svgIcon("mdi-content-copy")}</sl-button>
@@ -2002,9 +2073,12 @@ var CodeIt = class extends AnswerForm {
   }
   renderOutput() {
     return x`
-      <iframe class="output__iframe" allowfullscreen name="output"
+      <iframe
+        class="output__iframe"
+        allowfullscreen
+        name="output"
         sandbox="allow-downloads allow-forms allow-modals allow-popups allow-same-origin allow-scripts allow-top-navigation"
-        srcDoc=${this.srcDoc}
+        srcdoc=${this.srcDoc}
       >
       </iframe>
     `;
@@ -2013,14 +2087,22 @@ var CodeIt = class extends AnswerForm {
     return x`
       <sl-button-group label="rechercher/remplacer">
         <sl-tooltip content="${this.readOnly ? "rechercher" : "rechercher/remplacer"}" hoist>
-          <sl-button size="small" @click=${() => {
+          <sl-button
+            size="small"
+            @click=${() => {
       openSearchPanel(this.theEditor);
-    }}>${svgIcon("mdi-find-replace")}</sl-button>
+    }}
+            >${svgIcon("mdi-find-replace")}</sl-button
+          >
         </sl-tooltip>
         <sl-tooltip content="atteindre la ligne:colonne" hoist>
-          <sl-button size="small" @click=${() => {
+          <sl-button
+            size="small"
+            @click=${() => {
       gotoLine(this.theEditor);
-    }}>${svgIcon("mdi-text-search")}</sl-button>
+    }}
+            >${svgIcon("mdi-text-search")}</sl-button
+          >
         </sl-tooltip>
       </sl-button-group>
     `;
@@ -2036,11 +2118,13 @@ var CodeIt = class extends AnswerForm {
             <sl-button size="small" variant="neutral">Indent : ${this.indentSize}</sl-button>
           </sl-tooltip>
           <sl-tooltip content="format de données Mime et lien sur une page d'aide" hoist>
-            <sl-button size="small" variant="neutral" href="${this.getHelpUrl()}" target="_blank">${languages[this.language].mime}</sl-button>
+            <sl-button size="small" variant="neutral" href="${this.getHelpUrl()}" target="_blank"
+              >${languages[this.language].mime}</sl-button
+            >
           </sl-tooltip>
           <sl-tooltip content="mode de l'éditeur : édition ou lecture seule" hoist>
             <sl-button size="small" variant="neutral">${this.readOnly ? x`lecture seule` : x`édition`}</sl-button>
-          </sl-tooltip>      
+          </sl-tooltip>
         </sl-button-group>
       </toolbar-it>
     `;
@@ -2049,14 +2133,10 @@ var CodeIt = class extends AnswerForm {
     return x`
       <toolbar-it class="toolbar" ?hidden=${!this.toolbar}>
         <div slot="start">
-          ${this.renderHistoryButtons()}
-          ${this.renderIndentationButtons()}
-          ${this.renderCommentButtons()}
+          ${this.renderHistoryButtons()} ${this.renderIndentationButtons()} ${this.renderCommentButtons()}
           ${this.renderSearchButtons()}
         </div>
-        <div slot="end">
-          ${this.renderMiscButtons()}
-        </div>
+        <div slot="end">${this.renderMiscButtons()}</div>
       </toolbar-it>
     `;
   }
@@ -2072,38 +2152,28 @@ var CodeIt = class extends AnswerForm {
     const langs = Object.keys(languages);
     if (langs.includes(this.language)) {
       this.theEditor.dispatch({
-        effects: [
-          this.languageConfig.reconfigure(languages[this.language].cm)
-        ]
+        effects: [this.languageConfig.reconfigure(languages[this.language].cm)]
       });
     }
   }
   setPlaceholderExtension() {
     this.theEditor.dispatch({
-      effects: [
-        this.placeholderConfig.reconfigure(placeholder(this.placeholder))
-      ]
+      effects: [this.placeholderConfig.reconfigure(placeholder(this.placeholder))]
     });
   }
   setReadOnlyExtension() {
     this.theEditor.dispatch({
-      effects: [
-        this.readOnlyConfig.reconfigure(EditorState.readOnly.of(this.readOnly))
-      ]
+      effects: [this.readOnlyConfig.reconfigure(EditorState.readOnly.of(this.readOnly))]
     });
   }
   setIndentationExtension() {
     this.theEditor.dispatch({
-      effects: [
-        this.indentationConfig.reconfigure(indentUnit.of(this.indentString))
-      ]
+      effects: [this.indentationConfig.reconfigure(indentUnit.of(this.indentString))]
     });
   }
   setThemeExtension() {
     this.theEditor.dispatch({
-      effects: [
-        this.themeConfig.reconfigure(this.theme === "dark" ? darkTheme : lightTheme)
-      ]
+      effects: [this.themeConfig.reconfigure(this.theme === "dark" ? darkTheme : lightTheme)]
     });
   }
   /** Syntaxe asciidoc équivalente */
@@ -2121,10 +2191,7 @@ var CodeIt = class extends AnswerForm {
     }
   }
 };
-CodeIt.styles = [
-  __superGet(CodeIt, CodeIt, "styles"),
-  code_css_default
-];
+CodeIt.styles = [__superGet(CodeIt, CodeIt, "styles"), code_css_default];
 /** @ignore */
 CodeIt.keymap = getKeymap();
 __decorateClass([

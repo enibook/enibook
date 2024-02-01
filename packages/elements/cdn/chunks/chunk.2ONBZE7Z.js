@@ -5,7 +5,7 @@ import {
   BaseIt,
   e,
   n
-} from "./chunk.V7SARTD6.js";
+} from "./chunk.UPR5MBMR.js";
 import {
   i,
   x
@@ -17,27 +17,27 @@ import {
 
 // src/elements/answer-form/answer-form.css.ts
 var answer_form_css_default = i`
-:host {
-  display: block;
-}
-.answer-form {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-}
-.answer-form > * {
-  flex-grow: 1;
-  flex-basis: calc(( 45rem - 100%) * 999);
-}
-.answer-form > :nth-last-child(n+ 3),
-.answer-form > :nth-last-child(n+ 3) ~ * {
-  flex-basis: 100%;
-}
-.form,
-.output {
-  padding: var(--sl-spacing-medium);
-  border: 1px solid var(--sl-color-neutral-200);
-}
+  :host {
+    display: block;
+  }
+  .answer-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .answer-form > * {
+    flex-grow: 1;
+    flex-basis: calc((45rem - 100%) * 999);
+  }
+  .answer-form > :nth-last-child(n + 3),
+  .answer-form > :nth-last-child(n + 3) ~ * {
+    flex-basis: 100%;
+  }
+  .form,
+  .output {
+    padding: var(--sl-spacing-medium);
+    border: 1px solid var(--sl-color-neutral-200);
+  }
 `;
 
 // src/elements/answer-form/answer-form.ts
@@ -53,36 +53,29 @@ var _AnswerForm = class _AnswerForm extends BaseIt {
   render() {
     return x`
       <div part="base" class="answer-form">
-        <div part="form" class="form">
-          ${this.renderForm()}
-        </div>
-        <div part="output" class="output" ?hidden=${this.noOutput}>
-          ${this.renderOutput()}
-        </div>
+        <div part="form" class="form">${this.renderForm()}</div>
+        <div part="output" class="output" ?hidden=${this.noOutput}>${this.renderOutput()}</div>
       </div>
     `;
   }
   renderAnswerOutput() {
     const fieldsetClasses = {
-      "form__fieldset": true,
-      "rtl": this.dir === "rtl"
+      form__fieldset: true,
+      rtl: this.dir === "rtl"
     };
     return x`
       <div part="output" class="answer-output">
-          ${!this.fieldset ? this.renderOutput() : x`
+        ${!this.fieldset ? this.renderOutput() : x`
               <fieldset class=${e2(fieldsetClasses)}>
                 <legend class="output__legend">${this.outputLegend}</legend>
                 ${this.renderOutput()}
               </fieldset>
-              `}
+            `}
       </div>
-      `;
+    `;
   }
 };
-_AnswerForm.styles = [
-  __superGet(_AnswerForm, _AnswerForm, "styles"),
-  answer_form_css_default
-];
+_AnswerForm.styles = [__superGet(_AnswerForm, _AnswerForm, "styles"), answer_form_css_default];
 __decorateClass([
   e("form.answer-form")
 ], _AnswerForm.prototype, "form", 2);

@@ -17,4 +17,3 @@ export function emit(element: HTMLElement, name: string, options?: CustomEventIn
   element.dispatchEvent(event);
   return event;
 }
-

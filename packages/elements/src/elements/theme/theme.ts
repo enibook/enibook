@@ -3,15 +3,15 @@ import { type CSSResultGroup, html, type PropertyValueMap, type TemplateResult }
 import { customElement, property, query, state } from 'lit/decorators.js';
 // shoelace
 import SlMenu from '@shoelace-style/shoelace/dist/components/menu/menu.js';
-import '@shoelace-style/shoelace/dist/components/button/button.js'
-import '@shoelace-style/shoelace/dist/components/divider/divider.js'
-import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js'
-import '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js'
-import '@shoelace-style/shoelace/dist/components/menu-label/menu-label.js'
+import '@shoelace-style/shoelace/dist/components/button/button.js';
+import '@shoelace-style/shoelace/dist/components/divider/divider.js';
+import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js';
+import '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
+import '@shoelace-style/shoelace/dist/components/menu-label/menu-label.js';
 // enibook
 import { svgIcon } from '../../utilities/icons.js';
 import { BaseIt } from '../base/base.js';
-import styles from './theme.css.js'
+import styles from './theme.css.js';
 
 /**
  * @since 2.0
@@ -21,44 +21,38 @@ import styles from './theme.css.js'
  */
 @customElement('theme-it')
 export class ThemeIt extends BaseIt {
-  static styles: CSSResultGroup = [ 
-    super.styles,
-    styles
-  ]
+  static styles: CSSResultGroup = [super.styles, styles];
 
-  @query('sl-menu') menu!: SlMenu
+  @query('sl-menu') menu!: SlMenu;
 
-  @state() theme!: string
+  @state() theme!: string;
 
-  @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'small'
+  @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'small';
 
   constructor() {
-    super()
-    this.theme = this.getTheme()
+    super();
+    this.theme = this.getTheme();
   }
 
   protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
     // Set the initial theme and sync the UI
     this.setTheme(this.theme);
     this.menu.addEventListener('sl-select', event => {
-      const ev = event as CustomEvent
-      this.setTheme(ev.detail.item.value)
-    })
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => this.setTheme(this.theme))
+      const ev = event as CustomEvent;
+      this.setTheme(ev.detail.item.value);
+    });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => this.setTheme(this.theme));
     document.addEventListener('keydown', event => {
-      const elements = event.composedPath() as Element[]
-      if (
-        event.key === '\\' &&
-        !elements.some(el => ['input', 'textarea'].includes(el.tagName?.toLowerCase()))
-      ) {
+      const elements = event.composedPath() as Element[];
+      if (event.key === '\\' && !elements.some(el => ['input', 'textarea'].includes(el.tagName?.toLowerCase()))) {
         event.preventDefault();
         this.setTheme(this.isDark() ? 'light' : 'dark');
       }
-    })
+    });
   }
 
   getTheme(): string {
-    return localStorage.getItem('theme') || 'system'
+    return localStorage.getItem('theme') || 'system';
   }
 
   isDark(): boolean {
@@ -72,10 +66,9 @@ export class ThemeIt extends BaseIt {
     return html`
       <sl-dropdown class="theme" hoist>
         <sl-button size=${this.size} slot="trigger" caret>
-          ${this.isDark() 
+          ${this.isDark()
             ? html`<span style="color:var(--sl-color-yellow-500)">${svgIcon('mdi-weather-night')}</span>`
-            : html`<span style="color:var(--sl-color-yellow-500)">${svgIcon('mdi-white-balance-sunny')}</span>`
-          }
+            : html`<span style="color:var(--sl-color-yellow-500)">${svgIcon('mdi-white-balance-sunny')}</span>`}
         </sl-button>
         <sl-menu>
           <sl-menu-item type="checkbox" value="light">Clair</sl-menu-item>
@@ -84,7 +77,7 @@ export class ThemeIt extends BaseIt {
           <sl-menu-item type="checkbox" value="system">System</sl-menu-item>
         </sl-menu>
       </sl-dropdown>
-    `
+    `;
   }
 
   setTheme(newTheme: string) {
@@ -94,7 +87,9 @@ export class ThemeIt extends BaseIt {
     this.theme = newTheme;
     localStorage.setItem('theme', this.theme);
     // Update the UI
-    [...this.menu.querySelectorAll('sl-menu-item')].map(item => (item.checked = item.getAttribute('value') === this.theme));
+    [...this.menu.querySelectorAll('sl-menu-item')].map(
+      item => (item.checked = item.getAttribute('value') === this.theme)
+    );
     // Toggle the dark mode class without transitions
     document.body.appendChild(noTransitions);
     requestAnimationFrame(() => {
@@ -105,7 +100,7 @@ export class ThemeIt extends BaseIt {
   }
 
   override get tagTitle(): string {
-    return 'Thème'
+    return 'Thème';
   }
 
   override toAsciidoc(): string {
@@ -124,4 +119,3 @@ if (customElements && !customElements.get('theme-it')) {
   customElements.define('theme-it', ThemeIt)
 }
 */
-

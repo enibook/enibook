@@ -187,32 +187,32 @@ var fscreen_esm_default = fscreen;
 
 // src/elements/base/base.css.ts
 var base_css_default = i`
-:host {
-  box-sizing: border-box;
-}
+  :host {
+    box-sizing: border-box;
+  }
 
-:host *,
-:host *::before,
-:host *::after {
-  box-sizing: inherit;
-}
+  :host *,
+  :host *::before,
+  :host *::after {
+    box-sizing: inherit;
+  }
 
-.hidden,
-[hidden] {
-  display: none !important;
-}
+  .hidden,
+  [hidden] {
+    display: none !important;
+  }
 
-.rtl {
-  direction: rtl;
-}
+  .rtl {
+    direction: rtl;
+  }
 
-.title {
-  line-height: 1.45;
-  color: #7a2518;
-  font-weight: 400;
-  margin-top: 0;
-  margin-bottom: 0.25em;
-}
+  .title {
+    line-height: 1.45;
+    color: #7a2518;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
 `;
 
 // src/elements/base/base.ts
@@ -281,9 +281,7 @@ var BaseIt = class extends s {
     return div.innerHTML;
   }
 };
-BaseIt.styles = [
-  base_css_default
-];
+BaseIt.styles = [base_css_default];
 __decorateClass([
   r2()
 ], BaseIt.prototype, "fullscreen", 2);

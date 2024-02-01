@@ -8,7 +8,7 @@ import {
   n,
   r,
   t
-} from "./chunk.V7SARTD6.js";
+} from "./chunk.UPR5MBMR.js";
 import {
   svgIcon
 } from "./chunk.S4JGPG5E.js";
@@ -23,19 +23,19 @@ import {
 
 // src/elements/clock/clock.css.ts
 var clock_css_default = i`
-:host {
-  display: inline-block;
-}
-.time.clock__time {
-  margin: 0 var(--sl-spacing-large);
-}
+  :host {
+    display: inline-block;
+  }
+  .time.clock__time {
+    margin: 0 var(--sl-spacing-large);
+  }
 
-sl-dropdown:not(.control)::part(panel) {
-  padding: var(--sl-spacing-small);
-  background: var(--sl-panel-background-color);
-  border: solid var(--sl-panel-border-width) var(--sl-panel-border-color);
-  border-radius: var(--sl-border-radius-medium);
-}
+  sl-dropdown:not(.control)::part(panel) {
+    padding: var(--sl-spacing-small);
+    background: var(--sl-panel-background-color);
+    border: solid var(--sl-panel-border-width) var(--sl-panel-border-color);
+    border-radius: var(--sl-border-radius-medium);
+  }
 `;
 
 // src/elements/clock/clock.ts
@@ -117,16 +117,16 @@ var ClockIt = class extends BaseIt {
    * - `attributes` : `hide-date`, `hide-time`, `size`.
    *
    * Voir la documentation Asciidoc sur les <a href="https://docs.asciidoctor.org/asciidoc/latest/key-concepts/#macros">macros de type _inline_</a>
-   * 
+   *
    * @examples
-   * `clock-it:[]`, 
-   * `clock-it:[date]`, 
+   * `clock-it:[]`,
+   * `clock-it:[date]`,
    * `clock-it:[date, size=medium]`
    */
   toAsciidoc() {
     const attributes = {
-      "date": this.date,
-      "time": this.time
+      date: this.date,
+      time: this.time
     };
     const attrs = [`size=${this.size}`];
     for (const key of Object.keys(attributes)) {
@@ -137,10 +137,7 @@ var ClockIt = class extends BaseIt {
     return `clock-it:[${attrs.join(",")}]`;
   }
 };
-ClockIt.styles = [
-  __superGet(ClockIt, ClockIt, "styles"),
-  clock_css_default
-];
+ClockIt.styles = [__superGet(ClockIt, ClockIt, "styles"), clock_css_default];
 __decorateClass([
   r()
 ], ClockIt.prototype, "_time", 2);

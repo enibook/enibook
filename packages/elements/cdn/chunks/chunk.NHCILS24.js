@@ -2,7 +2,7 @@ import {
   ShoelaceElement,
   __decorateClass as __decorateClass2,
   component_styles_default
-} from "./chunk.UTNZY7XJ.js";
+} from "./chunk.TODZRVLS.js";
 import {
   e as e2
 } from "./chunk.FWRBNC3J.js";
@@ -12,7 +12,7 @@ import {
   n,
   r,
   t
-} from "./chunk.V7SARTD6.js";
+} from "./chunk.UPR5MBMR.js";
 import {
   i,
   x
@@ -111,60 +111,60 @@ SlButtonGroup.define("sl-button-group");
 
 // src/elements/toolbar/toolbar.css.ts
 var toolbar_css_default = i`
-:host {
-  display: block;
-  z-index: 2000; /* < sl-drawer */
-}
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-::slotted(*) {
-  margin: 0;
-}
-.toolbar__start,
-.toolbar__center,
-.toolbar__end {
-  display: flex;
-}
-.toolbar__top,
-.toolbar__bottom {
-  flex-direction: row;
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 2000; /* < sl-drawer */
-}
-.toolbar__top {
-  top: 0;
-}
-.toolbar__bottom {
-  bottom: 0;
-}
-.toolbar__left,
-.toolbar__right {
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  z-index: 2000; /* < sl-drawer */
-}
-.toolbar__left .toolbar__start,
-.toolbar__right .toolbar__start,
-.toolbar__left .toolbar__center,
-.toolbar__right .toolbar__center,
-.toolbar__left .toolbar__end,
-.toolbar__right .toolbar__end {
-  flex-direction: column;
-  align-items: stretch;
-}
-.toolbar__left {
-  left: 0;
-}
-.toolbar__right {
-  right: 0;
-}
+  :host {
+    display: block;
+    z-index: 2000; /* < sl-drawer */
+  }
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  ::slotted(*) {
+    margin: 0;
+  }
+  .toolbar__start,
+  .toolbar__center,
+  .toolbar__end {
+    display: flex;
+  }
+  .toolbar__top,
+  .toolbar__bottom {
+    flex-direction: row;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 2000; /* < sl-drawer */
+  }
+  .toolbar__top {
+    top: 0;
+  }
+  .toolbar__bottom {
+    bottom: 0;
+  }
+  .toolbar__left,
+  .toolbar__right {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 2000; /* < sl-drawer */
+  }
+  .toolbar__left .toolbar__start,
+  .toolbar__right .toolbar__start,
+  .toolbar__left .toolbar__center,
+  .toolbar__right .toolbar__center,
+  .toolbar__left .toolbar__end,
+  .toolbar__right .toolbar__end {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .toolbar__left {
+    left: 0;
+  }
+  .toolbar__right {
+    right: 0;
+  }
 `;
 
 // src/elements/toolbar/toolbar.ts
@@ -201,10 +201,7 @@ var ToolbarIt = class extends BaseIt {
     `;
   }
 };
-ToolbarIt.styles = [
-  __superGet(ToolbarIt, ToolbarIt, "styles"),
-  toolbar_css_default
-];
+ToolbarIt.styles = [__superGet(ToolbarIt, ToolbarIt, "styles"), toolbar_css_default];
 __decorateClass([
   n({ type: Boolean, reflect: true })
 ], ToolbarIt.prototype, "fixed", 2);

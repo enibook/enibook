@@ -1,20 +1,17 @@
 // lit
-import { html } from 'lit'
-import { classMap } from 'lit/directives/class-map.js'
-import { property, query } from 'lit/decorators.js'
-import type { CSSResultGroup, TemplateResult} from 'lit';
+import { html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { property, query } from 'lit/decorators.js';
+import type { CSSResultGroup, TemplateResult } from 'lit';
 // enibook
-import { BaseIt } from '../base/base.js'
-import styles from './answer-form.css.js'
+import { BaseIt } from '../base/base.js';
+import styles from './answer-form.css.js';
 
 export abstract class AnswerForm extends BaseIt {
-  static override styles: CSSResultGroup = [ 
-    super.styles,
-    styles
-  ]
+  static override styles: CSSResultGroup = [super.styles, styles];
 
   @query('form.answer-form')
-  protected form!: HTMLFormElement
+  protected form!: HTMLFormElement;
 
   /**
    * La légende du cadre autour du composant.
@@ -22,10 +19,10 @@ export abstract class AnswerForm extends BaseIt {
    * @memberof AnswerForm
    */
   @property({ type: String, reflect: true })
-  public formLegend = ''
+  public formLegend = '';
 
   @property({ type: String, reflect: true })
-  public outputLegend = ''
+  public outputLegend = '';
 
   /**
    * Retours demandés.
@@ -33,7 +30,7 @@ export abstract class AnswerForm extends BaseIt {
    * @memberof AnswerForm
    */
   @property({ type: Boolean, reflect: true, attribute: 'btn-feedback' })
-  protected btnFeedback = false
+  protected btnFeedback = false;
 
   /**
    * Un cadre est ajouté autour de l'élément.
@@ -42,10 +39,10 @@ export abstract class AnswerForm extends BaseIt {
    * @memberof AnswerForm
    */
   @property({ type: Boolean, reflect: true })
-  public fieldset = false
+  public fieldset = false;
 
   @property({ type: Boolean, reflect: true, attribute: 'no-output' })
-  public noOutput = false
+  public noOutput = false;
 
   /**
    *
@@ -54,44 +51,39 @@ export abstract class AnswerForm extends BaseIt {
    * @returns {*}
    * @memberof AnswerForm
    */
-  abstract answer(): unknown
+  abstract answer(): unknown;
 
   override render(): TemplateResult {
     return html`
       <div part="base" class="answer-form">
-        <div part="form" class="form">
-          ${this.renderForm()}
-        </div>
-        <div part="output" class="output" ?hidden=${this.noOutput}>
-          ${this.renderOutput()}
-        </div>
+        <div part="form" class="form">${this.renderForm()}</div>
+        <div part="output" class="output" ?hidden=${this.noOutput}>${this.renderOutput()}</div>
       </div>
-    `
+    `;
   }
 
   protected renderAnswerOutput(): TemplateResult {
     const fieldsetClasses = {
-      "form__fieldset": true,
-      "rtl": this.dir === 'rtl',
-    }
+      form__fieldset: true,
+      rtl: this.dir === 'rtl'
+    };
     return html`
       <div part="output" class="answer-output">
-          ${!this.fieldset
-            ? this.renderOutput()
-            : html`
+        ${!this.fieldset
+          ? this.renderOutput()
+          : html`
               <fieldset class=${classMap(fieldsetClasses)}>
                 <legend class="output__legend">${this.outputLegend}</legend>
                 ${this.renderOutput()}
               </fieldset>
-              `
-          }
+            `}
       </div>
-      `
+    `;
   }
-  
-  protected abstract renderForm(): TemplateResult
 
-  protected abstract renderOutput(): TemplateResult
+  protected abstract renderForm(): TemplateResult;
+
+  protected abstract renderOutput(): TemplateResult;
 
   /**
    *
@@ -99,5 +91,5 @@ export abstract class AnswerForm extends BaseIt {
    * @abstract
    * @memberof AnswerForm
    */
-  abstract reset(): void
+  abstract reset(): void;
 }

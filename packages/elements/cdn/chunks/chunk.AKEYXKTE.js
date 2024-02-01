@@ -2,7 +2,7 @@ import {
   BaseIt,
   n,
   t
-} from "./chunk.V7SARTD6.js";
+} from "./chunk.UPR5MBMR.js";
 import {
   icons,
   svgIcon
@@ -18,10 +18,10 @@ import {
 
 // src/elements/icon/icon.css.ts
 var icon_css_default = i`
-:host {
-  display: inline-block;
-  vertical-align: middle;
-}
+  :host {
+    display: inline-block;
+    vertical-align: middle;
+  }
 `;
 
 // src/elements/icon/icon.ts
@@ -46,10 +46,7 @@ var IconIt = class extends BaseIt {
     throw new Error("Method not implemented.");
   }
 };
-IconIt.styles = [
-  __superGet(IconIt, IconIt, "styles"),
-  icon_css_default
-];
+IconIt.styles = [__superGet(IconIt, IconIt, "styles"), icon_css_default];
 __decorateClass([
   n({ type: String, reflect: true })
 ], IconIt.prototype, "name", 2);

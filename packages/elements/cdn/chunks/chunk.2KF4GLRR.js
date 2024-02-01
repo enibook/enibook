@@ -9,7 +9,7 @@ import {
   m,
   o,
   watch
-} from "./chunk.UTNZY7XJ.js";
+} from "./chunk.TODZRVLS.js";
 import {
   e as e3
 } from "./chunk.FWRBNC3J.js";
@@ -20,7 +20,7 @@ import {
   r,
   t,
   t2
-} from "./chunk.V7SARTD6.js";
+} from "./chunk.UPR5MBMR.js";
 import {
   e as e2,
   i as i2,
@@ -679,40 +679,40 @@ SlRange.define("sl-range");
 
 // src/elements/color/color.css.ts
 var color_css_default = i`
-:host {
-  display: inline-block;
-}
+  :host {
+    display: inline-block;
+  }
 
-.primary-color__colors {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-gap: var(--sl-spacing-small);
-  justify-items: center;
-  z-index: var(--sl-z-index-dropdown);
-  border: solid var(--sl-panel-border-width) var(--sl-panel-border-color);
-  border-radius: var(--sl-border-radius-medium);
-  background: var(--sl-panel-background-color);
-  padding: var(--sl-spacing-x-small);
-}
-.primary-color__ranges {
-  background: var(--sl-panel-background-color);
-  z-index: var(--sl-z-index-dropdown);
-}
+  .primary-color__colors {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-gap: var(--sl-spacing-small);
+    justify-items: center;
+    z-index: var(--sl-z-index-dropdown);
+    border: solid var(--sl-panel-border-width) var(--sl-panel-border-color);
+    border-radius: var(--sl-border-radius-medium);
+    background: var(--sl-panel-background-color);
+    padding: var(--sl-spacing-x-small);
+  }
+  .primary-color__ranges {
+    background: var(--sl-panel-background-color);
+    z-index: var(--sl-z-index-dropdown);
+  }
 
-sl-range {
-  --thumb-size: var(--sl-spacing-small);
-  --tooltip-offset: calc(-1*var(--sl-spacing-small));
-  --track-color-active: var(--color-primary);
-  --track-color-inactive: var(--sl-color-primary-200);
-  --track-height: var(--sl-spacing-3x-small);
-}
-sl-range::part(base) {
-  padding: var(--sl-spacing-small);
-  padding-top: var(--sl-spacing-x-large);
-}
-sl-range::part(tooltip) {
-  left: var(--sl-spacing-small);
-}
+  sl-range {
+    --thumb-size: var(--sl-spacing-small);
+    --tooltip-offset: calc(-1 * var(--sl-spacing-small));
+    --track-color-active: var(--color-primary);
+    --track-color-inactive: var(--sl-color-primary-200);
+    --track-height: var(--sl-spacing-3x-small);
+  }
+  sl-range::part(base) {
+    padding: var(--sl-spacing-small);
+    padding-top: var(--sl-spacing-x-large);
+  }
+  sl-range::part(tooltip) {
+    left: var(--sl-spacing-small);
+  }
 `;
 
 // src/elements/color/color.ts
@@ -771,11 +771,9 @@ var ColorIt = class extends BaseIt {
     `;
   }
   get colors() {
-    return colorNames.map(
-      (color) => {
-        return { name: color, value: `var(--sl-color-${color}-${this.range}00);` };
-      }
-    );
+    return colorNames.map((color) => {
+      return { name: color, value: `var(--sl-color-${color}-${this.range}00);` };
+    });
   }
   handleChangeRange(event) {
     const range = event.target;
@@ -803,7 +801,7 @@ var ColorIt = class extends BaseIt {
           <sl-button size=${this.size} slot="trigger" caret>
             <span style="color:var(--color-primary)">${svgIcon("mdi-palette-outline")}</span>
           </sl-button>
-          <div class='primary-color__colors'>
+          <div class="primary-color__colors">
             ${this.colors.map(
       (item) => x`
                 <div class='primary-color__colors__color' @click=${() => {
@@ -815,8 +813,15 @@ var ColorIt = class extends BaseIt {
               `
     )}
           </div>
-          <div class='primary-color__ranges'>
-            <sl-range min="1" max="9" step="1" tooltip="top" .value=${this.range} @sl-change=${this.handleChangeRange}></sl-range>
+          <div class="primary-color__ranges">
+            <sl-range
+              min="1"
+              max="9"
+              step="1"
+              tooltip="top"
+              .value=${this.range}
+              @sl-change=${this.handleChangeRange}
+            ></sl-range>
           </div>
         </sl-dropdown>
       </div>
@@ -840,10 +845,7 @@ var ColorIt = class extends BaseIt {
     throw new Error("Method not implemented.");
   }
 };
-ColorIt.styles = [
-  __superGet(ColorIt, ColorIt, "styles"),
-  color_css_default
-];
+ColorIt.styles = [__superGet(ColorIt, ColorIt, "styles"), color_css_default];
 __decorateClass([
   n({ type: String, reflect: true })
 ], ColorIt.prototype, "color", 2);

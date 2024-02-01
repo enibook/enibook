@@ -1,7 +1,7 @@
-import { css } from 'lit'
+import { css } from 'lit';
 
 export default css`
-:host {
-  display: inline-block;
-}
-`
+  :host {
+    display: inline-block;
+  }
+`;

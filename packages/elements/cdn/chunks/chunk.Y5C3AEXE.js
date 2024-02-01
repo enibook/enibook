@@ -4,7 +4,7 @@ import {
   n,
   r,
   t
-} from "./chunk.V7SARTD6.js";
+} from "./chunk.UPR5MBMR.js";
 import {
   svgIcon
 } from "./chunk.S4JGPG5E.js";
@@ -19,18 +19,18 @@ import {
 
 // src/elements/theme/theme.css.ts
 var theme_css_default = i`
-:host {
-  display: inline-block;
-}
+  :host {
+    display: inline-block;
+  }
 
-kbd {
-  font-family: var(--sl-font-mono);
-  background-color: var(--sl-color-neutral-50);
-  border-radius: var(--sl-border-radius-small);
-  border: 1px solid var(--sl-color-neutral-200);
-  box-shadow: inset 0 1px 0 var(--color-white);
-  padding: var(--sl-spacing-3x-small) var(--sl-spacing-2x-small);
-}
+  kbd {
+    font-family: var(--sl-font-mono);
+    background-color: var(--sl-color-neutral-50);
+    border-radius: var(--sl-border-radius-small);
+    border: 1px solid var(--sl-color-neutral-200);
+    box-shadow: inset 0 1px 0 var(--color-white);
+    padding: var(--sl-spacing-3x-small) var(--sl-spacing-2x-small);
+  }
 `;
 
 // src/elements/theme/theme.ts
@@ -88,7 +88,9 @@ var ThemeIt = class extends BaseIt {
     });
     this.theme = newTheme;
     localStorage.setItem("theme", this.theme);
-    [...this.menu.querySelectorAll("sl-menu-item")].map((item) => item.checked = item.getAttribute("value") === this.theme);
+    [...this.menu.querySelectorAll("sl-menu-item")].map(
+      (item) => item.checked = item.getAttribute("value") === this.theme
+    );
     document.body.appendChild(noTransitions);
     requestAnimationFrame(() => {
       document.documentElement.classList.toggle("sl-theme-dark", this.isDark());
@@ -103,10 +105,7 @@ var ThemeIt = class extends BaseIt {
     throw new Error("Method not implemented.");
   }
 };
-ThemeIt.styles = [
-  __superGet(ThemeIt, ThemeIt, "styles"),
-  theme_css_default
-];
+ThemeIt.styles = [__superGet(ThemeIt, ThemeIt, "styles"), theme_css_default];
 __decorateClass([
   e("sl-menu")
 ], ThemeIt.prototype, "menu", 2);

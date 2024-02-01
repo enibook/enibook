@@ -10396,7 +10396,7 @@ var PLSQL = /* @__PURE__ */ SQLDialect.define({
 
 // src/elements/code/languages/languages.ts
 var languages = {
-  "asciidoc": {
+  asciidoc: {
     name: "asciidoc",
     cm: StreamLanguage.define(asciidoc),
     logo: `${icons["language-asciidoctor"]}`,
@@ -10404,7 +10404,7 @@ var languages = {
     mime: "text/asciidoc",
     helpUrl: "https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/"
   },
-  "css": {
+  css: {
     name: "css",
     cm: css(),
     logo: `${icons["mdi-language-css3"]}`,
@@ -10412,7 +10412,7 @@ var languages = {
     mime: "text/css",
     helpUrl: "https://developer.mozilla.org/fr/docs/Web/CSS/Reference"
   },
-  "html": {
+  html: {
     name: "html",
     cm: html(),
     logo: `${icons["mdi-language-html5"]}`,
@@ -10420,7 +10420,7 @@ var languages = {
     mime: "text/html",
     helpUrl: "https://developer.mozilla.org/fr/docs/Web/HTML/Reference"
   },
-  "javascript": {
+  javascript: {
     name: "javascript",
     cm: javascript(),
     logo: `${icons["mdi-language-javascript"]}`,
@@ -10428,7 +10428,7 @@ var languages = {
     mime: "text/javascript",
     helpUrl: "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference"
   },
-  "json": {
+  json: {
     name: "json",
     cm: json(),
     logo: `${icons["mdi-code-json"]}`,
@@ -10436,7 +10436,7 @@ var languages = {
     mime: "application/json",
     helpUrl: "https://www.json.org/json-fr.html"
   },
-  "markdown": {
+  markdown: {
     name: "markdown",
     cm: markdown(),
     logo: `${icons["mdi-language-markdown"]}`,
@@ -10444,7 +10444,7 @@ var languages = {
     mime: "text/markdown",
     helpUrl: "https://www.markdownguide.org/cheat-sheet/"
   },
-  "prolog": {
+  prolog: {
     name: "prolog",
     cm: prolog(),
     logo: `${icons["language-prolog"]}`,
@@ -10452,7 +10452,7 @@ var languages = {
     mime: "text/x-prolog",
     helpUrl: "http://tau-prolog.org/documentation#prolog"
   },
-  "python": {
+  python: {
     name: "python",
     cm: python(),
     logo: `${icons["mdi-language-python"]}`,
@@ -10460,7 +10460,7 @@ var languages = {
     mime: "text/x-python",
     helpUrl: "https://www.pythoncheatsheet.org/cheatsheet/dictionaries"
   },
-  "sql": {
+  sql: {
     name: "sql",
     cm: sql(),
     logo: `${icons["mdi-database"]}`,
@@ -10468,7 +10468,7 @@ var languages = {
     mime: "application/sql",
     helpUrl: "https://sql.sh"
   },
-  "text": {
+  text: {
     name: "text",
     cm: [],
     logo: `${icons["mdi-format-text"]}`,
@@ -10476,9 +10476,9 @@ var languages = {
     mime: "text/plain",
     helpUrl: ""
   },
-  "typescript": {
+  typescript: {
     name: "typescript",
-    cm: javascript({ "typescript": true }),
+    cm: javascript({ typescript: true }),
     logo: `${icons["mdi-language-typescript"]}`,
     extension: "ts",
     mime: "video/mp2t",

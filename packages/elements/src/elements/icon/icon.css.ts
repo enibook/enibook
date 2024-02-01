@@ -1,9 +1,8 @@
-import { css } from 'lit'
+import { css } from 'lit';
 
 export default css`
-:host {
-  display: inline-block;
-  vertical-align: middle;
-}
-`
-
+  :host {
+    display: inline-block;
+    vertical-align: middle;
+  }
+`;

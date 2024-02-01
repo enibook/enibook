@@ -1,15 +1,15 @@
-import { svg } from 'lit'
+import { svg } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import type { TemplateResult} from 'lit';
+import type { TemplateResult } from 'lit';
 
-const style = 'display:inline-block;vertical-align:middle;'
+const style = 'display:inline-block;vertical-align:middle;';
 
 /**
  * Icônes utilisées par les éléments Enibook.
  *
  * @credit [iconify.design](https://iconify.design)
  */
-export const icons: { [index: string]: string } =  {
+export const icons: { [index: string]: string } = {
   'language-asciidoctor': `<svg xmlns="http://www.w3.org/2000/svg" style="${style}" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M18.069 0H5.932A5.934 5.934 0 0 0 0 5.932v12.136A5.935 5.935 0 0 0 5.932 24h12.136A5.934 5.934 0 0 0 24 18.068V5.932A5.934 5.934 0 0 0 18.069 0m-7.361 15.404H8.81l-.005.013L7.2 19.282a.506.506 0 1 1-.934-.388l1.45-3.49H4.868a.506.506 0 1 1 0-1.012h5.84a.506.506 0 1 1 0 1.012m7.919 4.165a.506.506 0 0 1-.655-.29L12.621 6.232l-2.395 5.76h1.55a.506.506 0 1 1 0 1.012h-5.84a.506.506 0 1 1 0-1.011h3.195l.004-.012l3.022-7.269a.506.506 0 0 1 .457-.311a.506.506 0 0 1 .478.314l5.816 14.182a.506.506 0 0 1-.281.673"/></svg>`,
   'language-prolog': `<svg xmlns="http://www.w3.org/2000/svg" style="${style}" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><text x="2" y="15" fill="currentColor" style="font-weight:bold;font-size:inherit">?-</text></svg>`,
   'mdi-account': `<svg xmlns="http://www.w3.org/2000/svg" style="${style}" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>`,
@@ -72,9 +72,9 @@ export const icons: { [index: string]: string } =  {
   'mdi-typescript': `<svg xmlns="http://www.w3.org/2000/svg" style="${style}" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M3 3h18v18H3V3m10.71 14.86c.5.98 1.51 1.73 3.09 1.73c1.6 0 2.8-.83 2.8-2.36c0-1.41-.81-2.04-2.25-2.66l-.42-.18c-.73-.31-1.04-.52-1.04-1.02c0-.41.31-.73.81-.73c.48 0 .8.21 1.09.73l1.31-.87c-.55-.96-1.33-1.33-2.4-1.33c-1.51 0-2.48.96-2.48 2.23c0 1.38.81 2.03 2.03 2.55l.42.18c.78.34 1.24.55 1.24 1.13c0 .48-.45.83-1.15.83c-.83 0-1.31-.43-1.67-1.03l-1.38.8M13 11.25H8v1.5h1.5V20h1.75v-7.25H13v-1.5Z"/></svg>`,
   'mdi-undo': `<svg xmlns="http://www.w3.org/2000/svg" style="${style}" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12.5 8c-2.65 0-5.05 1-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88c3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8Z"/></svg>`,
   'mdi-weather-night': `<svg xmlns="http://www.w3.org/2000/svg" style="${style}" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m17.75 4.09l-2.53 1.94l.91 3.06l-2.63-1.81l-2.63 1.81l.91-3.06l-2.53-1.94L12.44 4l1.06-3l1.06 3zm3.5 6.91l-1.64 1.25l.59 1.98l-1.7-1.17l-1.7 1.17l.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85c-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14c.4-.4.82-.76 1.27-1.08c.75-.53 1.93.36 1.85 1.19c-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82c-2.81 3.14-2.7 7.96.31 10.98c3.02 3.01 7.84 3.12 10.98.31"/></svg>`,
-  'mdi-white-balance-sunny': `<svg xmlns="http://www.w3.org/2000/svg" style="${style}" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m3.55 19.09l1.41 1.41l1.8-1.79l-1.42-1.42M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6c0-3.32-2.69-6-6-6m8 7h3v-2h-3m-2.76 7.71l1.8 1.79l1.41-1.41l-1.79-1.8M20.45 5l-1.41-1.4l-1.8 1.79l1.42 1.42M13 1h-2v3h2M6.76 5.39L4.96 3.6L3.55 5l1.79 1.81zM1 13h3v-2H1m12 9h-2v3h2"/></svg>`,
-}
+  'mdi-white-balance-sunny': `<svg xmlns="http://www.w3.org/2000/svg" style="${style}" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m3.55 19.09l1.41 1.41l1.8-1.79l-1.42-1.42M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6c0-3.32-2.69-6-6-6m8 7h3v-2h-3m-2.76 7.71l1.8 1.79l1.41-1.41l-1.79-1.8M20.45 5l-1.41-1.4l-1.8 1.79l1.42 1.42M13 1h-2v3h2M6.76 5.39L4.96 3.6L3.55 5l1.79 1.81zM1 13h3v-2H1m12 9h-2v3h2"/></svg>`
+};
 
 export function svgIcon(icon: string): TemplateResult {
-  return svg`${unsafeHTML(icons[icon])}`
+  return svg`${unsafeHTML(icons[icon])}`;
 }

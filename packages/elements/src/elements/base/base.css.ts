@@ -1,30 +1,30 @@
-import { css } from 'lit'
+import { css } from 'lit';
 
 export default css`
-:host {
-  box-sizing: border-box;
-}
+  :host {
+    box-sizing: border-box;
+  }
 
-:host *,
-:host *::before,
-:host *::after {
-  box-sizing: inherit;
-}
+  :host *,
+  :host *::before,
+  :host *::after {
+    box-sizing: inherit;
+  }
 
-.hidden,
-[hidden] {
-  display: none !important;
-}
+  .hidden,
+  [hidden] {
+    display: none !important;
+  }
 
-.rtl {
-  direction: rtl;
-}
+  .rtl {
+    direction: rtl;
+  }
 
-.title {
-  line-height: 1.45;
-  color: #7a2518;
-  font-weight: 400;
-  margin-top: 0;
-  margin-bottom: 0.25em;
-}
-`
+  .title {
+    line-height: 1.45;
+    color: #7a2518;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+`;

@@ -5,7 +5,7 @@ import {
   BaseIt,
   n,
   t
-} from "./chunk.V7SARTD6.js";
+} from "./chunk.UPR5MBMR.js";
 import {
   i,
   x
@@ -17,25 +17,25 @@ import {
 
 // src/elements/lorem-ipsum/lorem-ipsum.css.ts
 var lorem_ipsum_css_default = i`
-:host {
-  display: block;
-  margin-bottom:  0.5rem;
-}
-p {
-  margin: 0;
-  margin-bottom: 0.5rem;
-}
-p:last-child {
-  margin-bottom: 0;
-}
-ol,
-ul,
-dl {
-  margin: 0;
-}
-dt {
-  font-weight: 600;
-}
+  :host {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  ol,
+  ul,
+  dl {
+    margin: 0;
+  }
+  dt {
+    font-weight: 600;
+  }
 `;
 
 // src/elements/lorem-ipsum/lorem-ipsum.ts
@@ -113,11 +113,7 @@ var LoremIpsumIt = class extends BaseIt {
     if (this.count < 1) {
       this.count = 1;
     }
-    return x`
-      <div part="base" class="lorem-ipsum prose">
-        ${this.renderTemplate()}
-      </div>
-    `;
+    return x` <div part="base" class="lorem-ipsum prose">${this.renderTemplate()}</div> `;
   }
   renderTemplate() {
     let template = x``;
@@ -148,9 +144,7 @@ var LoremIpsumIt = class extends BaseIt {
     for (let i2 = 0; i2 < nbListItems; i2++) {
       items.push(this.createText("olist"));
     }
-    let template = x`${items.map(
-      (item) => x`<li>${item}</li>`
-    )}`;
+    let template = x`${items.map((item) => x`<li>${item}</li>`)}`;
     const dlTemplate = x`${items.map(
       (item) => x`<dt>${this.createTerm()}</dt>
           <dd>${item}</dd>`
@@ -177,18 +171,14 @@ var LoremIpsumIt = class extends BaseIt {
     for (let i2 = 0; i2 < nbParagraphs; i2++) {
       paragraphs.push(this.createText("paragraph"));
     }
-    return x`${paragraphs.map(
-      (paragraph) => x`<p part="paragraph">${paragraph}</p>`
-    )}`;
+    return x`${paragraphs.map((paragraph) => x`<p part="paragraph">${paragraph}</p>`)}`;
   }
   renderSentence(nbSentences = 1) {
     const sentences = [];
     for (let i2 = 0; i2 < nbSentences; i2++) {
       sentences.push(this.createText("sentence"));
     }
-    return x`<p part="sentence">
-      ${sentences.map((sentence) => x`${sentence}<br />`)}
-    </p>`;
+    return x`<p part="sentence">${sentences.map((sentence) => x`${sentence}<br />`)}</p>`;
   }
   renderWord(nbWords = 1) {
     const words = [];
@@ -210,10 +200,7 @@ var LoremIpsumIt = class extends BaseIt {
     return asciidoc.replace(/^ +| +$/gm, "");
   }
 };
-LoremIpsumIt.styles = [
-  __superGet(LoremIpsumIt, LoremIpsumIt, "styles"),
-  lorem_ipsum_css_default
-];
+LoremIpsumIt.styles = [__superGet(LoremIpsumIt, LoremIpsumIt, "styles"), lorem_ipsum_css_default];
 __decorateClass([
   n({ type: Number, reflect: true })
 ], LoremIpsumIt.prototype, "count", 2);

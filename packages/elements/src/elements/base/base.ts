@@ -1,19 +1,17 @@
 // lit
-import { type CSSResultGroup, LitElement } from "lit";
-import { state } from "lit/decorators.js";
+import { type CSSResultGroup, LitElement } from 'lit';
+import { state } from 'lit/decorators.js';
 // fscreen
-import fscreen from "fscreen";
+import fscreen from 'fscreen';
 // enibook
-import { svgIcon } from "../../utilities/icons";
-import styles from './base.css.js'
+import { svgIcon } from '../../utilities/icons';
+import styles from './base.css.js';
 
 /**
  * Classe de base pour les éléments personnalisés EniBook
  */
 export abstract class BaseIt extends LitElement {
-  static override styles: CSSResultGroup = [
-    styles
-  ]
+  static override styles: CSSResultGroup = [styles];
 
   /**
    * Teste si l'élément est en mode plein écran.
@@ -34,7 +32,7 @@ export abstract class BaseIt extends LitElement {
       cancelable: false,
       composed: true,
       detail: {},
-      ...options,
+      ...options
     });
     this.dispatchEvent(event);
     return event;
@@ -45,14 +43,14 @@ export abstract class BaseIt extends LitElement {
    *
    * On peut utiliser la touche <kbd>Esc</kbd> ou <kbd>F11</kbd> pour sortir du mode plein écran.
    */
-    protected toggleFullscreen(): void {
-      this.fullscreen = !this.fullscreen;
-      if (!fscreen.fullscreenElement) {
-        fscreen.requestFullscreen(this);
-      } else {
-        fscreen.exitFullscreen();
-      }
+  protected toggleFullscreen(): void {
+    this.fullscreen = !this.fullscreen;
+    if (!fscreen.fullscreenElement) {
+      fscreen.requestFullscreen(this);
+    } else {
+      fscreen.exitFullscreen();
     }
+  }
 
   /**
    * Crée une alerte qui affiche le message associé pendant une durée donnée.
@@ -64,35 +62,38 @@ export abstract class BaseIt extends LitElement {
    * @returns
    * @memberof EnibookElement
    */
-    notify(message: string, variant:string="primary", icon:string="mdi-information-variant-circle-outline", duration:string="3000") {
-      const alert = Object.assign(document.createElement('sl-alert'), {
-        variant: variant,
-        closable: true,
-        duration: duration,
-        innerHTML: `
+  notify(
+    message: string,
+    variant: string = 'primary',
+    icon: string = 'mdi-information-variant-circle-outline',
+    duration: string = '3000'
+  ) {
+    const alert = Object.assign(document.createElement('sl-alert'), {
+      variant: variant,
+      closable: true,
+      duration: duration,
+      innerHTML: `
           <div slot="icon">${svgIcon(icon)}</div>
           ${this.wrap(message)}
         `
-      })
-      document.body.append(alert)
-      return alert.toast()
-    }
-  
+    });
+    document.body.append(alert);
+    return alert.toast();
+  }
+
   /**
    * Le nom courant de l'élément : à définir dans chaque sous-classe.
    */
   abstract get tagTitle(): string;
 
-  /** 
+  /**
    * Syntaxe `asciidoc` équivalente : à définir dans chaque sous-classe.
    */
   abstract toAsciidoc(): string;
 
   protected wrap(message: string): string {
-    const div = document.createElement('div')
-    div.textContent = message
-    return div.innerHTML
+    const div = document.createElement('div');
+    div.textContent = message;
+    return div.innerHTML;
   }
-
 }
-

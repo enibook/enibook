@@ -2,7 +2,7 @@ import {
   defaultValue,
   form_control_styles_default,
   l
-} from "./chunk.OV5UMEY4.js";
+} from "./chunk.2KF4GLRR.js";
 import {
   FormControlController,
   HasSlotController,
@@ -13,7 +13,7 @@ import {
   component_styles_default,
   o,
   watch
-} from "./chunk.UTNZY7XJ.js";
+} from "./chunk.TODZRVLS.js";
 import {
   e as e2
 } from "./chunk.FWRBNC3J.js";
@@ -23,7 +23,7 @@ import {
   n,
   r,
   t
-} from "./chunk.V7SARTD6.js";
+} from "./chunk.UPR5MBMR.js";
 import {
   svgIcon
 } from "./chunk.S4JGPG5E.js";
@@ -788,17 +788,17 @@ SlInput.define("sl-input");
 
 // src/elements/tools/tools.css.ts
 var tools_css_default = i`
-:host {
-  display: inline-block;
-}
-.tools {
-  display: inline-flex;
-}
-.tools__container {
-  display: inline-flex;
-  justify-content: flex-end;
-  /*gap: var(--sl-spacing-small);*/
-}
+  :host {
+    display: inline-block;
+  }
+  .tools {
+    display: inline-flex;
+  }
+  .tools__container {
+    display: inline-flex;
+    justify-content: flex-end;
+    /*gap: var(--sl-spacing-small);*/
+  }
 `;
 
 // src/elements/tools/tools.ts
@@ -872,13 +872,9 @@ var ToolsIt = class extends BaseIt {
           <theme-it size=${this.size} hidden></theme-it>
         </div>
         <sl-dropdown part="dropdown" stay-open-on-select hoist>
-          <sl-button size=${this.size} slot="trigger" caret>
-            ${svgIcon("mdi-cog")}
-          </sl-button>
+          <sl-button size=${this.size} slot="trigger" caret> ${svgIcon("mdi-cog")} </sl-button>
           <sl-menu @sl-select=${this.handleSelectTool}>
-            <sl-menu-item value="all" type="checkbox">
-              Tout sélectionner
-            </sl-menu-item>
+            <sl-menu-item value="all" type="checkbox"> Tout sélectionner </sl-menu-item>
             <sl-divider></sl-divider>
             <sl-menu-item value="theme" type="checkbox">
               <span slot="prefix">${svgIcon("mdi-theme-light-dark")}</span>
@@ -919,10 +915,7 @@ var ToolsIt = class extends BaseIt {
     throw new Error("Method not implemented.");
   }
 };
-ToolsIt.styles = [
-  __superGet(ToolsIt, ToolsIt, "styles"),
-  tools_css_default
-];
+ToolsIt.styles = [__superGet(ToolsIt, ToolsIt, "styles"), tools_css_default];
 __decorateClass([
   e("sl-menu")
 ], ToolsIt.prototype, "menu", 2);

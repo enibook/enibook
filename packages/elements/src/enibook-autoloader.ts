@@ -27,7 +27,7 @@ export async function discover(root: Element | ShadowRoot) {
 
   // Rendre la liste sans doublons.
   const tagsToRegister = [...new Set(tags)];
-  console.log('tags to register',tagsToRegister)
+  console.log('tags to register', tagsToRegister);
 
   await Promise.allSettled(tagsToRegister.map(tagName => register(tagName)));
 }
@@ -38,18 +38,16 @@ export async function discover(root: Element | ShadowRoot) {
 function register(tagName: string): Promise<void> {
   // Si l'élément est déjà défini, il n'y a rien à faire.
   if (customElements.get(tagName)) {
-    console.log(`${tagName} already set`)
+    console.log(`${tagName} already set`);
     return Promise.resolve();
   }
 
   const tagWithoutSuffix = tagName.replace(/-it$/i, '');
   const path = getBasePath(`elements/${tagWithoutSuffix}/${tagWithoutSuffix}.js`);
-  console.log(`trying to import ${path}`)
+  console.log(`trying to import ${path}`);
   // L'enregistrer.
   return new Promise((resolve, reject) => {
-    import(path)
-      .then(() => resolve())
-      .catch(() => reject(new Error(`Unable to autoload <${tagName}> from ${path}`)));
+    import(path).then(() => resolve()).catch(() => reject(new Error(`Unable to autoload <${tagName}> from ${path}`)));
   });
 }
 

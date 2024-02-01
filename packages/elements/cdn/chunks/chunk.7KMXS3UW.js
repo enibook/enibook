@@ -3,7 +3,7 @@ import {
   n,
   r,
   t
-} from "./chunk.V7SARTD6.js";
+} from "./chunk.UPR5MBMR.js";
 import {
   icons,
   svgIcon
@@ -19,9 +19,9 @@ import {
 
 // src/elements/toggle/toggle.css.ts
 var toggle_css_default = i`
-:host {
-  display: inline-block;
-}
+  :host {
+    display: inline-block;
+  }
 `;
 
 // src/elements/toggle/toggle.ts
@@ -80,17 +80,17 @@ var ToggleIt = class extends BaseIt {
    * Syntaxe `asciidoc` équivalente :
    *
    * ```
-   * name:target[attributes]   
+   * name:target[attributes]
    * ```
    *
    * - `name` : `toggle-it`  (la macro `asciidoc` a le même nom que l'élément `html` correspondant);
-   * - `target` : `selector` 
+   * - `target` : `selector`
    * - `attributes` : `size`, `text-hide`, `text-show`, `tooltip-hide`, `tooltip-show`, `visibility`.
    *
    * Voir la documentation Asciidoc sur les <a href="https://docs.asciidoctor.org/asciidoc/latest/key-concepts/#macros">macros de type _inline_</a>
    *
-   * @examples 
-   * `toggle-it:#header[visibility]`, 
+   * @examples
+   * `toggle-it:#header[visibility]`,
    * `toggle-it:#header[text-hide="cacher l'en-tête",text-show="montrer l'en-tête",visibility]`
    */
   toAsciidoc() {
@@ -107,10 +107,7 @@ var ToggleIt = class extends BaseIt {
     this.hidden = this.getHidden();
   }
 };
-ToggleIt.styles = [
-  __superGet(ToggleIt, ToggleIt, "styles"),
-  toggle_css_default
-];
+ToggleIt.styles = [__superGet(ToggleIt, ToggleIt, "styles"), toggle_css_default];
 __decorateClass([
   n({ type: String, reflect: true })
 ], ToggleIt.prototype, "selector", 2);

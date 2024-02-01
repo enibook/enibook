@@ -2,17 +2,6 @@ import {
   system
 } from "./chunk.CO4X42B5.js";
 import {
-  IndentContext,
-  NodeProp,
-  foldKeymap,
-  getIndentUnit,
-  getIndentation,
-  indentString,
-  indentUnit,
-  matchBrackets,
-  syntaxTree
-} from "./chunk.YDYFHXOQ.js";
-import {
   Annotation,
   ChangeDesc,
   ChangeSet,
@@ -23,6 +12,8 @@ import {
   EditorState,
   EditorView,
   Facet,
+  IndentContext,
+  NodeProp,
   Prec,
   RangeSetBuilder,
   StateEffect,
@@ -35,11 +26,18 @@ import {
   combineConfig,
   countColumn,
   findClusterBreak,
+  foldKeymap,
   fromCodePoint,
+  getIndentUnit,
+  getIndentation,
   getPanel,
+  indentString,
+  indentUnit,
+  matchBrackets,
   runScopeHandlers,
-  showPanel
-} from "./chunk.C4XOL23B.js";
+  showPanel,
+  syntaxTree
+} from "./chunk.2LOO7EOW.js";
 
 // ../../node_modules/.pnpm/@codemirror+commands@6.3.3/node_modules/@codemirror/commands/dist/index.js
 var toggleComment = (target) => {

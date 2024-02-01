@@ -38,8 +38,8 @@ async function buildTheDocs(watch = false) {
     const args = [
       '-r', '@djencks/asciidoctor-mathjax',
       '-r', 'asciidoctor-highlight.js', 
-      'docs/elements.adoc', 
-      '--destination-dir', `${sitedir}`
+      `${docdir}/elements.adoc`/*, 
+      '--destination-dir', `${sitedir}`*/
     ];
     const output = [];
 
@@ -67,7 +67,7 @@ async function buildTheDocs(watch = false) {
 async function buildTheChunks(watch = false) {
   const chunkDoc = new Promise(async (resolve, reject) => {
     const args = [
-      `${sitedir}/elements.html`,
+      `${docdir}/elements.html`,
       '--titlePage',  '"EniBook : éléments HTML"',
       '--outdir', `${sitedir}`
     ];
@@ -106,13 +106,13 @@ async function buildTheSource() {
       // NOTE: Les points d'entrée doivent être mappés dans le fichier package.json > exports, 
       // sinon les utilisateurs ne pourront pas les importer !
       //
-      // The whole shebang
+      // Tout en un
       './src/enibook.ts',
-      // The auto-loader
+      // Chargeur automatique
       './src/enibook-autoloader.ts',
-      // Components
+      // Eléments
       ...(await globby('./src/elements/**/!(*.(css|test)).ts')),
-      // Public utilities
+      // Utilitaires
       ...(await globby('./src/utilities/**/!(*.(css|test)).ts')),
     ],
     outdir: cdndir,
@@ -123,16 +123,15 @@ async function buildTheSource() {
     },
     bundle: true,
     //
-    // We don't bundle certain dependencies in the unbundled build. This ensures we ship bare module specifiers,
-    // allowing end users to better optimize when using a bundler. (Only packages that ship ESM can be external.)
-    //
-    // We never bundle React or @lit/react though!
+    // We don't bundle certain dependencies in the unbundled build. 
+    // This ensures we ship bare module specifiers, allowing end users to better optimize when using a bundler. 
+    // (Only packages that ship ESM can be external.)
     //
     external: alwaysExternal,
     splitting: true,
     plugins: [
       replace({
-        __SHOELACE_VERSION__: enibookVersion
+        __ENIBOOK_VERSION__: enibookVersion
       })
     ]
   };
@@ -146,36 +145,33 @@ async function buildTheSource() {
   };
 
   if (serve) {
-    // Use the context API to allow incremental dev builds
+    // Utiliser les contextes esbuild pour les développements incrémentaux
     const contexts = await Promise.all([esbuild.context(cdnConfig), esbuild.context(npmConfig)]);
     await Promise.all(contexts.map(context => context.rebuild()));
     return contexts;
   } else {
-    // Use the standard API for production builds
+    // Utiliser l'API standard en production
     return await Promise.all([esbuild.build(cdnConfig), esbuild.build(npmConfig)]);
   }
 }
 
 //
-// Called on SIGINT or SIGTERM to cleanup the build and child processes.
+// Appelé sur SIGINT ou SIGTERM pour clore tous les processus.
 //
 function handleCleanup() {
   buildResults.forEach(result => result.dispose());
-
   if (childProcess) {
     childProcess.kill('SIGINT');
   }
-
   process.exit();
 }
 
 //
-// Helper function to draw a spinner while tasks run.
+// Afficher spinner pendant l'exécution des tâches.
 //
 async function nextTask(label, action) {
   spinner.text = label;
   spinner.start();
-
   try {
     await action();
     spinner.stop();
@@ -204,7 +200,6 @@ await nextTask('Compilation TypeScript', () => {
   return execPromise(`tsc --project ./tsconfig.prod.json --outdir "${outdir}"`, { stdio: 'inherit' });
 });
 
-// Copiez les étapes ci-dessus dans le répertoire CDN directement afin que nous n'ayons pas à faire deux fois le travail pour rien.
 await nextTask(`Copie "${outdir}" dans "${cdndir}"`, async () => {
   await deleteAsync(cdndir);
   await copy(outdir, cdndir);
@@ -214,13 +209,11 @@ await nextTask('Création du bundler', async () => {
   buildResults = await buildTheSource();
 });
 
-// Copier la compilation CDN dans les documents (prod uniquement ; nous utilisons un répertoire virtuel dans dev)
+// Copier la compilation CDN dans les documents 
+// (production uniquement; nous utilisons un répertoire virtuel dans dev)
 if (!serve) {
   await nextTask(`Copie "${cdndir}" dans "${sitedir}"`, async () => {
     await deleteAsync(sitedir);
-
-    // Nous copions la version CDN parce qu'elle contient tout ce qu'il faut. Oui, cela semble bizarre.
-    // Mais si nous faisons "/cdn", il faut modifier toute la documentation pour faire /cdn au lieu de /dist.
     await copy(cdndir, path.join(sitedir, 'dist'));
   });
 }
@@ -229,9 +222,6 @@ if (!serve) {
 if (serve) {
   let result;
 
-  // Spin up Eleventy and Wait for the search index to appear before proceeding. The search index is generated during
-  // eleventy.after, so it appears after the docs are fully published. This is kinda hacky, but here we are.
-  // Kick off the Eleventy dev server with --watch and --incremental
   await nextTask('Documentation monopage', async () => {
     result = await buildTheDocs(true);
   });
@@ -263,34 +253,31 @@ if (serve) {
     }
   };
 
-  // Launch browser sync
+  // Synchronisation du navigateur
   bs.init(browserSyncConfig, () => {
     const url = `http://localhost:${port}`;
     console.log(chalk.cyan(`\nServeur de développement : ${url}`));
 
-    // Log deferred output
     if (result.output.length > 0) {
       console.log('\n' + result.output.join('\n'));
     }
-
-    // Log output that comes later on
     result.child.stdout.on('data', data => {
       console.log(data.toString());
     });
   });
 
-  // Rebuild and reload when source files change
+  // Reconstruction et rechargement en cas de modification des fichiers sources
   bs.watch('src/**/!(*.test).*').on('change', async filename => {
-    console.log('[build] File changed: ', filename);
+    console.log('[build] fichier modifié : ', filename);
 
     try {
       const isStylesheet = /(\.css|\.css\.ts)$/.test(filename);
 
-      // Rebuild the source
+      // Bundler
       const rebuildResults = buildResults.map(result => result.rebuild());
       await Promise.all(rebuildResults);
 
-      // Rebuild metadata (but not when styles are changed)
+      // Manifeste (but not when styles are changed)
       if (!isStylesheet) {
         await Promise.all(
           bundleDirectories.map(dir => {
@@ -305,21 +292,17 @@ if (serve) {
     }
   });
 
-  // Reload without rebuilding when the docs change
+  // Recharger sans reconstruire lorsque la documentation change
   bs.watch([`${docdir}/**/*.*`]).on('change', async filename => {
     console.log('[doc] File changed: ', filename);
     await nextTask('Documentation monopage', async () => {
       result = await buildTheDocs(true);
     });
   
-    await nextTask('unocss', async () => {
-      result = await exec
-    })
-
     await nextTask(`Copie "${docdir}/styles" dans "${sitedir}/styles"`, async () => {
       result = await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'), { overwrite: true });
     });
-  
+
     await nextTask(`Documentation multipage`, async () => {
       result = await buildTheChunks();
     });
@@ -329,34 +312,32 @@ if (serve) {
 }
 
 
-// Build for production
+// En production
 if (!serve) {
   let result;
 
-  await nextTask(`Documentation monopage dans "${sitedir}"`, async () => {
+  await nextTask(`Documentation monopage dans "${docdir}"`, async () => {
     result = await buildTheDocs();
   });
 
-  // Log deferred output
   if (result.output.length > 0) {
     console.log('\n' + result.output.join('\n'));
   }
 
   await nextTask(`Copie de "${docdir}/styles" dans "${sitedir}/styles"`, async () => {
-    return await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'));
+    return await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'), { overwrite: true });
   });
 
   await nextTask(`Documentation multipage dans "${sitedir}"`, async () => {
     result = await buildTheChunks();
   });
-  // Log deferred output
+
   if (result.output.length > 0) {
     console.log('\n' + result.output.join('\n'));
   }
 
 }
 
-
-// Cleanup on exit
+// Nettoyage final
 process.on('SIGINT', handleCleanup);
 process.on('SIGTERM', handleCleanup);

@@ -2,14 +2,14 @@ import {
   defaultValue,
   form_control_styles_default,
   l
-} from "./chunk.MJ6EZYPP.js";
+} from "./chunk.OV5UMEY4.js";
 import {
   FormControlController,
   HasSlotController,
   LocalizeController,
   ShoelaceElement,
   SlIcon,
-  __decorateClass,
+  __decorateClass as __decorateClass2,
   component_styles_default,
   o,
   watch
@@ -18,14 +18,23 @@ import {
   e as e2
 } from "./chunk.FWRBNC3J.js";
 import {
+  BaseIt,
   e,
   n,
-  r
+  r,
+  t
 } from "./chunk.V7SARTD6.js";
+import {
+  svgIcon
+} from "./chunk.S4JGPG5E.js";
 import {
   i,
   x
 } from "./chunk.BLJAKQYI.js";
+import {
+  __decorateClass,
+  __superGet
+} from "./chunk.R3ZK4RPV.js";
 
 // ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.5NGT6QDY.js
 var input_styles_default = i`
@@ -655,103 +664,103 @@ var SlInput = class extends ShoelaceElement {
 };
 SlInput.styles = input_styles_default;
 SlInput.dependencies = { "sl-icon": SlIcon };
-__decorateClass([
+__decorateClass2([
   e(".input__control")
 ], SlInput.prototype, "input", 2);
-__decorateClass([
+__decorateClass2([
   r()
 ], SlInput.prototype, "hasFocus", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "title", 2);
-__decorateClass([
+__decorateClass2([
   n({ reflect: true })
 ], SlInput.prototype, "type", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "name", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "value", 2);
-__decorateClass([
+__decorateClass2([
   defaultValue()
 ], SlInput.prototype, "defaultValue", 2);
-__decorateClass([
+__decorateClass2([
   n({ reflect: true })
 ], SlInput.prototype, "size", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Boolean, reflect: true })
 ], SlInput.prototype, "filled", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Boolean, reflect: true })
 ], SlInput.prototype, "pill", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "label", 2);
-__decorateClass([
+__decorateClass2([
   n({ attribute: "help-text" })
 ], SlInput.prototype, "helpText", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Boolean })
 ], SlInput.prototype, "clearable", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Boolean, reflect: true })
 ], SlInput.prototype, "disabled", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "placeholder", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Boolean, reflect: true })
 ], SlInput.prototype, "readonly", 2);
-__decorateClass([
+__decorateClass2([
   n({ attribute: "password-toggle", type: Boolean })
 ], SlInput.prototype, "passwordToggle", 2);
-__decorateClass([
+__decorateClass2([
   n({ attribute: "password-visible", type: Boolean })
 ], SlInput.prototype, "passwordVisible", 2);
-__decorateClass([
+__decorateClass2([
   n({ attribute: "no-spin-buttons", type: Boolean })
 ], SlInput.prototype, "noSpinButtons", 2);
-__decorateClass([
+__decorateClass2([
   n({ reflect: true })
 ], SlInput.prototype, "form", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Boolean, reflect: true })
 ], SlInput.prototype, "required", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "pattern", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Number })
 ], SlInput.prototype, "minlength", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Number })
 ], SlInput.prototype, "maxlength", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "min", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "max", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "step", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "autocapitalize", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "autocorrect", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "autocomplete", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Boolean })
 ], SlInput.prototype, "autofocus", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "enterkeyhint", 2);
-__decorateClass([
+__decorateClass2([
   n({
     type: Boolean,
     converter: {
@@ -761,18 +770,184 @@ __decorateClass([
     }
   })
 ], SlInput.prototype, "spellcheck", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlInput.prototype, "inputmode", 2);
-__decorateClass([
+__decorateClass2([
   watch("disabled", { waitUntilFirstUpdate: true })
 ], SlInput.prototype, "handleDisabledChange", 1);
-__decorateClass([
+__decorateClass2([
   watch("step", { waitUntilFirstUpdate: true })
 ], SlInput.prototype, "handleStepChange", 1);
-__decorateClass([
+__decorateClass2([
   watch("value", { waitUntilFirstUpdate: true })
 ], SlInput.prototype, "handleValueChange", 1);
 
 // ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.QAQLKX4N.js
 SlInput.define("sl-input");
+
+// src/elements/tools/tools.css.ts
+var tools_css_default = i`
+:host {
+  display: inline-block;
+}
+.tools {
+  display: inline-flex;
+}
+.tools__container {
+  display: inline-flex;
+  justify-content: flex-end;
+  /*gap: var(--sl-spacing-small);*/
+}
+`;
+
+// src/elements/tools/tools.ts
+var ToolsIt = class extends BaseIt {
+  constructor() {
+    super(...arguments);
+    this.size = "small";
+    this.menuItems = [];
+  }
+  firstUpdated(_changedProperties) {
+    this.menuItems = [...this.menu.querySelectorAll("sl-menu-item")];
+  }
+  handleSelectTool(event) {
+    const selectedItem = event.detail.item;
+    selectedItem.toggleAttribute("checked");
+    if (selectedItem.checked) {
+      switch (selectedItem.value) {
+        case "all":
+          this.clockElement.removeAttribute("hidden");
+          this.colorElement.removeAttribute("hidden");
+          this.themeElement.removeAttribute("hidden");
+          this.menuItems.forEach((item) => item.checked = true);
+          break;
+        case "date":
+          this.clockElement.removeAttribute("hidden");
+          break;
+        case "theme":
+          this.themeElement.removeAttribute("hidden");
+          break;
+        case "color":
+          this.colorElement.removeAttribute("hidden");
+          break;
+      }
+      if (!this.menuItemAll.checked && this.menuItems.length - 1 === this.menuItems.filter((item) => item.checked).length) {
+        this.menuItemAll.checked = true;
+      }
+    } else {
+      switch (selectedItem.value) {
+        case "all":
+          this.clockElement.setAttribute("hidden", "");
+          this.colorElement.setAttribute("hidden", "");
+          this.themeElement.setAttribute("hidden", "");
+          this.menuItems.forEach((item) => item.checked = false);
+          break;
+        case "date":
+          this.clockElement.setAttribute("hidden", "");
+          this.menuItemAll.checked = false;
+          break;
+        case "theme":
+          this.themeElement.setAttribute("hidden", "");
+          this.menuItemAll.checked = false;
+          break;
+        case "color":
+          this.colorElement.setAttribute("hidden", "");
+          this.menuItemAll.checked = false;
+          break;
+      }
+    }
+  }
+  render() {
+    return x`
+      <div part="base" class="tools">
+        <div class="tools__container">
+          <!--
+          <alarm-it size=${this.size} hidden></alarm-it>
+          <chrono-it size=${this.size} hidden></chrono-it>
+          <timer-it size=${this.size} hidden></timer-it>
+          -->
+          <clock-it size=${this.size} date time hidden></clock-it>
+          <color-it size=${this.size} hidden></color-it>
+          <theme-it size=${this.size} hidden></theme-it>
+        </div>
+        <sl-dropdown part="dropdown" stay-open-on-select hoist>
+          <sl-button size=${this.size} slot="trigger" caret>
+            ${svgIcon("mdi-cog")}
+          </sl-button>
+          <sl-menu @sl-select=${this.handleSelectTool}>
+            <sl-menu-item value="all" type="checkbox">
+              Tout sélectionner
+            </sl-menu-item>
+            <sl-divider></sl-divider>
+            <sl-menu-item value="theme" type="checkbox">
+              <span slot="prefix">${svgIcon("mdi-theme-light-dark")}</span>
+              Thème
+            </sl-menu-item>
+            <sl-menu-item value="color" type="checkbox">
+              <span slot="prefix">${svgIcon("mdi-palette-outline")}</span>
+              Couleur
+            </sl-menu-item>
+            <sl-divider></sl-divider>
+            <sl-menu-item value="date" type="checkbox">
+              <span slot="prefix">${svgIcon("mdi-calendar-clock-outline")}</span>
+              Date et heure
+            </sl-menu-item>
+            <!--
+            <sl-menu-item value="chrono">
+              <div slot="prefix" class="it-mdi-timer-outline"></div>
+              Chronomètre
+            </sl-menu-item>
+            <sl-menu-item value="timer">
+              <div slot="prefix" class="it-mdi-camera-timer"></div>
+              Minuteur
+            </sl-menu-item>
+            <sl-menu-item value="alarm">
+              <div slot="prefix" class="it-mdi-bell-outline"></div>
+              Alarme
+            </sl-menu-item>
+            -->
+          </sl-menu>
+        </sl-dropdown>
+      </div>
+    `;
+  }
+  get tagTitle() {
+    return "Outils";
+  }
+  toAsciidoc() {
+    throw new Error("Method not implemented.");
+  }
+};
+ToolsIt.styles = [
+  __superGet(ToolsIt, ToolsIt, "styles"),
+  tools_css_default
+];
+__decorateClass([
+  e("sl-menu")
+], ToolsIt.prototype, "menu", 2);
+__decorateClass([
+  e('sl-menu-item[value="all"]')
+], ToolsIt.prototype, "menuItemAll", 2);
+__decorateClass([
+  e(".tools__container")
+], ToolsIt.prototype, "containerElement", 2);
+__decorateClass([
+  e(".tools__container > clock-it")
+], ToolsIt.prototype, "clockElement", 2);
+__decorateClass([
+  e(".tools__container > theme-it")
+], ToolsIt.prototype, "themeElement", 2);
+__decorateClass([
+  e(".tools__container > color-it")
+], ToolsIt.prototype, "colorElement", 2);
+__decorateClass([
+  n({ type: String, reflect: true })
+], ToolsIt.prototype, "size", 2);
+ToolsIt = __decorateClass([
+  t("tools-it")
+], ToolsIt);
+
+export {
+  ToolsIt
+};

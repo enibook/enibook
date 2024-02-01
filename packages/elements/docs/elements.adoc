@@ -6,6 +6,7 @@
 :sectnums:
 :source-highlighter: highlightjs-ext
 :stem: latexmath
+:stylesdir: styles/
 :stylesheet: asciidoctor.css
 :toc: left
 :toc-title!: 

@@ -3,7 +3,7 @@ import {
   HasSlotController,
   LocalizeController,
   ShoelaceElement,
-  __decorateClass,
+  __decorateClass as __decorateClass2,
   component_styles_default,
   f,
   m,
@@ -14,15 +14,18 @@ import {
   e as e3
 } from "./chunk.FWRBNC3J.js";
 import {
+  BaseIt,
   e,
   n,
   r,
-  t2 as t
+  t,
+  t2
 } from "./chunk.V7SARTD6.js";
 import {
   e as e2,
   i as i2,
-  t as t2
+  svgIcon,
+  t as t3
 } from "./chunk.S4JGPG5E.js";
 import {
   T,
@@ -31,6 +34,10 @@ import {
   w,
   x
 } from "./chunk.BLJAKQYI.js";
+import {
+  __decorateClass,
+  __superGet
+} from "./chunk.R3ZK4RPV.js";
 
 // ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.SI4ACBFK.js
 var form_control_styles_default = i`
@@ -346,7 +353,7 @@ var defaultValue = (propertyName = "value") => (proto, key) => {
 // ../../node_modules/.pnpm/lit-html@3.1.1/node_modules/lit-html/directives/live.js
 var l = e2(class extends i2 {
   constructor(r2) {
-    if (super(r2), r2.type !== t2.PROPERTY && r2.type !== t2.ATTRIBUTE && r2.type !== t2.BOOLEAN_ATTRIBUTE)
+    if (super(r2), r2.type !== t3.PROPERTY && r2.type !== t3.ATTRIBUTE && r2.type !== t3.BOOLEAN_ATTRIBUTE)
       throw Error("The `live` directive is not allowed on child or event bindings");
     if (!f(r2))
       throw Error("`live` bindings can only contain a single expression");
@@ -354,19 +361,19 @@ var l = e2(class extends i2 {
   render(r2) {
     return r2;
   }
-  update(i3, [t3]) {
-    if (t3 === w || t3 === T)
-      return t3;
+  update(i3, [t4]) {
+    if (t4 === w || t4 === T)
+      return t4;
     const o2 = i3.element, l2 = i3.name;
-    if (i3.type === t2.PROPERTY) {
-      if (t3 === o2[l2])
+    if (i3.type === t3.PROPERTY) {
+      if (t4 === o2[l2])
         return w;
-    } else if (i3.type === t2.BOOLEAN_ATTRIBUTE) {
-      if (!!t3 === o2.hasAttribute(l2))
+    } else if (i3.type === t3.BOOLEAN_ATTRIBUTE) {
+      if (!!t4 === o2.hasAttribute(l2))
         return w;
-    } else if (i3.type === t2.ATTRIBUTE && o2.getAttribute(l2) === t3 + "")
+    } else if (i3.type === t3.ATTRIBUTE && o2.getAttribute(l2) === t4 + "")
       return w;
-    return m(i3), t3;
+    return m(i3), t4;
   }
 });
 
@@ -603,77 +610,259 @@ var SlRange = class extends ShoelaceElement {
   }
 };
 SlRange.styles = range_styles_default;
-__decorateClass([
+__decorateClass2([
   e(".range__control")
 ], SlRange.prototype, "input", 2);
-__decorateClass([
+__decorateClass2([
   e(".range__tooltip")
 ], SlRange.prototype, "output", 2);
-__decorateClass([
+__decorateClass2([
   r()
 ], SlRange.prototype, "hasFocus", 2);
-__decorateClass([
+__decorateClass2([
   r()
 ], SlRange.prototype, "hasTooltip", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlRange.prototype, "title", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlRange.prototype, "name", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Number })
 ], SlRange.prototype, "value", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlRange.prototype, "label", 2);
-__decorateClass([
+__decorateClass2([
   n({ attribute: "help-text" })
 ], SlRange.prototype, "helpText", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Boolean, reflect: true })
 ], SlRange.prototype, "disabled", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Number })
 ], SlRange.prototype, "min", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Number })
 ], SlRange.prototype, "max", 2);
-__decorateClass([
+__decorateClass2([
   n({ type: Number })
 ], SlRange.prototype, "step", 2);
-__decorateClass([
+__decorateClass2([
   n()
 ], SlRange.prototype, "tooltip", 2);
-__decorateClass([
+__decorateClass2([
   n({ attribute: false })
 ], SlRange.prototype, "tooltipFormatter", 2);
-__decorateClass([
+__decorateClass2([
   n({ reflect: true })
 ], SlRange.prototype, "form", 2);
-__decorateClass([
+__decorateClass2([
   defaultValue()
 ], SlRange.prototype, "defaultValue", 2);
-__decorateClass([
-  t({ passive: true })
+__decorateClass2([
+  t2({ passive: true })
 ], SlRange.prototype, "handleThumbDragStart", 1);
-__decorateClass([
+__decorateClass2([
   watch("value", { waitUntilFirstUpdate: true })
 ], SlRange.prototype, "handleValueChange", 1);
-__decorateClass([
+__decorateClass2([
   watch("disabled", { waitUntilFirstUpdate: true })
 ], SlRange.prototype, "handleDisabledChange", 1);
-__decorateClass([
+__decorateClass2([
   watch("hasTooltip", { waitUntilFirstUpdate: true })
 ], SlRange.prototype, "syncRange", 1);
 
 // ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.SS5ZIWSF.js
 SlRange.define("sl-range");
 
+// src/elements/color/color.css.ts
+var color_css_default = i`
+:host {
+  display: inline-block;
+}
+
+.primary-color__colors {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-gap: var(--sl-spacing-small);
+  justify-items: center;
+  z-index: var(--sl-z-index-dropdown);
+  border: solid var(--sl-panel-border-width) var(--sl-panel-border-color);
+  border-radius: var(--sl-border-radius-medium);
+  background: var(--sl-panel-background-color);
+  padding: var(--sl-spacing-x-small);
+}
+.primary-color__ranges {
+  background: var(--sl-panel-background-color);
+  z-index: var(--sl-z-index-dropdown);
+}
+
+sl-range {
+  --thumb-size: var(--sl-spacing-small);
+  --tooltip-offset: calc(-1*var(--sl-spacing-small));
+  --track-color-active: var(--color-primary);
+  --track-color-inactive: var(--sl-color-primary-200);
+  --track-height: var(--sl-spacing-3x-small);
+}
+sl-range::part(base) {
+  padding: var(--sl-spacing-small);
+  padding-top: var(--sl-spacing-x-large);
+}
+sl-range::part(tooltip) {
+  left: var(--sl-spacing-small);
+}
+`;
+
+// src/elements/color/color.ts
+var colorNames = [
+  "gray",
+  "red",
+  "orange",
+  "amber",
+  "yellow",
+  "lime",
+  "green",
+  "emerald",
+  "teal",
+  "cyan",
+  "sky",
+  "blue",
+  "indigo",
+  "violet",
+  "purple",
+  "fuchsia",
+  "pink",
+  "rose"
+];
+var ColorIt = class extends BaseIt {
+  constructor() {
+    super();
+    this.color = "purple";
+    this.range = 5;
+    this.size = "small";
+    this.initLocalStorage();
+    this.setPrimaryColor();
+  }
+  /** Modifie la couleur principale du thème à l'aide des primitives [`shoelace`](https://shoelace.style/tokens/color). */
+  cssPrimaryColor() {
+    return `
+      :root,
+      .sl-theme-light,
+      .sl-theme-dark {
+        --sl-color-primary-50: var(--sl-color-${this.color}-50);
+        --sl-color-primary-100: var(--sl-color-${this.color}-100);
+        --sl-color-primary-200: var(--sl-color-${this.color}-200);
+        --sl-color-primary-300: var(--sl-color-${this.color}-300);
+        --sl-color-primary-400: var(--sl-color-${this.color}-400);
+        --sl-color-primary-500: var(--sl-color-${this.color}-500);
+        --sl-color-primary-600: var(--sl-color-${this.color}-600);
+        --sl-color-primary-700: var(--sl-color-${this.color}-700);
+        --sl-color-primary-800: var(--sl-color-${this.color}-800);
+        --sl-color-primary-900: var(--sl-color-${this.color}-900);
+        --sl-color-primary-950: var(--sl-color-${this.color}-950);
+        --color-primary: var(--sl-color-primary-${this.range}00);
+        --color-success: var(--sl-color-success-500);
+        --color-warning: var(--sl-color-warning-500);
+        --color-danger: var(--sl-color-danger-500);
+        --color-neutral: var(--sl-color-neutral-500);
+      }
+    `;
+  }
+  get colors() {
+    return colorNames.map(
+      (color) => {
+        return { name: color, value: `var(--sl-color-${color}-${this.range}00);` };
+      }
+    );
+  }
+  handleChangeRange(event) {
+    const range = event.target;
+    this.range = range.value;
+    this.setPrimaryColor();
+  }
+  initLocalStorage() {
+    const color = localStorage.getItem("color");
+    const range = localStorage.getItem("range");
+    if (!color) {
+      localStorage.setItem("color", this.color);
+    } else {
+      this.color = color;
+    }
+    if (!range) {
+      localStorage.setItem("range", `${this.range}`);
+    } else {
+      this.range = parseInt(range);
+    }
+  }
+  render() {
+    return x`
+      <div part="base" class="primary-color">
+        <sl-dropdown hoist>
+          <sl-button size=${this.size} slot="trigger" caret>
+            <span style="color:var(--color-primary)">${svgIcon("mdi-palette-outline")}</span>
+          </sl-button>
+          <div class='primary-color__colors'>
+            ${this.colors.map(
+      (item) => x`
+                <div class='primary-color__colors__color' @click=${() => {
+        this.color = item.name;
+        this.setPrimaryColor();
+      }}>
+                  <span title=${item.name} style="cursor:pointer;font-size:2em;color:${item.value}">${svgIcon("mdi-square-rounded")}
+                </div>
+              `
+    )}
+          </div>
+          <div class='primary-color__ranges'>
+            <sl-range min="1" max="9" step="1" tooltip="top" .value=${this.range} @sl-change=${this.handleChangeRange}></sl-range>
+          </div>
+        </sl-dropdown>
+      </div>
+    `;
+  }
+  setPrimaryColor() {
+    localStorage.color = this.color;
+    localStorage.range = this.range;
+    let styleElement = document.querySelector("style#colors");
+    if (!styleElement) {
+      styleElement = document.createElement("style");
+      styleElement.id = "colors";
+      document.head.appendChild(styleElement);
+    }
+    styleElement.innerHTML = this.cssPrimaryColor();
+  }
+  get tagTitle() {
+    return "Couleurs";
+  }
+  toAsciidoc() {
+    throw new Error("Method not implemented.");
+  }
+};
+ColorIt.styles = [
+  __superGet(ColorIt, ColorIt, "styles"),
+  color_css_default
+];
+__decorateClass([
+  n({ type: String, reflect: true })
+], ColorIt.prototype, "color", 2);
+__decorateClass([
+  n({ type: String, reflect: true })
+], ColorIt.prototype, "range", 2);
+__decorateClass([
+  n({ type: String, reflect: true })
+], ColorIt.prototype, "size", 2);
+ColorIt = __decorateClass([
+  t("color-it")
+], ColorIt);
+
 export {
   form_control_styles_default,
   defaultValue,
-  l
+  l,
+  colorNames,
+  ColorIt
 };
 /*! Bundled license information:
 

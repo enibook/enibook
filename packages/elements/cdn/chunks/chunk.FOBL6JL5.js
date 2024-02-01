@@ -1,10 +1,8 @@
 import {
+  EditorView,
   HighlightStyle,
   syntaxHighlighting
-} from "./chunk.YDYFHXOQ.js";
-import {
-  EditorView
-} from "./chunk.C4XOL23B.js";
+} from "./chunk.2LOO7EOW.js";
 
 // src/elements/code/themes/create-theme.ts
 var createTheme = ({ variant, settings, styles }) => {

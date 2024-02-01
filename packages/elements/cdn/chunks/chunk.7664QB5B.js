@@ -1,49 +1,40 @@
 import {
   SlPopup
-} from "./chunk.BQYFPS5T.js";
+} from "./chunk.JP6QMC4F.js";
 import {
   HasSlotController,
   LocalizeController,
   ShoelaceElement,
   SlIcon,
+  SlSpinner,
   __decorateClass,
   component_styles_default,
   f,
   getTextContent,
   watch
-} from "./chunk.TODZRVLS.js";
+} from "./chunk.JZDDMJ7T.js";
 import {
   e as e3
-} from "./chunk.FWRBNC3J.js";
+} from "./chunk.GXSA4RHW.js";
 import {
   e,
   n
-} from "./chunk.UPR5MBMR.js";
-import {
-  e as e2,
-  i as i2,
-  t
-} from "./chunk.S4JGPG5E.js";
+} from "./chunk.BMGR56LW.js";
 import {
   T,
+  e as e2,
   i,
+  i2,
+  t,
   x
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.3HTDBIKT.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.UFXVBO2X.js
 var menu_item_styles_default = i`
   ${component_styles_default}
 
   :host {
     --submenu-offset: -2px;
-
-    /* Private */
-    --safe-triangle-cursor-x: 0;
-    --safe-triangle-cursor-y: 0;
-    --safe-triangle-submenu-start-x: 0;
-    --safe-triangle-submenu-start-y: 0;
-    --safe-triangle-submenu-end-x: 0;
-    --safe-triangle-submenu-end-y: 0;
 
     display: block;
   }
@@ -74,6 +65,25 @@ var menu_item_styles_default = i`
     outline: none;
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  .menu-item.menu-item--loading {
+    outline: none;
+    cursor: wait;
+  }
+
+  .menu-item.menu-item--loading *:not(sl-spinner) {
+    opacity: 0.5;
+  }
+
+  .menu-item--loading sl-spinner {
+    --indicator-color: currentColor;
+    --track-width: 1px;
+    position: absolute;
+    font-size: 0.75em;
+    top: calc(50% - 0.5em);
+    left: 0.65rem;
+    opacity: 1;
   }
 
   .menu-item .menu-item__label {
@@ -113,9 +123,9 @@ var menu_item_styles_default = i`
     bottom: 0;
     left: 0;
     clip-path: polygon(
-      var(--safe-triangle-cursor-x) var(--safe-triangle-cursor-y),
-      var(--safe-triangle-submenu-start-x) var(--safe-triangle-submenu-start-y),
-      var(--safe-triangle-submenu-end-x) var(--safe-triangle-submenu-end-y)
+      var(--safe-triangle-cursor-x, 0) var(--safe-triangle-cursor-y, 0),
+      var(--safe-triangle-submenu-start-x, 0) var(--safe-triangle-submenu-start-y, 0),
+      var(--safe-triangle-submenu-end-x, 0) var(--safe-triangle-submenu-end-y, 0)
     );
   }
 
@@ -171,7 +181,7 @@ var menu_item_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/lit-html@3.1.1/node_modules/lit-html/async-directive.js
+// ../../node_modules/.pnpm/lit-html@3.1.2/node_modules/lit-html/async-directive.js
 var s = (i3, t2) => {
   var _a;
   const e5 = i3._$AN;
@@ -243,7 +253,7 @@ var f2 = class extends i2 {
   }
 };
 
-// ../../node_modules/.pnpm/lit-html@3.1.1/node_modules/lit-html/directives/ref.js
+// ../../node_modules/.pnpm/lit-html@3.1.2/node_modules/lit-html/directives/ref.js
 var e4 = () => new h2();
 var h2 = class {
 };
@@ -254,31 +264,31 @@ var n3 = e2(class extends f2 {
   }
   update(i3, [s2]) {
     var _a;
-    const e5 = s2 !== this.G;
-    return e5 && void 0 !== this.G && this.ot(void 0), (e5 || this.rt !== this.lt) && (this.G = s2, this.ct = (_a = i3.options) == null ? void 0 : _a.host, this.ot(this.lt = i3.element)), T;
+    const e5 = s2 !== this.Y;
+    return e5 && void 0 !== this.Y && this.rt(void 0), (e5 || this.lt !== this.ct) && (this.Y = s2, this.ht = (_a = i3.options) == null ? void 0 : _a.host, this.rt(this.ct = i3.element)), T;
   }
-  ot(t2) {
+  rt(t2) {
     var _a;
-    if ("function" == typeof this.G) {
-      const i3 = (_a = this.ct) != null ? _a : globalThis;
+    if ("function" == typeof this.Y) {
+      const i3 = (_a = this.ht) != null ? _a : globalThis;
       let s2 = o2.get(i3);
-      void 0 === s2 && (s2 = /* @__PURE__ */ new WeakMap(), o2.set(i3, s2)), void 0 !== s2.get(this.G) && this.G.call(this.ct, void 0), s2.set(this.G, t2), void 0 !== t2 && this.G.call(this.ct, t2);
+      void 0 === s2 && (s2 = /* @__PURE__ */ new WeakMap(), o2.set(i3, s2)), void 0 !== s2.get(this.Y) && this.Y.call(this.ht, void 0), s2.set(this.Y, t2), void 0 !== t2 && this.Y.call(this.ht, t2);
     } else
-      this.G.value = t2;
+      this.Y.value = t2;
   }
-  get rt() {
+  get lt() {
     var _a, _b, _c;
-    return "function" == typeof this.G ? (_b = o2.get((_a = this.ct) != null ? _a : globalThis)) == null ? void 0 : _b.get(this.G) : (_c = this.G) == null ? void 0 : _c.value;
+    return "function" == typeof this.Y ? (_b = o2.get((_a = this.ht) != null ? _a : globalThis)) == null ? void 0 : _b.get(this.Y) : (_c = this.Y) == null ? void 0 : _c.value;
   }
   disconnected() {
-    this.rt === this.lt && this.ot(void 0);
+    this.lt === this.ct && this.rt(void 0);
   }
   reconnected() {
-    this.ot(this.lt);
+    this.rt(this.ct);
   }
 });
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.GZKJ6PRL.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.GZKJ6PRL.js
 var SubmenuController = class {
   constructor(host, hasSlotController, localize) {
     this.popupRef = e4();
@@ -506,13 +516,14 @@ var SubmenuController = class {
   }
 };
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.RPQDUULR.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.XAMCA7DC.js
 var SlMenuItem = class extends ShoelaceElement {
   constructor() {
     super(...arguments);
     this.type = "normal";
     this.checked = false;
     this.value = "";
+    this.loading = false;
     this.disabled = false;
     this.localize = new LocalizeController(this);
     this.hasSlotController = new HasSlotController(this, "submenu");
@@ -592,6 +603,7 @@ var SlMenuItem = class extends ShoelaceElement {
       "menu-item--rtl": isRtl,
       "menu-item--checked": this.checked,
       "menu-item--disabled": this.disabled,
+      "menu-item--loading": this.loading,
       "menu-item--has-submenu": this.isSubmenu(),
       "menu-item--submenu-expanded": isSubmenuExpanded
     })}
@@ -613,6 +625,7 @@ var SlMenuItem = class extends ShoelaceElement {
         </span>
 
         ${this.submenuController.renderSubmenu()}
+        ${this.loading ? x` <sl-spinner part="spinner" exportparts="base:spinner__base"></sl-spinner> ` : ""}
       </div>
     `;
   }
@@ -620,7 +633,8 @@ var SlMenuItem = class extends ShoelaceElement {
 SlMenuItem.styles = menu_item_styles_default;
 SlMenuItem.dependencies = {
   "sl-icon": SlIcon,
-  "sl-popup": SlPopup
+  "sl-popup": SlPopup,
+  "sl-spinner": SlSpinner
 };
 __decorateClass([
   e("slot:not([name])")
@@ -639,6 +653,9 @@ __decorateClass([
 ], SlMenuItem.prototype, "value", 2);
 __decorateClass([
   n({ type: Boolean, reflect: true })
+], SlMenuItem.prototype, "loading", 2);
+__decorateClass([
+  n({ type: Boolean, reflect: true })
 ], SlMenuItem.prototype, "disabled", 2);
 __decorateClass([
   watch("checked")
@@ -650,7 +667,7 @@ __decorateClass([
   watch("type")
 ], SlMenuItem.prototype, "handleTypeChange", 1);
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.YNKSE7KC.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.OY23NLVG.js
 SlMenuItem.define("sl-menu-item");
 /*! Bundled license information:
 

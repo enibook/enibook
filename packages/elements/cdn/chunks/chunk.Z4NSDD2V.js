@@ -9,10 +9,10 @@ import {
   m,
   o,
   watch
-} from "./chunk.TODZRVLS.js";
+} from "./chunk.JZDDMJ7T.js";
 import {
   e as e3
-} from "./chunk.FWRBNC3J.js";
+} from "./chunk.GXSA4RHW.js";
 import {
   BaseIt,
   e,
@@ -20,26 +20,24 @@ import {
   r,
   t,
   t2
-} from "./chunk.UPR5MBMR.js";
-import {
-  e as e2,
-  i as i2,
-  svgIcon,
-  t as t3
-} from "./chunk.S4JGPG5E.js";
+} from "./chunk.BMGR56LW.js";
 import {
   T,
+  e as e2,
   i,
+  i2,
+  svgIcon,
+  t as t3,
   u,
   w,
   x
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 import {
   __decorateClass,
   __superGet
 } from "./chunk.R3ZK4RPV.js";
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.SI4ACBFK.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.SI4ACBFK.js
 var form_control_styles_default = i`
   .form-control .form-control__label {
     display: none;
@@ -98,7 +96,7 @@ var form_control_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.WB6EPZFH.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.WB6EPZFH.js
 var range_styles_default = i`
   ${component_styles_default}
   ${form_control_styles_default}
@@ -330,7 +328,7 @@ var range_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.GI7VDIWX.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.GI7VDIWX.js
 var defaultValue = (propertyName = "value") => (proto, key) => {
   const ctor = proto.constructor;
   const attributeChangedCallback = ctor.prototype.attributeChangedCallback;
@@ -350,7 +348,7 @@ var defaultValue = (propertyName = "value") => (proto, key) => {
   };
 };
 
-// ../../node_modules/.pnpm/lit-html@3.1.1/node_modules/lit-html/directives/live.js
+// ../../node_modules/.pnpm/lit-html@3.1.2/node_modules/lit-html/directives/live.js
 var l = e2(class extends i2 {
   constructor(r2) {
     if (super(r2), r2.type !== t3.PROPERTY && r2.type !== t3.ATTRIBUTE && r2.type !== t3.BOOLEAN_ATTRIBUTE)
@@ -377,7 +375,7 @@ var l = e2(class extends i2 {
   }
 });
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.VI4JB5JA.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.DVDQYHKA.js
 var SlRange = class extends ShoelaceElement {
   constructor() {
     super(...arguments);
@@ -674,7 +672,7 @@ __decorateClass2([
   watch("hasTooltip", { waitUntilFirstUpdate: true })
 ], SlRange.prototype, "syncRange", 1);
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.SS5ZIWSF.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.ZZKDXCEF.js
 SlRange.define("sl-range");
 
 // src/elements/color/color.css.ts

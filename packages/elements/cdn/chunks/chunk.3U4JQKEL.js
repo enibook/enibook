@@ -6,27 +6,27 @@ import {
   setDefaultAnimation,
   stopAnimations,
   waitForEvent
-} from "./chunk.BQYFPS5T.js";
+} from "./chunk.JP6QMC4F.js";
 import {
   LocalizeController,
   ShoelaceElement,
   __decorateClass,
   component_styles_default,
   watch
-} from "./chunk.TODZRVLS.js";
+} from "./chunk.JZDDMJ7T.js";
 import {
   e as e2
-} from "./chunk.FWRBNC3J.js";
+} from "./chunk.GXSA4RHW.js";
 import {
   e,
   n
-} from "./chunk.UPR5MBMR.js";
+} from "./chunk.BMGR56LW.js";
 import {
   i,
   x
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NY74SEUT.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.LTNP3XQR.js
 var tooltip_styles_default = i`
   ${component_styles_default}
 
@@ -44,7 +44,6 @@ var tooltip_styles_default = i`
   }
 
   .tooltip::part(popup) {
-    pointer-events: none;
     z-index: var(--sl-z-index-tooltip);
   }
 
@@ -82,7 +81,7 @@ var tooltip_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.JCYKKWGE.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.KMHZYCWU.js
 var SlTooltip = class extends ShoelaceElement {
   constructor() {
     super();
@@ -114,8 +113,8 @@ var SlTooltip = class extends ShoelaceElement {
         this.show();
       }
     };
-    this.handleKeyDown = (event) => {
-      if (this.open && !this.disabled && event.key === "Escape") {
+    this.handleDocumentKeyDown = (event) => {
+      if (event.key === "Escape") {
         event.stopPropagation();
         this.hide();
       }
@@ -137,12 +136,13 @@ var SlTooltip = class extends ShoelaceElement {
     this.addEventListener("blur", this.handleBlur, true);
     this.addEventListener("focus", this.handleFocus, true);
     this.addEventListener("click", this.handleClick);
-    this.addEventListener("keydown", this.handleKeyDown);
     this.addEventListener("mouseover", this.handleMouseOver);
     this.addEventListener("mouseout", this.handleMouseOut);
   }
-  connectedCallback() {
-    super.connectedCallback();
+  disconnectedCallback() {
+    var _a;
+    (_a = this.closeWatcher) == null ? void 0 : _a.destroy();
+    document.removeEventListener("keydown", this.handleDocumentKeyDown);
   }
   firstUpdated() {
     this.body.hidden = !this.open;
@@ -156,19 +156,32 @@ var SlTooltip = class extends ShoelaceElement {
     return triggers.includes(triggerType);
   }
   async handleOpenChange() {
+    var _a, _b;
     if (this.open) {
       if (this.disabled) {
         return;
       }
       this.emit("sl-show");
+      if ("CloseWatcher" in window) {
+        (_a = this.closeWatcher) == null ? void 0 : _a.destroy();
+        this.closeWatcher = new CloseWatcher();
+        this.closeWatcher.onclose = () => {
+          this.hide();
+        };
+      } else {
+        document.addEventListener("keydown", this.handleDocumentKeyDown);
+      }
       await stopAnimations(this.body);
       this.body.hidden = false;
       this.popup.active = true;
       const { keyframes, options } = getAnimation(this, "tooltip.show", { dir: this.localize.dir() });
       await animateTo(this.popup.popup, keyframes, options);
+      this.popup.reposition();
       this.emit("sl-after-show");
     } else {
       this.emit("sl-hide");
+      (_b = this.closeWatcher) == null ? void 0 : _b.destroy();
+      document.removeEventListener("keydown", this.handleDocumentKeyDown);
       await stopAnimations(this.body);
       const { keyframes, options } = getAnimation(this, "tooltip.hide", { dir: this.localize.dir() });
       await animateTo(this.popup.popup, keyframes, options);
@@ -229,6 +242,7 @@ var SlTooltip = class extends ShoelaceElement {
         flip
         shift
         arrow
+        hover-bridge
       >
         ${""}
         <slot slot="anchor" aria-describedby="tooltip"></slot>
@@ -300,5 +314,5 @@ setDefaultAnimation("tooltip.hide", {
   options: { duration: 150, easing: "ease" }
 });
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.JHR6CYJZ.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.YXUIOLC7.js
 SlTooltip.define("sl-tooltip");

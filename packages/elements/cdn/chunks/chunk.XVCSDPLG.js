@@ -2,7 +2,7 @@ import {
   defaultValue,
   form_control_styles_default,
   l
-} from "./chunk.2KF4GLRR.js";
+} from "./chunk.Z4NSDD2V.js";
 import {
   FormControlController,
   HasSlotController,
@@ -13,30 +13,28 @@ import {
   component_styles_default,
   o,
   watch
-} from "./chunk.TODZRVLS.js";
+} from "./chunk.JZDDMJ7T.js";
 import {
   e as e2
-} from "./chunk.FWRBNC3J.js";
+} from "./chunk.GXSA4RHW.js";
 import {
   BaseIt,
   e,
   n,
   r,
   t
-} from "./chunk.UPR5MBMR.js";
-import {
-  svgIcon
-} from "./chunk.S4JGPG5E.js";
+} from "./chunk.BMGR56LW.js";
 import {
   i,
+  svgIcon,
   x
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 import {
   __decorateClass,
   __superGet
 } from "./chunk.R3ZK4RPV.js";
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.5NGT6QDY.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.5NGT6QDY.js
 var input_styles_default = i`
   ${component_styles_default}
   ${form_control_styles_default}
@@ -336,7 +334,7 @@ var input_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.EKSEZ36T.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.JFHOPD3M.js
 var SlInput = class extends ShoelaceElement {
   constructor() {
     super(...arguments);
@@ -478,8 +476,10 @@ var SlInput = class extends ShoelaceElement {
     this.input.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
   }
   /** Replaces a range of text with a new string. */
-  setRangeText(replacement, start, end, selectMode) {
-    this.input.setRangeText(replacement, start, end, selectMode);
+  setRangeText(replacement, start, end, selectMode = "preserve") {
+    const selectionStart = start != null ? start : this.input.selectionStart;
+    const selectionEnd = end != null ? end : this.input.selectionEnd;
+    this.input.setRangeText(replacement, selectionStart, selectionEnd, selectMode);
     if (this.value !== this.input.value) {
       this.value = this.input.value;
     }
@@ -783,7 +783,7 @@ __decorateClass2([
   watch("value", { waitUntilFirstUpdate: true })
 ], SlInput.prototype, "handleValueChange", 1);
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.QAQLKX4N.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.H3ASCB7F.js
 SlInput.define("sl-input");
 
 // src/elements/tools/tools.css.ts

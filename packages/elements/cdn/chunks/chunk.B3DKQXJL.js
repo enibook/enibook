@@ -57,10 +57,10 @@ import {
   sublanguageProp,
   syntaxTree,
   tags
-} from "./chunk.2LOO7EOW.js";
+} from "./chunk.TR6FF63A.js";
 import {
   icons
-} from "./chunk.S4JGPG5E.js";
+} from "./chunk.YQRSMW6G.js";
 
 // ../../node_modules/.pnpm/codemirror-asciidoc@2.0.1/node_modules/codemirror-asciidoc/lib/asciidoc.js
 var HighlightRules = function() {
@@ -2506,7 +2506,7 @@ var parser = LRParser.deserialize({
   tokenPrec: 1200
 });
 
-// ../../node_modules/.pnpm/@codemirror+lang-css@6.2.1_@codemirror+view@6.23.0/node_modules/@codemirror/lang-css/dist/index.js
+// ../../node_modules/.pnpm/@codemirror+lang-css@6.2.1_@codemirror+view@6.23.1/node_modules/@codemirror/lang-css/dist/index.js
 var _properties = null;
 function properties() {
   if (!_properties && typeof document == "object" && document.body) {
@@ -3936,7 +3936,7 @@ var parser3 = LRParser.deserialize({
   tokenPrec: 14638
 });
 
-// ../../node_modules/.pnpm/@codemirror+autocomplete@6.12.0_@codemirror+language@6.10.0_@codemirror+state@6.4.0_@codemirr_v6qxgtkwk7luopysflsiqo2bzy/node_modules/@codemirror/autocomplete/dist/index.js
+// ../../node_modules/.pnpm/@codemirror+autocomplete@6.12.0_@codemirror+language@6.10.0_@codemirror+state@6.4.0_@codemirr_6qt7hqnzq6dliprn7xw2ox5pvi/node_modules/@codemirror/autocomplete/dist/index.js
 var CompletionContext = class {
   /**
   Create a new completion context. (Mostly useful for testing
@@ -9359,7 +9359,7 @@ var parser7 = LRParser.deserialize({
   tokenPrec: 7500
 });
 
-// ../../node_modules/.pnpm/@codemirror+lang-python@6.1.3_@codemirror+state@6.4.0_@codemirror+view@6.23.0_@lezer+common@1.2.1/node_modules/@codemirror/lang-python/dist/index.js
+// ../../node_modules/.pnpm/@codemirror+lang-python@6.1.3_@codemirror+state@6.4.0_@codemirror+view@6.23.1_@lezer+common@1.2.1/node_modules/@codemirror/lang-python/dist/index.js
 var cache2 = /* @__PURE__ */ new NodeWeakMap();
 var ScopeNodes2 = /* @__PURE__ */ new Set([
   "Script",
@@ -9753,7 +9753,7 @@ function python() {
   ]);
 }
 
-// ../../node_modules/.pnpm/@codemirror+lang-sql@6.5.5_@codemirror+view@6.23.0/node_modules/@codemirror/lang-sql/dist/index.js
+// ../../node_modules/.pnpm/@codemirror+lang-sql@6.5.5_@codemirror+view@6.23.1/node_modules/@codemirror/lang-sql/dist/index.js
 var whitespace = 36;
 var LineComment2 = 1;
 var BlockComment2 = 2;

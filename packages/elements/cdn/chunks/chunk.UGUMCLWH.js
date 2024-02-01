@@ -2,16 +2,16 @@ import {
   ShoelaceElement,
   __decorateClass,
   component_styles_default
-} from "./chunk.TODZRVLS.js";
+} from "./chunk.JZDDMJ7T.js";
 import {
   e
-} from "./chunk.UPR5MBMR.js";
+} from "./chunk.BMGR56LW.js";
 import {
   i,
   x
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.Z75LPS3C.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.Z75LPS3C.js
 var menu_styles_default = i`
   ${component_styles_default}
 
@@ -31,7 +31,7 @@ var menu_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.J6DI62DI.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.IHZX6HZH.js
 var SlMenu = class extends ShoelaceElement {
   connectedCallback() {
     super.connectedCallback();
@@ -142,5 +142,5 @@ __decorateClass([
   e("slot")
 ], SlMenu.prototype, "defaultSlot", 2);
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.OSVBAQAA.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.VTJHQTFJ.js
 SlMenu.define("sl-menu");

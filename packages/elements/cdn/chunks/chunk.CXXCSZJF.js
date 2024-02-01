@@ -2,7 +2,7 @@ import {
   EditorView,
   HighlightStyle,
   syntaxHighlighting
-} from "./chunk.2LOO7EOW.js";
+} from "./chunk.TR6FF63A.js";
 
 // src/elements/code/themes/create-theme.ts
 var createTheme = ({ variant, settings, styles }) => {

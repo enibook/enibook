@@ -3,16 +3,16 @@ import {
   __decorateClass,
   component_styles_default,
   watch
-} from "./chunk.TODZRVLS.js";
+} from "./chunk.JZDDMJ7T.js";
 import {
   n
-} from "./chunk.UPR5MBMR.js";
+} from "./chunk.BMGR56LW.js";
 import {
   i,
   x
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NCZWQBRI.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NCZWQBRI.js
 var divider_styles_default = i`
   ${component_styles_default}
 
@@ -36,7 +36,7 @@ var divider_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.PZLXE5MF.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.OD3DFTRQ.js
 var SlDivider = class extends ShoelaceElement {
   constructor() {
     super(...arguments);
@@ -58,10 +58,10 @@ __decorateClass([
   watch("vertical")
 ], SlDivider.prototype, "handleVerticalChange", 1);
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.E7LZNBLS.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.5R3RFWYN.js
 SlDivider.define("sl-divider");
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.UG2OXVOH.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.UG2OXVOH.js
 var menu_label_styles_default = i`
   ${component_styles_default}
 
@@ -83,7 +83,7 @@ var menu_label_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.K2VXHNHF.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.FRHY5S3P.js
 var SlMenuLabel = class extends ShoelaceElement {
   render() {
     return x` <slot part="base" class="menu-label"></slot> `;
@@ -91,5 +91,5 @@ var SlMenuLabel = class extends ShoelaceElement {
 };
 SlMenuLabel.styles = menu_label_styles_default;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.6FVINBPT.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.OZDOOGQN.js
 SlMenuLabel.define("sl-menu-label");

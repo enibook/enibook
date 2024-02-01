@@ -8,7 +8,10 @@ import { BaseIt } from '../base/base.js';
 import styles from './answer-form.css.js';
 
 export abstract class AnswerForm extends BaseIt {
-  static override styles: CSSResultGroup = [super.styles, styles];
+  static override styles: CSSResultGroup = [
+    super.styles, 
+    styles
+  ];
 
   @query('form.answer-form')
   protected form!: HTMLFormElement;

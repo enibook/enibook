@@ -1,6 +1,6 @@
 import type { CSSResultGroup, TemplateResult } from 'lit';
-import "@shoelace-style/shoelace/dist/components/button/button.js";
-import "@shoelace-style/shoelace/dist/components/button-group/button-group.js";
+import '@shoelace-style/shoelace/dist/components/button/button.js';
+import '@shoelace-style/shoelace/dist/components/button-group/button-group.js';
 import { BaseIt } from '../base/base.js';
 /**
  * @since 2.0

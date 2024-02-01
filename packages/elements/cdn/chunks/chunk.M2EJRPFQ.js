@@ -37,7 +37,7 @@ import {
   runScopeHandlers,
   showPanel,
   syntaxTree
-} from "./chunk.2LOO7EOW.js";
+} from "./chunk.TR6FF63A.js";
 
 // ../../node_modules/.pnpm/@codemirror+commands@6.3.3/node_modules/@codemirror/commands/dist/index.js
 var toggleComment = (target) => {

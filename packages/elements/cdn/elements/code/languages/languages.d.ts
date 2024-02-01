@@ -1,4 +1,4 @@
-import type { Extension } from "@codemirror/state";
+import type { Extension } from '@codemirror/state';
 export type LANGUAGE = {
     name: string;
     cm: Extension;

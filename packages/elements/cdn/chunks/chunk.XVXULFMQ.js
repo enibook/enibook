@@ -5,27 +5,27 @@ import {
   setDefaultAnimation,
   stopAnimations,
   waitForEvent
-} from "./chunk.BQYFPS5T.js";
+} from "./chunk.JP6QMC4F.js";
 import {
   LocalizeController,
   ShoelaceElement,
   __decorateClass,
   component_styles_default,
   watch
-} from "./chunk.TODZRVLS.js";
+} from "./chunk.JZDDMJ7T.js";
 import {
   e as e2
-} from "./chunk.FWRBNC3J.js";
+} from "./chunk.GXSA4RHW.js";
 import {
   e,
   n
-} from "./chunk.UPR5MBMR.js";
+} from "./chunk.BMGR56LW.js";
 import {
   i,
   x
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.O6IUBC6G.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.O6IUBC6G.js
 var dropdown_styles_default = i`
   ${component_styles_default}
 
@@ -78,25 +78,59 @@ var dropdown_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.YCHBWCKL.js
-function isTakingUpSpace(elem) {
-  return Boolean(elem.offsetParent || elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.LXDTFLWU.js
+var computedStyleMap = /* @__PURE__ */ new WeakMap();
+function getCachedComputedStyle(el) {
+  let computedStyle = computedStyleMap.get(el);
+  if (!computedStyle) {
+    computedStyle = window.getComputedStyle(el, null);
+    computedStyleMap.set(el, computedStyle);
+  }
+  return computedStyle;
+}
+function isVisible(el) {
+  if (typeof el.checkVisibility === "function") {
+    return el.checkVisibility({ checkOpacity: false, checkVisibilityCSS: true });
+  }
+  const computedStyle = getCachedComputedStyle(el);
+  return computedStyle.visibility !== "hidden" && computedStyle.display !== "none";
+}
+function isOverflowingAndTabbable(el) {
+  const computedStyle = getCachedComputedStyle(el);
+  const { overflowY, overflowX } = computedStyle;
+  if (overflowY === "scroll" || overflowX === "scroll") {
+    return true;
+  }
+  if (overflowY !== "auto" || overflowX !== "auto") {
+    return false;
+  }
+  const isOverflowingY = el.scrollHeight > el.clientHeight;
+  if (isOverflowingY && overflowY === "auto") {
+    return true;
+  }
+  const isOverflowingX = el.scrollWidth > el.clientWidth;
+  if (isOverflowingX && overflowX === "auto") {
+    return true;
+  }
+  return false;
 }
 function isTabbable(el) {
   const tag = el.tagName.toLowerCase();
-  if (el.getAttribute("tabindex") === "-1") {
+  const tabindex = Number(el.getAttribute("tabindex"));
+  const hasTabindex = el.hasAttribute("tabindex");
+  if (hasTabindex && (isNaN(tabindex) || tabindex <= -1)) {
     return false;
   }
   if (el.hasAttribute("disabled")) {
     return false;
   }
+  if (el.closest("[inert]")) {
+    return false;
+  }
   if (tag === "input" && el.getAttribute("type") === "radio" && !el.hasAttribute("checked")) {
     return false;
   }
-  if (!isTakingUpSpace(el)) {
-    return false;
-  }
-  if (window.getComputedStyle(el).visibility === "hidden") {
+  if (!isVisible(el)) {
     return false;
   }
   if ((tag === "audio" || tag === "video") && el.hasAttribute("controls")) {
@@ -108,7 +142,21 @@ function isTabbable(el) {
   if (el.hasAttribute("contenteditable") && el.getAttribute("contenteditable") !== "false") {
     return true;
   }
-  return ["button", "input", "select", "textarea", "a", "audio", "video", "summary"].includes(tag);
+  const isNativelyTabbable = [
+    "button",
+    "input",
+    "select",
+    "textarea",
+    "a",
+    "audio",
+    "video",
+    "summary",
+    "iframe"
+  ].includes(tag);
+  if (isNativelyTabbable) {
+    return true;
+  }
+  return isOverflowingAndTabbable(el);
 }
 function getTabbableBoundary(root) {
   var _a, _b;
@@ -117,21 +165,26 @@ function getTabbableBoundary(root) {
   const end = (_b = tabbableElements[tabbableElements.length - 1]) != null ? _b : null;
   return { start, end };
 }
+function getSlottedChildrenOutsideRootElement(slotElement, root) {
+  var _a;
+  return ((_a = slotElement.getRootNode({ composed: true })) == null ? void 0 : _a.host) !== root;
+}
 function getTabbableElements(root) {
+  const walkedEls = /* @__PURE__ */ new WeakMap();
   const tabbableElements = [];
   function walk(el) {
     if (el instanceof Element) {
-      if (el.hasAttribute("inert")) {
+      if (el.hasAttribute("inert") || el.closest("[inert]")) {
         return;
       }
+      if (walkedEls.has(el)) {
+        return;
+      }
+      walkedEls.set(el, true);
       if (!tabbableElements.includes(el) && isTabbable(el)) {
         tabbableElements.push(el);
       }
-      const slotChildrenOutsideRootElement = (slotElement) => {
-        var _a;
-        return ((_a = slotElement.getRootNode({ composed: true })) == null ? void 0 : _a.host) !== root;
-      };
-      if (el instanceof HTMLSlotElement && slotChildrenOutsideRootElement(el)) {
+      if (el instanceof HTMLSlotElement && getSlottedChildrenOutsideRootElement(el, root)) {
         el.assignedElements({ flatten: true }).forEach((assignedEl) => {
           walk(assignedEl);
         });
@@ -140,7 +193,9 @@ function getTabbableElements(root) {
         walk(el.shadowRoot);
       }
     }
-    [...el.children].forEach((e3) => walk(e3));
+    for (const e3 of el.children) {
+      walk(e3);
+    }
   }
   walk(root);
   return tabbableElements.sort((a, b) => {
@@ -150,7 +205,7 @@ function getTabbableElements(root) {
   });
 }
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.OXQK54JN.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.KGOQDXKU.js
 var SlDropdown = class extends ShoelaceElement {
   constructor() {
     super(...arguments);
@@ -171,7 +226,7 @@ var SlDropdown = class extends ShoelaceElement {
     };
     this.handleDocumentKeyDown = (event) => {
       var _a;
-      if (event.key === "Escape" && this.open) {
+      if (event.key === "Escape" && this.open && !this.closeWatcher) {
         event.stopPropagation();
         this.focusOnTrigger();
         this.hide();
@@ -333,18 +388,30 @@ var SlDropdown = class extends ShoelaceElement {
     this.popup.reposition();
   }
   addOpenListeners() {
+    var _a;
     this.panel.addEventListener("sl-select", this.handlePanelSelect);
-    this.panel.addEventListener("keydown", this.handleKeyDown);
+    if ("CloseWatcher" in window) {
+      (_a = this.closeWatcher) == null ? void 0 : _a.destroy();
+      this.closeWatcher = new CloseWatcher();
+      this.closeWatcher.onclose = () => {
+        this.hide();
+        this.focusOnTrigger();
+      };
+    } else {
+      this.panel.addEventListener("keydown", this.handleKeyDown);
+    }
     document.addEventListener("keydown", this.handleDocumentKeyDown);
     document.addEventListener("mousedown", this.handleDocumentMouseDown);
   }
   removeOpenListeners() {
+    var _a;
     if (this.panel) {
       this.panel.removeEventListener("sl-select", this.handlePanelSelect);
       this.panel.removeEventListener("keydown", this.handleKeyDown);
     }
     document.removeEventListener("keydown", this.handleDocumentKeyDown);
     document.removeEventListener("mousedown", this.handleDocumentMouseDown);
+    (_a = this.closeWatcher) == null ? void 0 : _a.destroy();
   }
   async handleOpenChange() {
     if (this.disabled) {
@@ -461,5 +528,5 @@ setDefaultAnimation("dropdown.hide", {
   options: { duration: 100, easing: "ease" }
 });
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.MHCKU7CX.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.T777MG7M.js
 SlDropdown.define("sl-dropdown");

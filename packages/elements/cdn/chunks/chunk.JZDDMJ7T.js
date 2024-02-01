@@ -1,11 +1,11 @@
 import {
   e as e2
-} from "./chunk.FWRBNC3J.js";
+} from "./chunk.GXSA4RHW.js";
 import {
   e,
   n,
   r
-} from "./chunk.UPR5MBMR.js";
+} from "./chunk.BMGR56LW.js";
 import {
   T,
   b,
@@ -13,9 +13,9 @@ import {
   s,
   x,
   z
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.TUVJKY7S.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.TUVJKY7S.js
 var component_styles_default = i`
   :host {
     box-sizing: border-box;
@@ -32,7 +32,7 @@ var component_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.CAHT2E74.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.EACLXYYC.js
 var spinner_styles_default = i`
   ${component_styles_default}
 
@@ -45,6 +45,7 @@ var spinner_styles_default = i`
     display: inline-flex;
     width: 1em;
     height: 1em;
+    flex: none;
   }
 
   .spinner {
@@ -78,7 +79,7 @@ var spinner_styles_default = i`
   @keyframes spin {
     0% {
       transform: rotate(0deg);
-      stroke-dasharray: 0.01em, 2.75em;
+      stroke-dasharray: 0.05em, 3em;
     }
 
     50% {
@@ -88,7 +89,7 @@ var spinner_styles_default = i`
 
     100% {
       transform: rotate(1080deg);
-      stroke-dasharray: 0.01em, 2.75em;
+      stroke-dasharray: 0.05em, 3em;
     }
   }
 `;
@@ -193,7 +194,7 @@ var LocalizeController = class {
   }
 };
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.MAS2SHYD.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.MAS2SHYD.js
 var translation = {
   $code: "en",
   $name: "English",
@@ -230,12 +231,12 @@ var translation = {
 registerTranslation(translation);
 var en_default = translation;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.WLV3FVBR.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.WLV3FVBR.js
 var LocalizeController2 = class extends LocalizeController {
 };
 registerTranslation(en_default);
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.MAD5PUM2.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.IFDWM6P4.js
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -266,7 +267,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.OWF334BP.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.U5X52PUD.js
 var ShoelaceElement = class extends s {
   constructor() {
     super();
@@ -308,7 +309,7 @@ var ShoelaceElement = class extends s {
     );
   }
 };
-ShoelaceElement.version = "2.12.0";
+ShoelaceElement.version = "2.13.1";
 ShoelaceElement.dependencies = {};
 __decorateClass([
   n()
@@ -317,7 +318,7 @@ __decorateClass([
   n()
 ], ShoelaceElement.prototype, "lang", 2);
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.ASVYZWRC.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.XYU7AT6Q.js
 var SlSpinner = class extends ShoelaceElement {
   constructor() {
     super(...arguments);
@@ -334,7 +335,7 @@ var SlSpinner = class extends ShoelaceElement {
 };
 SlSpinner.styles = spinner_styles_default;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.FGTOZLVQ.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.DL5222VR.js
 var formCollections = /* @__PURE__ */ new WeakMap();
 var reportValidityOverloads = /* @__PURE__ */ new WeakMap();
 var checkValidityOverloads = /* @__PURE__ */ new WeakMap();
@@ -347,7 +348,7 @@ var FormControlController = class {
       const name = this.options.name(this.host);
       const value = this.options.value(this.host);
       const isButton = this.host.tagName.toLowerCase() === "sl-button";
-      if (!disabled && !isButton && typeof name === "string" && name.length > 0 && typeof value !== "undefined") {
+      if (this.host.isConnected && !disabled && !isButton && typeof name === "string" && name.length > 0 && typeof value !== "undefined") {
         if (Array.isArray(value)) {
           value.forEach((val) => {
             event.formData.append(name, val.toString());
@@ -625,7 +626,7 @@ var customErrorValidityState = Object.freeze(__spreadProps(__spreadValues({}, va
   customError: true
 }));
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.MGOBPGE5.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.MGOBPGE5.js
 var button_styles_default = i`
   ${component_styles_default}
 
@@ -1223,7 +1224,7 @@ var button_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NYIIDP5N.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NYIIDP5N.js
 var HasSlotController = class {
   constructor(host, ...slotNames) {
     this.slotNames = [];
@@ -1281,25 +1282,7 @@ function getTextContent(slot) {
   return text;
 }
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.LMJPQPQT.js
-var icon_styles_default = i`
-  ${component_styles_default}
-
-  :host {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    box-sizing: content-box !important;
-  }
-
-  svg {
-    display: block;
-    height: 100%;
-    width: 100%;
-  }
-`;
-
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.3Y6SB6QS.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.3Y6SB6QS.js
 var basePath = "";
 function setBasePath(path) {
   basePath = path;
@@ -1324,14 +1307,14 @@ function getBasePath(subpath = "") {
   return basePath.replace(/\/$/, "") + (subpath ? `/${subpath.replace(/^\//, "")}` : ``);
 }
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.P7ZG6EMR.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.P7ZG6EMR.js
 var library = {
   name: "default",
   resolver: (name) => getBasePath(`assets/icons/${name}.svg`)
 };
 var library_default_default = library;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.3TFKS637.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.3TFKS637.js
 var icons = {
   caret: `
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1455,7 +1438,7 @@ var systemLibrary = {
 };
 var library_system_default = systemLibrary;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.ZL53POKZ.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.ZL53POKZ.js
 var registry = [library_default_default, library_system_default];
 var watchedIcons = [];
 function watchIcon(icon) {
@@ -1468,7 +1451,25 @@ function getIconLibrary(name) {
   return registry.find((lib) => lib.name === name);
 }
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.Q6ASPMKT.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.LMJPQPQT.js
+var icon_styles_default = i`
+  ${component_styles_default}
+
+  :host {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    box-sizing: content-box !important;
+  }
+
+  svg {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+`;
+
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.2FB5TK5H.js
 function watch(propertyName, options) {
   const resolvedOptions = __spreadValues({
     waitUntilFirstUpdate: false
@@ -1494,14 +1495,14 @@ function watch(propertyName, options) {
   };
 }
 
-// ../../node_modules/.pnpm/lit-html@3.1.1/node_modules/lit-html/directive-helpers.js
-var { D: t } = z;
+// ../../node_modules/.pnpm/lit-html@3.1.2/node_modules/lit-html/directive-helpers.js
+var { I: t } = z;
 var e3 = (o3, t2) => void 0 === t2 ? void 0 !== (o3 == null ? void 0 : o3._$litType$) : (o3 == null ? void 0 : o3._$litType$) === t2;
 var f = (o3) => void 0 === o3.strings;
 var u = {};
 var m = (o3, t2 = u) => o3._$AH = t2;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.DBSXUUUO.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.Y62EZWMI.js
 var CACHEABLE_ERROR = Symbol();
 var RETRYABLE_ERROR = Symbol();
 var parser;
@@ -1651,7 +1652,7 @@ __decorateClass([
   watch(["name", "src", "library"])
 ], SlIcon.prototype, "setIcon", 1);
 
-// ../../node_modules/.pnpm/lit-html@3.1.1/node_modules/lit-html/static.js
+// ../../node_modules/.pnpm/lit-html@3.1.2/node_modules/lit-html/static.js
 var e4 = Symbol.for("");
 var o = (t2) => {
   if ((t2 == null ? void 0 : t2.r) === e4)
@@ -1683,10 +1684,10 @@ var l = (t2) => (r2, ...e5) => {
 var n2 = l(x);
 var u2 = l(b);
 
-// ../../node_modules/.pnpm/lit-html@3.1.1/node_modules/lit-html/directives/if-defined.js
+// ../../node_modules/.pnpm/lit-html@3.1.2/node_modules/lit-html/directives/if-defined.js
 var o2 = (o3) => o3 != null ? o3 : T;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.OLRROZ37.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.H5IWQ6LD.js
 var SlButton = class extends ShoelaceElement {
   constructor() {
     super(...arguments);
@@ -1940,7 +1941,7 @@ __decorateClass([
   watch("disabled", { waitUntilFirstUpdate: true })
 ], SlButton.prototype, "handleDisabledChange", 1);
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.YZ7K2CWQ.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.5IKI4445.js
 SlButton.define("sl-button");
 
 export {
@@ -1950,6 +1951,7 @@ export {
   __spreadProps,
   __decorateClass,
   ShoelaceElement,
+  SlSpinner,
   FormControlController,
   HasSlotController,
   getTextContent,

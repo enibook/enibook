@@ -1,14 +1,14 @@
-import { type CSSResultGroup, type TemplateResult } from "lit";
-import { BaseIt } from "../base/base.js";
+import { type CSSResultGroup, type TemplateResult } from 'lit';
+import { BaseIt } from '../base/base.js';
 export declare class LoremIpsumIt extends BaseIt {
     static styles: CSSResultGroup;
     /** Nombre d'objets textuels (mots, paragraphes, phrases, items de liste) générés. */
     count: number;
     /** Type des objets textuels (mots, paragraphes, phrases, items de liste) générés. */
-    type: "dlist" | "olist" | "paragraph" | "sentence" | "ulist" | "word";
+    type: 'dlist' | 'olist' | 'paragraph' | 'sentence' | 'ulist' | 'word';
     protected createTerm(): string;
     /** Texte aléatoire généré selon son type. */
-    createText(type?: "dlist" | "olist" | "paragraph" | "sentence" | "ulist" | "word"): string;
+    createText(type?: 'dlist' | 'olist' | 'paragraph' | 'sentence' | 'ulist' | 'word'): string;
     /**
      * Dictionnaire de mots.
      */
@@ -34,6 +34,6 @@ export declare class LoremIpsumIt extends BaseIt {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        "lorem-ipsum-it": LoremIpsumIt;
+        'lorem-ipsum-it': LoremIpsumIt;
     }
 }

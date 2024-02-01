@@ -1,25 +1,28 @@
 import {
-  dedentText
-} from "./chunk.RDB6EABP.js";
-import {
   emit
 } from "./chunk.A7AB44PI.js";
+import {
+  frenchPhrases
+} from "./chunk.3IXWQSYW.js";
+import {
+  darkTheme
+} from "./chunk.PW3PTY3Q.js";
+import {
+  lightTheme
+} from "./chunk.K7V46BFW.js";
+import {
+  dedentText
+} from "./chunk.RDB6EABP.js";
 import {
   autocompletion,
   closeBrackets,
   closeBracketsKeymap,
   completionKeymap,
   languages
-} from "./chunk.ET56H6HD.js";
+} from "./chunk.B3DKQXJL.js";
 import {
-  frenchPhrases
-} from "./chunk.3IXWQSYW.js";
-import {
-  darkTheme
-} from "./chunk.4IDR2W55.js";
-import {
-  lightTheme
-} from "./chunk.XUIWESLB.js";
+  AnswerForm
+} from "./chunk.VAGJMB53.js";
 import {
   crelt,
   defaultKeymap,
@@ -37,7 +40,7 @@ import {
   toggleBlockComment,
   toggleComment,
   undo
-} from "./chunk.BOSK27HD.js";
+} from "./chunk.M2EJRPFQ.js";
 import {
   Compartment,
   Decoration,
@@ -71,17 +74,14 @@ import {
   rectangularSelection,
   showPanel,
   syntaxHighlighting
-} from "./chunk.2LOO7EOW.js";
-import {
-  AnswerForm
-} from "./chunk.2ONBZE7Z.js";
+} from "./chunk.TR6FF63A.js";
 import {
   animateTo,
   getAnimation,
   setDefaultAnimation,
   stopAnimations,
   waitForEvent
-} from "./chunk.BQYFPS5T.js";
+} from "./chunk.JP6QMC4F.js";
 import {
   HasSlotController,
   LocalizeController,
@@ -93,31 +93,29 @@ import {
   o,
   s,
   watch
-} from "./chunk.TODZRVLS.js";
+} from "./chunk.JZDDMJ7T.js";
 import {
   e as e2
-} from "./chunk.FWRBNC3J.js";
+} from "./chunk.GXSA4RHW.js";
 import {
   e,
   n,
   r,
   r2,
   t
-} from "./chunk.UPR5MBMR.js";
-import {
-  o as o2,
-  svgIcon
-} from "./chunk.S4JGPG5E.js";
+} from "./chunk.BMGR56LW.js";
 import {
   i,
+  o as o2,
+  svgIcon,
   x
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 import {
   __decorateClass,
   __superGet
 } from "./chunk.R3ZK4RPV.js";
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.7BLP64MK.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.7BLP64MK.js
 var icon_button_styles_default = i`
   ${component_styles_default}
 
@@ -169,7 +167,7 @@ var icon_button_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.HDLULROG.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.LAJLA5X5.js
 var SlIconButton = class extends ShoelaceElement {
   constructor() {
     super(...arguments);
@@ -272,7 +270,7 @@ __decorateClass2([
   n({ type: Boolean, reflect: true })
 ], SlIconButton.prototype, "disabled", 2);
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.4GRKCE6W.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.4GRKCE6W.js
 var alert_styles_default = i`
   ${component_styles_default}
 
@@ -368,7 +366,7 @@ var alert_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.MDWWAXW6.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.BA2OOAYV.js
 var toastStack = Object.assign(document.createElement("div"), { className: "sl-toast-stack" });
 var SlAlert = class extends ShoelaceElement {
   constructor() {
@@ -543,10 +541,10 @@ setDefaultAnimation("alert.hide", {
   options: { duration: 250, easing: "ease" }
 });
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.J7TQ3TIA.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.DMSN75I5.js
 SlAlert.define("sl-alert");
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NHDDOLWD.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NHDDOLWD.js
 var badge_styles_default = i`
   ${component_styles_default}
 
@@ -640,7 +638,7 @@ var badge_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.Y7HKY46E.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.JYIFPSNK.js
 var SlBadge = class extends ShoelaceElement {
   constructor() {
     super(...arguments);
@@ -680,10 +678,10 @@ __decorateClass2([
   n({ type: Boolean, reflect: true })
 ], SlBadge.prototype, "pulse", 2);
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.DCAHTA3L.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.J2UB6JS5.js
 SlBadge.define("sl-badge");
 
-// ../../node_modules/.pnpm/@codemirror+lint@6.4.2/node_modules/@codemirror/lint/dist/index.js
+// ../../node_modules/.pnpm/@codemirror+lint@6.5.0/node_modules/@codemirror/lint/dist/index.js
 var SelectedDiagnostic = class {
   constructor(from, to, diagnostic) {
     this.from = from;
@@ -701,14 +699,15 @@ var LintState = class _LintState {
     let markedDiagnostics = diagnostics;
     let diagnosticFilter = state.facet(lintConfig).markerFilter;
     if (diagnosticFilter)
-      markedDiagnostics = diagnosticFilter(markedDiagnostics);
+      markedDiagnostics = diagnosticFilter(markedDiagnostics, state);
     let ranges = Decoration.set(markedDiagnostics.map((d) => {
       return d.from == d.to || d.from == d.to - 1 && state.doc.lineAt(d.from).to == d.from ? Decoration.widget({
         widget: new DiagnosticWidget(d),
         diagnostic: d
       }).range(d.from) : Decoration.mark({
         attributes: { class: "cm-lintRange cm-lintRange-" + d.severity + (d.markClass ? " " + d.markClass : "") },
-        diagnostic: d
+        diagnostic: d,
+        inclusive: true
       }).range(d.from, d.to);
     }), true);
     return new _LintState(ranges, panel, findDiagnostic(ranges));
@@ -763,7 +762,7 @@ var lintState = /* @__PURE__ */ StateField.define({
     EditorView.decorations.from(f, (s2) => s2.diagnostics)
   ]
 });
-var activeMark = /* @__PURE__ */ Decoration.mark({ class: "cm-lintRange cm-lintRange-active" });
+var activeMark = /* @__PURE__ */ Decoration.mark({ class: "cm-lintRange cm-lintRange-active", inclusive: true });
 function lintTooltip(view, pos, side) {
   let { diagnostics } = view.state.field(lintState);
   let found = [], stackStart = 2e8, stackEnd = 0;
@@ -776,7 +775,7 @@ function lintTooltip(view, pos, side) {
   });
   let diagnosticFilter = view.state.facet(lintConfig).tooltipFilter;
   if (diagnosticFilter)
-    found = diagnosticFilter(found);
+    found = diagnosticFilter(found, view.state);
   if (!found.length)
     return null;
   return {
@@ -826,7 +825,7 @@ var lintKeymap = [
 ];
 var lintConfig = /* @__PURE__ */ Facet.define({
   combine(input) {
-    return Object.assign({ sources: input.map((i2) => i2.source) }, combineConfig(input.map((i2) => i2.config), {
+    return Object.assign({ sources: input.map((i2) => i2.source).filter((x2) => x2 != null) }, combineConfig(input.map((i2) => i2.config), {
       delay: 750,
       markerFilter: null,
       tooltipFilter: null,
@@ -1200,7 +1199,7 @@ var basicSetup = /* @__PURE__ */ (() => [
   ])
 ])();
 
-// ../../node_modules/.pnpm/@replit+codemirror-indentation-markers@6.5.0_@codemirror+language@6.10.0_@codemirror+state@6.4.0_@codemirror+view@6.23.0/node_modules/@replit/codemirror-indentation-markers/dist/index.js
+// ../../node_modules/.pnpm/@replit+codemirror-indentation-markers@6.5.0_@codemirror+language@6.10.0_@codemirror+state@6.4.0_@codemirror+view@6.23.1/node_modules/@replit/codemirror-indentation-markers/dist/index.js
 function getVisibleLines(view, state = view.state) {
   const lines = /* @__PURE__ */ new Set();
   for (const { from, to } of view.visibleRanges) {
@@ -2111,16 +2110,17 @@ var CodeIt = class extends AnswerForm {
     return x`
       <toolbar-it class="statusbar" ?hidden=${!this.toolbar}>
         <sl-button-group slot="end" label="informations">
+          <sl-tooltip hoist>
+            <div slot="content">lien sur une page d'aide du langage <code>${languages[this.language].name}</code></div>
+            <sl-button size="small" variant="neutral" href="${this.getHelpUrl()}" target="_blank"
+              >${o2(languages[this.language].logo)}</sl-button
+            >
+          </sl-tooltip>
           <sl-tooltip content="numéros de la ligne et de la colonne courantes" hoist>
             <sl-button size="small" variant="neutral">L ${this.cursorLine} - C ${this.cursorColumn}</sl-button>
           </sl-tooltip>
           <sl-tooltip content="indentation en nombre d'espaces" hoist>
             <sl-button size="small" variant="neutral">Indent : ${this.indentSize}</sl-button>
-          </sl-tooltip>
-          <sl-tooltip content="format de données Mime et lien sur une page d'aide" hoist>
-            <sl-button size="small" variant="neutral" href="${this.getHelpUrl()}" target="_blank"
-              >${languages[this.language].mime}</sl-button
-            >
           </sl-tooltip>
           <sl-tooltip content="mode de l'éditeur : édition ou lecture seule" hoist>
             <sl-button size="small" variant="neutral">${this.readOnly ? x`lecture seule` : x`édition`}</sl-button>

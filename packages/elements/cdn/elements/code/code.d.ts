@@ -7,10 +7,10 @@ import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js';
 import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js';
 import type SlMenu from '@shoelace-style/shoelace/dist/components/menu/menu.js';
 import type SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
-import { Compartment } from "@codemirror/state";
-import { EditorView } from "@codemirror/view";
-import type { Command } from "@codemirror/view";
-import type { Extension, StateField } from "@codemirror/state";
+import { Compartment } from '@codemirror/state';
+import { EditorView } from '@codemirror/view';
+import type { Command } from '@codemirror/view';
+import type { Extension, StateField } from '@codemirror/state';
 import '../toolbar/toolbar';
 import { AnswerForm } from '../answer-form/answer-form.js';
 /**

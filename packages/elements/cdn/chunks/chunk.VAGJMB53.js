@@ -1,15 +1,15 @@
 import {
   e as e2
-} from "./chunk.FWRBNC3J.js";
+} from "./chunk.GXSA4RHW.js";
 import {
   BaseIt,
   e,
   n
-} from "./chunk.UPR5MBMR.js";
+} from "./chunk.BMGR56LW.js";
 import {
   i,
   x
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 import {
   __decorateClass,
   __superGet
@@ -75,7 +75,10 @@ var _AnswerForm = class _AnswerForm extends BaseIt {
     `;
   }
 };
-_AnswerForm.styles = [__superGet(_AnswerForm, _AnswerForm, "styles"), answer_form_css_default];
+_AnswerForm.styles = [
+  __superGet(_AnswerForm, _AnswerForm, "styles"),
+  answer_form_css_default
+];
 __decorateClass([
   e("form.answer-form")
 ], _AnswerForm.prototype, "form", 2);

@@ -1,6 +1,6 @@
 // lit
 import { customElement, property, query, queryAll, state } from 'lit/decorators.js';
-import { html } from 'lit';
+import { html, svg } from 'lit';
 import type { CSSResultGroup, PropertyValueMap, TemplateResult } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 // shoelace
@@ -700,16 +700,17 @@ export class CodeIt extends AnswerForm {
     return html`
       <toolbar-it class="statusbar" ?hidden=${!this.toolbar}>
         <sl-button-group slot="end" label="informations">
+          <sl-tooltip hoist>
+            <div slot="content">lien sur une page d'aide du langage <code>${languages[this.language].name}</code></div>
+            <sl-button size="small" variant="neutral" href="${this.getHelpUrl()}" target="_blank"
+              >${unsafeHTML(languages[this.language].logo)}</sl-button
+            >
+          </sl-tooltip>
           <sl-tooltip content="numéros de la ligne et de la colonne courantes" hoist>
             <sl-button size="small" variant="neutral">L ${this.cursorLine} - C ${this.cursorColumn}</sl-button>
           </sl-tooltip>
           <sl-tooltip content="indentation en nombre d'espaces" hoist>
             <sl-button size="small" variant="neutral">Indent : ${this.indentSize}</sl-button>
-          </sl-tooltip>
-          <sl-tooltip content="format de données Mime et lien sur une page d'aide" hoist>
-            <sl-button size="small" variant="neutral" href="${this.getHelpUrl()}" target="_blank"
-              >${languages[this.language].mime}</sl-button
-            >
           </sl-tooltip>
           <sl-tooltip content="mode de l'éditeur : édition ou lecture seule" hoist>
             <sl-button size="small" variant="neutral">${this.readOnly ? html`lecture seule` : html`édition`}</sl-button>

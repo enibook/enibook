@@ -3638,7 +3638,7 @@ function keyName(event) {
   return name2;
 }
 
-// ../../node_modules/.pnpm/@codemirror+view@6.23.0/node_modules/@codemirror/view/dist/index.js
+// ../../node_modules/.pnpm/@codemirror+view@6.23.1/node_modules/@codemirror/view/dist/index.js
 function getSelection(root) {
   let target;
   if (root.nodeType == 11) {
@@ -11898,9 +11898,10 @@ function crosshairCursor(options = {}) {
 }
 var Outside = "-10000px";
 var TooltipViewManager = class {
-  constructor(view, facet, createTooltipView) {
+  constructor(view, facet, createTooltipView, removeTooltipView) {
     this.facet = facet;
     this.createTooltipView = createTooltipView;
+    this.removeTooltipView = removeTooltipView;
     this.input = view.state.facet(facet);
     this.tooltips = this.input.filter((t2) => t2);
     this.tooltipViews = this.tooltips.map(createTooltipView);
@@ -11939,7 +11940,7 @@ var TooltipViewManager = class {
     }
     for (let t2 of this.tooltipViews)
       if (tooltipViews.indexOf(t2) < 0) {
-        t2.dom.remove();
+        this.removeTooltipView(t2);
         (_a2 = t2.destroy) === null || _a2 === void 0 ? void 0 : _a2.call(t2);
       }
     if (above) {
@@ -11981,7 +11982,13 @@ var tooltipPlugin = /* @__PURE__ */ ViewPlugin.fromClass(class {
     this.classes = view.themeClasses;
     this.createContainer();
     this.measureReq = { read: this.readMeasure.bind(this), write: this.writeMeasure.bind(this), key: this };
-    this.manager = new TooltipViewManager(view, showTooltip, (t2) => this.createTooltip(t2));
+    this.resizeObserver = typeof ResizeObserver == "function" ? new ResizeObserver(() => this.measureSoon()) : null;
+    this.manager = new TooltipViewManager(view, showTooltip, (t2) => this.createTooltip(t2), (t2) => {
+      if (this.resizeObserver)
+        this.resizeObserver.unobserve(t2.dom);
+      t2.dom.remove();
+    });
+    this.above = this.manager.tooltips.map((t2) => !!t2.above);
     this.intersectionObserver = typeof IntersectionObserver == "function" ? new IntersectionObserver((entries) => {
       if (Date.now() > this.lastTransaction - 50 && entries.length > 0 && entries[entries.length - 1].intersectionRatio < 1)
         this.measureSoon();
@@ -12056,10 +12063,12 @@ var tooltipPlugin = /* @__PURE__ */ ViewPlugin.fromClass(class {
     this.container.appendChild(tooltipView.dom);
     if (tooltipView.mount)
       tooltipView.mount(this.view);
+    if (this.resizeObserver)
+      this.resizeObserver.observe(tooltipView.dom);
     return tooltipView;
   }
   destroy() {
-    var _a2, _b;
+    var _a2, _b, _c;
     this.view.win.removeEventListener("resize", this.measureSoon);
     for (let tooltipView of this.manager.tooltipViews) {
       tooltipView.dom.remove();
@@ -12067,7 +12076,8 @@ var tooltipPlugin = /* @__PURE__ */ ViewPlugin.fromClass(class {
     }
     if (this.parent)
       this.container.remove();
-    (_b = this.intersectionObserver) === null || _b === void 0 ? void 0 : _b.disconnect();
+    (_b = this.resizeObserver) === null || _b === void 0 ? void 0 : _b.disconnect();
+    (_c = this.intersectionObserver) === null || _c === void 0 ? void 0 : _c.disconnect();
     clearTimeout(this.measureTimeout);
   }
   readMeasure() {
@@ -12265,7 +12275,7 @@ var HoverTooltipHost = class _HoverTooltipHost {
     this.mounted = false;
     this.dom = document.createElement("div");
     this.dom.classList.add("cm-tooltip-hover");
-    this.manager = new TooltipViewManager(view, showHoverTooltip, (t2) => this.createHostedView(t2));
+    this.manager = new TooltipViewManager(view, showHoverTooltip, (t2) => this.createHostedView(t2), (t2) => t2.dom.remove());
   }
   createHostedView(tooltip) {
     let hostedView = tooltip.create(this.view);

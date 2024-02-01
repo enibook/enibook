@@ -4,7 +4,8 @@
   "disableSources": false,
   "entryPoints": ["src"],
   "entryPointStrategy": "expand",
-  "out": "../docs/api",
+  "out": "_site/api",
+  "exclude": ["src/elements/**/*.(css|test).ts"],
   "excludeNotDocumented": false,
   "excludeExternals": true,
   "includeVersion": true,
@@ -13,7 +14,7 @@
   "excludeTags": ["@csspart", "@dependency"],
   "hideGenerator": true,
   "htmlLang": "fr",
-  "name": "EniBook : éléments",
+  "name": "EniBook : éléments HTML",
   "navigationLinks": {
     "EniBook": "https://enibook.github.io/enibook/"
   },

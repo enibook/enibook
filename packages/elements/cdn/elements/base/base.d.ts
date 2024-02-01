@@ -1,4 +1,4 @@
-import { type CSSResultGroup, LitElement } from "lit";
+import { type CSSResultGroup, LitElement } from 'lit';
 /**
  * Classe de base pour les éléments personnalisés EniBook
  */

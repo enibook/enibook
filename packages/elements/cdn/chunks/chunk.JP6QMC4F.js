@@ -4,25 +4,25 @@ import {
   __spreadProps as __spreadProps2,
   __spreadValues as __spreadValues2,
   component_styles_default
-} from "./chunk.TODZRVLS.js";
+} from "./chunk.JZDDMJ7T.js";
 import {
   e as e2
-} from "./chunk.FWRBNC3J.js";
+} from "./chunk.GXSA4RHW.js";
 import {
   e,
   n
-} from "./chunk.UPR5MBMR.js";
+} from "./chunk.BMGR56LW.js";
 import {
   i,
   x
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 import {
   __objRest,
   __spreadProps,
   __spreadValues
 } from "./chunk.R3ZK4RPV.js";
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.NJGFDSYD.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.FLAQ2JUH.js
 var popup_styles_default = i`
   ${component_styles_default}
 
@@ -62,6 +62,26 @@ var popup_styles_default = i`
     rotate: 45deg;
     background: var(--arrow-color);
     z-index: -1;
+  }
+
+  /* Hover bridge */
+  .popup-hover-bridge:not(.popup-hover-bridge--visible) {
+    display: none;
+  }
+
+  .popup-hover-bridge {
+    position: fixed;
+    z-index: calc(var(--sl-z-index-dropdown) - 1);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    clip-path: polygon(
+      var(--hover-bridge-top-left-x, 0) var(--hover-bridge-top-left-y, 0),
+      var(--hover-bridge-top-right-x, 0) var(--hover-bridge-top-right-y, 0),
+      var(--hover-bridge-bottom-right-x, 0) var(--hover-bridge-bottom-right-y, 0),
+      var(--hover-bridge-bottom-left-x, 0) var(--hover-bridge-bottom-left-y, 0)
+    );
   }
 `;
 
@@ -185,7 +205,7 @@ function rectToClientRect(rect) {
   });
 }
 
-// ../../node_modules/.pnpm/@floating-ui+core@1.5.3/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
+// ../../node_modules/.pnpm/@floating-ui+core@1.6.0/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function computeCoordsFromPlacement(_ref, placement, rtl) {
   let {
     reference,
@@ -310,7 +330,6 @@ var computePosition = async (reference, floating, config) => {
         } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
       }
       i2 = -1;
-      continue;
     }
   }
   return {
@@ -363,6 +382,7 @@ async function detectOverflow(state, options) {
     y: 1
   };
   const elementClientRect = rectToClientRect(platform2.convertOffsetParentRelativeRectToViewportRelativeRect ? await platform2.convertOffsetParentRelativeRectToViewportRelativeRect({
+    elements,
     rect,
     offsetParent,
     strategy
@@ -421,7 +441,7 @@ var arrow = (options) => ({
     const max2 = clientSize - arrowDimensions[length] - maxPadding;
     const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
     const offset2 = clamp(min$1, center, max2);
-    const shouldAddOffset = !middlewareData.arrow && getAlignment(placement) != null && center != offset2 && rects.reference[length] / 2 - (center < min$1 ? minPadding : maxPadding) - arrowDimensions[length] / 2 < 0;
+    const shouldAddOffset = !middlewareData.arrow && getAlignment(placement) != null && center !== offset2 && rects.reference[length] / 2 - (center < min$1 ? minPadding : maxPadding) - arrowDimensions[length] / 2 < 0;
     const alignmentOffset = shouldAddOffset ? center < min$1 ? center - min$1 : center - max2 : 0;
     return {
       [axis]: coords[axis] + alignmentOffset,
@@ -868,7 +888,7 @@ function getOverflowAncestors(node, list, traverseIframes) {
   return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor, [], traverseIframes));
 }
 
-// ../../node_modules/.pnpm/@floating-ui+dom@1.5.4/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
+// ../../node_modules/.pnpm/@floating-ui+dom@1.6.1/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
 function getCssDimensions(element) {
   const css = getComputedStyle2(element);
   let width = parseFloat(css.width) || 0;
@@ -984,15 +1004,40 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetPar
     y
   });
 }
+var topLayerSelectors = [":popover-open", ":modal"];
+function topLayer(floating) {
+  let isTopLayer = false;
+  let x2 = 0;
+  let y = 0;
+  function setIsTopLayer(selector) {
+    try {
+      isTopLayer = isTopLayer || floating.matches(selector);
+    } catch (e3) {
+    }
+  }
+  topLayerSelectors.forEach((selector) => {
+    setIsTopLayer(selector);
+  });
+  if (isTopLayer) {
+    const containingBlock = getContainingBlock(floating);
+    if (containingBlock) {
+      const rect = containingBlock.getBoundingClientRect();
+      x2 = rect.x;
+      y = rect.y;
+    }
+  }
+  return [isTopLayer, x2, y];
+}
 function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
   let {
+    elements,
     rect,
     offsetParent,
     strategy
   } = _ref;
-  const isOffsetParentAnElement = isHTMLElement(offsetParent);
   const documentElement = getDocumentElement(offsetParent);
-  if (offsetParent === documentElement) {
+  const [isTopLayer] = elements ? topLayer(elements.floating) : [false];
+  if (offsetParent === documentElement || isTopLayer) {
     return rect;
   }
   let scroll = {
@@ -1001,6 +1046,7 @@ function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
   };
   let scale = createCoords(1);
   const offsets = createCoords(0);
+  const isOffsetParentAnElement = isHTMLElement(offsetParent);
   if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== "fixed") {
     if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
       scroll = getNodeScroll(offsetParent);
@@ -1168,7 +1214,7 @@ function getDimensions(element) {
     height
   };
 }
-function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
+function getRectRelativeToOffsetParent(element, offsetParent, strategy, floating) {
   const isOffsetParentAnElement = isHTMLElement(offsetParent);
   const documentElement = getDocumentElement(offsetParent);
   const isFixed = strategy === "fixed";
@@ -1190,9 +1236,20 @@ function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
       offsets.x = getWindowScrollBarX(documentElement);
     }
   }
+  let x2 = rect.left + scroll.scrollLeft - offsets.x;
+  let y = rect.top + scroll.scrollTop - offsets.y;
+  const [isTopLayer, topLayerX, topLayerY] = topLayer(floating);
+  if (isTopLayer) {
+    x2 += topLayerX;
+    y += topLayerY;
+    if (isOffsetParentAnElement) {
+      x2 += offsetParent.clientLeft;
+      y += offsetParent.clientTop;
+    }
+  }
   return {
-    x: rect.left + scroll.scrollLeft - offsets.x,
-    y: rect.top + scroll.scrollTop - offsets.y,
+    x: x2,
+    y,
     width: rect.width,
     height: rect.height
   };
@@ -1220,20 +1277,15 @@ function getOffsetParent(element, polyfill) {
   }
   return offsetParent || getContainingBlock(element) || window2;
 }
-var getElementRects = async function(_ref) {
-  let {
-    reference,
-    floating,
-    strategy
-  } = _ref;
+var getElementRects = async function(data) {
   const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
   const getDimensionsFn = this.getDimensions;
   return {
-    reference: getRectRelativeToOffsetParent(reference, await getOffsetParentFn(floating), strategy),
+    reference: getRectRelativeToOffsetParent(data.reference, await getOffsetParentFn(data.floating), data.strategy, data.floating),
     floating: __spreadValues({
       x: 0,
       y: 0
-    }, await getDimensionsFn(floating))
+    }, await getDimensionsFn(data.floating))
   };
 };
 function isRTL(element) {
@@ -1256,8 +1308,9 @@ function observeMove(element, onMove) {
   let timeoutId;
   const root = getDocumentElement(element);
   function cleanup() {
+    var _io;
     clearTimeout(timeoutId);
-    io && io.disconnect();
+    (_io = io) == null || _io.disconnect();
     io = null;
   }
   function refresh(skip, threshold) {
@@ -1348,7 +1401,8 @@ function autoUpdate(reference, floating, update, options) {
         resizeObserver.unobserve(floating);
         cancelAnimationFrame(reobserveFrame);
         reobserveFrame = requestAnimationFrame(() => {
-          resizeObserver && resizeObserver.observe(floating);
+          var _resizeObserver;
+          (_resizeObserver = resizeObserver) == null || _resizeObserver.observe(floating);
         });
       }
       update();
@@ -1373,12 +1427,13 @@ function autoUpdate(reference, floating, update, options) {
   }
   update();
   return () => {
+    var _resizeObserver2;
     ancestors.forEach((ancestor) => {
       ancestorScroll && ancestor.removeEventListener("scroll", update);
       ancestorResize && ancestor.removeEventListener("resize", update);
     });
-    cleanupIo && cleanupIo();
-    resizeObserver && resizeObserver.disconnect();
+    cleanupIo == null || cleanupIo();
+    (_resizeObserver2 = resizeObserver) == null || _resizeObserver2.disconnect();
     resizeObserver = null;
     if (animationFrame) {
       cancelAnimationFrame(frameId);
@@ -1427,7 +1482,7 @@ function r(t2) {
   return null;
 }
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.ZAEG3P4Y.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.IL7MSTH2.js
 function isVirtualElement(e3) {
   return e3 !== null && typeof e3 === "object" && "getBoundingClientRect" in e3;
 }
@@ -1449,6 +1504,71 @@ var SlPopup = class extends ShoelaceElement {
     this.shift = false;
     this.shiftPadding = 0;
     this.autoSizePadding = 0;
+    this.hoverBridge = false;
+    this.updateHoverBridge = () => {
+      if (this.hoverBridge && this.anchorEl) {
+        const anchorRect = this.anchorEl.getBoundingClientRect();
+        const popupRect = this.popup.getBoundingClientRect();
+        const isVertical = this.placement.includes("top") || this.placement.includes("bottom");
+        let topLeftX = 0;
+        let topLeftY = 0;
+        let topRightX = 0;
+        let topRightY = 0;
+        let bottomLeftX = 0;
+        let bottomLeftY = 0;
+        let bottomRightX = 0;
+        let bottomRightY = 0;
+        if (isVertical) {
+          if (anchorRect.top < popupRect.top) {
+            topLeftX = anchorRect.left;
+            topLeftY = anchorRect.bottom;
+            topRightX = anchorRect.right;
+            topRightY = anchorRect.bottom;
+            bottomLeftX = popupRect.left;
+            bottomLeftY = popupRect.top;
+            bottomRightX = popupRect.right;
+            bottomRightY = popupRect.top;
+          } else {
+            topLeftX = popupRect.left;
+            topLeftY = popupRect.bottom;
+            topRightX = popupRect.right;
+            topRightY = popupRect.bottom;
+            bottomLeftX = anchorRect.left;
+            bottomLeftY = anchorRect.top;
+            bottomRightX = anchorRect.right;
+            bottomRightY = anchorRect.top;
+          }
+        } else {
+          if (anchorRect.left < popupRect.left) {
+            topLeftX = anchorRect.right;
+            topLeftY = anchorRect.top;
+            topRightX = popupRect.left;
+            topRightY = popupRect.top;
+            bottomLeftX = anchorRect.right;
+            bottomLeftY = anchorRect.bottom;
+            bottomRightX = popupRect.left;
+            bottomRightY = popupRect.bottom;
+          } else {
+            topLeftX = popupRect.right;
+            topLeftY = popupRect.top;
+            topRightX = anchorRect.left;
+            topRightY = anchorRect.top;
+            bottomLeftX = popupRect.right;
+            bottomLeftY = popupRect.bottom;
+            bottomRightX = anchorRect.left;
+            bottomRightY = anchorRect.bottom;
+          }
+        }
+        this.style.setProperty("--hover-bridge-top-left-x", `${topLeftX}px`);
+        this.style.setProperty("--hover-bridge-top-left-y", `${topLeftY}px`);
+        this.style.setProperty("--hover-bridge-top-right-x", `${topRightX}px`);
+        this.style.setProperty("--hover-bridge-top-right-y", `${topRightY}px`);
+        this.style.setProperty("--hover-bridge-bottom-left-x", `${bottomLeftX}px`);
+        this.style.setProperty("--hover-bridge-bottom-left-y", `${bottomLeftY}px`);
+        this.style.setProperty("--hover-bridge-bottom-right-x", `${bottomRightX}px`);
+        this.style.setProperty("--hover-bridge-bottom-right-y", `${bottomRightY}px`);
+      }
+    };
   }
   async connectedCallback() {
     super.connectedCallback();
@@ -1638,11 +1758,20 @@ var SlPopup = class extends ShoelaceElement {
         });
       }
     });
+    requestAnimationFrame(() => this.updateHoverBridge());
     this.emit("sl-reposition");
   }
   render() {
     return x`
       <slot name="anchor" @slotchange=${this.handleAnchorChange}></slot>
+
+      <span
+        part="hover-bridge"
+        class=${e2({
+      "popup-hover-bridge": true,
+      "popup-hover-bridge--visible": this.hoverBridge && this.active
+    })}
+      ></span>
 
       <div
         part="popup"
@@ -1739,8 +1868,11 @@ __decorateClass([
 __decorateClass([
   n({ attribute: "auto-size-padding", type: Number })
 ], SlPopup.prototype, "autoSizePadding", 2);
+__decorateClass([
+  n({ attribute: "hover-bridge", type: Boolean })
+], SlPopup.prototype, "hoverBridge", 2);
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.H437TPPF.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.DHU6MIVB.js
 var defaultAnimationRegistry = /* @__PURE__ */ new Map();
 var customAnimationRegistry = /* @__PURE__ */ new WeakMap();
 function ensureAnimation(animation) {
@@ -1773,7 +1905,7 @@ function getAnimation(el, animationName, options) {
   };
 }
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.B4BZKR24.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.B4BZKR24.js
 function waitForEvent(el, eventName) {
   return new Promise((resolve) => {
     function done(event) {
@@ -1786,7 +1918,7 @@ function waitForEvent(el, eventName) {
   });
 }
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.KRRLOROJ.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.LHI6QEL2.js
 function animateTo(el, keyframes, options) {
   return new Promise((resolve) => {
     if ((options == null ? void 0 : options.duration) === Infinity) {
@@ -1817,10 +1949,8 @@ function stopAnimations(el) {
   return Promise.all(
     el.getAnimations().map((animation) => {
       return new Promise((resolve) => {
-        const handleAnimationEvent = requestAnimationFrame(resolve);
-        animation.addEventListener("cancel", () => handleAnimationEvent, { once: true });
-        animation.addEventListener("finish", () => handleAnimationEvent, { once: true });
         animation.cancel();
+        requestAnimationFrame(resolve);
       });
     })
   );

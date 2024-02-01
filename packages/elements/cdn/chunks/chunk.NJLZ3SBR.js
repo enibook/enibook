@@ -2,27 +2,27 @@ import {
   ShoelaceElement,
   __decorateClass as __decorateClass2,
   component_styles_default
-} from "./chunk.TODZRVLS.js";
+} from "./chunk.JZDDMJ7T.js";
 import {
   e as e2
-} from "./chunk.FWRBNC3J.js";
+} from "./chunk.GXSA4RHW.js";
 import {
   BaseIt,
   e,
   n,
   r,
   t
-} from "./chunk.UPR5MBMR.js";
+} from "./chunk.BMGR56LW.js";
 import {
   i,
   x
-} from "./chunk.BLJAKQYI.js";
+} from "./chunk.YQRSMW6G.js";
 import {
   __decorateClass,
   __superGet
 } from "./chunk.R3ZK4RPV.js";
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.WISH4DLW.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.WISH4DLW.js
 var button_group_styles_default = i`
   ${component_styles_default}
 
@@ -36,7 +36,7 @@ var button_group_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.GMW7EHKT.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.QO26VIPE.js
 var SlButtonGroup = class extends ShoelaceElement {
   constructor() {
     super(...arguments);
@@ -106,7 +106,7 @@ function findButton(el) {
   return (_a = el.closest(selector)) != null ? _a : el.querySelector(selector);
 }
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.12.0_@types+react@18.2.48/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.RYNRAFVP.js
+// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.UJYS7SGI.js
 SlButtonGroup.define("sl-button-group");
 
 // src/elements/toolbar/toolbar.css.ts

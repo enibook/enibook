@@ -4018,6 +4018,254 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/toolbar/toolbar.css.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/elements/toolbar/toolbar.css.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/toolbar/toolbar.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ToolbarIt",
+          "cssParts": [
+            {
+              "description": "The component's internal wrapper.",
+              "name": "base"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "tagTitle",
+              "type": {
+                "text": "string"
+              },
+              "description": "Le nom courant de l'élément : à définir dans chaque sous-classe.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseIt",
+                "module": "src/elements/base/base.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toAsciidoc",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "description": "Syntaxe `asciidoc` équivalente : à définir dans chaque sous-classe.",
+              "inheritedFrom": {
+                "name": "BaseIt",
+                "module": "src/elements/base/base.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fixed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "fixed",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "placement",
+              "type": {
+                "text": "'top' | 'bottom'"
+              },
+              "default": "'top'",
+              "attribute": "placement",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "fullscreen",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "protected",
+              "default": "false",
+              "description": "Teste si l'élément est en mode plein écran.",
+              "inheritedFrom": {
+                "name": "BaseIt",
+                "module": "src/elements/base/base.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "emit",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "CustomEventInit"
+                  }
+                }
+              ],
+              "description": "Emission d'un événement `CustomEvent` par l'élément.\n\nPar défaut, l'événement se propage dans le DOM (`bubbles: true`);\nil traverse également la frontière du DOM fantôme (_Shadow DOM_, `composed:true`)\net ne peut être empêché de le faire (`cancelable: false`).",
+              "inheritedFrom": {
+                "name": "BaseIt",
+                "module": "src/elements/base/base.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleFullscreen",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Passe en mode plein écran ou sort du mode plein écran.\n\nOn peut utiliser la touche <kbd>Esc</kbd> ou <kbd>F11</kbd> pour sortir du mode plein écran.",
+              "inheritedFrom": {
+                "name": "BaseIt",
+                "module": "src/elements/base/base.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "notify",
+              "parameters": [
+                {
+                  "name": "message",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "le message d'alerte"
+                },
+                {
+                  "name": "variant",
+                  "default": "\"primary\"",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "apparence du message",
+                  "optional": true
+                },
+                {
+                  "name": "icon",
+                  "default": "\"mdi-information-variant-circle-outline\"",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "icône associé au message.",
+                  "optional": true
+                },
+                {
+                  "name": "duration",
+                  "default": "\"3000\"",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "durée d'affichage de l'alerte en millisecondes.",
+                  "optional": true
+                }
+              ],
+              "description": "Crée une alerte qui affiche le message associé pendant une durée donnée.",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "BaseIt",
+                "module": "src/elements/base/base.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "wrap",
+              "privacy": "protected",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "message",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseIt",
+                "module": "src/elements/base/base.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "fixed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "fixed"
+            },
+            {
+              "name": "placement",
+              "type": {
+                "text": "'top' | 'bottom'"
+              },
+              "default": "'top'",
+              "fieldName": "placement"
+            }
+          ],
+          "superclass": {
+            "name": "BaseIt",
+            "module": "/src/elements/base/base.js"
+          },
+          "tagName": "toolbar-it",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ToolbarIt",
+          "declaration": {
+            "name": "ToolbarIt",
+            "module": "src/elements/toolbar/toolbar.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "toolbar-it",
+          "declaration": {
+            "name": "ToolbarIt",
+            "module": "src/elements/toolbar/toolbar.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/tools/tools.css.ts",
       "declarations": [],
       "exports": [
@@ -4305,254 +4553,6 @@
           "declaration": {
             "name": "ToolsIt",
             "module": "src/elements/tools/tools.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/toolbar/toolbar.css.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "src/elements/toolbar/toolbar.css.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/toolbar/toolbar.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "ToolbarIt",
-          "cssParts": [
-            {
-              "description": "The component's internal wrapper.",
-              "name": "base"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "tagTitle",
-              "type": {
-                "text": "string"
-              },
-              "description": "Le nom courant de l'élément : à définir dans chaque sous-classe.",
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "BaseIt",
-                "module": "src/elements/base/base.ts"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "toAsciidoc",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              },
-              "description": "Syntaxe `asciidoc` équivalente : à définir dans chaque sous-classe.",
-              "inheritedFrom": {
-                "name": "BaseIt",
-                "module": "src/elements/base/base.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "fixed",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "fixed",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "placement",
-              "type": {
-                "text": "'top' | 'bottom'"
-              },
-              "default": "'top'",
-              "attribute": "placement",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "fullscreen",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "protected",
-              "default": "false",
-              "description": "Teste si l'élément est en mode plein écran.",
-              "inheritedFrom": {
-                "name": "BaseIt",
-                "module": "src/elements/base/base.ts"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "emit",
-              "privacy": "protected",
-              "parameters": [
-                {
-                  "name": "name",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "options",
-                  "optional": true,
-                  "type": {
-                    "text": "CustomEventInit"
-                  }
-                }
-              ],
-              "description": "Emission d'un événement `CustomEvent` par l'élément.\n\nPar défaut, l'événement se propage dans le DOM (`bubbles: true`);\nil traverse également la frontière du DOM fantôme (_Shadow DOM_, `composed:true`)\net ne peut être empêché de le faire (`cancelable: false`).",
-              "inheritedFrom": {
-                "name": "BaseIt",
-                "module": "src/elements/base/base.ts"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "toggleFullscreen",
-              "privacy": "protected",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Passe en mode plein écran ou sort du mode plein écran.\n\nOn peut utiliser la touche <kbd>Esc</kbd> ou <kbd>F11</kbd> pour sortir du mode plein écran.",
-              "inheritedFrom": {
-                "name": "BaseIt",
-                "module": "src/elements/base/base.ts"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "notify",
-              "parameters": [
-                {
-                  "name": "message",
-                  "type": {
-                    "text": "string"
-                  },
-                  "description": "le message d'alerte"
-                },
-                {
-                  "name": "variant",
-                  "default": "\"primary\"",
-                  "type": {
-                    "text": "string"
-                  },
-                  "description": "apparence du message",
-                  "optional": true
-                },
-                {
-                  "name": "icon",
-                  "default": "\"mdi-information-variant-circle-outline\"",
-                  "type": {
-                    "text": "string"
-                  },
-                  "description": "icône associé au message.",
-                  "optional": true
-                },
-                {
-                  "name": "duration",
-                  "default": "\"3000\"",
-                  "type": {
-                    "text": "string"
-                  },
-                  "description": "durée d'affichage de l'alerte en millisecondes.",
-                  "optional": true
-                }
-              ],
-              "description": "Crée une alerte qui affiche le message associé pendant une durée donnée.",
-              "return": {
-                "type": {
-                  "text": ""
-                }
-              },
-              "inheritedFrom": {
-                "name": "BaseIt",
-                "module": "src/elements/base/base.ts"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "wrap",
-              "privacy": "protected",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "message",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ],
-              "inheritedFrom": {
-                "name": "BaseIt",
-                "module": "src/elements/base/base.ts"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "fixed",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "fixed"
-            },
-            {
-              "name": "placement",
-              "type": {
-                "text": "'top' | 'bottom'"
-              },
-              "default": "'top'",
-              "fieldName": "placement"
-            }
-          ],
-          "superclass": {
-            "name": "BaseIt",
-            "module": "/src/elements/base/base.js"
-          },
-          "tagName": "toolbar-it",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ToolbarIt",
-          "declaration": {
-            "name": "ToolbarIt",
-            "module": "src/elements/toolbar/toolbar.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "toolbar-it",
-          "declaration": {
-            "name": "ToolbarIt",
-            "module": "src/elements/toolbar/toolbar.ts"
           }
         }
       ]

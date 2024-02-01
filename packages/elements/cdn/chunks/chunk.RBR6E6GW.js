@@ -12,14 +12,14 @@ import {
   languages
 } from "./chunk.HL4UGBSH.js";
 import {
+  frenchPhrases
+} from "./chunk.N27W2NJJ.js";
+import {
   darkTheme
 } from "./chunk.4IDR2W55.js";
 import {
   lightTheme
 } from "./chunk.XUIWESLB.js";
-import {
-  frenchPhrases
-} from "./chunk.N27W2NJJ.js";
 import {
   crelt,
   defaultKeymap,

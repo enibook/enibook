@@ -18,19 +18,18 @@ import styles from './toolbar.css.js';
  */
 @customElement('toolbar-it')
 export class ToolbarIt extends BaseIt {
-  override get tagTitle(): string {
-    return "Barre d'outils";
-  }
-  override toAsciidoc(): string {
-    throw new Error('Method not implemented.');
-  }
+  /** Style propre à la classe. */
   static styles: CSSResultGroup = [super.styles, styles];
 
-  @property({ type: Boolean, reflect: true }) fixed = false;
+  /** Fixation de la barre d'outils (défaut : `false`). */
+  @property({ type: Boolean, reflect: true }) 
+  fixed = false;
 
-  @property({ type: String, reflect: true }) placement: 'top' | 'bottom' = 'top';
+  /** position de la barre d'outils (défaut : `top`). */
+  @property({ type: String, reflect: true }) 
+  placement: 'top' | 'bottom' = 'top';
 
-  render(): TemplateResult {
+  protected render(): TemplateResult {
     const classes = {
       toolbar: true,
       toolbar__top: this.fixed && this.placement === 'top',
@@ -57,9 +56,3 @@ declare global {
     'toolbar-it': ToolbarIt;
   }
 }
-
-/*
-if (customElements && !customElements.get('toolbar-it')) {
-  customElements.define('toolbar-it', ToolbarIt)
-}
-*/

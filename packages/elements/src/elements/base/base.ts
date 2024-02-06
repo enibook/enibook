@@ -1,22 +1,22 @@
 // lit
 import { type CSSResultGroup, LitElement } from 'lit';
-import { state } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 // fscreen
 import fscreen from 'fscreen';
 // enibook
-import { svgIcon } from '../../utilities/icons';
+import { icons } from '../../utilities/icons.js';
 import styles from './base.css.js';
 
-/**
- * Classe de base pour les éléments personnalisés EniBook
- */
+/** Classe de base pour les éléments personnalisés EniBook */
 export abstract class BaseIt extends LitElement {
+  /** Style propre à la classe. */
   static override styles: CSSResultGroup = [styles];
 
-  /**
-   * Teste si l'élément est en mode plein écran.
-   */
-  @state() protected fullscreen = false;
+  @state() 
+  protected fullscreen = false;
+
+  @property({ type: String, reflect: true }) 
+  lang: string = navigator.language
 
   /**
    * Emission d'un événement `CustomEvent` par l'élément.
@@ -57,7 +57,7 @@ export abstract class BaseIt extends LitElement {
    *
    * @param {string} message - le message d'alerte
    * @param {string} [variant="primary"] - apparence du message
-   * @param {string} [icon="it-mdi-information-variant-circle-outline"] - icône associé au message.
+   * @param {string} [icon="it-mdi-information-variant-circle-outline"] - icône associée au message.
    * @param {string} [duration="3000"] - durée d'affichage de l'alerte en millisecondes.
    * @returns
    * @memberof EnibookElement
@@ -73,23 +73,13 @@ export abstract class BaseIt extends LitElement {
       closable: true,
       duration: duration,
       innerHTML: `
-          <div slot="icon">${svgIcon(icon)}</div>
+          <div slot="icon">${icons[icon]}</div>
           ${this.wrap(message)}
         `
     });
     document.body.append(alert);
     return alert.toast();
   }
-
-  /**
-   * Le nom courant de l'élément : à définir dans chaque sous-classe.
-   */
-  abstract get tagTitle(): string;
-
-  /**
-   * Syntaxe `asciidoc` équivalente : à définir dans chaque sous-classe.
-   */
-  abstract toAsciidoc(): string;
 
   protected wrap(message: string): string {
     const div = document.createElement('div');

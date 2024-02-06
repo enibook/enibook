@@ -12,8 +12,10 @@ import styles from './icon.css.js';
  */
 @customElement('icon-it')
 export class IconIt extends BaseIt {
+  /** Style propre à la classe */
   static styles: CSSResultGroup = [super.styles, styles];
 
+  /** Nom de l'icône (défaut: `mdi-block-helper`) */
   @property({ type: String, reflect: true }) name: string = 'mdi-block-helper';
 
   protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
@@ -23,16 +25,8 @@ export class IconIt extends BaseIt {
     }
   }
 
-  render(): TemplateResult {
+  protected render(): TemplateResult {
     return html`${svgIcon(this.name)}`;
-  }
-
-  get tagTitle(): string {
-    return 'Icône';
-  }
-
-  toAsciidoc(): string {
-    throw new Error('Method not implemented.');
   }
 }
 

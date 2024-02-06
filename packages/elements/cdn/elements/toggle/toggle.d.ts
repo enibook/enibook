@@ -3,55 +3,30 @@ import '@shoelace-style/shoelace/dist/components/button/button.js';
 import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js';
 import { BaseIt } from '../base/base.js';
 /**
- * @since 2.0
- * @status stable
  *
  * @csspart base - The component's internal wrapper.
  */
 export declare class ToggleIt extends BaseIt {
+    /** Style propre à la classe. */
     static styles: CSSResultGroup;
-    private element;
-    /** sélecteur `css` de l'élément visé */
+    private elements;
+    private _toshow;
+    /** Sélecteur `css` de l'élément ciblé (défaut : `unknown`). */
     selector: string;
-    /** taille du bouton */
+    /** Taille du bouton (défaut : `small`). */
     size: 'small' | 'medium' | 'large';
-    /** texte du bouton quand l'élément visé est caché */
+    /** Texte du bouton en mode « show » (défaut : `mdi-show-outline`). */
     textShow: string;
-    /** texte du bouton quand l'élément visé est visible */
+    /** Texte du bouton en mode « hide » (défaut : `mdi-hide-outline`). */
     textHide: string;
-    /** infobulle quand l'élément visé est caché */
+    /** Infobulle en mode « show » (défaut : `Montrer`). */
     tooltipShow: string;
-    /** infobulle quand l'élément visé est visible */
+    /** Infobulle en mode « hide » (défaut : `Cacher`). */
     tooltipHide: string;
-    /** garder la mise en page lorsque l'élément visé est caché */
-    visibility: boolean;
-    /** @ignore */
-    hidden: boolean;
-    protected getHidden(): boolean;
+    /** Modifier la mise en page (défaut : `false`). */
+    destructuring: boolean;
     protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void;
     render(): TemplateResult;
-    /**
-     * Le nom courant de l'élément : `Bascule`.
-     */
-    get tagTitle(): string;
-    /**
-     * Syntaxe `asciidoc` équivalente :
-     *
-     * ```
-     * name:target[attributes]
-     * ```
-     *
-     * - `name` : `toggle-it`  (la macro `asciidoc` a le même nom que l'élément `html` correspondant);
-     * - `target` : `selector`
-     * - `attributes` : `size`, `text-hide`, `text-show`, `tooltip-hide`, `tooltip-show`, `visibility`.
-     *
-     * Voir la documentation Asciidoc sur les <a href="https://docs.asciidoctor.org/asciidoc/latest/key-concepts/#macros">macros de type _inline_</a>
-     *
-     * @examples
-     * `toggle-it:#header[visibility]`,
-     * `toggle-it:#header[text-hide="cacher l'en-tête",text-show="montrer l'en-tête",visibility]`
-     */
-    toAsciidoc(): string;
     protected toggleSelector(): void;
 }
 declare global {

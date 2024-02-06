@@ -1,7 +1,7 @@
 :root {
   --hljs-font-weight-bold: var(--sl-font-weight-bold);
   /* colors */
-  --hljs-addition: green;
+  --hljs-addition: var(--sl-color-success-500);
   --hljs-attr: var(--sl-color-sky-300);
   --hljs-attribute: var(--sl-color-sky-300);
   --hljs-background: var(--sl-color-neutral-900);
@@ -9,9 +9,9 @@
   --hljs-builtin-name: var(--sl-color-neutral-100);
   --hljs-bullet: #00b0e8;
   --hljs-class: var(--sl-color-blue-100);
-  --hljs-color: var(--sl-color-neutral-100);
+  --hljs-color: var(--sl-color-neutral-200);
   --hljs-comment: var(--sl-color-neutral-400);
-  --hljs-deletion: red;
+  --hljs-deletion: var(--sl-color-danger-500);
   --hljs-doctag: var(--sl-color-amber-100);
   --hljs-formula: var(--sl-color-neutral-100);
   --hljs-function: var(--sl-color-yellow-200);
@@ -50,6 +50,10 @@ pre code.hljs {
 }
 code.hljs {
   padding: var(--sl-spacing-3x-small) var(--sl-spacing-2x-small);
+}
+.highlight {
+  background-color: var(--hljs-background);
+  color: var(--hljs-color);
 }
 .hljs {
   background: var(--hljs-background);

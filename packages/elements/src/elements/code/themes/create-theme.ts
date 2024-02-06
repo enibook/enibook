@@ -1,6 +1,6 @@
 import { EditorView } from '@codemirror/view';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
-import type { Extension } from '@codemirror/state';
+import  { type Extension } from '@codemirror/state';
 import type { TagStyle } from '@codemirror/language';
 
 interface Options {

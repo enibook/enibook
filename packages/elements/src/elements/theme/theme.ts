@@ -21,23 +21,26 @@ import styles from './theme.css.js';
  */
 @customElement('theme-it')
 export class ThemeIt extends BaseIt {
+  /** Style propre à la classe. */
   static styles: CSSResultGroup = [super.styles, styles];
 
-  @query('sl-menu') menu!: SlMenu;
+  @query('sl-menu') 
+  protected menu!: SlMenu;
 
-  @state() theme!: string;
+  @state() 
+  protected theme!: string;
 
-  @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'small';
+  /** Taille du bouton (défaut : `small`) */
+  @property({ type: String, reflect: true }) 
+  size: 'small' | 'medium' | 'large' = 'small';
 
   constructor() {
     super();
     this.theme = this.getTheme();
   }
 
-  protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
-    // Set the initial theme and sync the UI
-    this.setTheme(this.theme);
-    this.menu.addEventListener('sl-select', event => {
+  protected createListeners(): void {
+    this.menu.addEventListener('sl-select', (event: CustomEvent<any>) => {
       const ev = event as CustomEvent;
       this.setTheme(ev.detail.item.value);
     });
@@ -51,10 +54,17 @@ export class ThemeIt extends BaseIt {
     });
   }
 
+  protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
+    this.setTheme(this.theme);
+    this.createListeners()
+  }
+
+  /** Thème (défaut : `system`) */
   getTheme(): string {
     return localStorage.getItem('theme') || 'system';
   }
 
+  /** Teste si le thème courant est le thème `dark`. */
   isDark(): boolean {
     if (this.theme === 'system') {
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -62,7 +72,7 @@ export class ThemeIt extends BaseIt {
     return this.theme === 'dark';
   }
 
-  render(): TemplateResult {
+  protected render(): TemplateResult {
     return html`
       <sl-dropdown class="theme" hoist>
         <sl-button size=${this.size} slot="trigger" caret>
@@ -80,6 +90,7 @@ export class ThemeIt extends BaseIt {
     `;
   }
 
+  /** Change le thème. */
   setTheme(newTheme: string) {
     const noTransitions = Object.assign(document.createElement('style'), {
       textContent: '* { transition: none !important; }'
@@ -98,14 +109,6 @@ export class ThemeIt extends BaseIt {
       requestAnimationFrame(() => document.body.removeChild(noTransitions));
     });
   }
-
-  override get tagTitle(): string {
-    return 'Thème';
-  }
-
-  override toAsciidoc(): string {
-    throw new Error('Method not implemented.');
-  }
 }
 
 declare global {
@@ -113,9 +116,3 @@ declare global {
     'theme-it': ThemeIt;
   }
 }
-
-/*
-if (customElements && !customElements.get('theme-it')) {
-  customElements.define('theme-it', ThemeIt)
-}
-*/

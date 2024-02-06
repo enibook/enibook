@@ -26,39 +26,16 @@ export declare class ClockIt extends BaseIt {
     timeElement: HTMLTimeElement;
     /** @ignore */
     icon: HTMLElement;
-    /** Ne pas afficher la date */
+    /** Afficher la date (défaut: `false`). */
     date: boolean;
-    /** Ne pas afficher l'heure */
+    /** Afficher l'heure (défaut: `false`). */
     time: boolean;
     /** Taille de l'horloge */
     size: 'small' | 'medium' | 'large';
-    /**
-     * Le nom courant de l'élément : `Horloge`.
-     */
-    get tagTitle(): string;
     protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void;
     protected handleClickButton(): void;
     protected render(): TemplateResult;
     protected setClock(): void;
-    /**
-     * Syntaxe `asciidoc` équivalente :
-     *
-     * ```
-     * name:target[attributes]
-     * ```
-     *
-     * - `name` : `clock-it` (la macro `asciidoc` a le même nom que l'élément `html` correspondant);
-     * - `target` : la macro `clock-it` n'a pas de cible (_target_);
-     * - `attributes` : `hide-date`, `hide-time`, `size`.
-     *
-     * Voir la documentation Asciidoc sur les <a href="https://docs.asciidoctor.org/asciidoc/latest/key-concepts/#macros">macros de type _inline_</a>
-     *
-     * @examples
-     * `clock-it:[]`,
-     * `clock-it:[date]`,
-     * `clock-it:[date, size=medium]`
-     */
-    toAsciidoc(): string;
 }
 declare global {
     interface HTMLElementTagNameMap {

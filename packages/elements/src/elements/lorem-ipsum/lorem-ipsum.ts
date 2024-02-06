@@ -8,14 +8,16 @@ import styles from './lorem-ipsum.css.js';
 
 @customElement('lorem-ipsum-it')
 export class LoremIpsumIt extends BaseIt {
+  /** Style propre à la classe. */
   static override styles: CSSResultGroup = [super.styles, styles];
 
   /** Nombre d'objets textuels (mots, paragraphes, phrases, items de liste) générés. */
-  @property({ type: Number, reflect: true }) count = 1;
+  @property({ type: Number, reflect: true }) 
+  count = 1;
 
-  /** Type des objets textuels (mots, paragraphes, phrases, items de liste) générés. */
-  @property({ type: String, reflect: true }) type: 'dlist' | 'olist' | 'paragraph' | 'sentence' | 'ulist' | 'word' =
-    'paragraph';
+  /** Type des objets textuels (mots, paragraphes, phrases, items de liste) générés (défaut : `paragraph`). */
+  @property({ type: String, reflect: true }) 
+  type: 'dlist' | 'olist' | 'paragraph' | 'sentence' | 'ulist' | 'word' = 'paragraph';
 
   protected createTerm(): string {
     const nTerms = this.randomLength(1, 3);
@@ -65,18 +67,9 @@ export class LoremIpsumIt extends BaseIt {
     return text;
   }
 
-  /**
-   * Dictionnaire de mots.
-   */
+  /** Dictionnaire de mots. */
   protected get dictionary(): string[] {
     return dictionary;
-  }
-
-  /**
-   * Le nom courant de l'élément : `Lorem Ipsum`.
-   */
-  get tagTitle(): string {
-    return 'Lorem Ipsum';
   }
 
   protected randomLength(min: number, max: number): number {
@@ -170,19 +163,6 @@ export class LoremIpsumIt extends BaseIt {
     }
     return html`<p part="word">${words.map(word => html`${word} `)}</p>`;
   }
-
-  /**
-   * Syntaxe `asciidoc` équivalente `name::target[attributes]`
-   *
-   * Voir la documentation Asciidoc sur les <a href="https://docs.asciidoctor.org/asciidoc/latest/key-concepts/#macros">macros de type _block_</a>
-   * @examples `lorem-ipsum::paragraph[]` , `lorem-ipsum::olist[count=2]`
-   */
-  toAsciidoc(): string {
-    const asciidoc = `
-      lorem-ipsum::${this.type}[count=${this.count}]
-    `;
-    return asciidoc.replace(/^ +| +$/gm, '');
-  }
 }
 
 declare global {
@@ -190,9 +170,3 @@ declare global {
     'lorem-ipsum-it': LoremIpsumIt;
   }
 }
-
-/*
-if (customElements && !customElements.get('lorem-ipsum-it')) {
-  customElements.define('lorem-ipsum-it', LoremIpsumIt)
-}
-*/

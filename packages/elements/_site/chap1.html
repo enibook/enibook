@@ -49,10 +49,12 @@
 <li><a href="chap3.html#_api_3">3.3. API</a></li>
 </ul>
 </li>
+<li><a href="chap4.html">4. Barre d’outils</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
+
 
 
 
@@ -76,7 +78,7 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Cet élément propose un bouton pour montrer ou cacher un autre élément <code>html</code> défini par son <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a>.</p>
+<p>Bouton de type bascule pour montrer ou cacher les éléments <code>html</code> défini par un <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a>.</p>
 </div>
 <div class="toggle-demo">
   <toggle-it id="toggle-left" visibility="" selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
@@ -98,7 +100,7 @@
 <summary class="title">Structure</summary>
 <div class="content">
 <div class="paragraph">
-<p>Il s’agit d’un simple bouton qui affiche dans une infobulle l’action qui lui est associée : montrer ou cacher un autre élément.</p>
+<p>Il s’agit d’un simple bouton qui affiche dans une infobulle l’action qui lui est associée : montrer ou cacher les éléments ciblés par un sélecteur <code>css</code>.</p>
 </div>
 </div>
 </details>
@@ -106,56 +108,98 @@
 <summary class="title">Interactivité</summary>
 <div class="content">
 <div class="paragraph">
-<p>Cet élément est cliquable <it-mdi-mouse title="cliquable"></it-mdi-mouse> mais non éditable  <it-mdi-keyboard-off-outline title="non éditable"></it-mdi-keyboard-off-outline>.</p>
+<p>Cet élément est cliquable <icon-it name="mdi-mouse" title="cliquable"></icon-it> mais non éditable  <icon-it name="mdi-keyboard-off-outline" title="non éditable"></icon-it>.</p>
 </div>
 <div class="paragraph">
-<p>L’interaction est de type bascule (<em>toggle</em>) et consiste à montrer ou cacher un autre élément : si cet élément est caché alors le clic sur le bouton conduit à le montrer,
-sinon il le cache.</p>
+<p>L’interaction est de type bascule (<em>toggle</em>) et consiste à montrer ou cacher d’autres éléments.</p>
 </div>
 </div>
 </details>
 <div class="sect2">
 <h3 id="_attributs_et_propriétés">1.1. Attributs et propriétés</h3>
 <div class="paragraph">
-<p>Cette balise possède 7 attributs spécifiques optionnels : <code>selector</code>, <code>size</code>, <code>text-hide</code>, <code>text-show</code>, <code>tooltip-hide</code>, <code>tooltip-show</code> et <code>visibility</code>.</p>
+<p>Cette balise possède 7 attributs spécifiques optionnels : <code>destructuring</code>, <code>selector</code>, <code>size</code>, <code>text-hide</code>, <code>text-show</code>, <code>tooltip-hide</code>, et <code>tooltip-show</code>.</p>
 </div>
 <div class="paragraph">
-<p><a href="chap1.html#bascule-init">Le premier exemple</a> définit ces 7 attributs :</p>
+<p>Seul l’attribut <code>destructuring</code> n’est pas utilisé dans le <a href="chap1.html#bascule-init">premier exemple</a> :</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-html" data-lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"toggle-demo"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">toggle-it</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"toggle-left"</span> <span class="hljs-attr">visibility</span> <span class="hljs-attr">selector</span>=<span class="hljs-string">"#toggle-right"</span> <span class="hljs-attr">text-show</span>=<span class="hljs-string">"G"</span> <span class="hljs-attr">text-hide</span>=<span class="hljs-string">"G"</span> <span class="hljs-attr">tooltip-show</span>=<span class="hljs-string">"Montrer D"</span> <span class="hljs-attr">tooltip-hide</span>=<span class="hljs-string">"Cacher D"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"large"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">toggle-it</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">toggle-it</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"toggle-right"</span> <span class="hljs-attr">visibility</span> <span class="hljs-attr">selector</span>=<span class="hljs-string">"#toggle-left"</span> <span class="hljs-attr">text-show</span>=<span class="hljs-string">"D"</span> <span class="hljs-attr">text-hide</span>=<span class="hljs-string">"D"</span> <span class="hljs-attr">tooltip-show</span>=<span class="hljs-string">"Montrer G"</span> <span class="hljs-attr">tooltip-hide</span>=<span class="hljs-string">"Cacher G"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"large"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">toggle-it</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-</div>
-</div>
+<code-it language="html" block="" class="toggle-demo">
+  <script type="enibook">
+    <div  class="toggle-demo">
+      <toggle-it id="toggle-left" selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
+      <toggle-it id="toggle-right" selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"></toggle-it>
+    </div>
+  </script>
+</code-it>
 <div class="sect3">
 <h4 id="_sélecteur_css">1.1.1. Sélecteur <code>css</code></h4>
 <div class="paragraph">
-<p>L’attribut <code>selector</code> (attribut <strong>obligatoire</strong>) définit l’élément <code>html</code> à cacher ou à montrer à l’aide d’un sélecteur <code>css</code>.</p>
+<p>L’attribut <code>selector</code> (défaut : <code>undefined</code>) définit les éléments <code>html</code> à cacher ou à montrer à l’aide d’un sélecteur <code>css</code>.</p>
 </div>
 <div class="paragraph">
-<p>Un <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a> est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s’applique un ensemble de règles <code>css</code> <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>. Si plusieurs éléments répondent au même critère, seul le premier d’entre-eux est concerné par la bascule.</p>
+<p>Un <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors">sélecteur <code>css</code></a> est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s’applique un ensemble de règles <code>css</code>.</p>
 </div>
-<html-preview-it>
+<div class="paragraph">
+<p>Les principaux sélecteurs sont :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>le sélecteur universel <code>*</code> correspond à un élément de n’importe quel type;</p>
+</li>
+<li>
+<p>les sélecteurs de type : <code>element</code> (exemples : <code>p</code>, <code>div</code>, <code>toggle-it</code>);</p>
+</li>
+<li>
+<p>les sélecteurs d’identifiant : <code>#identifier</code> (exemples : <code>#toggle-left</code>,
+<code>#toggle-right</code>);</p>
+</li>
+<li>
+<p>les sélecteurs de classe : <code>.class</code> (exemples : <code>.red</code>, <code>.toggle-demo</code>);</p>
+</li>
+<li>
+<p>les sélecteurs d’attribut : <code>[attribute]</code> ou <code>[attribute=value]</code> (exemples : <code>[destructuring]</code>, <code>[text-hide="D"]</code>, <code>[tooltip-show="Montrer G")]</code>);</p>
+</li>
+<li>
+<p>on pourra consulter <a href="https://www.w3schools.com/cssref/css_selectors.php">W3schools</a> pour en savoir plus sur les différents types de sélecteurs, en particulier les opérateurs de combinaison (<code>+</code>, <code>~</code>, <code>&gt;</code>, espace), les pseudo-classes (<code>:</code>) et les pseudo-éléments (<code>::</code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Si plusieurs éléments répondent au même sélecteur, ils sont tous concernés par la bascule sauf les éléments qui contiennent le <code>&lt;toggle-it&gt;</code> lui-même
+(« on ne scie pas la branche sur laquelle on est assis »).</p>
+</div>
+<code-it language="html" srchead="../templates/code-head.html" srcheader="../templates/code-header.html" srcfooter="../templates/code-footer.html" read-only="" preview="">
   <script type="enibook">
-    <toggle-it selector="#header"></toggle-it> :
-    bascule l'en-tête du document
+    <h3 class="titre">Exemple de code</h3>
+    <p>
+      Le bouton <toggle-it selector="p"></toggle-it> cible tous les éléments de type <code>p</code> (paragraphes)... sauf celui-ci qui contient le bouton.
+    </p>
+    <p>
+      Cet autre bouton <toggle-it selector=".titre"></toggle-it>
+      cible la section par sa classe (<code>titre</code>).
+    </p>
+    <p>
+      Celui-ci <toggle-it selector="p:nth-of-type(2)"></toggle-it> cible juste le deuxième paragraphe.
+    </p>
+    Ceci n'est pas un paragraphe (élément HTML <code>p</code>) mais un texte isolé qui n'appartient à aucun élément : c'est un noeud de type <code>Text</code> dans le document (<a href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model/Introduction">DOM</a> : <em>Document Object Model</em>). Il n'est donc pas affecté par l'action de ces bascules.
+    <p>
+      Ce bouton <toggle-it selector="*"></toggle-it> cible tous les éléments (<code>selector="*"</code>)! Noter qu'il y a des éléments en ligne dans le texte isolé (<code>code</code>, <code>a</code>, <code>em</code>) et dans ce paragraphe (<code>code</code>). Par contre, le paragraphe lui-même n'est pas affecté car il contient le bouton responsable de la bascule.
+    </p>
   </script>
-</html-preview-it>
+</code-it>
 </div>
 <div class="sect3">
-<h4 id="_visibilité">1.1.2. Visibilité</h4>
+<h4 id="_déstructuration">1.1.2. Déstructuration</h4>
 <div class="paragraph">
-<p>Par défaut, cacher un élément signifie le supprimer de la page : la mise en page du document est ainsi potentiellement modifiée.</p>
+<p>Par défaut, cacher un élément signifie le rendre non visible sans modifier la mise en page du document.</p>
 </div>
 <div class="paragraph">
-<p>L’attribut <code>visibility</code> peut être utilisé afin de cacher un élément tout en conservant occupé l’espace dans lequel il aurait été visible : la mise en page du document reste ainsi identique qu’il soit visible ou non, contrairement au fonctionnement par défaut.</p>
+<p>L’attribut <code>destructuring</code> modifie la mise en page : la page est alors affichée comme si les éléments ciblés ainsi que leurs descendants n’étaient plus présents.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Sans l’attribut <code>visibility</code></dt>
+<dt class="hdlist1">Sans l’attribut <code>destructuring</code></dt>
 <dd>
 <p><code>&lt;toggle-it selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
 <div class="toggle-demo w-sm">
@@ -165,13 +209,13 @@ sinon il le cache.</p>
   <span>fin</span>
 </div>
 </dd>
-<dt class="hdlist1">Avec l’attribut <code>visibility</code></dt>
+<dt class="hdlist1">Avec l’attribut <code>destructuring</code></dt>
 <dd>
 <p><code>&lt;toggle-it visibility selector="…​"&gt;&lt;/toggle-it&gt;</code></p>
 <div class="toggle-demo w-sm">
   <span>début</span>
-  <toggle-it id="toggle-left-3" visibility="" selector="#toggle-right-3" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
-  <toggle-it id="toggle-right-3" visibility="" selector="#toggle-left-3" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
+  <toggle-it id="toggle-left-3" destructuring="" selector="#toggle-right-3" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
+  <toggle-it id="toggle-right-3" destructuring="" selector="#toggle-left-3" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
   <span>fin</span>
 </div>
 </dd>
@@ -181,8 +225,7 @@ sinon il le cache.</p>
 <div class="sect3">
 <h4 id="_textes_du_bouton">1.1.3. Textes du bouton</h4>
 <div class="paragraph">
-<p>Deux attributs  <code>text-hide</code> (défaut : <it-mdi-hide-outline></it-mdi-hide-outline>) et <code>text-show</code> (défaut : <it-mdi-show-outline></it-mdi-show-outline>) permettent de définir le texte du bouton
-respectivement quand l’élément est caché ou non.</p>
+<p>Deux attributs  <code>text-hide</code> (défaut : <icon-it name="mdi-hide-outline"></icon-it>) et <code>text-show</code> (défaut : <icon-it name="mdi-show-outline"></icon-it>) permettent de définir le texte du bouton respectivement quand l’élément est visible ou non.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -212,8 +255,7 @@ respectivement quand l’élément est caché ou non.</p>
 <div class="sect3">
 <h4 id="_infobulles">1.1.4. Infobulles</h4>
 <div class="paragraph">
-<p>Deux attributs <code>tooltip-hide</code> (défaut : <code>Cacher</code> <em>selector</em>) et <code>tooltip-show</code> (défaut : <code>Montrer</code> <em>selector</em>) permettent de définir le texte de l’infobulle
-respectivement quand l’élément est caché ou non.</p>
+<p>Deux attributs <code>tooltip-hide</code> (défaut : <code>Cacher</code> <em>selector</em>) et <code>tooltip-show</code> (défaut : <code>Montrer</code> <em>selector</em>) permettent de définir le texte de l’infobulle respectivement quand l’élément est visible ou non.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -240,6 +282,22 @@ respectivement quand l’élément est caché ou non.</p>
 </dl>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_taille_du_bouton">1.1.5. Taille du bouton</h4>
+<div class="paragraph">
+<p>L’attribut <code>size</code> fixe la taille du bouton selon une des trois valeurs <code>small</code> (défaut), <code>medium</code> et <code>large</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>&lt;toggle-it selector="…​" size="…​"&gt;&lt;/toggle-it&gt;</code></p>
+</div>
+<div class="toggle-demo w-sm">
+<span>début</span>
+  <toggle-it id="toggle-left-8" visibility="" selector="#toggle-right-8" text-show="small" text-hide="small" tooltip-show="Montrer le bouton de droite" tooltip-hide="Cacher le bouton de droite" size="small"></toggle-it>
+  <toggle-it id="toggle-center-8" visibility="" selector="#toggle-right-8" text-show="medium" text-hide="medium" tooltip-show="Montrer le bouton de droite" tooltip-hide="Cacher le bouton de droite" size="medium"></toggle-it>
+  <toggle-it id="toggle-right-8" visibility="" selector="#toggle-left-8" text-show="large" text-hide="large" tooltip-show="Montrer le bouton de gauche" tooltip-hide="Cacher le bouton de gauche" size="large"></toggle-it>
+  <span>fin</span>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_api">1.2. API</h3>
@@ -250,17 +308,11 @@ consultable <a href="../api/classes/ToggleIt.html">ici</a>.</p>
 <details>
 <summary class="title">L’API en bref</summary>
 <div class="content">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><api-viewer src="dist/custom-elements.json" only="toggle-it">
-</api-viewer></div></td>
-</tr>
-</tbody>
-</table>
+<api-viewer src="dist/custom-elements.json" only="toggle-it" style="max-width:100%">
+  <template data-element="toggle-it" data-target="host">
+    <toggle-it selector="#toc"></toggle-it>
+  </template>
+</api-viewer>
 </div>
 </details>
 <details>
@@ -298,7 +350,7 @@ toggle.<span class="hljs-property">selector</span> = <span class="hljs-string">"
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>préciser le sélecteur de l’élément que l’instance doit cacher ou montrer;</td>
+<td>préciser le sélecteur de l’élément que l’instance doit cibler;</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
@@ -314,13 +366,7 @@ toggle.<span class="hljs-property">selector</span> = <span class="hljs-string">"
 </div>
 </div>
 </div></div>
-<div id="footnotes">
-<hr>
-<div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. On pourra également consulter <a href="https://www.w3schools.com/cssref/css_selectors.php">la référence des sélecteurs <code>css</code> sur W3schools.</a>
-</div>
-
-</div>
+<div id="footnotes"></div>
 <nav>
   <a rel="prev" href="index.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>

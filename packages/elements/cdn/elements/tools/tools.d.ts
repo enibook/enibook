@@ -20,20 +20,20 @@ import { ThemeIt } from '../theme/theme.js';
  * @csspart base - The component's internal wrapper.
  */
 export declare class ToolsIt extends BaseIt {
+    /** Style propre à la classe. */
     static styles: CSSResultGroup;
-    menu: SlMenu;
-    menuItemAll: SlMenuItem;
-    containerElement: HTMLElement;
-    clockElement: ClockIt;
-    themeElement: ThemeIt;
-    colorElement: ColorIt;
+    protected menu: SlMenu;
+    protected menuItemAll: SlMenuItem;
+    protected containerElement: HTMLElement;
+    protected clockElement: ClockIt;
+    protected themeElement: ThemeIt;
+    protected colorElement: ColorIt;
+    /** Taille du bouton (dafaut : `small`). */
     size: 'small' | 'medium' | 'large';
-    menuItems: SlMenuItem[];
+    protected menuItems: SlMenuItem[];
     protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void;
-    handleSelectTool(event: CustomEvent): void;
-    render(): TemplateResult;
-    get tagTitle(): string;
-    toAsciidoc(): string;
+    protected handleSelectTool(event: CustomEvent): void;
+    protected render(): TemplateResult;
 }
 declare global {
     interface HTMLElementTagNameMap {

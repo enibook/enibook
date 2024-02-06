@@ -1,7 +1,9 @@
 import { css } from 'lit';
 
-export default css`
+const cssToggle = css`
   :host {
     display: inline-block;
   }
 `;
+
+export default cssToggle

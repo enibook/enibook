@@ -32,35 +32,44 @@ import styles from './tools.css.js';
  */
 @customElement('tools-it')
 export class ToolsIt extends BaseIt {
+  /** Style propre à la classe. */
   static styles: CSSResultGroup = [super.styles, styles];
 
-  @query('sl-menu') menu!: SlMenu;
+  @query('sl-menu') 
+  protected menu!: SlMenu;
 
-  @query('sl-menu-item[value="all"]') menuItemAll!: SlMenuItem;
+  @query('sl-menu-item[value="all"]') 
+  protected menuItemAll!: SlMenuItem;
 
-  @query('.tools__container') containerElement!: HTMLElement;
+  @query('.tools__container') 
+  protected containerElement!: HTMLElement;
 
   // @query('.tools__container > alarm-it') alarmElement!: AlarmIt
 
   // @query('.tools__container > chrono-it') chronoElement!: ChronoIt
 
-  @query('.tools__container > clock-it') clockElement!: ClockIt;
+  @query('.tools__container > clock-it') 
+  protected clockElement!: ClockIt;
 
   // @query('.tools__container > timer-it') timerElement!: TimerIt
 
-  @query('.tools__container > theme-it') themeElement!: ThemeIt;
+  @query('.tools__container > theme-it') 
+  protected themeElement!: ThemeIt;
 
-  @query('.tools__container > color-it') colorElement!: ColorIt;
+  @query('.tools__container > color-it') 
+  protected colorElement!: ColorIt;
 
-  @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'small';
+  /** Taille du bouton (dafaut : `small`). */
+  @property({ type: String, reflect: true }) 
+  size: 'small' | 'medium' | 'large' = 'small';
 
-  public menuItems: SlMenuItem[] = [];
+  protected menuItems: SlMenuItem[] = [];
 
   protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
     this.menuItems = [...this.menu.querySelectorAll('sl-menu-item')] as SlMenuItem[];
   }
 
-  handleSelectTool(event: CustomEvent) {
+  protected handleSelectTool(event: CustomEvent) {
     const selectedItem = event.detail.item as SlMenuItem;
     selectedItem.toggleAttribute('checked');
     if (selectedItem.checked) {
@@ -140,7 +149,7 @@ export class ToolsIt extends BaseIt {
     }
   }
 
-  render(): TemplateResult {
+  protected render(): TemplateResult {
     return html`
       <div part="base" class="tools">
         <div class="tools__container">
@@ -190,14 +199,6 @@ export class ToolsIt extends BaseIt {
       </div>
     `;
   }
-
-  override get tagTitle(): string {
-    return 'Outils';
-  }
-
-  override toAsciidoc(): string {
-    throw new Error('Method not implemented.');
-  }
 }
 
 declare global {
@@ -206,8 +207,3 @@ declare global {
   }
 }
 
-/*
-if (customElements && !customElements.get('tools-it')) {
-  customElements.define('tools-it', ToolsIt)
-}
-*/

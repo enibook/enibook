@@ -1,15 +1,15 @@
 == Bascule
 
-[#bascule-init%header,cols="2a,1a,1a",reftext="Le premier exemple"]
+[#bascule-init%header,cols="2a,1a,1a",reftext="premier exemple"]
 |===
 | Fonction
 | Elément ``html``
 | Classe ``typescript``
 
-| Cet élément propose un bouton pour montrer ou cacher un autre élément `html` défini par son link:https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors[sélecteur `css`].
+| Bouton de type bascule pour montrer ou cacher les éléments `html` défini par un link:https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors[sélecteur `css`].
 
 ++++
-<div class="toggle-demo">
+<div  class="toggle-demo">
   <toggle-it id="toggle-left" visibility selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
   <toggle-it id="toggle-right" visibility selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"></toggle-it>
 </div>
@@ -23,51 +23,79 @@ type : « link:https://developer.mozilla.org/fr/docs/Glossary/Inline-level_conte
 [%collapsible]
 .Structure
 ====
-Il s'agit d'un simple bouton qui affiche dans une infobulle l'action qui lui est associée : montrer ou cacher un autre élément.
+Il s'agit d'un simple bouton qui affiche dans une infobulle l'action qui lui est associée : montrer ou cacher les éléments ciblés par un sélecteur `css`.
 ====
 
 [%collapsible]
 .Interactivité
 ====
-Cet élément est cliquable +++<it-mdi-mouse title="cliquable"></it-mdi-mouse>+++ mais non éditable  +++<it-mdi-keyboard-off-outline title="non éditable"></it-mdi-keyboard-off-outline>+++.
+Cet élément est cliquable +++<icon-it name="mdi-mouse" title="cliquable"></icon-it>+++ mais non éditable  +++<icon-it name="mdi-keyboard-off-outline" title="non éditable"></icon-it>+++.
 
-L'interaction est de type bascule (_toggle_) et consiste à montrer ou cacher un autre élément : si cet élément est caché alors le clic sur le bouton conduit à le montrer,
-sinon il le cache.
+L'interaction est de type bascule (_toggle_) et consiste à montrer ou cacher d'autres éléments.
 ====
 
 === Attributs et propriétés
-Cette balise possède 7 attributs spécifiques optionnels : ``selector``, ``size``, ``text-hide``, ``text-show``, ``tooltip-hide``, ``tooltip-show`` et ``visibility``.
+Cette balise possède 7 attributs spécifiques optionnels : ``destructuring``, ``selector``, ``size``, ``text-hide``, ``text-show``, ``tooltip-hide``, et ``tooltip-show``.
 
-<<bascule-init>> définit ces 7 attributs :
+Seul l'attribut ``destructuring`` n'est pas utilisé dans le <<bascule-init>> :
 
-[source,html]
-----
-<div class="toggle-demo">
-  <toggle-it id="toggle-left" visibility selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
-  <toggle-it id="toggle-right" visibility selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"></toggle-it>
-</div>
-----
+++++
+<code-it language="html" block class="toggle-demo">
+  <script type="enibook">
+    <div  class="toggle-demo">
+      <toggle-it id="toggle-left" selector="#toggle-right" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D" size="large"></toggle-it>
+      <toggle-it id="toggle-right" selector="#toggle-left" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G" size="large"></toggle-it>
+    </div>
+  </script>
+</code-it>
+++++
 
 ==== Sélecteur `css`
-L'attribut `selector` (attribut *obligatoire*) définit l'élément `html` à cacher ou à montrer à l'aide d'un sélecteur `css`.
+L'attribut `selector` (défaut : `undefined`) définit les éléments `html` à cacher ou à montrer à l'aide d'un sélecteur `css`.
 
-Un link:https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors[sélecteur `css`] est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s'applique un ensemble de règles `css` footnote:[On pourra également consulter link:https://www.w3schools.com/cssref/css_selectors.php[la référence des sélecteurs `css` sur W3schools.]]. Si plusieurs éléments répondent au même critère, seul le premier d'entre-eux est concerné par la bascule.
+Un link:https://developer.mozilla.org/fr/docs/Web/CSS/CSS_selectors[sélecteur `css`] est une chaîne de caractères qui définit le (ou les) élément(s) sur lesquels s'applique un ensemble de règles `css`. 
+
+Les principaux sélecteurs sont :
+
+* le sélecteur universel `*` correspond à un élément de n'importe quel type;
+* les sélecteurs de type : `element` (exemples : `p`, `div`, `toggle-it`);
+* les sélecteurs d'identifiant : `#identifier` (exemples : `#toggle-left`, 
+`#toggle-right`);
+* les sélecteurs de classe : `.class` (exemples : `.red`, `.toggle-demo`);
+* les sélecteurs d'attribut : `[attribute]` ou `[attribute=value]` (exemples : `[destructuring]`, `[text-hide="D"]`, `[tooltip-show="Montrer G")]`);
+* on pourra consulter link:https://www.w3schools.com/cssref/css_selectors.php[W3schools] pour en savoir plus sur les différents types de sélecteurs, en particulier les opérateurs de combinaison (`+`, `~`, `>`, espace), les pseudo-classes (`:`) et les pseudo-éléments (`::`).
+
+Si plusieurs éléments répondent au même sélecteur, ils sont tous concernés par la bascule sauf les éléments qui contiennent le `<toggle-it>` lui-même
+(« on ne scie pas la branche sur laquelle on est assis »).
 
 ++++
-<html-preview-it>
+<code-it language="html" srcHead="../templates/code-head.html" srcHeader="../templates/code-header.html" srcFooter="../templates/code-footer.html" read-only preview>
   <script type="enibook">
-    <toggle-it selector="#header"></toggle-it> : 
-    bascule l'en-tête du document
+    <h3 class="titre">Exemple de code</h3>
+    <p>
+      Le bouton <toggle-it selector="p"></toggle-it> cible tous les éléments de type <code>p</code> (paragraphes)... sauf celui-ci qui contient le bouton.
+    </p>
+    <p>
+      Cet autre bouton <toggle-it selector=".titre"></toggle-it>
+      cible la section par sa classe (<code>titre</code>).
+    </p>
+    <p>
+      Celui-ci <toggle-it selector="p:nth-of-type(2)"></toggle-it> cible juste le deuxième paragraphe.
+    </p>
+    Ceci n'est pas un paragraphe (élément HTML <code>p</code>) mais un texte isolé qui n'appartient à aucun élément : c'est un noeud de type <code>Text</code> dans le document (<a href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model/Introduction">DOM</a> : <em>Document Object Model</em>). Il n'est donc pas affecté par l'action de ces bascules.
+    <p>
+      Ce bouton <toggle-it selector="*"></toggle-it> cible tous les éléments (<code>selector="*"</code>)! Noter qu'il y a des éléments en ligne dans le texte isolé (<code>code</code>, <code>a</code>, <code>em</code>) et dans ce paragraphe (<code>code</code>). Par contre, le paragraphe lui-même n'est pas affecté car il contient le bouton responsable de la bascule.
+    </p>
   </script>
-</html-preview-it>
+</code-it>
 ++++
 
-==== Visibilité
-Par défaut, cacher un élément signifie le supprimer de la page : la mise en page du document est ainsi potentiellement modifiée.
+==== Déstructuration
+Par défaut, cacher un élément signifie le rendre non visible sans modifier la mise en page du document.
 
-L'attribut `visibility` peut être utilisé afin de cacher un élément tout en conservant occupé l'espace dans lequel il aurait été visible : la mise en page du document reste ainsi identique qu'il soit visible ou non, contrairement au fonctionnement par défaut.
+L'attribut `destructuring` modifie la mise en page : la page est alors affichée comme si les éléments ciblés ainsi que leurs descendants n'étaient plus présents.
 
-Sans l'attribut `visibility`:: ``<toggle-it selector="..."></toggle-it>``
+Sans l'attribut `destructuring`:: ``<toggle-it selector="..."></toggle-it>``
 +
 ++++
 <div class="toggle-demo w-sm">
@@ -78,20 +106,19 @@ Sans l'attribut `visibility`:: ``<toggle-it selector="..."></toggle-it>``
 </div>
 ++++
 
-Avec l'attribut `visibility`:: ``<toggle-it visibility selector="..."></toggle-it>``
+Avec l'attribut `destructuring`:: ``<toggle-it visibility selector="..."></toggle-it>``
 +
 ++++
 <div class="toggle-demo w-sm">
   <span>début</span>
-  <toggle-it id="toggle-left-3" visibility selector="#toggle-right-3" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
-  <toggle-it id="toggle-right-3" visibility selector="#toggle-left-3" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
+  <toggle-it id="toggle-left-3" destructuring selector="#toggle-right-3" text-show="G" text-hide="G" tooltip-show="Montrer D" tooltip-hide="Cacher D"></toggle-it>
+  <toggle-it id="toggle-right-3" destructuring selector="#toggle-left-3" text-show="D" text-hide="D" tooltip-show="Montrer G" tooltip-hide="Cacher G"></toggle-it>
   <span>fin</span>
 </div>
 ++++
 
 ==== Textes du bouton
-Deux attributs  `text-hide` (défaut : +++<it-mdi-hide-outline></it-mdi-hide-outline>+++) et `text-show` (défaut : +++<it-mdi-show-outline></it-mdi-show-outline>+++) permettent de définir le texte du bouton
-respectivement quand l'élément est caché ou non.
+Deux attributs  `text-hide` (défaut : +++<icon-it name="mdi-hide-outline"></icon-it>+++) et `text-show` (défaut : +++<icon-it name="mdi-show-outline"></icon-it>+++) permettent de définir le texte du bouton respectivement quand l'élément est visible ou non.
 
 Fonctionnement par défaut:: ``<toggle-it selector="..."></toggle-it>``
 +
@@ -116,8 +143,7 @@ Adaptation des textes:: ``<toggle-it selector="..." text-show="..." text-hide=".
 ++++
 
 ==== Infobulles
-Deux attributs `tooltip-hide` (défaut : `Cacher` _selector_) et `tooltip-show` (défaut : `Montrer` _selector_) permettent de définir le texte de l'infobulle
-respectivement quand l'élément est caché ou non.
+Deux attributs `tooltip-hide` (défaut : `Cacher` _selector_) et `tooltip-show` (défaut : `Montrer` _selector_) permettent de définir le texte de l'infobulle respectivement quand l'élément est visible ou non.
 
 Fonctionnement par défaut:: ``<toggle-it selector="..."></toggle-it>``
 +
@@ -141,6 +167,20 @@ Adaptation des infobulles:: ``<toggle-it selector="..." tooltip-show="..." toolt
 </div>
 ++++
 
+==== Taille du bouton
+L'attribut `size` fixe la taille du bouton selon une des trois valeurs `small` (défaut), `medium` et `large`.
+
+``<toggle-it selector="..." size="..."></toggle-it>``
+++++
+<div class="toggle-demo w-sm">
+<span>début</span>
+  <toggle-it id="toggle-left-8" visibility selector="#toggle-right-8" text-show="small" text-hide="small" tooltip-show="Montrer le bouton de droite" tooltip-hide="Cacher le bouton de droite" size="small"></toggle-it>
+  <toggle-it id="toggle-center-8" visibility selector="#toggle-right-8" text-show="medium" text-hide="medium" tooltip-show="Montrer le bouton de droite" tooltip-hide="Cacher le bouton de droite" size="medium"></toggle-it>  
+  <toggle-it id="toggle-right-8" visibility selector="#toggle-left-8" text-show="large" text-hide="large" tooltip-show="Montrer le bouton de gauche" tooltip-hide="Cacher le bouton de gauche" size="large"></toggle-it>
+  <span>fin</span>
+</div>
+++++
+
 === API
 L'link:https://developer.mozilla.org/fr/docs/Glossary/API[API] (_Application Programming Interface_) de l'élément ``<toggle-it>`` est
 consultable link:../api/classes/ToggleIt.html[ici].
@@ -148,17 +188,17 @@ consultable link:../api/classes/ToggleIt.html[ici].
 .L'API en bref
 [%collapsible]
 ====
-[cols="1a"]
-|===
-|
 ++++
 <api-viewer
 src="dist/custom-elements.json"
 only="toggle-it"
+style="max-width:100%"
 >
+  <template data-element="toggle-it" data-target="host">
+    <toggle-it selector="#toc"></toggle-it>
+  </template>
 </api-viewer>
 ++++
-|===
 ====
 
 .Usage en ``typescript``
@@ -182,7 +222,7 @@ document.body.appendChild(toggle)                                        // <4>
 ----
 <1> importer la classe link:../api/classes/ToggleIt.html[``ToggleIt``];
 <2> créer une instance de cette classe;
-<3> préciser le sélecteur de l'élément que l'instance doit cacher ou montrer;
+<3> préciser le sélecteur de l'élément que l'instance doit cibler;
 <4> ajouter l'instance dans le link:https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model[DOM].
 |===
 ====

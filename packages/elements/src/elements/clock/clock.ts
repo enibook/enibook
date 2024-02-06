@@ -50,21 +50,14 @@ export class ClockIt extends BaseIt {
   /** @ignore */
   @query('.dropdown-icon') icon!: HTMLElement;
 
-  /** Ne pas afficher la date */
+  /** Afficher la date (défaut: `false`). */
   @property({ type: Boolean, reflect: true }) date = false;
 
-  /** Ne pas afficher l'heure */
+  /** Afficher l'heure (défaut: `false`). */
   @property({ type: Boolean, reflect: true }) time = false;
 
   /** Taille de l'horloge */
   @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'small';
-
-  /**
-   * Le nom courant de l'élément : `Horloge`.
-   */
-  get tagTitle(): string {
-    return 'Horloge';
-  }
 
   protected override firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
     const that = this;
@@ -82,7 +75,6 @@ export class ClockIt extends BaseIt {
         }
       }
     }
-    // this.handleClickButton()
   }
 
   protected handleClickButton() {
@@ -121,38 +113,6 @@ export class ClockIt extends BaseIt {
   protected setClock(): void {
     this._time = getTime();
   }
-
-  /**
-   * Syntaxe `asciidoc` équivalente :
-   *
-   * ```
-   * name:target[attributes]
-   * ```
-   *
-   * - `name` : `clock-it` (la macro `asciidoc` a le même nom que l'élément `html` correspondant);
-   * - `target` : la macro `clock-it` n'a pas de cible (_target_);
-   * - `attributes` : `hide-date`, `hide-time`, `size`.
-   *
-   * Voir la documentation Asciidoc sur les <a href="https://docs.asciidoctor.org/asciidoc/latest/key-concepts/#macros">macros de type _inline_</a>
-   *
-   * @examples
-   * `clock-it:[]`,
-   * `clock-it:[date]`,
-   * `clock-it:[date, size=medium]`
-   */
-  toAsciidoc(): string {
-    const attributes: { [name: string]: boolean } = {
-      date: this.date,
-      time: this.time
-    };
-    const attrs: string[] = [`size=${this.size}`];
-    for (const key of Object.keys(attributes)) {
-      if (attributes[key]) {
-        attrs.push(key);
-      }
-    }
-    return `clock-it:[${attrs.join(',')}]`;
-  }
 }
 
 declare global {
@@ -160,9 +120,3 @@ declare global {
     'clock-it': ClockIt;
   }
 }
-
-/*
-if (customElements && !customElements.get('clock-it')) {
-  customElements.define('clock-it', ClockIt)
-}
-*/

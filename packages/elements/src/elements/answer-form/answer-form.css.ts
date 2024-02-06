@@ -17,9 +17,16 @@ export default css`
   .answer-form > :nth-last-child(n + 3) ~ * {
     flex-basis: 100%;
   }
-  .form,
   .output {
-    padding: var(--sl-spacing-medium);
+    padding: 0;
     border: 1px solid var(--sl-color-neutral-200);
+  }
+  .output__iframe {
+    object-fit: contain;
+    object-position: top;
+    width: 100%;
+    height: 100%;
+    border: none;
+    overflow-y: auto
   }
 `;

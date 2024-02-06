@@ -9,12 +9,13 @@ import { BaseIt } from '../base/base.js';
  * @csspart base - The component's internal wrapper.
  */
 export declare class ToolbarIt extends BaseIt {
-    get tagTitle(): string;
-    toAsciidoc(): string;
+    /** Style propre à la classe. */
     static styles: CSSResultGroup;
+    /** Fixation de la barre d'outils (défaut : `false`). */
     fixed: boolean;
+    /** position de la barre d'outils (défaut : `top`). */
     placement: 'top' | 'bottom';
-    render(): TemplateResult;
+    protected render(): TemplateResult;
 }
 declare global {
     interface HTMLElementTagNameMap {

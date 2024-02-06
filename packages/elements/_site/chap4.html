@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>EniBook : éléments HTML</title>
+<link rel="stylesheet" href="style0.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/dist/enibook.css">
+<link rel="stylesheet" type="text/css" href="/styles/doc.css">
+<link rel="stylesheet" type="text/css" href="/styles/hljs-themes.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace.js"></script>
+<script type="module" src="https://jspm.dev/api-viewer-element"></script>
+<script type="module" src="/dist/enibook-autoloader.js"></script>
+<link rel="stylesheet" href="style1.css" type="text/css">
+<link rel="stylesheet" href="asciidoctor-chunker.css" type="text/css"></head>
+<body class="article toc2 toc-left">
+<toolbar-it fixed="">
+  <sl-button-group slot="start">
+    <sl-tooltip content="Documentations EniBook" hoist=""><sl-button size="medium" href="../index.html"><icon-it name="mdi-home"></icon-it></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : exemples" hoist=""><sl-button size="medium" href="../examples/index.html"><icon-it name="mdi-monitor-eye"></icon-it></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : éléments HTML" hoist=""><sl-button size="medium" href="../elements/index.html"><icon-it name="mdi-language-html5"></icon-it></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : API typescript" hoist=""><sl-button size="medium" href="../api/index.html"><icon-it name="mdi-language-typescript"></icon-it></sl-button></sl-tooltip>
+    <sl-tooltip content="EniBook : codes sources" hoist=""><sl-button size="medium" href="https://github.com/enibook/enibook"><icon-it name="mdi-github"></icon-it></sl-button></sl-tooltip>
+  </sl-button-group>
+  <tools-it size="medium" slot="end"></tools-it>
+</toolbar-it>
+<div id="header">
+<h1>EniBook : éléments HTML</h1>
+<div id="toc" class="toc2">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="index.html">EniBook : éléments HTML</a></li><li><a href="chap1.html">1. Bascule</a>
+<ul class="sectlevel2">
+<li><a href="chap1.html#_attributs_et_propriétés">1.1. Attributs et propriétés</a></li>
+<li><a href="chap1.html#_api">1.2. API</a></li>
+</ul>
+</li>
+<li><a href="chap2.html">2. Horloge</a>
+<ul class="sectlevel2">
+<li><a href="chap2.html#_attributs_et_propriétés_2">2.1. Attributs et propriétés</a></li>
+<li><a href="chap2.html#_api_2">2.2. API</a></li>
+</ul>
+</li>
+<li><a href="chap3.html">3. Lorem Ipsum</a>
+<ul class="sectlevel2">
+<li><a href="chap3.html#_gabarits">3.1. Gabarits</a></li>
+<li><a href="chap3.html#_attributs_et_propriétés_3">3.2. Attributs et propriétés</a></li>
+<li><a href="chap3.html#_api_3">3.3. API</a></li>
+</ul>
+</li>
+<li class="current"><a href="chap4.html">4. Barre d’outils</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+
+
+
+
+
+<div class="sect1">
+<h2 id="_barre_doutils">4. Barre d’outils</h2>
+<div class="sectionbody">
+<toolbar-it fixed="" placement="top">
+  <it-mdi-menu slot="start"></it-mdi-menu>
+  <span slot="center">Hello</span>
+  <clock-it slot="end"></clock-it>
+</toolbar-it>
+</div>
+</div></div>
+<div id="footnotes"></div>
+<nav>
+  <a rel="prev" href="chap3.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
+        <i class="fa fa-angle-left"></i>
+     </a>
+  
+  <div style="clear: both"></div>
+</nav>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+
+</body>
+  <script>
+  function isInViewport(ele) {
+    const rect = ele.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+  }
+  function yPosition (ele) {
+    const rect = ele.getBoundingClientRect();
+    return (rect.top - 20); // 20px above
+  }
+  let curr = document.getElementsByClassName('current');
+  if (!isInViewport(curr[curr.length - 1])) {
+    document.getElementById('toc').scrollTo({
+      top: yPosition(curr[0]),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  /* For page navigation */
+  function gotoPage(selector) {
+    const button = document.querySelector(selector);
+    if (button)
+      window.location.href = button.href;
+  }
+  document.addEventListener('keydown', e => {
+    if (e.shiftKey)
+      return;
+    switch (e.key) {
+      case 'ArrowRight':
+        e.preventDefault();
+        gotoPage('.nav-next');
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        gotoPage('.nav-prev');
+        break;
+    }
+  });
+  </script>
+  </html>

@@ -29,9 +29,7 @@ let packageData = JSON.parse(readFileSync(path.join(process.cwd(), 'package.json
 const enibookVersion = JSON.stringify(packageData.version.toString());
 
 //
-// Runs asciidoctor and builds the docs.
-// The returned promise resolves after the initial publish has completed.
-// The child process and an array of strings containing any output are included in the resolved promise.
+// Générer la documentation monopage avec `asciidoctor`.
 //
 async function buildTheDocs(watch = false) {
   const htmlDoc = new Promise(async (resolve, reject) => {
@@ -40,8 +38,7 @@ async function buildTheDocs(watch = false) {
       '@djencks/asciidoctor-mathjax',
       '-r',
       'asciidoctor-highlight.js',
-      `${docdir}/elements.adoc` /*, 
-      '--destination-dir', `${sitedir}`*/
+      `${docdir}/elements.adoc`
     ];
     const output = [];
 
@@ -65,9 +62,17 @@ async function buildTheDocs(watch = false) {
   return htmlDoc;
 }
 
+//
+// Générer la documentation multipage avec `asciidoctor-chunker`.
+// A lancer après la génération de la documentation monopage.
+//
 async function buildTheChunks(watch = false) {
   const chunkDoc = new Promise(async (resolve, reject) => {
-    const args = [`${docdir}/elements.html`, '--titlePage', '"EniBook : éléments HTML"', '--outdir', `${sitedir}`];
+    const args = [
+      `${docdir}/elements.html`, 
+      '--titlePage', '"EniBook : éléments HTML"', 
+      '--outdir', `${sitedir}`
+    ];
     const output = [];
 
     const child = spawn('asciidoctor-chunker', args, {
@@ -100,7 +105,7 @@ async function buildTheSource() {
     target: 'es2017',
     entryPoints: [
       //
-      // NOTE: Les points d'entrée doivent être mappés dans le fichier package.json > exports,
+      // NOTE: Les points d'entrée doivent être renseignés dans les `exports` du fichier `package.json`,
       // sinon les utilisateurs ne pourront pas les importer !
       //
       // Tout en un
@@ -115,15 +120,9 @@ async function buildTheSource() {
     outdir: cdndir,
     chunkNames: 'chunks/[name].[hash]',
     define: {
-      // Floating UI requires this to be set
-      'process.env.NODE_ENV': '"production"'
+       'process.env.NODE_ENV': '"production"'
     },
     bundle: true,
-    //
-    // We don't bundle certain dependencies in the unbundled build.
-    // This ensures we ship bare module specifiers, allowing end users to better optimize when using a bundler.
-    // (Only packages that ship ESM can be external.)
-    //
     external: alwaysExternal,
     splitting: true,
     plugins: [
@@ -204,8 +203,7 @@ await nextTask('Création du bundler', async () => {
   buildResults = await buildTheSource();
 });
 
-// Copier la compilation CDN dans les documents
-// (production uniquement; nous utilisons un répertoire virtuel dans dev)
+// Copier la compilation CDN dans les documents (en production uniquement).
 if (!serve) {
   await nextTask(`Copie "${cdndir}" dans "${sitedir}"`, async () => {
     await deleteAsync(sitedir);
@@ -223,6 +221,10 @@ if (serve) {
 
   await nextTask(`Copie "${docdir}/styles" dans "${sitedir}/styles"`, async () => {
     return await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'), { overwrite: true });
+  });
+
+  await nextTask(`Copie de "${docdir}/templates" dans "${sitedir}/templatess"`, async () => {
+    return await copy(path.join(docdir, 'templates'), path.join(sitedir, 'templates'), { overwrite: true });
   });
 
   await nextTask(`Documentation multipage`, async () => {
@@ -272,7 +274,7 @@ if (serve) {
       const rebuildResults = buildResults.map(result => result.rebuild());
       await Promise.all(rebuildResults);
 
-      // Manifeste (but not when styles are changed)
+      // Manifeste (mais pas quand juste les styles sont modifiés)
       if (!isStylesheet) {
         await Promise.all(
           bundleDirectories.map(dir => {
@@ -288,7 +290,7 @@ if (serve) {
   });
 
   // Recharger sans reconstruire lorsque la documentation change
-  bs.watch([`${docdir}/**/*.*`]).on('change', async filename => {
+  bs.watch([`${docdir}/**/!(elements.html).*`]).on('change', async filename => {
     console.log('[doc] File changed: ', filename);
     await nextTask('Documentation monopage', async () => {
       result = await buildTheDocs(true);
@@ -298,6 +300,10 @@ if (serve) {
       result = await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'), { overwrite: true });
     });
 
+    await nextTask(`Copie de "${docdir}/templates" dans "${sitedir}/templatess"`, async () => {
+      return await copy(path.join(docdir, 'templates'), path.join(sitedir, 'templates'), { overwrite: true });
+    });
+  
     await nextTask(`Documentation multipage`, async () => {
       result = await buildTheChunks();
     });
@@ -320,6 +326,10 @@ if (!serve) {
 
   await nextTask(`Copie de "${docdir}/styles" dans "${sitedir}/styles"`, async () => {
     return await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'), { overwrite: true });
+  });
+
+  await nextTask(`Copie de "${docdir}/templates" dans "${sitedir}/templatess"`, async () => {
+    return await copy(path.join(docdir, 'templates'), path.join(sitedir, 'templates'), { overwrite: true });
   });
 
   await nextTask(`Documentation multipage dans "${sitedir}"`, async () => {

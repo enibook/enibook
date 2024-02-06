@@ -1,98 +1,83 @@
 // lit
 import { html } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
-import { property, query } from 'lit/decorators.js';
-import type { CSSResultGroup, TemplateResult } from 'lit';
+import { property, query, state } from 'lit/decorators.js';
+import type { CSSResultGroup, PropertyValueMap, TemplateResult } from 'lit';
+// debounce
+import debounce from 'debounce'
 // enibook
 import { BaseIt } from '../base/base.js';
 import styles from './answer-form.css.js';
 
 export abstract class AnswerForm extends BaseIt {
+  /** Style propre à la classe. */
   static override styles: CSSResultGroup = [
     super.styles, 
     styles
   ];
 
-  @query('form.answer-form')
-  protected form!: HTMLFormElement;
+  @query('.form') formElement!: HTMLElement
+  @query('.output') outputElement!: HTMLElement
+  @query('iframe') frame!: HTMLIFrameElement
 
-  /**
-   * La légende du cadre autour du composant.
-   *
-   * @memberof AnswerForm
-   */
-  @property({ type: String, reflect: true })
-  public formLegend = '';
+  @state() protected srcDoc = '';
 
-  @property({ type: String, reflect: true })
-  public outputLegend = '';
-
-  /**
-   * Retours demandés.
-   *
-   * @memberof AnswerForm
-   */
-  @property({ type: Boolean, reflect: true, attribute: 'btn-feedback' })
+  /** Retours demandés (défaut: `false`). */
+  @property({ type: Boolean, reflect: true, attribute: 'btn-feedback' }) 
   protected btnFeedback = false;
 
-  /**
-   * Un cadre est ajouté autour de l'élément.
-   *
-   * @type {boolean}
-   * @memberof AnswerForm
-   */
-  @property({ type: Boolean, reflect: true })
-  public fieldset = false;
+  @property({ type: Boolean, reflect: true }) 
+  public preview = false;
 
-  @property({ type: Boolean, reflect: true, attribute: 'no-output' })
-  public noOutput = false;
-
-  /**
-   *
-   * @ignore
-   * @abstract
-   * @returns {*}
-   * @memberof AnswerForm
-   */
+  /** Réponse */
   abstract answer(): unknown;
+
+  protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
+    const that = this
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target == that.formElement && that.preview) {
+          const base = that.formElement.querySelector("[part='base']") as HTMLElement
+          const baseHeight = base.offsetHeight
+          
+          this.outputElement.style.height = `${baseHeight}px`
+        }
+      }
+    })
+    
+    function observer() {
+      resizeObserver.observe(that.formElement as Element)
+    }
+    
+    window.onresize = debounce(observer, 300)
+    
+  }
+
 
   override render(): TemplateResult {
     return html`
       <div part="base" class="answer-form">
-        <div part="form" class="form">${this.renderForm()}</div>
-        <div part="output" class="output" ?hidden=${this.noOutput}>${this.renderOutput()}</div>
-      </div>
-    `;
-  }
-
-  protected renderAnswerOutput(): TemplateResult {
-    const fieldsetClasses = {
-      form__fieldset: true,
-      rtl: this.dir === 'rtl'
-    };
-    return html`
-      <div part="output" class="answer-output">
-        ${!this.fieldset
-          ? this.renderOutput()
-          : html`
-              <fieldset class=${classMap(fieldsetClasses)}>
-                <legend class="output__legend">${this.outputLegend}</legend>
-                ${this.renderOutput()}
-              </fieldset>
-            `}
+        <div part="form" class="form" ?border=${!this.preview}>${this.renderForm()}</div>
+        <div part="output" class="output" ?hidden=${!this.preview}>${this.renderOutput()}</div>
       </div>
     `;
   }
 
   protected abstract renderForm(): TemplateResult;
 
-  protected abstract renderOutput(): TemplateResult;
+  protected renderOutput(): TemplateResult {
+    return html`
+      <iframe
+        class="output__iframe"
+        allowfullscreen
+        name="output"
+        sandbox="allow-downloads allow-forms allow-modals allow-popups allow-same-origin allow-scripts allow-top-navigation"
+        srcdoc=${this.srcDoc}
+      >
+      </iframe>
+    `;
+  }
 
-  /**
-   *
-   * @ignore
-   * @abstract
-   * @memberof AnswerForm
-   */
+
+  /** Réinitialisation du formulaire */
   abstract reset(): void;
 }

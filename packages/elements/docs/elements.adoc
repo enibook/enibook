@@ -20,7 +20,11 @@ link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'l
 
 
 
-stem:[\displaystyle\cos(\frac{1}{1+x^2})]
+stem:[\displaystyle\cos(\frac{1}{1+x^2}\times \frac{1}{x^3})]
+
+++++
+<frame-it url="https://shoelace.style"></frame-it>
+++++
 
 ++++
 <code-it fieldset language="html" preview>
@@ -37,15 +41,18 @@ stem:[\displaystyle\cos(\frac{1}{1+x^2})]
 </code-it>
 ++++
 
-[source,python]
-----
-def f(x):
-  return 3*x
-----
+++++
+<code-it language="python" block theme="light">
+  <script type="enibook">
+    def f(x):
+      return 3*x
+  </script>
+</code-it>
+++++
 
 
 include::./toggle/toggle.adoc[]
 // include::./code/code.adoc[]
 include::./clock/clock.adoc[]
 include::./lorem-ipsum/lorem-ipsum.adoc[]
-// include::./toolbar/toolbar.adoc[]
+include::./toolbar/toolbar.adoc[]

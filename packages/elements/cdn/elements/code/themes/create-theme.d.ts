@@ -1,4 +1,4 @@
-import type { Extension } from '@codemirror/state';
+import { type Extension } from '@codemirror/state';
 import type { TagStyle } from '@codemirror/language';
 interface Options {
     /**

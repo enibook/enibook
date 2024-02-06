@@ -3,9 +3,7 @@ import { css } from 'lit';
 export default css`
   :host {
     display: block;
-  }
-  :host:focus {
-    border: 1px solid var(--color-primary);
+    margin-bottom: 0.5em;
   }
   .code-it {
     display: flex;
@@ -25,6 +23,9 @@ export default css`
     border-radius: 0.375rem;
     padding: 4px 0;
   }
+  .dropdown__shortcuts {
+    font-size: 0.25rem;
+  }
   .dropdown__shortcuts__label {
     display: inline-flex;
     justify-content: space-between;
@@ -38,13 +39,5 @@ export default css`
   .sl-toast-stack {
     left: auto;
     right: 0;
-  }
-  .output__iframe {
-    object-fit: contain;
-    object-position: top;
-    width: 100%;
-    height: 100%;
-    border: none;
-    min-height: 2rem;
   }
 `;

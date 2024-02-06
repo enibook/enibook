@@ -1,46 +1,21 @@
-import type { CSSResultGroup, TemplateResult } from 'lit';
+import type { CSSResultGroup, PropertyValueMap, TemplateResult } from 'lit';
 import { BaseIt } from '../base/base.js';
 export declare abstract class AnswerForm extends BaseIt {
+    /** Style propre à la classe. */
     static styles: CSSResultGroup;
-    protected form: HTMLFormElement;
-    /**
-     * La légende du cadre autour du composant.
-     *
-     * @memberof AnswerForm
-     */
-    formLegend: string;
-    outputLegend: string;
-    /**
-     * Retours demandés.
-     *
-     * @memberof AnswerForm
-     */
+    formElement: HTMLElement;
+    outputElement: HTMLElement;
+    frame: HTMLIFrameElement;
+    protected srcDoc: string;
+    /** Retours demandés (défaut: `false`). */
     protected btnFeedback: boolean;
-    /**
-     * Un cadre est ajouté autour de l'élément.
-     *
-     * @type {boolean}
-     * @memberof AnswerForm
-     */
-    fieldset: boolean;
-    noOutput: boolean;
-    /**
-     *
-     * @ignore
-     * @abstract
-     * @returns {*}
-     * @memberof AnswerForm
-     */
+    preview: boolean;
+    /** Réponse */
     abstract answer(): unknown;
+    protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void;
     render(): TemplateResult;
-    protected renderAnswerOutput(): TemplateResult;
     protected abstract renderForm(): TemplateResult;
-    protected abstract renderOutput(): TemplateResult;
-    /**
-     *
-     * @ignore
-     * @abstract
-     * @memberof AnswerForm
-     */
+    protected renderOutput(): TemplateResult;
+    /** Réinitialisation du formulaire */
     abstract reset(): void;
 }

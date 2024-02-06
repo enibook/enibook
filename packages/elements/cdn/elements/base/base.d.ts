@@ -1,13 +1,10 @@
 import { type CSSResultGroup, LitElement } from 'lit';
-/**
- * Classe de base pour les éléments personnalisés EniBook
- */
+/** Classe de base pour les éléments personnalisés EniBook */
 export declare abstract class BaseIt extends LitElement {
+    /** Style propre à la classe. */
     static styles: CSSResultGroup;
-    /**
-     * Teste si l'élément est en mode plein écran.
-     */
     protected fullscreen: boolean;
+    lang: string;
     /**
      * Emission d'un événement `CustomEvent` par l'élément.
      *
@@ -28,19 +25,11 @@ export declare abstract class BaseIt extends LitElement {
      *
      * @param {string} message - le message d'alerte
      * @param {string} [variant="primary"] - apparence du message
-     * @param {string} [icon="it-mdi-information-variant-circle-outline"] - icône associé au message.
+     * @param {string} [icon="it-mdi-information-variant-circle-outline"] - icône associée au message.
      * @param {string} [duration="3000"] - durée d'affichage de l'alerte en millisecondes.
      * @returns
      * @memberof EnibookElement
      */
     notify(message: string, variant?: string, icon?: string, duration?: string): Promise<void>;
-    /**
-     * Le nom courant de l'élément : à définir dans chaque sous-classe.
-     */
-    abstract get tagTitle(): string;
-    /**
-     * Syntaxe `asciidoc` équivalente : à définir dans chaque sous-classe.
-     */
-    abstract toAsciidoc(): string;
     protected wrap(message: string): string;
 }

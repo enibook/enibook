@@ -1,8 +1,9 @@
 // lit
 import { customElement, property, query, queryAll, state } from 'lit/decorators.js';
-import { html, svg } from 'lit';
+import { html } from 'lit';
 import type { CSSResultGroup, PropertyValueMap, TemplateResult } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import {classMap} from 'lit/directives/class-map.js';
 // shoelace
 import '@shoelace-style/shoelace/dist/components/alert/alert.js';
 import '@shoelace-style/shoelace/dist/components/badge/badge.js';
@@ -33,6 +34,7 @@ import { getKeymap } from './code-keymap.js';
 import { darkTheme } from './themes/dark.js';
 import { lightTheme } from './themes/light.js';
 import { languages } from './languages/languages.js';
+import { templateHTML, type OptionsTemplate } from './templates/template-html';
 import styles from './code.css.js';
 
 const outlineNone = EditorView.theme({
@@ -81,24 +83,27 @@ const helpKeymap = [
  */
 @customElement('code-it')
 export class CodeIt extends AnswerForm {
+  /** Style propre à la classe. */
   static styles: CSSResultGroup = [super.styles, styles];
 
-  /** @ignore */
+  /** Raccourcis clavier */
   static keymap: { name: string; key: string; run: Command }[] = getKeymap();
 
-  // private firstUpdateOk = false
-
-  protected _language = 'text';
-  protected _placeholder = "F1: afficher/masquer les barres d'outils et d'informations";
-  protected _readOnly = false;
-  protected _indentSize = 2;
+  protected _language: string = 'text';
+  protected _placeholder: string = "F1: afficher/masquer les barres d'outils et d'informations";
+  protected _readOnly: boolean = false;
+  protected _indentSize: number = 2;
   protected _theme: 'dark' | 'light' = 'dark';
 
-  @state() protected message = '';
+  protected _head: string = ''
+  protected _header: string = ''
+  protected _footer: string = ''
+  
+
 
   protected theEditor!: EditorView;
   protected extensions: (Extension | (StateField<boolean> | Extension)[])[] = [];
-  protected initialDoc = '';
+  protected initialCode: string = '';
 
   protected languageConfig = new Compartment();
   protected lineNumbersConfig = new Compartment();
@@ -114,15 +119,12 @@ export class CodeIt extends AnswerForm {
 
   @state() protected cursorLine = 0;
   @state() protected cursorColumn = 0;
-  @state() protected srcDoc = '';
+  @state() protected message = '';
 
-  /**
-   * Le nombre d'espaces pour une indentation (défaut: 2).
-   *
-   * @readonly
-   * @type {number}
-   * @memberof CodeEditIt
-   */
+  /** Mode bloc */
+  @property({ type: Boolean, reflect: true }) block: boolean = false
+
+  /** Nombre d'espaces par indentation (défaut: 2). */
   @property({ type: Number, reflect: true, attribute: 'indent-size' })
   get indentSize(): number {
     return this._indentSize;
@@ -136,13 +138,7 @@ export class CodeIt extends AnswerForm {
     }
   }
 
-  /**
-   * Le langage à éditer.
-   *
-   * @readonly
-   * @type {string}
-   * @memberof CodeEditIt
-   */
+  /** Langage à éditer (défaut: `text`). */
   @property({ type: String, reflect: true })
   get language(): string {
     return this._language;
@@ -156,21 +152,10 @@ export class CodeIt extends AnswerForm {
     }
   }
 
-  /**
-   * Numéroter les lignes de l'éditeur.
-   *
-   * @type {boolean}
-   * @memberof CodeEditIt
-   */
+  /** Numéros de lignes (défaut: `false`). */
   @property({ type: Boolean, reflect: true, attribute: 'line-numbers' }) lineNumbers: boolean = false;
 
-  /**
-   * L'invite de l'éditeur.
-   *
-   * @readonly
-   * @type {string}
-   * @memberof CodeEditIt
-   */
+  /** Invite de l'éditeur. */
   @property({ type: String, reflect: true })
   get placeholder(): string {
     return this._placeholder;
@@ -184,16 +169,7 @@ export class CodeIt extends AnswerForm {
     }
   }
 
-  /** @ignore */
-  @property({ type: Boolean, reflect: true }) preview: boolean = false;
-
-  /**
-   * Passe l'éditeur en mode « lecture seule » (ie. modifications interdites; défaut: false).
-   *
-   * @readonly
-   * @type {boolean}
-   * @memberof CodeEditIt
-   */
+  /** Mode « lecture seule » (ie. modifications interdites; défaut: `false`). */
   @property({ type: Boolean, reflect: true, attribute: 'read-only' })
   get readOnly(): boolean {
     return this._readOnly;
@@ -207,20 +183,19 @@ export class CodeIt extends AnswerForm {
     }
   }
 
-  /**
-   * Le fichier source à éditer.
-   *
-   * @memberof CodeEditIt
-   */
+  /** Le fichier source à éditer. */
   @property({ type: String, reflect: true }) src = '';
 
-  /**
-   * Le thème (clair: `light` ou sombre: `dark`) de l'éditeur (défaut: `dark`).
-   *
-   * @readonly
-   * @type {('light' | 'dark')}
-   * @memberof CodeEditIt
-   */
+  /** Le fichier `html` dont le contenu est à ajouter en fin de la section `<head>` du template HTML. */
+  @property({ type: String, reflect: true }) srcHead = '';
+
+  /** Le fichier `html` dont le contenu est à insérer au début de la section `<body>` du template HTML. */
+  @property({ type: String, reflect: true }) srcHeader = '';
+
+  /** Le fichier `html` dont le contenu est à ajouter en fin de la section `<body>` du template HTML. */
+  @property({ type: String, reflect: true }) srcFooter = '';
+
+  /** Le thème (clair: `light` ou sombre: `dark`) de l'éditeur (défaut: `dark`). */
   @property({ type: String, reflect: true })
   get theme(): 'light' | 'dark' {
     return this._theme;
@@ -234,23 +209,13 @@ export class CodeIt extends AnswerForm {
     }
   }
 
-  /**
-   * Affiche les barres d'outils et d'informations.
-   *
-   * @memberof CodeEditIt
-   */
+  /** Affiche les barres d'outils et d'informations. */
   @property({ type: Boolean, reflect: true }) toolbar = false;
 
-  /**
-   * Le contenu de l'éditeur.
-   *
-   * @readonly
-   * @type {string}
-   * @memberof CodeEditIt
-   */
+  /** Le contenu de l'éditeur. */
   @property({ attribute: false })
   get value(): string {
-    let res = this.initialDoc;
+    let res = this.initialCode;
     if (this.theEditor) {
       res = this.theEditor.state.doc.toString();
     }
@@ -270,11 +235,7 @@ export class CodeIt extends AnswerForm {
     }
   }
 
-  /**
-   * La réponse de l'éditeur.
-   *
-   * @returns {string}
-   */
+  /** Réponse de l'éditeur. */
   answer(): string {
     return this.value;
   }
@@ -287,18 +248,15 @@ export class CodeIt extends AnswerForm {
     return res;
   }
 
-  /**
-   * Le nom courant de l'élément.
-   *
-   * @readonly
-   * @type {string}
-   */
-  get tagTitle(): string {
-    return `Editeur de code ${this.language}`;
-  }
-
   protected compile(value: string): string {
-    return value;
+    const options: OptionsTemplate = {
+      head: this._head,
+      header: this._header,
+      footer: this._footer,
+      lang: this.lang,
+      theme: this.theme === 'dark' ? 'light' : 'dark', 
+    }
+    return templateHTML(value, options);
   }
 
   protected createListeners() {
@@ -324,9 +282,11 @@ export class CodeIt extends AnswerForm {
     return response.text();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected async firstUpdated(_changedProperties: PropertyValueMap<unknown> | Map<PropertyKey, unknown>) {
-    this.formLegend = `Edition de code ${this.language}`;
+    super.firstUpdated(_changedProperties)
+    this.readOnly = !this.block ? this.readOnly : true
+    this.preview = !this.block ? this.preview : false
+    this.lineNumbers = !this.readOnly ? this.lineNumbers : true
     this.extensions = this.getInitialExtensions();
     this.theEditor = new EditorView({
       doc: '',
@@ -334,7 +294,10 @@ export class CodeIt extends AnswerForm {
       parent: this.editorContainer,
       root: this.shadowRoot as Document | ShadowRoot
     });
-    this.value = await this.getInitialDoc();
+    this.value = await this.getInitialCode();
+    this._head = await this.getHead()
+    this._header = await this.getHeader()
+    this._footer = await this.getFooter()
     this.setLanguageExtension();
     this.createListeners();
   }
@@ -347,23 +310,68 @@ export class CodeIt extends AnswerForm {
     }
   }
 
-  protected async getInitialDoc(): Promise<string> {
-    this.initialDoc = '';
-    if (this.src) {
-      console.log('SRC', this.src);
-      await this.fetchContent(this.src).then(response => {
-        console.log('RESP', response);
-        this.initialDoc += response;
+  protected async getHead(): Promise<string> {
+    let head = ''
+    if (this.srcHead) {
+      await this.fetchContent(this.srcHead).then(response => {
+        head += response;
       });
-      console.log('RES', this.initialDoc);
+    } else {
+      const innerScriptTag = this.querySelector('script[type="enibook/head"]');
+      if (innerScriptTag) {
+        const scriptHead = dedentText(innerScriptTag.innerHTML);
+        head += scriptHead.replace(/&lt;(\/?script)(.*?)&gt;/g, '<$1$2>');
+      }
+    }
+    return head;
+  }
+
+  protected async getHeader(): Promise<string> {
+    let header = ''
+    if (this.srcHeader) {
+      await this.fetchContent(this.srcHeader).then(response => {
+        header += response;
+      });
+    } else {
+      const innerScriptTag = this.querySelector('script[type="enibook/header"]');
+      if (innerScriptTag) {
+        const scriptHeader = dedentText(innerScriptTag.innerHTML);
+        header += scriptHeader.replace(/&lt;(\/?script)(.*?)&gt;/g, '<$1$2>');
+      }
+    }
+    return header;
+  }
+  
+  protected async getFooter(): Promise<string> {
+    let footer = ''
+    if (this.srcFooter) {
+      await this.fetchContent(this.srcFooter).then(response => {
+        footer += response;
+      });
+    } else {
+      const innerScriptTag = this.querySelector('script[type="enibook/footer"]');
+      if (innerScriptTag) {
+        const scriptFooter = dedentText(innerScriptTag.innerHTML);
+        footer += scriptFooter.replace(/&lt;(\/?script)(.*?)&gt;/g, '<$1$2>');
+      }
+    }
+    return footer;
+  }
+
+  protected async getInitialCode(): Promise<string> {
+    this.initialCode = '';
+    if (this.src) {
+      await this.fetchContent(this.src).then(response => {
+        this.initialCode += response;
+      });
     } else {
       const innerScriptTag = this.querySelector('script[type="enibook"]');
       if (innerScriptTag) {
         const scriptDoc = dedentText(innerScriptTag.innerHTML);
-        this.initialDoc += scriptDoc.replace(/&lt;(\/?script)(.*?)&gt;/g, '<$1$2>');
+        this.initialCode += scriptDoc.replace(/&lt;(\/?script)(.*?)&gt;/g, '<$1$2>');
       }
     }
-    return this.initialDoc;
+    return this.initialCode;
   }
 
   protected getInitialExtensions(): (Extension | (StateField<boolean> | Extension)[])[] {
@@ -398,14 +406,14 @@ export class CodeIt extends AnswerForm {
   get validLanguages(): string[] {
     return Object.keys(languages);
   }
-
+    
   protected handleCopyClipboard() {
     navigator.clipboard.writeText(this.value).then(
       () => {
-        this.notify("Contenu de l'éditeur copié dans le presse-papier.", 'success', 'it-mdi-check-circle-outline');
+        this.notify("Contenu de l'éditeur copié dans le presse-papier.", 'success', 'mdi-check-circle-outline');
       },
       () => {
-        this.notify("A priori, interdiction d'écrire dans le presse-papier !", 'warning', 'it-mdi-alert-outline');
+        this.notify("A priori, impossible d'écrire dans le presse-papier !", 'danger', 'mdi-alert-outline');
       }
     );
   }
@@ -423,8 +431,7 @@ export class CodeIt extends AnswerForm {
 
   protected handleSelectCommand(event: CustomEvent) {
     const value = event.detail.item.value as string;
-    // eslint-disable-next-line no-eval
-    (0, eval)(`${value}(this.editor)`);
+    (0, eval)(`${value}(this.editor)`); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#never_use_eval!
   }
 
   protected handleSelectLanguage(event: CustomEvent) {
@@ -447,48 +454,26 @@ export class CodeIt extends AnswerForm {
     return Object.keys(languages).includes(language);
   }
 
-  /*
-  protected async loadLanguage(lang: string): Promise<LanguageSupport | undefined>{
-    const desc = LanguageDescription.matchLanguageName(languages, lang, true)
-    const support = await desc?.load()
-    return support
-  }
-*/
   protected renderForm(): TemplateResult {
+    const classes = {
+      'code-it': true,
+      light: this.theme === 'light',
+      dark: this.theme !== 'light'
+    }
     return html`
-      <div part="base" class="code-it">
+      <div part="base" class=${classMap(classes)}>
         <div part="toolbar">${this.renderToolbar()}</div>
         <div class="editor-base">
           <div part="editor" class="editor"></div>
           <div part="menuBtn" class="menu-button">
-            ${this.readOnly
-              ? html`<sl-tooltip content="copier dans le presse-papier" hoist
-                  ><sl-button variant="neutral" size="small" @click=${() => this.handleCopyClipboard()}
-                    >${svgIcon('mdi-content-copy')}</sl-button
-                  ></sl-tooltip
-                >`
-              : html`<sl-tooltip content="activer/désactiver les barres d'outils et d'informations" hoist
-                  ><sl-button
-                    variant="neutral"
-                    size="small"
-                    @click=${() => {
-                      this.toolbar = !this.toolbar;
-                    }}
-                    >${svgIcon('mdi-tools')}</sl-button
-                  ></sl-tooltip
-                >`}
+            ${!this.readOnly
+              ? this.renderToolbarsButton()
+              : this.renderToolsButtons()
+            }
             ${this.btnFeedback
-              ? html`<sl-tooltip content="interprétation" hoist
-                  ><sl-button
-                    variant="neutral"
-                    size="small"
-                    @click=${() => {
-                      this.emit('feedback-requested-it');
-                    }}
-                    >${svgIcon('mdi-play')}</sl-button
-                  ></sl-tooltip
-                >`
-              : html``}
+              ? this.renderFeedbackButton()
+              : html``
+            }
           </div>
         </div>
         <div part="statusbar">${this.renderStatusBar()}</div>
@@ -513,8 +498,9 @@ export class CodeIt extends AnswerForm {
               preserveAspectRatio="xMidYMid meet"
               viewBox="0 0 24 24"
             >
-              <path fill="currentColor" d="M5 5v14h2v2H3V3h4v2H5m15 6H7v2h13V7m0 4Z" /></svg
-          ></sl-button>
+              <path fill="currentColor" d="M5 5v14h2v2H3V3h4v2H5m15 6H7v2h13V7m0 4Z" />
+            </svg>
+          </sl-button>
         </sl-tooltip>
         <sl-tooltip content="commenter/décommenter le bloc" hoist>
           <sl-button
@@ -527,6 +513,19 @@ export class CodeIt extends AnswerForm {
         </sl-tooltip>
       </sl-button-group>
     `;
+  }
+
+  protected renderFeedbackButton(): TemplateResult {
+    return html`<sl-tooltip content="interprétation" hoist
+    ><sl-button
+      variant="neutral"
+      size="small"
+      @click=${() => {
+        this.emit('feedback-requested-it');
+      }}
+      >${svgIcon('mdi-play')}</sl-button
+    ></sl-tooltip
+  >`
   }
 
   protected renderHistoryButtons(): TemplateResult {
@@ -588,6 +587,35 @@ export class CodeIt extends AnswerForm {
     `;
   }
 
+  protected renderKeymapButton(): TemplateResult {
+    return html`
+      <sl-dropdown stay-open-on-select hoist ?hidden=${this.readOnly}>
+        <sl-button slot="trigger" size="small" caret>${svgIcon('mdi-keyboard')}</sl-button>
+        <sl-menu class="dropdown__shortcuts">
+          <sl-menu-item disabled>
+            Commande
+            <div slot="suffix">Raccourci clavier</div>
+          </sl-menu-item>
+          <sl-divider></sl-divider>
+          ${CodeIt.keymap.map(
+            map =>
+              html`
+                <sl-menu-item @click=${() => { map.run(this.theEditor); }}>
+                  ${map.name}
+                  <div slot="suffix">${map.key}</div>
+                </sl-menu-item>
+              `
+          )}
+          <sl-divider></sl-divider>
+            <sl-menu-item disabled>
+              Commande
+              <div slot="suffix">Raccourci clavier</div>
+            </sl-menu-item>
+        </sl-menu>
+      </sl-dropdown>
+    `
+  }
+
   protected renderMiscButtons(): TemplateResult {
     return html`
       <sl-button-group label="langage et raccourcis clavier">
@@ -609,65 +637,9 @@ export class CodeIt extends AnswerForm {
             </sl-menu>
           </sl-dropdown>
         </sl-tooltip>
-        <sl-tooltip content="raccourcis clavier" hoist>
-          <sl-dropdown stay-open-on-select hoist ?hidden=${this.readOnly}>
-            <sl-button slot="trigger" size="small" caret>${svgIcon('mdi-keyboard')}</sl-button>
-            <sl-menu class="dropdown__shortcuts">
-              <sl-menu-item disabled
-                >Commande
-                <div slot="suffix">Raccourci clavier</div></sl-menu-item
-              >
-              <sl-divider></sl-divider>
-              ${CodeIt.keymap.map(
-                map =>
-                  html`<sl-menu-item
-                    @click=${() => {
-                      map.run(this.theEditor);
-                    }}
-                    >${map.run.name}
-                    <div slot="suffix">${map.key}</div></sl-menu-item
-                  >`
-              )}
-              <sl-divider></sl-divider>
-              <sl-menu-item disabled
-                >Commande
-                <div slot="suffix">Raccourci clavier</div></sl-menu-item
-              >
-            </sl-menu>
-          </sl-dropdown>
-        </sl-tooltip>
+        ${this.renderKeymapButton()}
       </sl-button-group>
-      <sl-button-group label="outils">
-        <sl-tooltip content="afficher/cacher les numéros de ligne" hoist>
-          <sl-button size="small" @click=${() => this.handleLineNumbers()}
-            >${svgIcon('mdi-format-list-numbered')}</sl-button
-          >
-        </sl-tooltip>
-        <sl-tooltip content="copier dans le presse-papier" hoist>
-          <sl-button size="small" @click=${() => this.handleCopyClipboard()}>${svgIcon('mdi-content-copy')}</sl-button>
-        </sl-tooltip>
-        <sl-tooltip content="changer de thème" hoist>
-          <sl-button size="small" @click=${() => this.toggleTheme()}>${svgIcon('mdi-theme-light-dark')}</sl-button>
-        </sl-tooltip>
-        <sl-tooltip .content=${!this.fullscreen ? 'passer en mode plein écran' : 'quitter le mode plein écran'} hoist>
-          <sl-button size="small" @click=${() => this.toggleFullscreen()}>
-            ${!this.fullscreen ? html`${svgIcon('mdi-fullscreen')}` : html`${svgIcon('mdi-fullscreen-exit')}`}
-          </sl-button>
-        </sl-tooltip>
-      </sl-button-group>
-    `;
-  }
-
-  protected renderOutput(): TemplateResult {
-    return html`
-      <iframe
-        class="output__iframe"
-        allowfullscreen
-        name="output"
-        sandbox="allow-downloads allow-forms allow-modals allow-popups allow-same-origin allow-scripts allow-top-navigation"
-        srcdoc=${this.srcDoc}
-      >
-      </iframe>
+      ${this.renderToolsButtons()}
     `;
   }
 
@@ -700,20 +672,14 @@ export class CodeIt extends AnswerForm {
     return html`
       <toolbar-it class="statusbar" ?hidden=${!this.toolbar}>
         <sl-button-group slot="end" label="informations">
-          <sl-tooltip hoist>
-            <div slot="content">lien sur une page d'aide du langage <code>${languages[this.language].name}</code></div>
-            <sl-button size="small" variant="neutral" href="${this.getHelpUrl()}" target="_blank"
-              >${unsafeHTML(languages[this.language].logo)}</sl-button
-            >
-          </sl-tooltip>
           <sl-tooltip content="numéros de la ligne et de la colonne courantes" hoist>
-            <sl-button size="small" variant="neutral">L ${this.cursorLine} - C ${this.cursorColumn}</sl-button>
+            <sl-button size="small" variant="default">L ${this.cursorLine}, col ${this.cursorColumn}</sl-button>
           </sl-tooltip>
           <sl-tooltip content="indentation en nombre d'espaces" hoist>
-            <sl-button size="small" variant="neutral">Indent : ${this.indentSize}</sl-button>
+            <sl-button size="small" variant="default">Indentation : ${this.indentSize}</sl-button>
           </sl-tooltip>
-          <sl-tooltip content="mode de l'éditeur : édition ou lecture seule" hoist>
-            <sl-button size="small" variant="neutral">${this.readOnly ? html`lecture seule` : html`édition`}</sl-button>
+          <sl-tooltip content="nombre de caractères" hoist>
+            <sl-button size="small" variant="default">Caractères : ${this.value.length}</sl-button>
           </sl-tooltip>
         </sl-button-group>
       </toolbar-it>
@@ -724,21 +690,71 @@ export class CodeIt extends AnswerForm {
     return html`
       <toolbar-it class="toolbar" ?hidden=${!this.toolbar}>
         <div slot="start">
-          ${this.renderHistoryButtons()} ${this.renderIndentationButtons()} ${this.renderCommentButtons()}
+          ${this.renderHistoryButtons()} 
+          ${this.renderIndentationButtons()} 
+          ${this.renderCommentButtons()}
           ${this.renderSearchButtons()}
         </div>
-        <div slot="end">${this.renderMiscButtons()}</div>
+        <div slot="center">
+          ${this.renderKeymapButton()}
+        </div>
+        <div slot="end">
+          ${this.renderToolsButtons()}
+        </div>
       </toolbar-it>
     `;
   }
 
-  /**
-   * Réinitialiser l'éditeur.
-   *
-   * @memberof CodeEditIt
-   */
+  protected renderToolbarsButton(): TemplateResult {
+    return html`
+      <sl-tooltip content="activer/désactiver les barres d'outils et d'informations" hoist>
+        <sl-button variant="default" size="small" @click=${() => { this.toolbar = !this.toolbar; }}>
+          ${svgIcon('mdi-tools')}
+        </sl-button>
+      </sl-tooltip>
+    `
+  }
+
+  protected renderToolsButtons(): TemplateResult {
+    return html`                      
+      <sl-button-group label="outils">
+        <sl-tooltip hoist>
+          <div slot="content">lien sur une page d'aide du langage <code>${languages[this.language].name}</code></div>
+          <sl-button size="small" variant="default" href="${this.getHelpUrl()}" target="_blank">
+            ${unsafeHTML(languages[this.language].logo)}
+          </sl-button>
+        </sl-tooltip>
+
+        <sl-tooltip content="afficher/cacher les numéros de ligne" hoist>
+          <sl-button size="small" @click=${() => this.handleLineNumbers()}>
+            ${svgIcon('mdi-format-list-numbered')}
+          </sl-button>
+        </sl-tooltip>
+
+        <sl-tooltip content="copier dans le presse-papier">
+          <sl-button size="small" @click=${() => this.handleCopyClipboard()}>
+            ${svgIcon('mdi-content-copy')}
+          </sl-button>
+        </sl-tooltip>
+
+        <sl-tooltip content="changer de thème" hoist>
+          <sl-button size="small" @click=${() => this.toggleTheme()}>${svgIcon('mdi-theme-light-dark')}</sl-button>
+        </sl-tooltip>
+
+        <sl-tooltip .content=${!this.fullscreen ? 'passer en mode plein écran' : 'quitter le mode plein écran'} hoist>
+          <sl-button size="small" @click=${() => this.toggleFullscreen()}>
+            ${!this.fullscreen 
+              ? html`${svgIcon('mdi-fullscreen')}` 
+              : html`${svgIcon('mdi-fullscreen-exit')}`
+            }
+          </sl-button>
+        </sl-tooltip>
+      </sl-button-group>
+    `
+  }
+  /** Réinitialisation de l'éditeur. */
   reset(): void {
-    this.value = this.initialDoc;
+    this.value = this.initialCode;
   }
 
   protected async setLanguageExtension() {
@@ -772,11 +788,6 @@ export class CodeIt extends AnswerForm {
     this.theEditor.dispatch({
       effects: [this.themeConfig.reconfigure(this.theme === 'dark' ? darkTheme : lightTheme)]
     });
-  }
-
-  /** Syntaxe asciidoc équivalente */
-  toAsciidoc(): string {
-    return 'Editeur de code';
   }
 
   protected toggleTheme(): void {

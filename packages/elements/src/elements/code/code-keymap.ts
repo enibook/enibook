@@ -28,6 +28,7 @@ function getHistoryKeymap(): { name: string; key: string; run: Command }[] {
   return newHistoryKeymap;
 }
 
+/** Raccourcis clavier */
 export function getKeymap(): { name: string; key: string; run: Command }[] {
   let newKeymap: { name: string; key: string; run: Command }[] = [];
   const keymap = command.defaultKeymap.concat(foldKeymap).concat(search.searchKeymap).concat([command.indentWithTab]);
@@ -53,5 +54,3 @@ export function getKeymap(): { name: string; key: string; run: Command }[] {
   newKeymap.sort((a, b) => (a.name < b.name ? -1 : 1));
   return newKeymap;
 }
-
-console.log(getKeymap());

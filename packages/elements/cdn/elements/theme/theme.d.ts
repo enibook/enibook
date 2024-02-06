@@ -13,18 +13,22 @@ import { BaseIt } from '../base/base.js';
  * @csspart base - The component's internal wrapper.
  */
 export declare class ThemeIt extends BaseIt {
+    /** Style propre à la classe. */
     static styles: CSSResultGroup;
-    menu: SlMenu;
-    theme: string;
+    protected menu: SlMenu;
+    protected theme: string;
+    /** Taille du bouton (défaut : `small`) */
     size: 'small' | 'medium' | 'large';
     constructor();
+    protected createListeners(): void;
     protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void;
+    /** Thème (défaut : `system`) */
     getTheme(): string;
+    /** Teste si le thème courant est le thème `dark`. */
     isDark(): boolean;
-    render(): TemplateResult;
+    protected render(): TemplateResult;
+    /** Change le thème. */
     setTheme(newTheme: string): void;
-    get tagTitle(): string;
-    toAsciidoc(): string;
 }
 declare global {
     interface HTMLElementTagNameMap {

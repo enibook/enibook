@@ -18,11 +18,42 @@ EniBook propose une bibliothèque de composants web à vocation pédagogique sou
 
 - La [documentation générale](https://enibook.github.io/enibook/) est écrite en [`asciidoc`](https://asciidoc.org) et transcodée en `html` monopage avec [Asciidoctor](https://docs.asciidoctor.org) et en `html` multipage avec [asciidoctor-chunker](https://github.com/wshito/asciidoctor-chunker).
 
+## Configuration
 <details>
   <summary>Fichier <code>package.json</code></summary>
 
 Le fichier `package.json` décrit toutes les spécificités, et en particulier toutes les dépendances, du projet EniBook.
 
-[`package.json`](./package.json)
+[`package.json`](https://github.com/enibook/enibook/blob/main/packages/elements/package.json)
+
+</details>
+
+<details>
+  <summary>Fichier <code>tsconfig.json</code></summary>
+
+Le fichier `tsconfig.json` spécifie la configuration retenue pour `typescript` afin de compiler les différents codes sources.
+
+[`tsconfig.json`](https://github.com/enibook/enibook/blob/main/packages/elements/tsconfig.json)
+
+[`tsconfig.prod.json`](https://github.com/enibook/enibook/blob/main/packages/elements/tsconfig.prod.json)
+
+</details>
+
+<details>
+  <summary>Fichier <code>typedoc.json</code></summary>
+
+Le fichier `typedoc.json` spécifie la configuration retenue pour `typedoc` afin de générer la documentation du code source.
+
+[`typedoc.json`](https://github.com/enibook/enibook/blob/main/packages/elements/typedoc.json)
+
+</details>
+
+## Génération
+<details>
+  <summary>Fichier <code>build.js</code></summary>
+
+Le fichier `build.js` permet de compiler les sources, de générer l'API et la documentation.
+
+[`build.js`](https://github.com/enibook/enibook/blob/main/packages/elements/scripts/build.js)
 
 </details>

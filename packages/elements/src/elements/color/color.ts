@@ -44,12 +44,16 @@ export const colorNames: string[] = [
  */
 @customElement('color-it')
 export class ColorIt extends BaseIt {
+  /** Style propre à la classe. */
   static styles: CSSResultGroup = [super.styles, styles];
 
+  /** Couleur courante (défaut : `purple`) */
   @property({ type: String, reflect: true }) color: string = 'purple';
 
+  /** Nuance de couleur (de 1 à 9, défaut : 5). */
   @property({ type: String, reflect: true }) range: number = 5;
 
+  /** Taille du bouton (défaut : `small`). */
   @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'small';
 
   constructor() {
@@ -58,8 +62,8 @@ export class ColorIt extends BaseIt {
     this.setPrimaryColor();
   }
 
-  /** Modifie la couleur principale du thème à l'aide des primitives [`shoelace`](https://shoelace.style/tokens/color). */
-  cssPrimaryColor(): string {
+  /** Couleur principale du thème à l'aide des primitives [`shoelace`](https://shoelace.style/tokens/color). */
+  protected cssPrimaryColor(): string {
     return `
       :root,
       .sl-theme-light,
@@ -84,19 +88,20 @@ export class ColorIt extends BaseIt {
     `;
   }
 
+  /** Couleurs disponibles */
   public get colors(): { name: string; value: string }[] {
     return colorNames.map(color => {
       return { name: color, value: `var(--sl-color-${color}-${this.range}00);` };
     });
   }
 
-  handleChangeRange(event: CustomEvent) {
+  protected handleChangeRange(event: CustomEvent) {
     const range = event.target as SlRange;
     this.range = range.value;
     this.setPrimaryColor();
   }
 
-  initLocalStorage(): void {
+  protected initLocalStorage(): void {
     const color = localStorage.getItem('color');
     const range = localStorage.getItem('range');
     if (!color) {
@@ -111,7 +116,7 @@ export class ColorIt extends BaseIt {
     }
   }
 
-  render(): TemplateResult {
+  protected render(): TemplateResult {
     return html`
       <div part="base" class="primary-color">
         <sl-dropdown hoist>
@@ -146,7 +151,8 @@ export class ColorIt extends BaseIt {
     `;
   }
 
-  setPrimaryColor() {
+  /** Modifie la couleur principale du thème. */
+  protected setPrimaryColor() {
     localStorage.color = this.color;
     localStorage.range = this.range;
     let styleElement = document.querySelector('style#colors') as HTMLElement;
@@ -158,12 +164,6 @@ export class ColorIt extends BaseIt {
     styleElement.innerHTML = this.cssPrimaryColor();
   }
 
-  override get tagTitle(): string {
-    return 'Couleurs';
-  }
-  override toAsciidoc(): string {
-    throw new Error('Method not implemented.');
-  }
 }
 
 declare global {
@@ -171,9 +171,3 @@ declare global {
     'color-it': ColorIt;
   }
 }
-
-/*
-if (customElements && !customElements.get('color-it')) {
-  customElements.define('color-it', ColorIt)
-}
-*/

@@ -5,7 +5,7 @@
   "entryPoints": ["src"],
   "entryPointStrategy": "expand",
   "out": "_site/api",
-  "exclude": ["src/elements/**/*.(css|test).ts"],
+  "exclude": ["src/elements/**/*.css.ts", "src/elements/**/*.test.ts"],
   "excludeNotDocumented": false,
   "excludeExternals": true,
   "includeVersion": true,

@@ -2,15 +2,17 @@ import {
   FormControlController,
   HasSlotController,
   LocalizeController,
-  ShoelaceElement,
-  __decorateClass as __decorateClass2,
-  component_styles_default,
   e as e3,
   f,
   m,
-  o,
+  o
+} from "./chunk.OUIWCIOG.js";
+import {
+  ShoelaceElement,
+  __decorateClass as __decorateClass2,
+  component_styles_default,
   watch
-} from "./chunk.M2FMCOQ5.js";
+} from "./chunk.MOWIAP3E.js";
 import {
   BaseIt,
   e,

@@ -35,3 +35,11 @@ export function dedentText(text: string): string {
   if (fixedLines[fixedLines.length - 1] === '') fixedLines.splice(fixedLines.length - 1, 1);
   return fixedLines.join('\n');
 }
+
+export function indentString(indentSize:number=2): string {
+  let res = '';
+  for (let i = 0; i < indentSize; i++) {
+    res = res.concat(' ');
+  }
+  return res;
+}

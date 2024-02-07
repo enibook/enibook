@@ -6,3 +6,4 @@
  * @returns {string} le texte désindenté
  */
 export declare function dedentText(text: string): string;
+export declare function indentString(indentSize?: number): string;

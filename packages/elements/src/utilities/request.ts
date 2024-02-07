@@ -6,7 +6,10 @@ interface IncludeFile {
 
 const includeFiles = new Map<string, IncludeFile | Promise<IncludeFile>>();
 
-/** Récupère un fichier d'inclusion à partir d'une source distante. La mise en cache est activée afin que l'origine ne soit interrogée qu'une seule fois. */
+/** 
+ * Récupère un fichier d'inclusion à partir d'une source distante.
+ * La mise en cache est activée afin que l'origine ne soit interrogée qu'une seule fois.
+ */
 export function requestIncludeFile(
   src: string,
   mode: 'cors' | 'no-cors' | 'same-origin' = 'cors'
@@ -29,4 +32,14 @@ export function requestIncludeFile(
   // Mettre en cache la promesse pour ne faire que fetch() une fois par src
   includeFiles.set(src, fileDataPromise);
   return fileDataPromise;
+}
+
+
+export async function fetchContent(src: string): Promise<string> {
+  return await fetchSrc(src ?? '');
+}
+
+export async function fetchSrc(src: string): Promise<string> {
+  const response = await fetch(src);
+  return response.text();
 }

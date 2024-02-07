@@ -23,7 +23,11 @@ link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'l
 stem:[\displaystyle\cos(\frac{1}{1+x^2}\times \frac{1}{x^3})]
 
 ++++
-<frame-it url="https://shoelace.style"></frame-it>
+<frame-it url="https://enibook.org">
+  <script type="enibook/main">
+    <p>Hello, world !</p>
+  </script>
+</frame-it>
 ++++
 
 ++++

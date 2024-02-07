@@ -30,7 +30,15 @@ function dedentText(text) {
     fixedLines.splice(fixedLines.length - 1, 1);
   return fixedLines.join("\n");
 }
+function indentString(indentSize = 2) {
+  let res = "";
+  for (let i = 0; i < indentSize; i++) {
+    res = res.concat(" ");
+  }
+  return res;
+}
 
 export {
-  dedentText
+  dedentText,
+  indentString
 };

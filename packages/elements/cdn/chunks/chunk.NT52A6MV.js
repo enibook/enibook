@@ -1,7 +1,4 @@
 import {
-  dedentText
-} from "./chunk.RDB6EABP.js";
-import {
   emit
 } from "./chunk.A7AB44PI.js";
 import {
@@ -24,8 +21,11 @@ import {
   lightTheme
 } from "./chunk.PVS3YRAX.js";
 import {
+  dedentText
+} from "./chunk.2DSJPRN6.js";
+import {
   AnswerForm
-} from "./chunk.YBQE7HX6.js";
+} from "./chunk.FOYA2TLG.js";
 import {
   crelt,
   defaultKeymap,
@@ -84,20 +84,22 @@ import {
   setDefaultAnimation,
   stopAnimations,
   waitForEvent
-} from "./chunk.F4VDOEWT.js";
+} from "./chunk.YWBD2DQQ.js";
 import {
   HasSlotController,
   LocalizeController,
-  ShoelaceElement,
   SlIcon,
-  __decorateClass as __decorateClass2,
-  component_styles_default,
   e as e2,
   n as n2,
   o,
-  s,
+  s
+} from "./chunk.OUIWCIOG.js";
+import {
+  ShoelaceElement,
+  __decorateClass as __decorateClass2,
+  component_styles_default,
   watch
-} from "./chunk.M2FMCOQ5.js";
+} from "./chunk.MOWIAP3E.js";
 import {
   e,
   n,

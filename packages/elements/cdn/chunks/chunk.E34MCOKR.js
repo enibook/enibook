@@ -5,15 +5,17 @@ import {
   setDefaultAnimation,
   stopAnimations,
   waitForEvent
-} from "./chunk.F4VDOEWT.js";
+} from "./chunk.YWBD2DQQ.js";
 import {
   LocalizeController,
+  e as e2
+} from "./chunk.OUIWCIOG.js";
+import {
   ShoelaceElement,
   __decorateClass,
   component_styles_default,
-  e as e2,
   watch
-} from "./chunk.M2FMCOQ5.js";
+} from "./chunk.MOWIAP3E.js";
 import {
   e,
   n

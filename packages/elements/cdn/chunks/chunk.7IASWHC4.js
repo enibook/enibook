@@ -2,19 +2,21 @@ import {
   defaultValue,
   form_control_styles_default,
   l
-} from "./chunk.TVXYKJ2F.js";
+} from "./chunk.XIVZBJVP.js";
 import {
   FormControlController,
   HasSlotController,
   LocalizeController,
-  ShoelaceElement,
   SlIcon,
+  e as e2,
+  o
+} from "./chunk.OUIWCIOG.js";
+import {
+  ShoelaceElement,
   __decorateClass as __decorateClass2,
   component_styles_default,
-  e as e2,
-  o,
   watch
-} from "./chunk.M2FMCOQ5.js";
+} from "./chunk.MOWIAP3E.js";
 import {
   BaseIt,
   e,

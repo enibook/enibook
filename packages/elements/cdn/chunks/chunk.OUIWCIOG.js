@@ -1,4 +1,12 @@
 import {
+  ShoelaceElement,
+  __decorateClass,
+  __spreadProps,
+  __spreadValues,
+  component_styles_default,
+  watch
+} from "./chunk.MOWIAP3E.js";
+import {
   e,
   n,
   r
@@ -9,7 +17,6 @@ import {
   e as e2,
   i,
   i2,
-  s,
   t,
   w,
   x,
@@ -24,43 +31,26 @@ var e3 = e2(class extends i2 {
       throw Error("`classMap()` can only be used in the `class` attribute and must be the only part in the attribute.");
   }
   render(t3) {
-    return " " + Object.keys(t3).filter((s3) => t3[s3]).join(" ") + " ";
+    return " " + Object.keys(t3).filter((s2) => t3[s2]).join(" ") + " ";
   }
-  update(s3, [i3]) {
+  update(s2, [i3]) {
     var _a, _b;
     if (void 0 === this.st) {
-      this.st = /* @__PURE__ */ new Set(), void 0 !== s3.strings && (this.nt = new Set(s3.strings.join(" ").split(/\s/).filter((t3) => "" !== t3)));
+      this.st = /* @__PURE__ */ new Set(), void 0 !== s2.strings && (this.nt = new Set(s2.strings.join(" ").split(/\s/).filter((t3) => "" !== t3)));
       for (const t3 in i3)
         i3[t3] && !((_a = this.nt) == null ? void 0 : _a.has(t3)) && this.st.add(t3);
       return this.render(i3);
     }
-    const r2 = s3.element.classList;
+    const r2 = s2.element.classList;
     for (const t3 of this.st)
       t3 in i3 || (r2.remove(t3), this.st.delete(t3));
     for (const t3 in i3) {
-      const s4 = !!i3[t3];
-      s4 === this.st.has(t3) || ((_b = this.nt) == null ? void 0 : _b.has(t3)) || (s4 ? (r2.add(t3), this.st.add(t3)) : (r2.remove(t3), this.st.delete(t3)));
+      const s3 = !!i3[t3];
+      s3 === this.st.has(t3) || ((_b = this.nt) == null ? void 0 : _b.has(t3)) || (s3 ? (r2.add(t3), this.st.add(t3)) : (r2.remove(t3), this.st.delete(t3)));
     }
     return w;
   }
 });
-
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.TUVJKY7S.js
-var component_styles_default = i`
-  :host {
-    box-sizing: border-box;
-  }
-
-  :host *,
-  :host *::before,
-  :host *::after {
-    box-sizing: inherit;
-  }
-
-  [hidden] {
-    display: none !important;
-  }
-`;
 
 // ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.EACLXYYC.js
 var spinner_styles_default = i`
@@ -265,88 +255,6 @@ var en_default = translation;
 var LocalizeController2 = class extends LocalizeController {
 };
 registerTranslation(en_default);
-
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.IFDWM6P4.js
-var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
-var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a2, b2) => {
-  for (var prop in b2 || (b2 = {}))
-    if (__hasOwnProp.call(b2, prop))
-      __defNormalProp(a2, prop, b2[prop]);
-  if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b2)) {
-      if (__propIsEnum.call(b2, prop))
-        __defNormalProp(a2, prop, b2[prop]);
-    }
-  return a2;
-};
-var __spreadProps = (a2, b2) => __defProps(a2, __getOwnPropDescs(b2));
-var __decorateClass = (decorators, target, key, kind) => {
-  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
-  for (var i3 = decorators.length - 1, decorator; i3 >= 0; i3--)
-    if (decorator = decorators[i3])
-      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
-  if (kind && result)
-    __defProp(target, key, result);
-  return result;
-};
-
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.U5X52PUD.js
-var ShoelaceElement = class extends s {
-  constructor() {
-    super();
-    Object.entries(this.constructor.dependencies).forEach(([name, component]) => {
-      this.constructor.define(name, component);
-    });
-  }
-  emit(name, options) {
-    const event = new CustomEvent(name, __spreadValues({
-      bubbles: true,
-      cancelable: false,
-      composed: true,
-      detail: {}
-    }, options));
-    this.dispatchEvent(event);
-    return event;
-  }
-  /* eslint-enable */
-  static define(name, elementConstructor = this, options = {}) {
-    const currentlyRegisteredConstructor = customElements.get(name);
-    if (!currentlyRegisteredConstructor) {
-      customElements.define(name, class extends elementConstructor {
-      }, options);
-      return;
-    }
-    let newVersion = " (unknown version)";
-    let existingVersion = newVersion;
-    if ("version" in elementConstructor && elementConstructor.version) {
-      newVersion = " v" + elementConstructor.version;
-    }
-    if ("version" in currentlyRegisteredConstructor && currentlyRegisteredConstructor.version) {
-      existingVersion = " v" + currentlyRegisteredConstructor.version;
-    }
-    if (newVersion && existingVersion && newVersion === existingVersion) {
-      return;
-    }
-    console.warn(
-      `Attempted to register <${name}>${newVersion}, but <${name}>${existingVersion} has already been registered.`
-    );
-  }
-};
-ShoelaceElement.version = "2.13.1";
-ShoelaceElement.dependencies = {};
-__decorateClass([
-  n()
-], ShoelaceElement.prototype, "dir", 2);
-__decorateClass([
-  n()
-], ShoelaceElement.prototype, "lang", 2);
 
 // ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.XYU7AT6Q.js
 var SlSpinner = class extends ShoelaceElement {
@@ -1324,8 +1232,8 @@ function getBasePath(subpath = "") {
     if (configScript) {
       setBasePath(configScript.getAttribute("data-shoelace"));
     } else {
-      const fallbackScript = scripts.find((s3) => {
-        return /shoelace(\.min)?\.js($|\?)/.test(s3.src) || /shoelace-autoloader(\.min)?\.js($|\?)/.test(s3.src);
+      const fallbackScript = scripts.find((s2) => {
+        return /shoelace(\.min)?\.js($|\?)/.test(s2.src) || /shoelace-autoloader(\.min)?\.js($|\?)/.test(s2.src);
       });
       let path = "";
       if (fallbackScript) {
@@ -1499,32 +1407,6 @@ var icon_styles_default = i`
   }
 `;
 
-// ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.2FB5TK5H.js
-function watch(propertyName, options) {
-  const resolvedOptions = __spreadValues({
-    waitUntilFirstUpdate: false
-  }, options);
-  return (proto, decoratedFnName) => {
-    const { update: update2 } = proto;
-    const watchedProperties = Array.isArray(propertyName) ? propertyName : [propertyName];
-    proto.update = function(changedProps) {
-      watchedProperties.forEach((property) => {
-        const key = property;
-        if (changedProps.has(key)) {
-          const oldValue = changedProps.get(key);
-          const newValue = this[key];
-          if (oldValue !== newValue) {
-            if (!resolvedOptions.waitUntilFirstUpdate || this.hasUpdated) {
-              this[decoratedFnName](oldValue, newValue);
-            }
-          }
-        }
-      });
-      update2.call(this, changedProps);
-    };
-  };
-}
-
 // ../../node_modules/.pnpm/lit-html@3.1.2/node_modules/lit-html/directive-helpers.js
 var { I: t2 } = z;
 var e4 = (o3, t3) => void 0 === t3 ? void 0 !== (o3 == null ? void 0 : o3._$litType$) : (o3 == null ? void 0 : o3._$litType$) === t3;
@@ -1688,7 +1570,7 @@ var o = (t3) => {
   if ((t3 == null ? void 0 : t3.r) === e5)
     return t3 == null ? void 0 : t3._$litStatic$;
 };
-var s2 = (t3, ...r2) => ({ _$litStatic$: r2.reduce((r3, e6, o3) => r3 + ((t4) => {
+var s = (t3, ...r2) => ({ _$litStatic$: r2.reduce((r3, e6, o3) => r3 + ((t4) => {
   if (void 0 !== t4._$litStatic$)
     return t4._$litStatic$;
   throw Error(`Value passed to 'literal' function must be a 'literal' result: ${t4}. Use 'unsafeStatic' to pass non-literal values, but
@@ -1697,12 +1579,12 @@ var s2 = (t3, ...r2) => ({ _$litStatic$: r2.reduce((r3, e6, o3) => r3 + ((t4) =>
 var a = /* @__PURE__ */ new Map();
 var l = (t3) => (r2, ...e6) => {
   const i3 = e6.length;
-  let s3, l2;
+  let s2, l2;
   const n3 = [], u3 = [];
   let c, $ = 0, f2 = false;
   for (; $ < i3; ) {
-    for (c = r2[$]; $ < i3 && void 0 !== (l2 = e6[$], s3 = o(l2)); )
-      c += s3 + r2[++$], f2 = true;
+    for (c = r2[$]; $ < i3 && void 0 !== (l2 = e6[$], s2 = o(l2)); )
+      c += s2 + r2[++$], f2 = true;
     $ !== i3 && u3.push(l2), n3.push(c), $++;
   }
   if ($ === i3 && n3.push(r2[i3]), f2) {
@@ -1832,7 +1714,7 @@ var SlButton = class extends ShoelaceElement {
   }
   render() {
     const isLink = this.isLink();
-    const tag = isLink ? s2`a` : s2`button`;
+    const tag = isLink ? s`a` : s`button`;
     return n2`
       <${tag}
         part="base"
@@ -1975,22 +1857,16 @@ __decorateClass([
 SlButton.define("sl-button");
 
 export {
-  component_styles_default,
   LocalizeController2 as LocalizeController,
-  __spreadValues,
-  __spreadProps,
-  __decorateClass,
-  ShoelaceElement,
   SlSpinner,
   FormControlController,
   HasSlotController,
   getTextContent,
-  watch,
   f,
   m,
   SlIcon,
   e3 as e,
-  s2 as s,
+  s,
   n2 as n,
   o2 as o
 };

@@ -1,9 +1,11 @@
 import {
+  e as e2
+} from "./chunk.OUIWCIOG.js";
+import {
   ShoelaceElement,
   __decorateClass as __decorateClass2,
-  component_styles_default,
-  e as e2
-} from "./chunk.M2FMCOQ5.js";
+  component_styles_default
+} from "./chunk.MOWIAP3E.js";
 import {
   BaseIt,
   e,

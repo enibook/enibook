@@ -14,6 +14,7 @@ export declare abstract class BaseIt extends LitElement {
      *
      */
     protected emit(name: string, options?: CustomEventInit): CustomEvent<any>;
+    getCode(filename: string, part: string): Promise<string>;
     /**
      * Passe en mode plein écran ou sort du mode plein écran.
      *

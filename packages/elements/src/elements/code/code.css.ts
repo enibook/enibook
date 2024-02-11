@@ -12,6 +12,10 @@ export default css`
   .code-it:hover .menu-button {
     display: block;
   }
+  .code-it__border {
+    border: 1px solid var(--sl-color-neutral-200);
+    border-radius: 0.5rem;
+  }
   .editor {
     outline: none;
     border-radius: 0.5em;

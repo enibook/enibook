@@ -14,7 +14,7 @@ export const defaultOptions: OptionsTemplate = {
   main: '',
   footer: '',
   lang: navigator.language,
-  theme: 'dark',
+  theme: 'light',
   title: 'IFrame'
 }
 
@@ -32,7 +32,7 @@ export function templateHTML(options: OptionsTemplate={}) {
 <body>
   ${header}
   <main id="main" class="main">
-  ${main}
+    ${main}
   </main>
   ${footer}
 </body>

@@ -23,16 +23,41 @@ link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'l
 stem:[\displaystyle\cos(\frac{1}{1+x^2}\times \frac{1}{x^3})]
 
 ++++
-<frame-it url="https://enibook.org">
-  <script type="enibook/main">
+<playground-it language="html">
+  <script type="playground-it/src">
+  <h1>Titre</h1>
+  <h2>Section</h2>
+  <p>Un petit paragraphe.</p>
+
+  <ol>
+    <li>un item</li>
+    <li>deux</li>
+  </ol>
+  </script>
+</playground-it>
+++++
+
+////
+++++
+<frame-it url="https://enibook.org" head-filename="templates/frame-head.html" border>
+  <script type="frame-it/main">
     <p>Hello, world !</p>
+  </script>
+  <script type="frame-it/footer">
+    <code-it language="python" read-only theme="light">
+      <script type="code-it/src">
+        def f(x):
+          return 3*x
+      &lt;/script&gt;
+    </code-it>
+    <lorem-ipsum-it count=3></lorem-ipsum-it>
   </script>
 </frame-it>
 ++++
 
 ++++
-<code-it fieldset language="html" preview>
-  <script type="enibook">
+<code-it fieldset language="html">
+  <script type="code-it/src">
   <h1>Titre</h1>
   <h2>Section</h2>
   <p>Un petit paragraphe.</p>
@@ -46,14 +71,14 @@ stem:[\displaystyle\cos(\frac{1}{1+x^2}\times \frac{1}{x^3})]
 ++++
 
 ++++
-<code-it language="python" block theme="light">
-  <script type="enibook">
+<code-it language="python" read-only theme="light">
+  <script type="code-it/src">
     def f(x):
       return 3*x
   </script>
 </code-it>
 ++++
-
+////
 
 include::./toggle/toggle.adoc[]
 // include::./code/code.adoc[]

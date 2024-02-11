@@ -5,6 +5,8 @@ import { property, state } from 'lit/decorators.js';
 import fscreen from 'fscreen';
 // enibook
 import { icons } from '../../utilities/icons.js';
+import { fetchContent } from '../../utilities/request.js';
+import { dedentText } from '../../utilities/dedent.js';
 import styles from './base.css.js';
 
 /** Classe de base pour les éléments personnalisés EniBook */
@@ -38,6 +40,23 @@ export abstract class BaseIt extends LitElement {
     return event;
   }
 
+  async getCode(filename: string, part: string): Promise<string> {
+    let code = ''
+    const tag = this.tagName.toLowerCase()
+    const innerScriptTag = this.querySelector(`script[type="${tag}/${part}"]`);
+    if (filename) {
+      await fetchContent(filename).then(response => {
+        code += response;
+      });
+    }
+    if (innerScriptTag) {
+      code += dedentText(innerScriptTag.innerHTML);
+      code = code.replace(/&lt;(\/?script)(.*?)&gt;/g, '<$1$2>');
+    }
+    // console.log('getCode',tag, part, innerScriptTag, code)
+    return code
+  }
+  
   /**
    * Passe en mode plein écran ou sort du mode plein écran.
    *

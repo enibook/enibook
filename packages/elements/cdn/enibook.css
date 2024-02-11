@@ -1,4 +1,4 @@
-/* ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/themes/light.css */
+/* ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.55/node_modules/@shoelace-style/shoelace/dist/themes/light.css */
 :root,
 :host,
 .sl-theme-light {
@@ -441,7 +441,7 @@
   box-shadow: var(--sl-shadow-large);
 }
 
-/* ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.51/node_modules/@shoelace-style/shoelace/dist/themes/dark.css */
+/* ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.55/node_modules/@shoelace-style/shoelace/dist/themes/dark.css */
 :host,
 .sl-theme-dark {
   color-scheme: dark;

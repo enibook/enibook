@@ -1,3 +1,4 @@
+// enibook
 import { getBasePath } from './utilities/base-path.js';
 
 const observer = new MutationObserver(mutations => {
@@ -27,8 +28,6 @@ export async function discover(root: Element | ShadowRoot) {
 
   // Rendre la liste sans doublons.
   const tagsToRegister = [...new Set(tags)];
-  console.log('tags to register', tagsToRegister);
-
   await Promise.allSettled(tagsToRegister.map(tagName => register(tagName)));
 }
 
@@ -44,7 +43,6 @@ function register(tagName: string): Promise<void> {
 
   const tagWithoutSuffix = tagName.replace(/-it$/i, '');
   const path = getBasePath(`elements/${tagWithoutSuffix}/${tagWithoutSuffix}.js`);
-  console.log(`trying to import ${path}`);
   // L'enregistrer.
   return new Promise((resolve, reject) => {
     import(path).then(() => resolve()).catch(() => reject(new Error(`Unable to autoload <${tagName}> from ${path}`)));

@@ -21,7 +21,6 @@ async function discover(root) {
     tags.push(rootTagName);
   }
   const tagsToRegister = [...new Set(tags)];
-  console.log("tags to register", tagsToRegister);
   await Promise.allSettled(tagsToRegister.map((tagName) => register(tagName)));
 }
 function register(tagName) {
@@ -31,7 +30,6 @@ function register(tagName) {
   }
   const tagWithoutSuffix = tagName.replace(/-it$/i, "");
   const path = getBasePath(`elements/${tagWithoutSuffix}/${tagWithoutSuffix}.js`);
-  console.log(`trying to import ${path}`);
   return new Promise((resolve, reject) => {
     import(path).then(() => resolve()).catch(() => reject(new Error(`Unable to autoload <${tagName}> from ${path}`)));
   });

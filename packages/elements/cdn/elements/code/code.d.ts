@@ -37,9 +37,6 @@ export declare class CodeIt extends AnswerForm {
     protected _readOnly: boolean;
     protected _indentSize: number;
     protected _theme: 'dark' | 'light';
-    protected _head: string;
-    protected _header: string;
-    protected _footer: string;
     protected theEditor: EditorView;
     protected extensions: (Extension | (StateField<boolean> | Extension)[])[];
     protected initialCode: string;
@@ -56,8 +53,6 @@ export declare class CodeIt extends AnswerForm {
     protected cursorLine: number;
     protected cursorColumn: number;
     protected message: string;
-    /** Mode bloc */
-    block: boolean;
     /** Nombre d'espaces par indentation (défaut: 2). */
     get indentSize(): number;
     set indentSize(value: number);
@@ -73,13 +68,7 @@ export declare class CodeIt extends AnswerForm {
     get readOnly(): boolean;
     set readOnly(value: boolean);
     /** Le fichier source à éditer. */
-    src: string;
-    /** Le fichier `html` dont le contenu est à ajouter en fin de la section `<head>` du template HTML. */
-    srcHead: string;
-    /** Le fichier `html` dont le contenu est à insérer au début de la section `<body>` du template HTML. */
-    srcHeader: string;
-    /** Le fichier `html` dont le contenu est à ajouter en fin de la section `<body>` du template HTML. */
-    srcFooter: string;
+    codeFilename: string;
     /** Le thème (clair: `light` ou sombre: `dark`) de l'éditeur (défaut: `dark`). */
     get theme(): 'light' | 'dark';
     set theme(value: 'light' | 'dark');
@@ -89,18 +78,10 @@ export declare class CodeIt extends AnswerForm {
     get value(): string;
     set value(value: string);
     /** Réponse de l'éditeur. */
-    answer(): string;
-    protected get indentString(): string;
-    protected compile(value: string): string;
+    get answer(): string;
     protected createListeners(): void;
-    protected fetchContent(src: string): Promise<string>;
-    protected fetchSrc(src: string): Promise<string>;
     protected firstUpdated(_changedProperties: PropertyValueMap<unknown> | Map<PropertyKey, unknown>): Promise<void>;
     protected getHelpUrl(): string;
-    protected getHead(): Promise<string>;
-    protected getHeader(): Promise<string>;
-    protected getFooter(): Promise<string>;
-    protected getInitialCode(): Promise<string>;
     protected getInitialExtensions(): (Extension | (StateField<boolean> | Extension)[])[];
     /** Liste des langages reconnus par l'éditeur */
     get validLanguages(): string[];
@@ -110,7 +91,7 @@ export declare class CodeIt extends AnswerForm {
     protected handleSelectLanguage(event: CustomEvent): void;
     /** Teste si un langage fait partie des langages reconnus par l'éditeur. */
     isValidLanguage(language: string): boolean;
-    protected renderForm(): TemplateResult;
+    protected render(): TemplateResult;
     protected renderCommentButtons(): TemplateResult;
     protected renderFeedbackButton(): TemplateResult;
     protected renderHistoryButtons(): TemplateResult;

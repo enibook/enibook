@@ -300,7 +300,7 @@ if (serve) {
       result = await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'), { overwrite: true });
     });
 
-    await nextTask(`Copie de "${docdir}/templates" dans "${sitedir}/templatess"`, async () => {
+    await nextTask(`Copie de "${docdir}/templates" dans "${sitedir}/templates"`, async () => {
       return await copy(path.join(docdir, 'templates'), path.join(sitedir, 'templates'), { overwrite: true });
     });
   
@@ -328,7 +328,7 @@ if (!serve) {
     return await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'), { overwrite: true });
   });
 
-  await nextTask(`Copie de "${docdir}/templates" dans "${sitedir}/templatess"`, async () => {
+  await nextTask(`Copie de "${docdir}/templates" dans "${sitedir}/templates"`, async () => {
     return await copy(path.join(docdir, 'templates'), path.join(sitedir, 'templates'), { overwrite: true });
   });
 

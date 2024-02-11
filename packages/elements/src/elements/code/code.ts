@@ -10,6 +10,7 @@ import '@shoelace-style/shoelace/dist/components/badge/badge.js';
 import '@shoelace-style/shoelace/dist/components/button-group/button-group.js';
 import '@shoelace-style/shoelace/dist/components/button/button.js';
 import '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js';
+import '@shoelace-style/shoelace/dist/components/resize-observer/resize-observer.js';
 import '@shoelace-style/shoelace/dist/components/tooltip/tooltip.js';
 import type SlMenu from '@shoelace-style/shoelace/dist/components/menu/menu.js';
 import type SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
@@ -27,14 +28,13 @@ import type { Extension, StateField } from '@codemirror/state';
 import '../toolbar/toolbar';
 import { svgIcon } from '../../utilities/icons.js';
 import { emit } from '../../utilities/emit.js';
-import { dedentText } from '../../utilities/dedent.js';
+import { indentString } from '../../utilities/dedent.js';
 import { AnswerForm } from '../answer-form/answer-form.js';
 import { frenchPhrases } from './locales/fr.js';
 import { getKeymap } from './code-keymap.js';
 import { darkTheme } from './themes/dark.js';
 import { lightTheme } from './themes/light.js';
 import { languages } from './languages/languages.js';
-import { templateHTML, type OptionsTemplate } from './templates/template-html';
 import styles from './code.css.js';
 
 const outlineNone = EditorView.theme({
@@ -89,19 +89,15 @@ export class CodeIt extends AnswerForm {
   /** Raccourcis clavier */
   static keymap: { name: string; key: string; run: Command }[] = getKeymap();
 
+  static View: EditorView
+
   protected _language: string = 'text';
   protected _placeholder: string = "F1: afficher/masquer les barres d'outils et d'informations";
   protected _readOnly: boolean = false;
   protected _indentSize: number = 2;
   protected _theme: 'dark' | 'light' = 'dark';
 
-  protected _head: string = ''
-  protected _header: string = ''
-  protected _footer: string = ''
-  
-
-
-  protected theEditor!: EditorView;
+  theEditor!: EditorView;
   protected extensions: (Extension | (StateField<boolean> | Extension)[])[] = [];
   protected initialCode: string = '';
 
@@ -120,9 +116,6 @@ export class CodeIt extends AnswerForm {
   @state() protected cursorLine = 0;
   @state() protected cursorColumn = 0;
   @state() protected message = '';
-
-  /** Mode bloc */
-  @property({ type: Boolean, reflect: true }) block: boolean = false
 
   /** Nombre d'espaces par indentation (défaut: 2). */
   @property({ type: Number, reflect: true, attribute: 'indent-size' })
@@ -184,16 +177,7 @@ export class CodeIt extends AnswerForm {
   }
 
   /** Le fichier source à éditer. */
-  @property({ type: String, reflect: true }) src = '';
-
-  /** Le fichier `html` dont le contenu est à ajouter en fin de la section `<head>` du template HTML. */
-  @property({ type: String, reflect: true }) srcHead = '';
-
-  /** Le fichier `html` dont le contenu est à insérer au début de la section `<body>` du template HTML. */
-  @property({ type: String, reflect: true }) srcHeader = '';
-
-  /** Le fichier `html` dont le contenu est à ajouter en fin de la section `<body>` du template HTML. */
-  @property({ type: String, reflect: true }) srcFooter = '';
+  @property({ type: String, reflect: true, attribute: 'code-filename' }) codeFilename = '';
 
   /** Le thème (clair: `light` ou sombre: `dark`) de l'éditeur (défaut: `dark`). */
   @property({ type: String, reflect: true })
@@ -215,7 +199,7 @@ export class CodeIt extends AnswerForm {
   /** Le contenu de l'éditeur. */
   @property({ attribute: false })
   get value(): string {
-    let res = this.initialCode;
+    let res = '';
     if (this.theEditor) {
       res = this.theEditor.state.doc.toString();
     }
@@ -236,27 +220,8 @@ export class CodeIt extends AnswerForm {
   }
 
   /** Réponse de l'éditeur. */
-  answer(): string {
+  get answer(): string {
     return this.value;
-  }
-
-  protected get indentString(): string {
-    let res = '';
-    for (let i = 0; i < this.indentSize; i++) {
-      res = res.concat(' ');
-    }
-    return res;
-  }
-
-  protected compile(value: string): string {
-    const options: OptionsTemplate = {
-      head: this._head,
-      header: this._header,
-      footer: this._footer,
-      lang: this.lang,
-      theme: this.theme === 'dark' ? 'light' : 'dark', 
-    }
-    return templateHTML(value, options);
   }
 
   protected createListeners() {
@@ -268,24 +233,11 @@ export class CodeIt extends AnswerForm {
     this.addEventListener('toggle-toolbar-it', () => {
       this.toolbar = !this.toolbar;
     });
-    this.addEventListener('feedback-requested-it', () => {
-      this.srcDoc = this.value;
-    });
-  }
-
-  protected async fetchContent(src: string): Promise<string> {
-    return await this.fetchSrc(src ?? '');
-  }
-
-  protected async fetchSrc(src: string): Promise<string> {
-    const response = await fetch(src);
-    return response.text();
   }
 
   protected async firstUpdated(_changedProperties: PropertyValueMap<unknown> | Map<PropertyKey, unknown>) {
-    super.firstUpdated(_changedProperties)
-    this.readOnly = !this.block ? this.readOnly : true
-    this.preview = !this.block ? this.preview : false
+    // super.firstUpdated(_changedProperties)
+    this.initialCode = await this.getCode(this.codeFilename, 'src');
     this.lineNumbers = !this.readOnly ? this.lineNumbers : true
     this.extensions = this.getInitialExtensions();
     this.theEditor = new EditorView({
@@ -294,10 +246,7 @@ export class CodeIt extends AnswerForm {
       parent: this.editorContainer,
       root: this.shadowRoot as Document | ShadowRoot
     });
-    this.value = await this.getInitialCode();
-    this._head = await this.getHead()
-    this._header = await this.getHeader()
-    this._footer = await this.getFooter()
+    this.value = this.initialCode
     this.setLanguageExtension();
     this.createListeners();
   }
@@ -310,72 +259,7 @@ export class CodeIt extends AnswerForm {
     }
   }
 
-  protected async getHead(): Promise<string> {
-    let head = ''
-    if (this.srcHead) {
-      await this.fetchContent(this.srcHead).then(response => {
-        head += response;
-      });
-    } else {
-      const innerScriptTag = this.querySelector('script[type="enibook/head"]');
-      if (innerScriptTag) {
-        const scriptHead = dedentText(innerScriptTag.innerHTML);
-        head += scriptHead.replace(/&lt;(\/?script)(.*?)&gt;/g, '<$1$2>');
-      }
-    }
-    return head;
-  }
-
-  protected async getHeader(): Promise<string> {
-    let header = ''
-    if (this.srcHeader) {
-      await this.fetchContent(this.srcHeader).then(response => {
-        header += response;
-      });
-    } else {
-      const innerScriptTag = this.querySelector('script[type="enibook/header"]');
-      if (innerScriptTag) {
-        const scriptHeader = dedentText(innerScriptTag.innerHTML);
-        header += scriptHeader.replace(/&lt;(\/?script)(.*?)&gt;/g, '<$1$2>');
-      }
-    }
-    return header;
-  }
-  
-  protected async getFooter(): Promise<string> {
-    let footer = ''
-    if (this.srcFooter) {
-      await this.fetchContent(this.srcFooter).then(response => {
-        footer += response;
-      });
-    } else {
-      const innerScriptTag = this.querySelector('script[type="enibook/footer"]');
-      if (innerScriptTag) {
-        const scriptFooter = dedentText(innerScriptTag.innerHTML);
-        footer += scriptFooter.replace(/&lt;(\/?script)(.*?)&gt;/g, '<$1$2>');
-      }
-    }
-    return footer;
-  }
-
-  protected async getInitialCode(): Promise<string> {
-    this.initialCode = '';
-    if (this.src) {
-      await this.fetchContent(this.src).then(response => {
-        this.initialCode += response;
-      });
-    } else {
-      const innerScriptTag = this.querySelector('script[type="enibook"]');
-      if (innerScriptTag) {
-        const scriptDoc = dedentText(innerScriptTag.innerHTML);
-        this.initialCode += scriptDoc.replace(/&lt;(\/?script)(.*?)&gt;/g, '<$1$2>');
-      }
-    }
-    return this.initialCode;
-  }
-
   protected getInitialExtensions(): (Extension | (StateField<boolean> | Extension)[])[] {
-    const that = this;
     const res: (Extension | (StateField<boolean> | Extension)[])[] = [
       basicSetup,
       EditorState.phrases.of(frenchPhrases),
@@ -385,7 +269,7 @@ export class CodeIt extends AnswerForm {
         hideFirstIndent: true
       }),
       keymap.of(helpKeymap),
-      this.indentationConfig.of(indentUnit.of(this.indentString)),
+      this.indentationConfig.of(indentUnit.of(indentString(this.indentSize))),
       this.languageConfig.of([]),
       this.lineNumbers
         ? this.lineNumbersConfig.of(lineNumbers())
@@ -395,9 +279,10 @@ export class CodeIt extends AnswerForm {
       this.placeholderConfig.of(placeholder(this.placeholder)),
       this.readOnlyConfig.of(EditorState.readOnly.of(this.readOnly)),
       this.themeConfig.of(this.theme === 'dark' ? darkTheme : lightTheme),
-      EditorView.updateListener.of(function () {
-        that.srcDoc = that.compile(that.value);
+      EditorView.updateListener.of(() => {
+        this.emit('editor-change-it')
       })
+      
     ];
     return res;
   }
@@ -454,30 +339,30 @@ export class CodeIt extends AnswerForm {
     return Object.keys(languages).includes(language);
   }
 
-  protected renderForm(): TemplateResult {
+  protected render(): TemplateResult {
     const classes = {
       'code-it': true,
+      'code-it__border': this.toolbar,
       light: this.theme === 'light',
-      dark: this.theme !== 'light'
+      dark: this.theme !== 'light',
+
     }
     return html`
-      <div part="base" class=${classMap(classes)}>
-        <div part="toolbar">${this.renderToolbar()}</div>
-        <div class="editor-base">
-          <div part="editor" class="editor"></div>
-          <div part="menuBtn" class="menu-button">
-            ${!this.readOnly
-              ? this.renderToolbarsButton()
-              : this.renderToolsButtons()
-            }
-            ${this.btnFeedback
-              ? this.renderFeedbackButton()
-              : html``
-            }
+      <sl-resize-observer>
+        <div part="base" class=${classMap(classes)}>
+          <div part="toolbar">${this.renderToolbar()}</div>
+          <div class="editor-base">
+            <div part="editor" class="editor"></div>
+            <div part="menuBtn" class="menu-button">
+              ${!this.readOnly
+                ? this.renderToolbarsButton()
+                : this.renderToolsButtons()
+              }
+            </div>
           </div>
+          <div part="statusbar">${this.renderStatusBar()}</div>
         </div>
-        <div part="statusbar">${this.renderStatusBar()}</div>
-      </div>
+      </sl-resize-observer>
     `;
   }
 
@@ -780,7 +665,7 @@ export class CodeIt extends AnswerForm {
 
   protected setIndentationExtension() {
     this.theEditor.dispatch({
-      effects: [this.indentationConfig.reconfigure(indentUnit.of(this.indentString))]
+      effects: [this.indentationConfig.reconfigure(indentUnit.of(indentString(this.indentSize)))]
     });
   }
 
@@ -808,19 +693,3 @@ declare global {
     'code-it': CodeIt;
   }
 }
-
-/*
-if (customElements && !customElements.get('code-it')) {
-  customElements.define('code-it', CodeIt)
-}
-*/
-
-/*
-        <!--
-        <sl-tooltip .content=${!this.fullscreen ? 'passer en mode plein écran' : 'quitter le mode plein écran'} hoist>
-          <sl-button size="small" @click=${() => this.toggleFullscreen()}>
-            ${!this.fullscreen ? html`<it-mdi-fullscreen></it-mdi-fullscreen>` : html`<it-mdi-fullscreen-exit></it-mdi-fullscreen-exit>`}
-          </sl-button>
-        </sl-tooltip>
-        -->
-*/

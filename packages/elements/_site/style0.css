@@ -2007,3 +2007,19 @@ p.tableblock {
   }
 }
 
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.with-sidebar > :first-child {
+  flex-grow: 1;
+}
+
+.with-sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 50%;
+}
+  

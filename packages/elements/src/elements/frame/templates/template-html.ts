@@ -1,5 +1,6 @@
 export type OptionsTemplate = {
   head?: string;
+  style?: string;
   header?: string;
   main?: string;
   footer?: string;
@@ -10,6 +11,7 @@ export type OptionsTemplate = {
 
 export const defaultOptions: OptionsTemplate = {
   head: '',
+  style: '',
   header: '',
   main: '',
   footer: '',
@@ -19,7 +21,7 @@ export const defaultOptions: OptionsTemplate = {
 }
 
 export function templateHTML(options: OptionsTemplate={}) {
-  let {head, header, main, footer, lang, theme, title} = Object.assign(defaultOptions, options)
+  let {head, style, header, main, footer, lang, theme, title} = Object.assign(defaultOptions, options)
   theme = theme === 'dark' ? 'sl-theme-dark dark' : 'sl-theme-light light'
   return `<!DOCTYPE html>
 <html lang="${lang}" class="${theme}">
@@ -28,6 +30,7 @@ export function templateHTML(options: OptionsTemplate={}) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
   ${head}
+  ${style}
 </head>
 <body>
   ${header}

@@ -1,6 +1,6 @@
 import { type CSSResultGroup, type TemplateResult, type PropertyValueMap } from 'lit';
-import '@shoelace-style/shoelace/dist/components/resize-observer/resize-observer.js';
 import { BaseIt } from '../base/base.js';
+import { type OptionsTemplate } from './templates/template-html.js';
 /** */
 export declare class FrameIt extends BaseIt {
     /** Style propre à la classe. */
@@ -21,10 +21,10 @@ export declare class FrameIt extends BaseIt {
     url: string;
     /** Contenu de la page à intégrer qui surcharge celui indiqué par `url`. */
     srcDoc: string;
-    createListeners(): void;
     protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): Promise<void>;
+    getTemplate(options: OptionsTemplate): string;
     protected render(): TemplateResult;
-    protected resizeFrame(): void;
+    resizeIFrameHeight(height: number): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

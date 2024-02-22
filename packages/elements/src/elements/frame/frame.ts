@@ -5,7 +5,7 @@ import { customElement, property, query, state } from 'lit/decorators.js';
 
 // enibook
 import { BaseIt } from '../base/base.js';
-import { templateHTML } from './templates/template-html.js';
+import { templateHTML, type OptionsTemplate } from './templates/template-html.js';
 import styles from './frame.css.js';
 
 /** */
@@ -49,10 +49,14 @@ export class FrameIt extends BaseIt {
     const main = await this.getCode(this.mainFilename, 'main')
     const footer = await this.getCode(this.footerFilename, 'footer')
     if (head || header || main || footer) {
-      this.srcDoc = templateHTML({ head, header, main, footer })
+      this.srcDoc = this.getTemplate({ head, header, main, footer })
     }
   }
   
+  getTemplate(options: OptionsTemplate): string {
+    return templateHTML(options)
+  }
+
   protected render(): TemplateResult {
     return html`
       <div part="base" class="frame-it">

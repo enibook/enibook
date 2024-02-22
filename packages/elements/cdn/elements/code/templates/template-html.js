@@ -1,4 +1,4 @@
-import "../../../chunks/chunk.R3ZK4RPV.js";
+import "../../../chunks/chunk.VPCEBHZA.js";
 
 // src/elements/code/templates/template-html.ts
 var defaultOptions = {

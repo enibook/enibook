@@ -4,7 +4,7 @@ import {
   __export,
   __toCommonJS,
   __toESM
-} from "../chunks/chunk.R3ZK4RPV.js";
+} from "../chunks/chunk.VPCEBHZA.js";
 
 // ../../node_modules/.pnpm/@asciidoctor+core@3.0.3/node_modules/@asciidoctor/core/dist/browser/asciidoctor.js
 var asciidoctor_exports = {};

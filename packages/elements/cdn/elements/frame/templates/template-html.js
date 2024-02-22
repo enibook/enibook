@@ -1,8 +1,8 @@
 import {
   defaultOptions,
   templateHTML
-} from "../../../chunks/chunk.52PXAZDJ.js";
-import "../../../chunks/chunk.R3ZK4RPV.js";
+} from "../../../chunks/chunk.CWIG22PC.js";
+import "../../../chunks/chunk.VPCEBHZA.js";
 export {
   defaultOptions,
   templateHTML

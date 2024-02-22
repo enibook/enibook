@@ -14,6 +14,8 @@ export default css`
     height: 100%;
     overflow-y: auto;
     border: none;
+    color: var(--sl-color-neutral-900);
+    background-color: var(--sl-color-neutral-50);
   }
   .border {
     border: 1px solid var(--sl-color-neutral-200);

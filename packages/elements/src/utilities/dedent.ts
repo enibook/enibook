@@ -6,6 +6,7 @@
  * @returns {string} le texte désindenté
  */
 export function dedentText(text: string): string {
+  if (!text) { return '' }
   const lines = text.split('\n');
   if (lines[0] === '') lines.splice(0, 1);
   const initline = lines[0];

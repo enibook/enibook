@@ -4,7 +4,7 @@ import {
   getTime,
   language
 } from "../chunks/chunk.UJCKPGYB.js";
-import "../chunks/chunk.R3ZK4RPV.js";
+import "../chunks/chunk.VPCEBHZA.js";
 export {
   getDate,
   getDay,

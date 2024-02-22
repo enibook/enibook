@@ -1,7 +1,7 @@
 import {
   getBasePath
 } from "./chunks/chunk.WVRMIH3T.js";
-import "./chunks/chunk.R3ZK4RPV.js";
+import "./chunks/chunk.VPCEBHZA.js";
 
 // src/enibook-autoloader.ts
 var observer = new MutationObserver((mutations) => {
@@ -15,7 +15,7 @@ var observer = new MutationObserver((mutations) => {
 });
 async function discover(root) {
   const rootTagName = root instanceof Element ? root.tagName.toLowerCase() : "";
-  const rootIsEniBookElement = rootTagName == null ? void 0 : rootTagName.endsWith("-it");
+  const rootIsEniBookElement = rootTagName?.endsWith("-it");
   const tags = [...root.querySelectorAll(":not(:defined)")].map((el) => el.tagName.toLowerCase()).filter((tag) => tag.endsWith("-it"));
   if (rootIsEniBookElement && !customElements.get(rootTagName)) {
     tags.push(rootTagName);

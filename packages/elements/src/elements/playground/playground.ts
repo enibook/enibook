@@ -5,11 +5,9 @@ import { customElement, property, query } from "lit/decorators.js";
 
 // enibook
 import { AnswerForm } from "../answer-form/answer-form.js";
-
 import { CodeIt } from "../code/code.js";
 import { FrameIt } from "../frame/frame.js";
 import styles from "./playground.css.js"
-import { EditorView } from "@codemirror/view";
 
 @customElement('playground-it')
 export class PlaygroundIt extends AnswerForm {
@@ -18,8 +16,14 @@ export class PlaygroundIt extends AnswerForm {
 
   protected initialCode: string = '';
   protected initialCompiledCode: string = ''
+  protected initialHead: string = '';
+  protected initialHeader: string = '';
+  protected initialMain: string = '';
+  protected initialFooter: string = '';
 
   @query('.playground__editor') editorElement!: CodeIt
+
+  @query('sl-tab-panel[name="script"]') scriptEditorElement!: CodeIt
 
   @query('.playground__frame') frameElement!: FrameIt
   
@@ -28,6 +32,9 @@ export class PlaygroundIt extends AnswerForm {
   public editor!: CodeIt
 
   public frame!: FrameIt
+
+  @property({ type: Boolean, reflect: true })
+  full: boolean = false
 
   /** Langage à éditer (défaut: `text`). */
   @property({ type: String, reflect: true })
@@ -46,16 +53,27 @@ export class PlaygroundIt extends AnswerForm {
   /** Le fichier source du suffiwe. */
   @property({ type: String, reflect: true, attribute: 'suffix-filename' }) suffixFilename = '';
 
+  /** Le fichier `html` dont le contenu est à ajouter dans la section `<main>`. */
+  @property({ type: String, reflect: true, attribute: 'main-filename' }) mainFilename = '';
+
+  /** Le fichier `html` dont le contenu est à ajouter en fin de la section `<head>` du template HTML. */
+  @property({ type: String, reflect: true, attribute: 'head-filename' }) headFilename = '';
+
+  /** Le fichier `html` dont le contenu est à insérer au début de la section `<body>` du template HTML. */
+  @property({ type: String, reflect: true, attribute: 'header-filename' }) headerFilename = '';
+
+  /** Le fichier `html` dont le contenu est à ajouter en fin de la section `<body>` du template HTML. */
+  @property({ type: String, reflect: true, attribute: 'footer-filename' }) footerFilename = '';
+    
+  
   compile(input: string): string {
-    let output: string = ''
-    output += input
-    return output
+    return input
   }
 
   createEditor(): CodeIt {
-    const initialCode = `<script type="code-it/src">${this.initialCode}</script>`
+    const initialCode = `<script type="enibook/src">${this.initialCode}</script>`
     const editor = new CodeIt()
-    editor.classList.add('playground__editor')
+    editor.classList.add('playground__editor__script')
     editor.language = this.language
     editor.readOnly = this.readOnly
     editor.lineNumbers = true
@@ -64,12 +82,19 @@ export class PlaygroundIt extends AnswerForm {
   }
 
   createFrame(): FrameIt {
-    const initialCode = `<script type="frame-it/main">${this.initialCompiledCode}</script>`
+    const initialHead = `<script type="enibook/head">${this.initialHead}</script>`
+    const initialHeader = `<script type="enibook/header">${this.initialHeader}</script>`
+    const initialMain = `<script type="enibook/main">${this.initialCompiledCode}</script>`
+    const initialFooter = `<script type="enibook/footer">${this.initialFooter}</script>`
     const frame = new FrameIt()
     frame.classList.add('playground__frame')
     frame.border = true
-    frame.style.resize = 'vertical'
-    frame.innerHTML = initialCode
+    frame.innerHTML = `
+      ${initialHead}
+      ${initialHeader}
+      ${initialMain}
+      ${initialFooter}
+    `
     return frame
   }
 
@@ -79,23 +104,36 @@ export class PlaygroundIt extends AnswerForm {
       const entries = ev.detail.entries
       if (entries.length) {
         const height = entries[0].contentRect.height
-        this.editorElement.style.height = `${height}px`
+        // this.editorElement.style.height = `${height}px`
         this.frameElement.style.height = `${height}px`
         this.frameElement.resizeIFrameHeight(height)
       }
     })
     this.addEventListener('editor-change-it', () => {
-      this.frame.srcDoc = this.compile(this.editor.value)
+      this.frame.srcDoc = this.frame.getTemplate({ 
+        head: this.initialHead, 
+        header: this.initialHeader, 
+        main: this.compile(this.editor.value), 
+        footer: this.initialFooter 
+      })
+      // console.log(this.frame.srcDoc)
     })
   }
 
   protected async firstUpdated(_changedProperties: PropertyValueMap<unknown> | Map<PropertyKey, unknown>) {
-    this.initialCode = await this.getCode(this.codeFilename, 'src');
-    this.initialCompiledCode = this.compile(this.initialCode)
+    this.initialHead += await this.getCode(this.headFilename, 'head');
+    this.initialHeader += await this.getCode(this.headerFilename, 'header');
+    this.initialFooter += await this.getCode(this.footerFilename, 'footer');
+    this.initialMain += await this.getCode(this.mainFilename, 'main');
+    this.initialCode += await this.getCode(this.codeFilename, 'src');
+    this.initialCompiledCode += this.compile(this.initialCode)
+    console.log(this.initialCompiledCode)
     this.editor = this.createEditor()
     this.frame = this.createFrame()
-    this.baseElement.appendChild(this.editor)
+    // this.baseElement.appendChild(this.editor)
+    this.scriptEditorElement.appendChild(this.editor)
     this.baseElement.appendChild(this.frame)
+    
     this.createListener()
   }
 
@@ -105,7 +143,47 @@ export class PlaygroundIt extends AnswerForm {
 
   render(): TemplateResult {
     return html`
+      <sl-tab-group>
+        <sl-tab slot="nav" panel="script">Script ${this.language}</sl-tab>
+        <sl-tab slot="nav" panel="web">Page Web</sl-tab>
+
+        <sl-tab-panel name="web">
+          <sl-tab-group>
+            <sl-tab slot="nav" panel="page">Page</sl-tab>
+            <sl-tab slot="nav" panel="head">Head</sl-tab>
+            <sl-tab slot="nav" panel="css">Style</sl-tab>
+            <sl-tab slot="nav" panel="header">Header</sl-tab>
+            <sl-tab slot="nav" panel="main">Main</sl-tab>
+            <sl-tab slot="nav" panel="footer">Footer</sl-tab>
+
+            <sl-tab-panel name="page">
+              <code-it language="html" read-only>
+                <script type="enibook/src"><p>hello</p></script>
+              </code-it>
+            </sl-tab-panel>
+            <sl-tab-panel name="head">
+              <code-it language="html">
+                <script type="enibook/src">${this.initialHead}</script>
+              </code-it>
+            </sl-tab-panel>
+            <sl-tab-panel name="header">
+              <code-it language="html">
+                <script type="enibook/src">${this.initialHeader}</script>
+              </code-it>
+            </sl-tab-panel>
+            <sl-tab-panel name="footer">
+              <code-it language="html" read-only>
+                <script type="enibook/src">${this.initialCompiledCode}</script>
+              </code-it>
+            </sl-tab-panel>
+            <sl-tab-panel name="css"></sl-tab-panel>
+          </sl-tab-group>
+        </sl-tab-panel>
+        <sl-tab-panel name="script">
+        </sl-tab-panel>
+      </sl-tab-group>
       <div part="base" class="playground-it"></div>
+
     `
   }
 

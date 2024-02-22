@@ -1,5 +1,6 @@
 export type OptionsTemplate = {
     head?: string;
+    style?: string;
     header?: string;
     main?: string;
     footer?: string;

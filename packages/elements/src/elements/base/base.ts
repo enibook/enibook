@@ -42,8 +42,7 @@ export abstract class BaseIt extends LitElement {
 
   async getCode(filename: string, part: string): Promise<string> {
     let code = ''
-    const tag = this.tagName.toLowerCase()
-    const innerScriptTag = this.querySelector(`script[type="${tag}/${part}"]`);
+    const innerScriptTag = this.querySelector(`script[type="enibook/${part}"]`);
     if (filename) {
       await fetchContent(filename).then(response => {
         code += response;
@@ -53,7 +52,6 @@ export abstract class BaseIt extends LitElement {
       code += dedentText(innerScriptTag.innerHTML);
       code = code.replace(/&lt;(\/?script)(.*?)&gt;/g, '<$1$2>');
     }
-    // console.log('getCode',tag, part, innerScriptTag, code)
     return code
   }
   

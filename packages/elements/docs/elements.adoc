@@ -23,7 +23,29 @@ link:https://www.typescriptlang.org[`typescript`] et sont accessibles depuis l'l
 stem:[\displaystyle\cos(\frac{1}{1+x^2}\times \frac{1}{x^3})]
 
 ++++
-<playground-it language="html">
+<python-it>
+  <script type="enibook/header">
+    <p>
+      Your name is : <input id="zone" autocomplete="off">
+      <button id="test">click !</button>
+    </p>
+  </script>
+
+  <script type="enibook/src">
+    from browser import document, alert
+    from browser.widgets.dialog import InfoDialog
+
+    def echo(ev):
+      InfoDialog("Hello", f"Hello {document['zone'].value} !")
+
+    document["test"].bind("click", echo)
+  </script>
+</python-it>
+++++
+
+////
+++++
+<playground-it language="html" head-filename="templates/frame-head.html">
   <script type="playground-it/src">
   <h1>Titre</h1>
   <h2>Section</h2>
@@ -37,7 +59,7 @@ stem:[\displaystyle\cos(\frac{1}{1+x^2}\times \frac{1}{x^3})]
 </playground-it>
 ++++
 
-////
+
 ++++
 <frame-it url="https://enibook.org" head-filename="templates/frame-head.html" border>
   <script type="frame-it/main">

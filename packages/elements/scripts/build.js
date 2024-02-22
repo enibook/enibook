@@ -102,7 +102,7 @@ async function buildTheSource() {
 
   const cdnConfig = {
     format: 'esm',
-    target: 'es2017',
+    target: 'es2020',
     entryPoints: [
       //
       // NOTE: Les points d'entrée doivent être renseignés dans les `exports` du fichier `package.json`,

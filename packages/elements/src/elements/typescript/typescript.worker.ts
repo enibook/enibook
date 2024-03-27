@@ -73,28 +73,11 @@ function unpatchConsole() {
 }
 
 // Personnaliser l'événement onmessage
-onmessage = async (e) => {
+onmessage = (e) => {
   // Tableau avec tous les résultats de console.log
   const messages: string[] = []
   patchConsole(messages)
   _console.log('messages', messages)
-  //const consoleOutput: string[] = [];
-  // Réécriture des fonctions de la console
-  /*
-  const logRewrite = (msg: string, ...optionalParams: string[]) => {
-    consoleOutput.push([msg, ...optionalParams].join(smartDashes));
-  };
-  console.log = logRewrite;
-  console.info = logRewrite;
-  console.warn = logRewrite;
-  console.error = logRewrite;
-  console.debug = logRewrite;
-  console.assert = msg => {
-    if (!msg) {
-      consoleOutput.push(`assert ${msg}!`)
-    }
-  }
-  */
 
   const acornOptions: typeof acorn.defaultOptions = {
     ecmaVersion: "latest",
@@ -106,8 +89,12 @@ onmessage = async (e) => {
   // - debug: affichages de console.log
   // - result: résultat final du script
   try {
-    acorn.Parser.parse(e.data.script, acornOptions)
-    let output = (0, eval)(ts.transpile(e.data.script));
+    // Compilation ts -> js
+    const jsCode = ts.transpile(e.data.script)
+    // Analyse syntaxique javascript
+    acorn.Parser.parse(jsCode, acornOptions)
+    // Evaluation javascript
+    let output = (0, eval)(jsCode);
     // Limiter la sortie à 100000 caractères
     if (output && output.length > 100000) {
       output = output.substring(0, 100000) + "...";

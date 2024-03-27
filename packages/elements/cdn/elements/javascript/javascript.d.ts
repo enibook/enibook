@@ -7,7 +7,6 @@ export declare class JavascriptIt extends PlaygroundIt {
     /** Style propre à la classe. */
     static styles: CSSResultGroup;
     protected worker: Worker;
-    scriptWorker: HTMLScriptElement;
     constructor();
     createListener(): void;
     handleMessageWorker(message: any): Promise<void>;

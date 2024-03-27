@@ -108,7 +108,6 @@ export class PlaygroundIt extends AnswerForm {
     this.initialFooter += await this.getCode(this.footerFilename, 'footer');
     this.initialMain += await this.getCode(this.mainFilename, 'main');
     this.initialCode += await this.getCode(this.codeFilename, 'src');
-    //this.initialCompiledCode += this.compile(this.initialCode)
     this.editor = this.createEditor()
     this.frame = this.createFrame()
     this.scriptEditorElement.appendChild(this.editor)

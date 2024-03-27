@@ -29,12 +29,13 @@ var JavascriptIt = class extends PlaygroundIt {
     this.worker = new Worker(url, { type: "module" });
   }
   createListener() {
+    let that = this;
     this.addEventListener("editor-change-it", () => {
-      const message = { script: this.editor.value };
+      const message = { script: that.editor.value };
       console.log("before", message);
-      this.worker.postMessage(message);
+      that.worker.postMessage(message);
     });
-    this.worker.addEventListener("message", (message) => this.handleMessageWorker(message));
+    that.worker.addEventListener("message", (message) => this.handleMessageWorker(message));
   }
   async handleMessageWorker(message) {
     console.log("after", message);

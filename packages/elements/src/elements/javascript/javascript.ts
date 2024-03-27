@@ -1,6 +1,6 @@
 // lit
 import { type CSSResultGroup } from "lit";
-import { customElement, query } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 // shoelace
 import '@shoelace-style/shoelace/dist/components/tab/tab.js'
 import '@shoelace-style/shoelace/dist/components/tab-group/tab-group.js'
@@ -29,12 +29,13 @@ export class JavascriptIt extends PlaygroundIt {
   }
 
   createListener(): void {
+    let that = this
     this.addEventListener('editor-change-it', () => {
-      const message = { script: this.editor.value }
+      const message = { script: that.editor.value }
       console.log('before',message)
-      this.worker.postMessage(message)
+      that.worker.postMessage(message)
     })
-    this.worker.addEventListener('message', (message) => this.handleMessageWorker(message))
+    that.worker.addEventListener('message', (message) => this.handleMessageWorker(message))
   }
 
   async handleMessageWorker(message: any) {

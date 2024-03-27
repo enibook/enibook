@@ -72,7 +72,7 @@ function unpatchConsole() {
 }
 
 // Personnaliser l'événement onmessage
-onmessage = function(e) {
+onmessage = (e) => {
   console.log('worker',e)
   // Tableau avec tous les résultats de console.log
   const messages: string[] = []

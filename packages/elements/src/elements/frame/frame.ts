@@ -15,25 +15,30 @@ export class FrameIt extends BaseIt {
   static styles: CSSResultGroup = [super.styles, styles];
 
   @query('.frame-it') 
-  protected baseElement!: HTMLElement
+  baseElement!: HTMLElement
 
-  @query('.frame') 
-  protected frameElement!: HTMLIFrameElement
+  @query('.frame[srcDoc]') 
+  frameElement!: HTMLIFrameElement
 
   /** Le bord de la frame */
-  @property({ type: Boolean, reflect: true }) border = false
+  @property({ type: Boolean, reflect: true }) 
+  border = false
 
   /** Le fichier `html` dont le contenu est à ajouter dans la section `<main>`. */
-  @property({ type: String, reflect: true, attribute: 'main-filename' }) mainFilename = '';
+  @property({ type: String, reflect: true, attribute: 'main-filename' }) 
+  mainFilename = '';
 
   /** Le fichier `html` dont le contenu est à ajouter en fin de la section `<head>` du template HTML. */
-  @property({ type: String, reflect: true, attribute: 'head-filename' }) headFilename = '';
+  @property({ type: String, reflect: true, attribute: 'head-filename' }) 
+  headFilename = '';
 
   /** Le fichier `html` dont le contenu est à insérer au début de la section `<body>` du template HTML. */
-  @property({ type: String, reflect: true, attribute: 'header-filename' }) headerFilename = '';
+  @property({ type: String, reflect: true, attribute: 'header-filename' }) 
+  headerFilename = '';
 
   /** Le fichier `html` dont le contenu est à ajouter en fin de la section `<body>` du template HTML. */
-  @property({ type: String, reflect: true, attribute: 'footer-filename' }) footerFilename = '';
+  @property({ type: String, reflect: true, attribute: 'footer-filename' }) 
+  footerFilename = '';
   
   /** URL de la page à intégrer dans la frame. */
   @property({ type: String, reflect: true }) 
@@ -41,7 +46,7 @@ export class FrameIt extends BaseIt {
 
   /** Contenu de la page à intégrer qui surcharge celui indiqué par `url`. */
   @state() 
-  srcDoc: string = ''
+  srcDoc: string = 'hello'
 
   protected async firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): Promise<void> {
     const head = await this.getCode(this.headFilename, 'head')

@@ -37,7 +37,7 @@ export async function discover(root: Element | ShadowRoot) {
 function register(tagName: string): Promise<void> {
   // Si l'élément est déjà défini, il n'y a rien à faire.
   if (customElements.get(tagName)) {
-    console.log(`${tagName} already set`);
+    console.warn(`enibook : ${tagName} already set`);
     return Promise.resolve();
   }
 

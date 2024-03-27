@@ -58,6 +58,7 @@
     "command-line-args": "^5.2.1",
     "del": "^7.1.0",
     "esbuild": "^0.20.0",
+    "esbuild-plugin-inline-worker": "^0.1.1",
     "esbuild-plugin-replace": "^1.4.0",
     "get-port": "^7.0.0",
     "glob": "^10.3.10",
@@ -73,7 +74,7 @@
     "typedoc-plugin-merge-modules": "^5.1.0",
     "typedoc-plugin-missing-exports": "^2.2.0",
     "typedoc-theme-category-nav": "^0.0.2",
-    "typescript": "^5.3.3",
+    "typescript": "^5.4.3",
     "util": "^0.12.5"
   },
   "dependencies": {
@@ -94,13 +95,16 @@
     "@lezer/highlight": "^1.2.0",
     "@replit/codemirror-indentation-markers": "^6.5.0",
     "@shoelace-style/shoelace": "^2.13.1",
+    "acorn": "^8.11.3",
     "brython": "^3.12.1",
     "codemirror": "^6.0.1",
     "codemirror-asciidoc": "^2.0.1",
     "codemirror-lang-prolog": "^0.1.0",
     "debounce": "^2.0.0",
+    "delay": "^6.0.0",
     "fscreen": "^1.2.0",
     "highlight.js": "^11.9.0",
+    "iconify-icon": "^2.0.0",
     "lit": "^3.1.2",
     "livecodes": "^0.3.0",
     "markdown-it": "^14.0.0",
@@ -111,6 +115,18 @@
     "markdown-it-footnote": "^4.0.0",
     "markdown-it-multimd-table": "^4.2.3",
     "playground-elements": "^0.18.1"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "fs.realpath": false,
+    "mkdirp": false,
+    "dir-glob": false,
+    "graceful-fs": false,
+    "fast-glob": false,
+    "source-map-support": false,
+    "glob-parent": false,
+    "glob": false
   },
   "customElements": "dist/custom-elements.json"
 }

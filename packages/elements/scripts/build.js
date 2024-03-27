@@ -12,7 +12,8 @@ import ora from 'ora';
 import util from 'util';
 import * as path from 'path';
 import { readFileSync } from 'fs';
-import { replace } from 'esbuild-plugin-replace';
+// import { replace } from 'esbuild-plugin-replace';
+import inlineWorkerPlugin from 'esbuild-plugin-inline-worker';
 
 const { serve } = commandLineArgs([{ name: 'serve', type: Boolean }]);
 const outdir = 'dist';
@@ -126,9 +127,7 @@ async function buildTheSource() {
     external: alwaysExternal,
     splitting: true,
     plugins: [
-      replace({
-        __ENIBOOK_VERSION__: enibookVersion
-      })
+      inlineWorkerPlugin()
     ]
   };
 
@@ -223,7 +222,7 @@ if (serve) {
     return await copy(path.join(docdir, 'styles'), path.join(sitedir, 'styles'), { overwrite: true });
   });
 
-  await nextTask(`Copie de "${docdir}/templates" dans "${sitedir}/templatess"`, async () => {
+  await nextTask(`Copie de "${docdir}/templates" dans "${sitedir}/templates"`, async () => {
     return await copy(path.join(docdir, 'templates'), path.join(sitedir, 'templates'), { overwrite: true });
   });
 

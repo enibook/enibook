@@ -1,6 +1,11 @@
 import {
-  CodeIt
-} from "../../chunks/chunk.FLPTFMOM.js";
+  JavascriptIt
+} from "../../chunks/chunk.UZ44AOPF.js";
+import "../../chunks/chunk.BGPKVCZX.js";
+import "../../chunks/chunk.UWRF2NMZ.js";
+import "../../chunks/chunk.QQGJI4IO.js";
+import "../../chunks/chunk.2J5NJMY7.js";
+import "../../chunks/chunk.FLPTFMOM.js";
 import "../../chunks/chunk.GYICEXKC.js";
 import "../../chunks/chunk.ULMMSXWU.js";
 import "../../chunks/chunk.CB3AWS6T.js";
@@ -22,5 +27,5 @@ import "../../chunks/chunk.DK2BFNDL.js";
 import "../../chunks/chunk.FFNE7TVA.js";
 import "../../chunks/chunk.VPCEBHZA.js";
 export {
-  CodeIt
+  JavascriptIt
 };

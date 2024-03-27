@@ -3,15 +3,17 @@ import '@shoelace-style/shoelace/dist/components/tab/tab.js';
 import '@shoelace-style/shoelace/dist/components/tab-group/tab-group.js';
 import '@shoelace-style/shoelace/dist/components/tab-panel/tab-panel.js';
 import { PlaygroundIt } from "../playground/playground.js";
-export declare class PythonIt extends PlaygroundIt {
+export declare class JavascriptIt extends PlaygroundIt {
     /** Style propre à la classe. */
     static styles: CSSResultGroup;
+    protected worker: Worker;
+    scriptWorker: HTMLScriptElement;
     constructor();
-    get answer(): unknown;
-    reset(): void;
+    createListener(): void;
+    handleMessageWorker(message: any): Promise<void>;
 }
 declare global {
     interface HTMLElementTagNameMap {
-        'python-it': PythonIt;
+        'javascript-it': JavascriptIt;
     }
 }

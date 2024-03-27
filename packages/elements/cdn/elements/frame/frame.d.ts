@@ -5,8 +5,8 @@ import { type OptionsTemplate } from './templates/template-html.js';
 export declare class FrameIt extends BaseIt {
     /** Style propre à la classe. */
     static styles: CSSResultGroup;
-    protected baseElement: HTMLElement;
-    protected frameElement: HTMLIFrameElement;
+    baseElement: HTMLElement;
+    frameElement: HTMLIFrameElement;
     /** Le bord de la frame */
     border: boolean;
     /** Le fichier `html` dont le contenu est à ajouter dans la section `<main>`. */

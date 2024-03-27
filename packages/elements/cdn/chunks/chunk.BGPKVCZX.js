@@ -1,13 +1,10 @@
 import {
-  PlaygroundIt
-} from "./chunk.3MD4PXHQ.js";
-import {
   SlIconButton
-} from "./chunk.SJ4RTGRS.js";
+} from "./chunk.FLPTFMOM.js";
 import {
   LocalizeController,
   ShoelaceElement,
-  __decorateClass as __decorateClass2,
+  __decorateClass,
   __spreadValues,
   component_styles_default,
   e as e2,
@@ -16,17 +13,12 @@ import {
 import {
   e,
   n,
-  r,
-  t
+  r
 } from "./chunk.HKVYMXOM.js";
 import {
   i,
   x
 } from "./chunk.FFNE7TVA.js";
-import {
-  __decorateClass,
-  __superGet
-} from "./chunk.VPCEBHZA.js";
 
 // ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.55/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.LXNEWTQ2.js
 var tab_styles_default = i`
@@ -168,25 +160,25 @@ var SlTab = class extends ShoelaceElement {
 };
 SlTab.styles = tab_styles_default;
 SlTab.dependencies = { "sl-icon-button": SlIconButton };
-__decorateClass2([
+__decorateClass([
   e(".tab")
 ], SlTab.prototype, "tab", 2);
-__decorateClass2([
+__decorateClass([
   n({ reflect: true })
 ], SlTab.prototype, "panel", 2);
-__decorateClass2([
+__decorateClass([
   n({ type: Boolean, reflect: true })
 ], SlTab.prototype, "active", 2);
-__decorateClass2([
+__decorateClass([
   n({ type: Boolean })
 ], SlTab.prototype, "closable", 2);
-__decorateClass2([
+__decorateClass([
   n({ type: Boolean, reflect: true })
 ], SlTab.prototype, "disabled", 2);
-__decorateClass2([
+__decorateClass([
   watch("active")
 ], SlTab.prototype, "handleActiveChange", 1);
-__decorateClass2([
+__decorateClass([
   watch("disabled")
 ], SlTab.prototype, "handleDisabledChange", 1);
 
@@ -547,7 +539,7 @@ var SlTabGroup = class extends ShoelaceElement {
       }
     }
     if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(event.key)) {
-      const activeEl = this.tabs.find((t2) => t2.matches(":focus"));
+      const activeEl = this.tabs.find((t) => t.matches(":focus"));
       const isRtl = this.localize.dir() === "rtl";
       if ((activeEl == null ? void 0 : activeEl.tagName.toLowerCase()) === "sl-tab") {
         let index = this.tabs.indexOf(activeEl);
@@ -742,34 +734,34 @@ var SlTabGroup = class extends ShoelaceElement {
 };
 SlTabGroup.styles = tab_group_styles_default;
 SlTabGroup.dependencies = { "sl-icon-button": SlIconButton };
-__decorateClass2([
+__decorateClass([
   e(".tab-group")
 ], SlTabGroup.prototype, "tabGroup", 2);
-__decorateClass2([
+__decorateClass([
   e(".tab-group__body")
 ], SlTabGroup.prototype, "body", 2);
-__decorateClass2([
+__decorateClass([
   e(".tab-group__nav")
 ], SlTabGroup.prototype, "nav", 2);
-__decorateClass2([
+__decorateClass([
   e(".tab-group__indicator")
 ], SlTabGroup.prototype, "indicator", 2);
-__decorateClass2([
+__decorateClass([
   r()
 ], SlTabGroup.prototype, "hasScrollControls", 2);
-__decorateClass2([
+__decorateClass([
   n()
 ], SlTabGroup.prototype, "placement", 2);
-__decorateClass2([
+__decorateClass([
   n()
 ], SlTabGroup.prototype, "activation", 2);
-__decorateClass2([
+__decorateClass([
   n({ attribute: "no-scroll-controls", type: Boolean })
 ], SlTabGroup.prototype, "noScrollControls", 2);
-__decorateClass2([
+__decorateClass([
   watch("noScrollControls", { waitUntilFirstUpdate: true })
 ], SlTabGroup.prototype, "updateScrollControls", 1);
-__decorateClass2([
+__decorateClass([
   watch("placement", { waitUntilFirstUpdate: true })
 ], SlTabGroup.prototype, "syncIndicator", 1);
 
@@ -827,58 +819,15 @@ var SlTabPanel = class extends ShoelaceElement {
   }
 };
 SlTabPanel.styles = tab_panel_styles_default;
-__decorateClass2([
+__decorateClass([
   n({ reflect: true })
 ], SlTabPanel.prototype, "name", 2);
-__decorateClass2([
+__decorateClass([
   n({ type: Boolean, reflect: true })
 ], SlTabPanel.prototype, "active", 2);
-__decorateClass2([
+__decorateClass([
   watch("active")
 ], SlTabPanel.prototype, "handleActiveChange", 1);
 
 // ../../node_modules/.pnpm/@shoelace-style+shoelace@2.13.1_@types+react@18.2.55/node_modules/@shoelace-style/shoelace/dist/chunks/chunk.GBZVGO6R.js
 SlTabPanel.define("sl-tab-panel");
-
-// src/elements/python/python.css.ts
-var python_css_default = i`
-  :host {
-    display: block;
-    margin-bottom: 0.5em;
-  }
-`;
-
-// src/elements/python/python.ts
-var PythonIt = class extends PlaygroundIt {
-  constructor() {
-    super();
-    this.language = "python";
-    this.initialHead = `
-<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.12.0/brython.min.js"><\/script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.12.0/brython_stdlib.min.js"><\/script>
-`;
-  }
-  get answer() {
-    throw new Error("Method not implemented.");
-  }
-  compile(input) {
-    let output = `
-<script type="text/python">
-${input}
-<\/script>
-`;
-    return output;
-  }
-  reset() {
-    throw new Error("Method not implemented.");
-  }
-};
-/** Style propre à la classe. */
-PythonIt.styles = [__superGet(PythonIt, PythonIt, "styles"), python_css_default];
-PythonIt = __decorateClass([
-  t("python-it")
-], PythonIt);
-
-export {
-  PythonIt
-};

@@ -29,15 +29,6 @@ export class PythonIt extends PlaygroundIt {
     throw new Error("Method not implemented.");
   }
 
-  override compile(input: string): string {
-    let output =`
-<script type="text/python">
-${input}
-</script>
-`
-    return output
-  }
-
   reset(): void {
     throw new Error("Method not implemented.");
   }

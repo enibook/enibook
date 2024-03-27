@@ -1,4 +1,5 @@
 import { type CSSResultGroup, type TemplateResult, type PropertyValueMap } from "lit";
+import type SlTabGroup from "@shoelace-style/shoelace/dist/components/tab-group/tab-group.component.js";
 import { AnswerForm } from "../answer-form/answer-form.js";
 import { CodeIt } from "../code/code.js";
 import { FrameIt } from "../frame/frame.js";
@@ -15,6 +16,7 @@ export declare class PlaygroundIt extends AnswerForm {
     scriptEditorElement: CodeIt;
     frameElement: FrameIt;
     baseElement: HTMLElement;
+    tabsElement: SlTabGroup;
     editor: CodeIt;
     frame: FrameIt;
     full: boolean;
@@ -36,7 +38,6 @@ export declare class PlaygroundIt extends AnswerForm {
     headerFilename: string;
     /** Le fichier `html` dont le contenu est à ajouter en fin de la section `<body>` du template HTML. */
     footerFilename: string;
-    compile(input: string): string;
     createEditor(): CodeIt;
     createFrame(): FrameIt;
     createListener(): void;
@@ -44,6 +45,9 @@ export declare class PlaygroundIt extends AnswerForm {
     get answer(): unknown;
     render(): TemplateResult;
     reset(): void;
+    updateFrame(text: string, consoleOutput: string): Promise<void>;
+    updateFrameHeight(): void;
+    workerScript(): TemplateResult;
 }
 declare global {
     interface HTMLElementTagNameMap {

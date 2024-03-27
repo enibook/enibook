@@ -1,45 +1,30 @@
-export type OptionsTemplate = {
-  head?: string;
-  style?: string;
-  header?: string;
-  codePrefix?: string;
-  codeBody?: string;
-  codeSuffix?: string;
-  main?: string;
-  footer?: string;
-  consoleOutput?: string;
-  lang?: string;
-  theme?: string;
-  title?: string;
-}
-
-export const defaultOptions: OptionsTemplate = {
-  head: '',
-  style: '',
-  header: '',
-  codePrefix: '',
-  codeBody: '',
-  codeSuffix: '',
-  main: '',
-  footer: '',
-  consoleOutput: '',
+// src/elements/frame/templates/template-html.ts
+var defaultOptions = {
+  head: "",
+  style: "",
+  header: "",
+  codePrefix: "",
+  codeBody: "",
+  codeSuffix: "",
+  main: "",
+  footer: "",
+  consoleOutput: "",
   lang: navigator.language,
-  theme: 'light',
-  title: 'EniBook IFrame'
-}
-
-export function templateHTML(options: OptionsTemplate={}) {
-  let {head, style, header, codePrefix, codeBody, codeSuffix, main, footer, consoleOutput, lang, theme, title} = Object.assign(defaultOptions, options)
-  theme = theme === 'dark' ? 'sl-theme-dark dark' : 'sl-theme-light light'
+  theme: "light",
+  title: "EniBook IFrame"
+};
+function templateHTML(options = {}) {
+  let { head, style, header, codePrefix, codeBody, codeSuffix, main, footer, consoleOutput, lang, theme, title } = Object.assign(defaultOptions, options);
+  theme = theme === "dark" ? "sl-theme-dark dark" : "sl-theme-light light";
   return `<!DOCTYPE html>
 <html lang="${lang}" class="${theme}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
-  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/preset-uno.global.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/preset-icons.global.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/preset-attributify.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/preset-uno.global.js"><\/script>
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/preset-icons.global.js"><\/script>
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/preset-attributify.global.js"><\/script>
   <script>
     window.__unocss = {
       presets: [
@@ -51,8 +36,8 @@ export function templateHTML(options: OptionsTemplate={}) {
         () => window.__unocss_runtime.presets.presetAttributify(),
       ]
     }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/core.global.js"></script>
+  <\/script>
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/core.global.js"><\/script>
   <!-- user head -->
   ${head}
   <style>
@@ -94,6 +79,10 @@ export function templateHTML(options: OptionsTemplate={}) {
   </footer>
 </body>
 </html>
-`
-  }
+`;
+}
 
+export {
+  defaultOptions,
+  templateHTML
+};

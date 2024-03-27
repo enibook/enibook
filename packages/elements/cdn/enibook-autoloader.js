@@ -25,7 +25,7 @@ async function discover(root) {
 }
 function register(tagName) {
   if (customElements.get(tagName)) {
-    console.log(`${tagName} already set`);
+    console.warn(`enibook : ${tagName} already set`);
     return Promise.resolve();
   }
   const tagWithoutSuffix = tagName.replace(/-it$/i, "");

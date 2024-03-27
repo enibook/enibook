@@ -7,12 +7,10 @@ import '@shoelace-style/shoelace/dist/components/tab-group/tab-group.js'
 import '@shoelace-style/shoelace/dist/components/tab-panel/tab-panel.js'
 // enibook
 import { PlaygroundIt } from "../playground/playground.js";
-// import { dedentText } from '../../utilities/dedent.js'
-// import jsWorker from "./javascript.worker";
-import styles from "./javascript.css.js"
+import styles from "./typescript.css.js"
 
-@customElement('javascript-it')
-export class JavascriptIt extends PlaygroundIt {
+@customElement('typescript-it')
+export class TypescriptIt extends PlaygroundIt {
   /** Style propre à la classe. */
   static styles: CSSResultGroup = [
     super.styles, 
@@ -21,24 +19,24 @@ export class JavascriptIt extends PlaygroundIt {
 
   protected worker!: Worker
   
+  @query('script[type="typescript/worker"]') scriptWorker!: HTMLScriptElement
+
   constructor() {
     super()
-    this.language = 'javascript'
-    const url = new URL('../elements/javascript/javascript.worker.js', import.meta.url)
+    this.language = 'typescript'
+    const url = new URL('../elements/typescript/typescript.worker.js', import.meta.url)
     this.worker = new Worker(url, { type: 'module' })
   }
 
   createListener(): void {
     this.addEventListener('editor-change-it', () => {
       const message = { script: this.editor.value }
-      console.log('before',message)
       this.worker.postMessage(message)
     })
     this.worker.addEventListener('message', (message) => this.handleMessageWorker(message))
   }
 
   async handleMessageWorker(message: any) {
-    console.log('after',message)
     let consoleOutput = ""
     let output = ""
     if (message.data.error) {
@@ -63,7 +61,7 @@ export class JavascriptIt extends PlaygroundIt {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'javascript-it': JavascriptIt;
+    'typescript-it': TypescriptIt;
   }
 }
 

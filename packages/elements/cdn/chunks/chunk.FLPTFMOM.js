@@ -2,6 +2,12 @@ import {
   emit
 } from "./chunk.GYICEXKC.js";
 import {
+  darkTheme
+} from "./chunk.ULMMSXWU.js";
+import {
+  lightTheme
+} from "./chunk.CB3AWS6T.js";
+import {
   autocompletion,
   closeBrackets,
   closeBracketsKeymap,
@@ -11,12 +17,6 @@ import {
 import {
   frenchPhrases
 } from "./chunk.3IXWQSYW.js";
-import {
-  darkTheme
-} from "./chunk.ULMMSXWU.js";
-import {
-  lightTheme
-} from "./chunk.CB3AWS6T.js";
 import {
   AnswerForm
 } from "./chunk.MJEIBEUT.js";
